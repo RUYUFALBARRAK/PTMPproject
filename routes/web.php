@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/traineeMainPage', function () {
+    return view('trainee/mainPage');
+});
 
 /*Auth::routes();
 

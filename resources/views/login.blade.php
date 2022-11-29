@@ -4,7 +4,7 @@
 
 <img src="img/background_ksu2.png" alt="ksu" class="back">
 <div class="container-sm">
-<img src="img/learning.png" alt="ksu" class="learning" width="200px" hight="200px">
+<img src="img/learning.png" alt="ksu" class="learning" width="30%" hight="30%">
 <h3 class="display-3">Log in</h3>
 <hr>
 <form class="row g-3 needs-validation" method="" novalidate>

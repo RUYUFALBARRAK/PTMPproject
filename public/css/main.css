@@ -1,5 +1,6 @@
 body {
     font-family: 'Nunito', sans-serif;
+    color: #000;
     
 }
   @keyframes mouvement {
@@ -31,6 +32,7 @@ body {
     height:100%;
     left:100%;
     opacity:1;
+    z-index: -1;
     position:absolute;
     filter:brightness(50%);
     animation:mouvement 20s infinite;
@@ -40,6 +42,8 @@ body {
     background: #6fb3b89e;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
     position: absolute;
+    width: 100%;
+    height: 12%;
    
 }
 .ksuLogo{
@@ -47,29 +51,26 @@ body {
   margin-left: 50px;
 }
 .heder p {
-    
-    margin: 10px 510px 20px 502px;
     font-family: 'Actor';
     font-style: normal;
     font-weight: 400;
     text-align: center;
-    font-size: 28px;
+    font-size: 200%;
     line-height: 40px;
     color: #FFFFFF;
     bottom: 1px;
 }
 .btn-lg{
-  position: absolute;
-  margin: 400px 300px 300px 300px;  
+  margin: 29% 25% 6% 35%;
+  font-size: 200% !important;
   /*background-color: #6FB3B8 !important;
   border-color: #6FB3B8 !important;*/
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.btn-lg:nth-child(1){
+  margin-top: 0%;
+}
 
-}
-.well{
-  margin-left: 700px;
-  background-color: #6FB3B8;
-}
 
 img.back{
   /* Set rules to fill background */
@@ -80,7 +81,6 @@ img.back{
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;
-	
   /* Set up positioning */
   position: fixed;
   top: 0;
@@ -100,23 +100,72 @@ img.back{
   text-align: center;
   top:60%;
   left:50%;
-  width: 600px !important;
+  width: 50% !important;
+  height: 80% !important;
   transform: translate(-50%,-50%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.container-sm form{
+.container-sm form {
   margin: 0px 50px;
   box-sizing: border-box; 
+  font-size: 150%;
+}
+.container-sm form .col-12 button{
+  font-size: 130%;
 }
 .textField{
   text-align: left;
 }
 
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
 
 
+nav {
+  position: fixed;
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  height: 100%;
+  color: black !important;
+  opacity: 0.8;
+  transition: all 300ms;
+  background-image: url('/img/background_ksu5.png') !important;
+  background-repeat: repeat;
+  margin-top: 6.8%;
+  text-align: center;
+  font-size: 150%;
+}
 
- 
+nav ul{width: 100%; padding-inline-start: 0;  height: calc(100% - 20px); opacity: 1; }
+nav .vertical-menu-logo{padding: 20px; font-size: 1.3em; position: relative}
+nav .vertical-menu-logo .open-menu-btn{width: 30px; height: max-content; position: absolute; display: block; right: 20px; top: 0; bottom: 0; margin: auto; cursor: pointer;}
+nav .vertical-menu-logo .open-menu-btn hr{margin: 5px 0}
+nav li{list-style: none; padding: 20px 10px; cursor: pointer; opacity: 1; border-bottom:5px solid #0810119e; border-width: 0.4px;}
+nav li:hover{ background-color: #6fb3b849; color: #074e4e !important; border-left:7px solid #06535d; }
+
+.content-wrapper{
+  width: calc(100% - 300px);
+  height: 100%;
+  position: fixed;
+  background: #fff;
+  left: 300px;
+  padding: 20px;
+  margin-top: 6.8%;
+}
+.content-wrapper{background: #ebebeb;}
+.content{
+  width: 90%;
+  min-height: 90%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+}
 
 
+#submenu-2{
+  display: none;
+}
 
 
