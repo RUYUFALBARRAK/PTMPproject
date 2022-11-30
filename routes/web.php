@@ -20,7 +20,11 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::get('/traineeMainPage', function () {
-    return view('trainee/mainPage');
+    return view('trainee/triningTap');
+});
+
+Route::get('/CVPage', function () {
+    return view('trainee/CV-Tap');
 });
 
 /*Auth::routes();

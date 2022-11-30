@@ -5,13 +5,13 @@
         <!-- Sidebar -->
  <nav class="vertical-menu-wrapper">
   <ul class="vertical-menu">
-    <li>TRAINING</li>
-    <li>INSTRUCTION</li>
-    <li>OPPORTUNITIES</li>
-    <li>CV</li>
-    <li>DOCUMENTS TEMPLATE</li>
-    <li>CIDENTIFICATION LETTERV</li>
-    <li> <a  onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon" id="submenu2" data-toggle="collapse" href="#submenu-2">contact </a>
+    <li><a href="#">TRAINING</a></li>
+    <li><a href="#">INSTRUCTION</a></li>
+    <li><a href="#">CV</a></li>
+    <li><a href="#">OPPORTUNITIES</a></li>
+    <li><a href="#">DOCUMENTS TEMPLATE</a></li>
+    <li><a href="#">IDENTIFICATION LETTER</a></li>
+    <li> <a onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon glyphicon glyphicon-chevron-down" id="submenu2" data-toggle="collapse" href="#submenu-2"> CONTACT US </a></span>
                         <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
                             <li><a href="#" class="abc"><i class="fa fa-caret-right"></i>Users</a></li>
                             <li><a href="#" class="abc"><i class="fa fa-caret-right"></i>Roles</a></li>
@@ -20,8 +20,7 @@
   </ul>
 </nav>
 <div class="content-wrapper">
-  <div class="content">
-  </div>
+@yield('content-training')
 </div>
-        <!-- /#sidebar-wrapper -->
+       
 @endsection
