@@ -6,7 +6,7 @@
  <nav class="vertical-menu-wrapper">
   <ul class="vertical-menu">
     <li><a href="#">TRAINING</a></li>
-    <li><a href="#">INSTRUCTION</a></li>
+    <li><a href="instruction.blade.php">INSTRUCTION</a></li>
     <li><a href="#">CV</a></li>
     <li><a href="#">OPPORTUNITIES</a></li>
     <li><a href="#">DOCUMENTS TEMPLATE</a></li>
@@ -22,5 +22,5 @@
 <div class="content-wrapper">
 @yield('content-training')
 </div>
-       
+
 @endsection
