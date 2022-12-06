@@ -23,7 +23,6 @@
     <td>Presentation</td>
     <td><button type="button" class="btn btn-success"><i class="fas fa-edit"></i>Submit</button></td>
   </tr>
-
 </table>    
 </div>
 

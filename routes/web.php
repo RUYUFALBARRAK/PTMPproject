@@ -19,6 +19,13 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/loginCompany', function () {
+    return view('Company/LoginForCompany');
+});
+Route::get('/addOppourtunityForCompany', function () {
+    return view('Company/addOpportunity');
+});
+
 Route::get('/traineeMainPage', function () {
     return view('trainee/triningTap');
 });
@@ -26,6 +33,21 @@ Route::get('/traineeMainPage', function () {
 Route::get('/CVPage', function () {
     return view('trainee/CV-Tap');
 });
+
+Route::get('/listOfCompany', function () {
+    return view('PTunit/listOfCompany');
+});
+Route::get('/Company', function () {
+    return view('PTunit/companyDetails');
+});
+Route::get('/CompanyRegestration', function () {
+    return view('PTunit/regestrationRequest');
+});
+Route::get('/listOfCompanyRequest', function () {
+    return view('PTunit/listOfCompanyRequest');
+});
+
+
 
 /*Auth::routes();
 

@@ -1,6 +1,7 @@
 body {
     font-family: 'Nunito', sans-serif !important;
     color: #000;   
+    box-sizing: border-box;
 }
   @keyframes mouvement {
     0%{
@@ -40,10 +41,10 @@ body {
 .heder{
     background: #6fb3b89e;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 12%;
-   
+   z-index: 2;
 }
 .ksuLogo{
   position: absolute;
@@ -69,12 +70,9 @@ body {
 .btn-lg:nth-child(1){
   margin-top: 0%;
 }
-
-
 img.back{
   /* Set rules to fill background */
   min-height: 100%;
-  min-width: 1024px;
   opacity:0.2;
   filter:brightness(50%);
   /* Set up proportionate scaling */
@@ -84,13 +82,6 @@ img.back{
   position: fixed;
   top: 0;
  
-}
-
-@media screen and (max-width: 1024px) { /* Specific to this particular image */
-  img.back {
-    left: 50%;
-    margin-left: -400px;   /* 50% */
-  }
 }
 .container-sm{
   background-color: #FFFFFF;
@@ -115,47 +106,66 @@ img.back{
 .textField{
   text-align: left;
 }
-nav {
+nav{
   position: fixed;
-  width: 100%;
-  max-width: 300px;
+  width: 20%;
   display: block;
-  height: 100%;
+  height: 88%;
   color: black !important;
   opacity: 0.8;
   transition: all 300ms;
   background-image: url('/img/background_ksu5.png') !important;
   background-repeat: repeat;
-  margin-top: 6.8%;
-  text-align: center;
   font-size: 150%;
+  text-align: right;
+  z-index: 2;
+  margin-top: 6.5%;
 }
-
-nav ul{width: 100%; padding-inline-start: 0;  height: calc(100% - 20px); }
+#nav{
+  position: fixed;
+  width: 2%;
+  max-width: 20%;
+  display: none;
+  height: 100%;
+  color: black !important;
+  background-color: #6fb3b89e;
+  transition: all 400ms;
+  font-size: 300%;
+  margin-top:6.6%;
+  z-index: 3;
+}
+nav ul {width: 100%; padding-inline-start: 0;  height: calc(100% - 100px); text-align: center;}
 nav .vertical-menu-logo{padding: 20px; font-size: 1.3em; position: relative}
 nav li {list-style: none;  padding: 20px 10px; cursor: pointer; border-bottom:5px solid #0810119e; border-width: 0.4px;}
 nav li:hover{ background-color: #6fb3b849; color: #074e4e !important; border-left:7px solid #06535d; }
-nav li a{ text-decoration: none; color: #000;}
+nav li a{text-decoration: none; color: #000;}
 nav li a:hover{text-decoration: none; color: #000;}
 
 .content-wrapper{
-  width: calc(100% - 300px);
+  width:80%;
   height: 100%;
-  position: fixed;
-  left: 300px;
+  left: 20%;
   padding: 20px;
-  margin-top: 6.8%;
+  position: fixed;
   padding-bottom: 20%;
   overflow: scroll;
   background: #ebebeb;
+  transition: all 300ms;
 }
+h1{
+  padding: 9% 0px 0px 2%;
+}
+
+
 .content{
   width: 90%;
-  min-height: 90%;
+  min-height: auto;
   background: #fff;
   border-radius: 10px;
-  padding: 30px;
+  padding: 40px;
+  margin: 12% 2% 0% 6%;
   overflow-y: scroll;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .content-CV{
   width: 63%;
@@ -170,11 +180,10 @@ nav li a:hover{text-decoration: none; color: #000;}
 }
 .content-CV-Personal-Information{
   width: 30%;
-  min-height: 40%;
+  min-height: 20%;
   background: #fff;
   border-radius: 10px;
   padding: 15px;
-
   margin: 2.6% 3% 3% 65%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: absolute;
@@ -187,22 +196,20 @@ nav li a:hover{text-decoration: none; color: #000;}
   margin-left: 30%;
   font-size: 150%;
   padding: 4px 20px 4px 20px;
-
 }
 .btn-save:hover{
   background-color: #378087;
   border-radius: 7px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
 }
-
-
 #submenu-2{
   display: none;
 }
-.btn-success, .btn-outline-secondary{
-  border-radius: 20px !important;
-}
+.delet-btn{border-radius: 20px !important; position: absolute; margin-left: 63%; font-size: 100%;}
+.list-of-company .delet-btn{margin: 0% 0% 0% -5%; }
+.requset-details{margin-left: 43%;}
+.requset-details>button{font-size: 150%;}
+.btn-success, .btn-outline-secondary {border-radius: 20px !important;}
 .Progress-report{
   border: 1px solid #a7aeae; 
 }
@@ -211,6 +218,44 @@ nav li a:hover{text-decoration: none; color: #000;}
   padding: 2%; 
   font-size: 130%;
 }
+.list-of-company th{
+text-align: center;
+}
+.list-of-company td:nth-child(2){
+  border-top: 1px solid #a7aeae; 
+  padding: 2%; 
+  font-size: 100%;
+  text-align: center;
+}
+.list-of-company td:nth-child(1){
+  border-top: 1px solid #a7aeae; 
+  padding: 2%; 
+  font-size: 150%;
+  text-align: left;
+  padding-left:4%;
+}
+.list-of-company td:nth-child(3){
+  border-top: 1px solid #a7aeae; 
+  padding: 2%; 
+  font-size: 150%;
+  text-align: right;
+}
+.list-of-company td:nth-child(3) div>button{ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);}
+.list-of-company td:nth-child(3) >.glyphicon{ cursor: pointer; margin-left: 20px;}
+.list-of-company{
+  width: 100%;
+}
+.list-of-company td{
+  border-top: 1px solid #a7aeae; 
+  border-bottom: 1px solid #a7aeae; 
+  padding: 2%; 
+  font-size: 130%;
+}
+.logoCompany{
+  width: 100px;
+  height:15% ;
+}
+.state-menu{ position: absolute; margin: -2.9% 0px 2% 65%; }
 .Progress-report th{
   border-top: 1px solid #a7aeae; 
   text-decoration: underline;
@@ -222,12 +267,14 @@ nav li a:hover{text-decoration: none; color: #000;}
 }
 .spashlist{
   position: absolute;
-  margin: -4% 10% 20% 15%;
+  margin: -2% 10% 20% 15%;
 }
 .date{
   position: absolute;
   margin: -1% 10% 20% 15%;
 }
+.opportunity-form{padding-top: 25px;}
+.opportunity-form input[type=radio]{ margin-left: 6px;}
 .opportunityState{
   position: absolute;
   margin: -1% 10% 30% 33%;
