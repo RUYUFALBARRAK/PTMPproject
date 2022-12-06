@@ -1,6 +1,6 @@
 body {
     font-family: 'Nunito', sans-serif !important;
-    color: #000;   
+    color: #000;
     box-sizing: border-box;
 }
   @keyframes mouvement {
@@ -37,10 +37,10 @@ body {
     filter:brightness(50%);
     animation:mouvement 20s infinite;
   }
- 
+
 .heder{
     background: #6fb3b89e;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     position: fixed;
     width: 100%;
     height: 12%;
@@ -81,12 +81,12 @@ img.back{
   /* Set up positioning */
   position: fixed;
   top: 0;
- 
+
 }
 .container-sm{
   background-color: #FFFFFF;
   border-radius: 10px;
-  position: absolute; 
+  position: absolute;
   text-align: center;
   top:60%;
   left:50%;
@@ -97,7 +97,7 @@ img.back{
 }
 .container-sm form {
   margin: 0px 50px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   font-size: 150%;
 }
 .container-sm form .col-12 button{
@@ -190,7 +190,7 @@ h1{
 }
 .btn-save{
   background-color: #388087;
-  border-radius: 7px; 
+  border-radius: 7px;
   border:  #388087;
   color: #fff;
   margin-left: 30%;
@@ -211,32 +211,32 @@ h1{
 .requset-details>button{font-size: 150%;}
 .btn-success, .btn-outline-secondary {border-radius: 20px !important;}
 .Progress-report{
-  border: 1px solid #a7aeae; 
+  border: 1px solid #a7aeae;
 }
  .Progress-report td{
-  border-top: 1px solid #a7aeae; 
-  padding: 2%; 
+  border-top: 1px solid #a7aeae;
+  padding: 2%;
   font-size: 130%;
 }
 .list-of-company th{
 text-align: center;
 }
 .list-of-company td:nth-child(2){
-  border-top: 1px solid #a7aeae; 
-  padding: 2%; 
+  border-top: 1px solid #a7aeae;
+  padding: 2%;
   font-size: 100%;
   text-align: center;
 }
 .list-of-company td:nth-child(1){
-  border-top: 1px solid #a7aeae; 
-  padding: 2%; 
+  border-top: 1px solid #a7aeae;
+  padding: 2%;
   font-size: 150%;
   text-align: left;
   padding-left:4%;
 }
 .list-of-company td:nth-child(3){
-  border-top: 1px solid #a7aeae; 
-  padding: 2%; 
+  border-top: 1px solid #a7aeae;
+  padding: 2%;
   font-size: 150%;
   text-align: right;
 }
@@ -245,10 +245,11 @@ text-align: center;
 .list-of-company{
   width: 100%;
 }
+
 .list-of-company td{
-  border-top: 1px solid #a7aeae; 
-  border-bottom: 1px solid #a7aeae; 
-  padding: 2%; 
+  border-top: 1px solid #a7aeae;
+  border-bottom: 1px solid #a7aeae;
+  padding: 2%;
   font-size: 130%;
 }
 .logoCompany{
@@ -257,7 +258,7 @@ text-align: center;
 }
 .state-menu{ position: absolute; margin: -2.9% 0px 2% 65%; }
 .Progress-report th{
-  border-top: 1px solid #a7aeae; 
+  border-top: 1px solid #a7aeae;
   text-decoration: underline;
   text-align: right;
   font-size: 120%;
@@ -273,6 +274,39 @@ text-align: center;
   position: absolute;
   margin: -1% 10% 20% 15%;
 }
+
+.path{
+    margin-left: 15%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.circle1 , .circle2 , .circle3 , .circle4 , .circle5 , .circle6 , .circle7 , .circle8 , .circle9 , .circle10 {
+    background:#7bc0c3 ;
+    border-radius:10px ;
+    border-color:#6FB3B8 ;
+    border-width:2px;
+    position:absolute;
+}
+
+.txt{
+    font-size: 150%;
+    z-index: 4;
+}
+
+.hid1 , .hid2 , .hid3 , .hid4 , .hid5 , .hid6 , .hid7 , .hid8 , .hid9 , .hid10{
+    height:6%;
+    width:12.5%;
+    background:#7bc0c3 ;
+    border-radius:10px ;
+    border-color:#6FB3B8 ;
+    border-width:2px;
+    position:absolute;
+    z-index: 2;
+    color: rgb(35, 61, 61);
+    display: none;
+}
+
 .opportunity-form{padding-top: 25px;}
 .opportunity-form input[type=radio]{ margin-left: 6px;}
 .opportunityState{
@@ -280,4 +314,3 @@ text-align: center;
   margin: -1% 10% 30% 33%;
   color: green;
 }
-

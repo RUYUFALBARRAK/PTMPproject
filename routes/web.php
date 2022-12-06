@@ -19,6 +19,11 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/instruction', function () {
+    return view('instruction');
+});
+
 Route::get('/loginCompany', function () {
     return view('Company/LoginForCompany');
 });
