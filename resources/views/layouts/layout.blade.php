@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>PTMP</title>
+        <title>practical training management portal </title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -21,12 +21,12 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased"> 
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     <div class= heder>
       <img src="img/ksu_logo.png" alt="Ksu logo" width="5%" height="90%" class="ksuLogo">
-          <p>KSU <br> Practical Training Management Portal </p>
+          <p>KSU <br> Practical Training Management Portal </p>  
           <a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
     </div>
     @yield('content')

@@ -16,15 +16,39 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/instruction', function () {
-    return view('instruction');
+Route::get('/login', function () {
+    return view('login');
+});
+Route::get('/loginCompany', function () {
+    return view('Company/LoginForCompany');
+});
+Route::get('/addOppourtunityForCompany', function () {
+    return view('Company/addOpportunity');
 });
 
-Auth::routes();
+Route::get('/traineeMainPage', function () {
+    return view('trainee/triningTap');
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/CVPage', function () {
+    return view('trainee/CV-Tap');
+});
 
-Auth::routes();
+Route::get('/listOfCompany', function () {
+    return view('PTunit/listOfCompany');
+});
+Route::get('/Company', function () {
+    return view('PTunit/companyDetails');
+});
+Route::get('/CompanyRegestration', function () {
+    return view('PTunit/regestrationRequest');
+});
+Route::get('/listOfCompanyRequest', function () {
+    return view('PTunit/listOfCompanyRequest');
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+/*Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/
