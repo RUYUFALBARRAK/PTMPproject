@@ -24,8 +24,16 @@ Route::get('/instruction', function () {
     return view('instruction');
 });
 
+Route::get('/registerCompany', function () {
+    return view('Company/registerCompany');
+});
+
 Route::get('/loginCompany', function () {
     return view('Company/LoginForCompany');
+});
+
+Route::get('/forgetPassword', function () {
+    return view('Company/forgetPassword');
 });
 Route::get('/addOppourtunityForCompany', function () {
     return view('Company/addOpportunity');
