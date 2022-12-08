@@ -39,6 +39,10 @@ Route::get('/addOppourtunityForCompany', function () {
     return view('Company/addOpportunity');
 });
 
+Route::get('/DocumentPageCompany', function () {
+    return view('Company/DocumentPageCompany');
+});
+
 Route::get('/traineeMainPage', function () {
     return view('trainee/triningTap');
 });
