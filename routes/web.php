@@ -63,7 +63,24 @@ Route::get('/CompanyRegestration', function () {
 Route::get('/listOfCompanyRequest', function () {
     return view('PTunit/listOfCompanyRequest');
 });
-
+Route::get('/opportunityPageCompany', function () {
+    return view('Company/opportunityPageCompany');
+});
+Route::get('/personalInfoCompany', function () {
+    return view('Company/personalInfoCompany');
+});
+Route::get('/opportunityPageTrainee', function () {
+    return view('trainee/opportunityPageTrainee');
+});
+Route::get('/opportunityPageCommittee', function () {
+    return view('PTcommittee/opportunityPageCommittee');
+});
+Route::get('/opportunityDetailsPage', function () {
+    return view('PTcommittee/opportunityDetailsPage');
+});
+Route::get('/opportunityRequestCommittee', function () {
+    return view('PTcommittee/opportunityRequestCommittee');
+});
 
 
 /*Auth::routes();
