@@ -50,6 +50,9 @@ Route::get('/traineeMainPage', function () {
 Route::get('/CVPage', function () {
     return view('trainee/CV-Tap');
 });
+Route::get('/DocumentPage', function () {
+    return view('trainee/DocumentPage');
+});
 
 Route::get('/listOfCompany', function () {
     return view('PTunit/listOfCompany');
