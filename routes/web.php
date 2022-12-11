@@ -21,7 +21,19 @@ Route::get('/login', function () {
 });
 
 Route::get('/instruction', function () {
-    return view('instruction');
+    return view('trainee/instruction');
+});
+
+Route::get('/reviews', function () {
+    return view('trainee/reviews');
+});
+
+Route::get('/viewReview', function () {
+    return view('trainee/viewReview');
+});
+
+Route::get('/addReview', function () {
+    return view('trainee/addReview');
 });
 
 Route::get('/registerCompany', function () {
