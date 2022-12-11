@@ -21,7 +21,24 @@ Route::get('/login', function () {
 });
 
 Route::get('/instruction', function () {
-    return view('instruction');
+    return view('trainee/instruction');
+});
+
+Route::get('/addReview', function () {
+    return view('trainee/addReview');
+});
+
+Route::get('/viewReview', function () {
+    return view('trainee/viewReview');
+});
+
+Route::get('/reviews', function () {
+    return view('trainee/reviews');
+});
+
+Route::get('/traineeDetails', function () {
+    //$students = ptmp::all();
+    return view('trainee/traineeDetails');
 });
 
 Route::get('/loginCompany', function () {
@@ -51,6 +68,11 @@ Route::get('/CompanyRegestration', function () {
 Route::get('/listOfCompanyRequest', function () {
     return view('PTunit/listOfCompanyRequest');
 });
+
+Route::get('/triningTap', function () {
+    return view('trainee/triningTap');
+});
+
 
 
 

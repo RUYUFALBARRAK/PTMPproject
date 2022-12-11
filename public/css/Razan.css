@@ -1,0 +1,202 @@
+/* trainee details page */
+
+.info , .info-sec {
+    font-size: 145%;
+    width: 40%;
+    color: rgb(85, 82, 101);
+    text-align: left;
+    margin-left: 5%;
+    height: fit-content;
+}
+
+.info-sec{
+    margin-left: 64%;
+    margin-top:-15.3%;
+
+}
+
+.hed{
+    font-size: 250%;
+    color: rgb(85, 82, 101);
+    margin-bottom: 3.5%;
+    text-indent: 5%;
+    margin-top: -1%;
+}
+
+.company-report{
+    margin-left: 48%;
+    margin-top:-19.7%;
+}
+
+
+/* add review page */
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:32px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.can-but{
+    margin-right:10%;
+    margin-left:35%;
+    margin-top: 2%;
+    background-color: white;
+    border-radius: 7px;
+    border-color: #388087;
+    border-style: solid;
+    border-width: 1px;
+    color: #388087;
+    font-size: 150%;
+    padding: 4px 20px 4px 20px;
+    border-radius: 7px;
+}
+
+.can-but:hover{
+    margin-right:10%;
+    margin-left:35%;
+    background-color: #388087;
+    border-radius: 7px;
+    border-color: #388087;
+    border-style: solid;
+    border-width: 1px;
+    color: white;
+    font-size: 150%;
+    padding: 4px 20px 4px 20px;
+    border-radius: 7px;
+    }
+
+
+    .add-but{
+        background-color: #388087;
+        border-radius: 7px;
+        color: white;
+        font-size: 150%;
+        padding: 4px 27px 6px 27px;
+        border-style: none;
+        border-radius: 7px;
+
+        }
+
+        .add-but:hover {
+            background-color: #285e63;
+            border-radius: 7px;
+            color: white;
+            font-size: 150%;
+            padding: 4px 27px 6px 27px;
+            border-style: none;
+            border-radius: 7px;
+            }
+
+.del-but{
+        background-color: #e72828;
+        border-radius: 7px;
+        color: white;
+        font-size: 150%;
+        padding: 4px 27px 6px 27px;
+        border-style: none;
+        border-radius: 7px;
+
+}
+
+.del-but:hover{
+    background-color: #af1e1e;
+        border-radius: 7px;
+        color: white;
+        font-size: 150%;
+        padding: 4px 27px 6px 27px;
+        border-style: none;
+        border-radius: 7px;
+}
+
+.viw{
+    border-radius:4px;
+    font-size:180%;
+    font-family:'Actor';
+    font-weight:200;
+    border-color: rgb(111, 111, 111);
+    padding: 20px 27px 20px 27px;
+    border-style: solid;
+    border-width: 0.7px;
+    width: 70%;
+    margin-bottom: 2%;
+}
+
+.viw p {
+    margin-left: -3%;
+    margin-top: -2%;
+    margin-bottom: -2%;
+}
+
+/* Stars in review page  */
+
+.rate2 {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate2:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate2:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:24px;
+    color:#ccc;
+}
+.rate2:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate2 > input:checked ~ label {
+    color: #ffc700;
+}
+.rate2:not(:checked) > label:hover,
+.rate2:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate2 > input:checked + label:hover,
+.rate2 > input:checked + label:hover ~ label,
+.rate2 > input:checked ~ label:hover,
+.rate2 > input:checked ~ label:hover ~ label,
+.rate2 > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.dt{
+    margin-left: 76%;
+    font-size:80%;
+}
