@@ -21,31 +21,26 @@ Route::get('/login', function () {
 });
 
 Route::get('/instruction', function () {
-    return view('trainee/instruction');
+    return view('instruction');
 });
 
-Route::get('/addReview', function () {
-    return view('trainee/addReview');
-});
-
-Route::get('/viewReview', function () {
-    return view('trainee/viewReview');
-});
-
-Route::get('/reviews', function () {
-    return view('trainee/reviews');
-});
-
-Route::get('/traineeDetails', function () {
-    //$students = ptmp::all();
-    return view('trainee/traineeDetails');
+Route::get('/registerCompany', function () {
+    return view('Company/registerCompany');
 });
 
 Route::get('/loginCompany', function () {
     return view('Company/LoginForCompany');
 });
+
+Route::get('/forgetPassword', function () {
+    return view('Company/forgetPassword');
+});
 Route::get('/addOppourtunityForCompany', function () {
     return view('Company/addOpportunity');
+});
+
+Route::get('/DocumentPageCompany', function () {
+    return view('Company/DocumentPageCompany');
 });
 
 Route::get('/traineeMainPage', function () {
@@ -68,12 +63,24 @@ Route::get('/CompanyRegestration', function () {
 Route::get('/listOfCompanyRequest', function () {
     return view('PTunit/listOfCompanyRequest');
 });
-
-Route::get('/triningTap', function () {
-    return view('trainee/triningTap');
+Route::get('/opportunityPageCompany', function () {
+    return view('Company/opportunityPageCompany');
 });
-
-
+Route::get('/personalInfoCompany', function () {
+    return view('Company/personalInfoCompany');
+});
+Route::get('/opportunityPageTrainee', function () {
+    return view('trainee/opportunityPageTrainee');
+});
+Route::get('/opportunityPageCommittee', function () {
+    return view('PTcommittee/opportunityPageCommittee');
+});
+Route::get('/opportunityDetailsPage', function () {
+    return view('PTcommittee/opportunityDetailsPage');
+});
+Route::get('/opportunityRequestCommittee', function () {
+    return view('PTcommittee/opportunityRequestCommittee');
+});
 
 
 /*Auth::routes();
