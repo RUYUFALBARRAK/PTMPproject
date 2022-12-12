@@ -72,6 +72,9 @@ Route::get('/personalInfoCompany', function () {
 Route::get('/opportunityPageTrainee', function () {
     return view('trainee/opportunityPageTrainee');
 });
+Route::get('/opportunityDetailsPageT', function () {
+    return view('trainee/opportunityDetailsPageT');
+});
 Route::get('/opportunityPageCommittee', function () {
     return view('PTcommittee/opportunityPageCommittee');
 });
