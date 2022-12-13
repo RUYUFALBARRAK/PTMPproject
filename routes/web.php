@@ -75,6 +75,9 @@ Route::get('/CompanyRegestration', function () {
 Route::get('/listOfCompanyRequest', function () {
     return view('PTunit/listOfCompanyRequest');
 });
+Route::get('/TrainingDocument', function () {
+    return view('PTunit/TrainingDocument');
+});
 Route::get('/opportunityPageCompany', function () {
     return view('Company/opportunityPageCompany');
 });
