@@ -370,6 +370,9 @@ td{
 .fist-col{
   width: 90%;
 }
+.fist-column{
+  width: 60%;
+}
 .glyphicon{
   color: black;
   text-decoration: none;
@@ -388,5 +391,24 @@ td{
 .link{
   color: #235d64;
   font-size: 15px;
+}
+.link2{
+  color: #000;
+  font-size: 20px;
+  margin-left: 80%;
+  margin-top: 15px;
+}
+.link2:hover{
+  color: #235d64;
+}
+.glyphicon-remove{
+  color: red;
+  font-size: 25px;
+  margin-left: 25px;
+}
+.glyphicon-upload{
+  font-size: 25px;
+  margin-top: 15px;
+  margin-left: 5px;
 }
 /* End Balqees's Style */
