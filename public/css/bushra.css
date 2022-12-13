@@ -7,3 +7,15 @@
     font-size: 130%;
     color: #a7aeae;
 }
+
+.btn-conf{
+    text-align: center;
+    width: 20%;
+    background-color: #388087;
+    border-radius: 7px;
+    border:  #388087;
+    color: #fff;
+    margin-left: 40%;
+    font-size: 170%;
+    padding: 4px 20px 4px 20px;
+  }
