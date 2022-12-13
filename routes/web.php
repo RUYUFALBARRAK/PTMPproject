@@ -96,6 +96,17 @@ Route::get('/opportunityDetailsPage', function () {
 Route::get('/opportunityRequestCommittee', function () {
     return view('PTcommittee/opportunityRequestCommittee');
 });
+Route::get('/listOfTrainees', function () {
+    return view('Company/listOfTrainees');
+});
+Route::get('/listOfTraineesRequests', function () {
+    return view('Company/listOfTraineesRequests');
+});
+Route::get('/listOfStudents', function () {
+    return view('PTcommittee/listOfStudents');
+});
+
+
 
 
 /*Auth::routes();
