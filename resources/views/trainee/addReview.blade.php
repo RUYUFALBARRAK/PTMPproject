@@ -4,18 +4,22 @@
 
 <div class="content">
 
-    <div class="rate">
-        <input type="radio" id="star5" name="rate" value="5" />
-        <label for="star5" title="text" >5 stars  </label>
-        <input type="radio" id="star4" name="rate" value="4" />
-        <label for="star4" title="text" >4 stars</label>
-        <input type="radio" id="star3" name="rate" value="3" />
-        <label for="star3" title="text">3 stars </label>
-        <input type="radio" id="star2" name="rate" value="2" />
-        <label for="star2" title="text" >2 stars</label>
-        <input type="radio" id="star1" name="rate" value="1" />
-        <label for="star1" title="text" >1 star</label>
+    <form action="" method="">
+
+    <div class="rating-css">
+    <div class="star-icon">
+        <input type="radio" value="1" name="product_rating" checked id="rating1">
+        <label for="rating1" class="fa fa-star"></label>
+        <input type="radio" value="2" name="product_rating" id="rating2">
+        <label for="rating2" class="fa fa-star"></label>
+        <input type="radio" value="3" name="product_rating" id="rating3">
+        <label for="rating3" class="fa fa-star"></label>
+        <input type="radio" value="4" name="product_rating" id="rating4">
+        <label for="rating4" class="fa fa-star"></label>
+        <input type="radio" value="5" name="product_rating" id="rating5">
+        <label for="rating5" class="fa fa-star"></label>
     </div>
+</div>
 
     <br> <br><br><br>
 
@@ -24,10 +28,11 @@
     </div>
 
     <div>
-    <button type="button" class="can-but"> Cancel </button>
-    <button type="button" class="add-but" class="fas fa-edit"> Add </button>
+    <button type="button" class="add-but" > Add </button>
+    <button type="button" class="can-but" class="fas fa-edit"> Cancel </button>
     </div>
 
+</form>
 
 
 </div>

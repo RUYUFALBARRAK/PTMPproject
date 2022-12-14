@@ -24,6 +24,10 @@ Route::get('/instruction', function () {
     return view('trainee/instruction');
 });
 
+Route::get('/traineeDetails', function () {
+    return view('trainee/traineeDetails');
+});
+
 Route::get('/reviews', function () {
     return view('trainee/reviews');
 });

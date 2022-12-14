@@ -36,12 +36,15 @@
 <div class="content">
 
 <div>
-<img src="img/SDAIA.png" alt="Company logo" width="15%" hight="15%">
+    <img src="img/SDAIA.png" alt="Company logo" width="15%" hight="15%">
     <h3 class="spashlist">Software Engineer</h3> <h4 class="date">Jan. 16, 2022 - Aug. 11/2022 </h4> <h4 class="opportunityState">. CONFIRMED</h4>
 </div>
 
-    <br><br><br><hr><br>
-    <h3> Trainee's Progress report</h3><br>
+
+    <br><br><br><hr><br><br>
+    <h3 style="margin-left:3%;"> Trainee's Progress report</h3><br>
+
+    <div style="margin-left:3%;">
 <table style="width:40%" class="Progress-report">
   <tr>
     <td>Effective date notice</td>
@@ -61,9 +64,13 @@
   </tr>
 </table>
 
+</div>
+
+
+
 <div class="company-report">
 <h3> Company's Progress report</h3><br>
-<table style="width:78%" class="Progress-report">
+<table style="width:90%" class="Progress-report">
   <tr>
     <td>Training Plan</td>
     <th> <a href="#">VIEW SUBMITTED <a> </th>
@@ -82,8 +89,8 @@
     <td>Employee feedback</td>
     <th> <a href="#">VIEW SUBMITTED <a> </th>
 </table>
-
 </div>
+
 
 </div>
 
