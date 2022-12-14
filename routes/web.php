@@ -21,7 +21,19 @@ Route::get('/login', function () {
 });
 
 Route::get('/instruction', function () {
-    return view('instruction');
+    return view('trainee/instruction');
+});
+
+Route::get('/reviews', function () {
+    return view('trainee/reviews');
+});
+
+Route::get('/viewReview', function () {
+    return view('trainee/viewReview');
+});
+
+Route::get('/addReview', function () {
+    return view('trainee/addReview');
 });
 
 Route::get('/registerCompany', function () {
@@ -63,6 +75,9 @@ Route::get('/CompanyRegestration', function () {
 Route::get('/listOfCompanyRequest', function () {
     return view('PTunit/listOfCompanyRequest');
 });
+Route::get('/TrainingDocument', function () {
+    return view('PTunit/TrainingDocument');
+});
 Route::get('/opportunityPageCompany', function () {
     return view('Company/opportunityPageCompany');
 });
@@ -84,6 +99,17 @@ Route::get('/opportunityDetailsPage', function () {
 Route::get('/opportunityRequestCommittee', function () {
     return view('PTcommittee/opportunityRequestCommittee');
 });
+Route::get('/listOfTrainees', function () {
+    return view('Company/listOfTrainees');
+});
+Route::get('/listOfTraineesRequests', function () {
+    return view('Company/listOfTraineesRequests');
+});
+Route::get('/listOfStudents', function () {
+    return view('PTcommittee/listOfStudents');
+});
+
+
 
 
 /*Auth::routes();
