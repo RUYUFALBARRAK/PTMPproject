@@ -79,6 +79,9 @@ Route::get('/CompanyRegestration', function () {
 Route::get('/listOfCompanyRequest', function () {
     return view('PTunit/listOfCompanyRequest');
 });
+Route::get('/TrainingDocument', function () {
+    return view('PTunit/TrainingDocument');
+});
 Route::get('/opportunityPageCompany', function () {
     return view('Company/opportunityPageCompany');
 });
@@ -97,6 +100,17 @@ Route::get('/opportunityDetailsPage', function () {
 Route::get('/opportunityRequestCommittee', function () {
     return view('PTcommittee/opportunityRequestCommittee');
 });
+Route::get('/listOfTrainees', function () {
+    return view('Company/listOfTrainees');
+});
+Route::get('/listOfTraineesRequests', function () {
+    return view('Company/listOfTraineesRequests');
+});
+Route::get('/listOfStudents', function () {
+    return view('PTcommittee/listOfStudents');
+});
+
+
 
 
 /*Auth::routes();
