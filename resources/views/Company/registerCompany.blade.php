@@ -2,7 +2,7 @@
 
 @section('content-training')
 <div class="content">
-<form action="#">
+<form class="form-balqees"action="#">
 <div class="row opportunity-form">
     <p><a class="link" href="#"> training specifications and regulations</a> <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
     <div class="row opportunity-form">   

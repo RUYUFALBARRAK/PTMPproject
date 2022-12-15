@@ -347,31 +347,37 @@ text-align: center;
   border-radius: 7px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-table {
+.table-balqees {
   border-collapse: collapse;
   width: 100%;
   overflow: scroll;
 }
 
-th, td {
+.th-balqees, .td-balqees {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
   height: 50px;
+  text-align: center;
 }
-th{
+.th-balqees{
   background-color: #6fb3b89e;
   opacity: 0.8;
   font-size: 20px
 }
-td{
-  font-size: 18px
+.td-balqees{
+  font-size: 18px;
+} 
+.form-balqees{
+  font-size: 16px
 }
 .fist-col{
   width: 90%;
+  text-align:left ;
 }
 .fist-column{
   width: 60%;
+  text-align: left;
 }
 .glyphicon{
   color: black;
@@ -410,5 +416,89 @@ td{
   font-size: 25px;
   margin-top: 15px;
   margin-left: 5px;
+  color: #FFFFFF;
 }
+.btn-modify{
+  background-color: #F1C644;
+  border-radius: 7px;
+  border:  #e0b637;
+  color: #fff;
+  margin-left: 5%;
+  font-size: 100%;
+  padding: 4px 20px 4px 20px;
+  text-decoration: none;
+}
+.btn-modify:hover{
+  background-color: #F1C644;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.btn-delete{
+  background-color: #F81111;
+  border-radius: 7px;
+  border:  #bb2626;
+  color: #fff;
+  margin-left: 5%;
+  font-size: 100%;
+  padding: 4px 20px 4px 20px;
+  text-decoration: none;
+}
+.btn-delete:hover{
+  background-color: #F81111;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.btn-addannou{
+  background-color: #388087;
+  border-radius: 7px;
+  border:  #388087;
+  color: #fff;
+  margin-left: 80%;
+  font-size: 150%;
+  padding: 4px 20px 4px 20px;
+}
+.btn-addannou:hover{
+  background-color: #378087;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.btn-cancel{
+  background-color: #fff;
+  border-radius: 7px;
+  border:  #388087;
+  color: #388087;
+  margin-left: 2%;
+  font-size: 150%;
+  padding: 4px 20px 4px 20px;
+}
+.btn-upload2{
+  background-color: #388087;
+  border-radius: 7px;
+  border:  #388087;
+  color: #fff;
+  margin-left: 80%;
+  font-size: 150%;
+  padding: 4px 20px 4px 20px;
+  vertical-align: center;
+  font-size: 18px;
+}
+.btn-upload2:hover{
+  background-color: #378087;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.content1{
+  width: 90%;
+  min-height: auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 40px;
+  margin: 2% 2% 0% 6%;
+  overflow-y: scroll;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.h11{
+  margin: 2% 1% 0% 5%;
+}
+
 /* End Balqees's Style */
