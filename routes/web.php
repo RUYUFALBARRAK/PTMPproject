@@ -116,6 +116,9 @@ Route::get('/listOfStudents', function () {
     return view('PTcommittee/listOfStudents');
 });
 
+Route::get('/ReuqstIdentfaction', function () {
+    return view('trainee/ReuqstIdentfaction');
+});
 
 
 

@@ -353,7 +353,7 @@ text-align: center;
   overflow: scroll;
 }
 
-.th-balqees, .td-balqees {
+.th-balqees, .td-balqees,.td-balqees-link {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -367,6 +367,12 @@ text-align: center;
 }
 .td-balqees{
   font-size: 18px;
+} 
+.td-balqees-link{
+ 
+  font-size: 14px;
+  color:grey;
+
 } 
 .form-balqees{
   font-size: 16px
@@ -418,6 +424,7 @@ text-align: center;
   margin-left: 5px;
   color: #FFFFFF;
 }
+
 .btn-modify{
   background-color: #F1C644;
   border-radius: 7px;
