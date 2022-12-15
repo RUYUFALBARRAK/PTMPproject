@@ -82,6 +82,12 @@ Route::get('/listOfCompanyRequest', function () {
 Route::get('/TrainingDocument', function () {
     return view('PTunit/TrainingDocument');
 });
+Route::get('/Announcements', function () {
+    return view('PTunit/Announcements');
+});
+Route::get('/addAnnouncement', function () {
+    return view('PTunit/addAnnouncement');
+});
 Route::get('/opportunityPageCompany', function () {
     return view('Company/opportunityPageCompany');
 });
