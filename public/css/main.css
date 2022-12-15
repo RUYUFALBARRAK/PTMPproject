@@ -353,7 +353,7 @@ text-align: center;
   overflow: scroll;
 }
 
-.th-balqees, .td-balqees,.td-balqees-link {
+.th-balqees, .td-balqees,.td-balqees-link,.th-khawlah {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -365,13 +365,21 @@ text-align: center;
   opacity: 0.8;
   font-size: 20px
 }
+.th-khawlah{
+  width: 120%;
+  background-color: #6fb3b89e;
+  opacity: 0.8;
+  font-size: 20px
+}
+
 .td-balqees{
   font-size: 18px;
 } 
 .td-balqees-link{
- 
+ width: 40%;
   font-size: 14px;
   color:grey;
+
 
 } 
 .form-balqees{
@@ -379,6 +387,10 @@ text-align: center;
 }
 .fist-col{
   width: 90%;
+  text-align:left ;
+}
+.fist-col-khawlah{
+  width: 50%;
   text-align:left ;
 }
 .fist-column{
