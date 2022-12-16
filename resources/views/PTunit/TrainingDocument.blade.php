@@ -1,5 +1,4 @@
-<!-- @extends('trainee.mainPage') -->
-@extends('layouts.layout')
+@extends('PTunit.mainPage')
 
 
 @section('content-training')

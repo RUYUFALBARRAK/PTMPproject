@@ -1,5 +1,4 @@
-<!-- @extends('trainee.mainPage') -->
-@extends('layouts.layout')
+@extends('PTunit.mainPage')
 
 
 @section('content-training')
@@ -20,7 +19,9 @@
     </tr>
 </table>
 <br><br><br>
-<button class="btn-Register" type="submit">Add announcement </button>
+<form action = "addAnnouncement">
+<button class="btn-Register" type="submit" >Add announcement </button>
+</form>
 
 
 </div>

@@ -39,6 +39,9 @@ Route::get('/viewReview', function () {
 Route::get('/addReview', function () {
     return view('trainee/addReview');
 });
+Route::get('/DocumentPage', function () {
+    return view('trainee/DocumentPage');
+});
 
 Route::get('/registerCompany', function () {
     return view('Company/registerCompany');
@@ -83,10 +86,10 @@ Route::get('/TrainingDocument', function () {
     return view('PTunit/TrainingDocument');
 });
 Route::get('/Announcements', function () {
-    return view('PTunit/Announcements');
+    return view('PTcommittee/Announcements');
 });
 Route::get('/addAnnouncement', function () {
-    return view('PTunit/addAnnouncement');
+    return view('PTcommittee/addAnnouncement');
 });
 Route::get('/opportunityPageCompany', function () {
     return view('Company/opportunityPageCompany');

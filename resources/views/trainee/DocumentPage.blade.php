@@ -6,7 +6,8 @@
 <div class="content">
 <table class="table-balqees">
     <tr>
-        <th class="th-balqees">Documents Template</th>
+        <th colspan="2" class="th-balqees">Documents Template</th>
+
     </tr>
     <tr>
         <td class ="fist-col td-balqees">Report.docx</td>
