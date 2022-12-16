@@ -20,7 +20,7 @@
 </table>
 <br><br><br>
 <form action = "addAnnouncement">
-<button class="btn-Register" type="submit" >Add announcement </button>
+<button class="add-but-center" type="submit" >Add announcement </button>
 </form>
 
 

@@ -9,10 +9,10 @@
       <input type="text" class="form-control" placeholder="add title of your announcement here" name="announcement-title"><br>   
       <label for="validationTooltip01" class="form-label"> Announcement content: * </label>
       <textarea rows="5" class="form-control" placeholder="add your announcement content here " name="announcement-content"></textarea><br>
-      <br><br><br>
+      
       <div>
-<button class="btn-addannou" type="submit">Add</button>
-<button class="btn-cancel" type="submit">Cancel</button>
+<button class="add-but-right" type="submit">Add</button>
+<button class="can-but-right" type="submit">Cancel</button>
 </div>
 </form>
 

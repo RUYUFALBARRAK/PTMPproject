@@ -48,9 +48,9 @@
         <td class="td-balqees"><a href="#"><span class="glyphicon glyphicon-remove"></span></a></td>
     </tr>
 </table>
-<br>
+<br><br>
 <!-- <a href="#" class="link2">Upload new file:<span class="glyphicon glyphicon-upload"></span></a> -->
-<button class="btn-upload2" type="submit">Upload new file<span class="glyphicon glyphicon-upload"></span></button>
+<button class="add-but-right" type="submit">Upload new file<span class="glyphicon glyphicon-open"></span></button>
 
 </div>
 @endsection

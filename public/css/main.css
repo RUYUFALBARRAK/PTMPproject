@@ -403,11 +403,10 @@ text-align: center;
   font-size: 15px;
 
 }
-.glyphicon:hover{
+/* .glyphicon:hover{
   color: #235d64;
   text-decoration: none;
-
-}
+} */
 .icon-white{
   color: white;
   text-decoration: none;
@@ -434,6 +433,12 @@ text-align: center;
   font-size: 25px;
   margin-top: 15px;
   margin-left: 5px;
+  color: #FFFFFF;
+}
+.glyphicon-open{
+  font-size: 25px;
+  margin-top: 15px;
+  margin-left: 15px;
   color: #FFFFFF;
 }
 
@@ -519,5 +524,105 @@ text-align: center;
 .h11{
   margin: 2% 1% 0% 5%;
 }
+.can-but-right{
+  margin-left:2%;
+  margin-top: 2%;
+  background-color: white;
+  border-radius: 7px;
+  border-color: #38808741;
+  border-style: solid;
+  border-width: 1px;
+  color: #388087d1;
+  font-size: 150%;
+  padding: 4px 20px 4px 20px;
+  border-radius: 7px;
+}
+
+.can-but-right:hover{
+  border-color: #38808774;
+  background-color: #38808715;
+  }
+
+
+.add-but{
+  background-color: #388087;
+  border-radius: 7px;
+  color: white;
+  font-size: 150%;
+  padding: 4px 27px 6px 27px;
+  border-style: none;
+  border-radius: 7px;
+  margin-left: 35%;
+    }
+
+.add-but:hover {
+  background-color: #285e63;
+  border-radius: 7px;
+  color: white;
+  font-size: 150%;
+  padding: 4px 27px 6px 27px;
+  border-style: none;
+  border-radius: 7px;
+  }
+  .add-but-noMargin{
+    background-color: #388087;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    padding: 4px 27px 6px 27px;
+    border-style: none;
+    border-radius: 7px;
+    margin-left: 5%;
+      }
+  
+  .add-but-noMargin:hover {
+    background-color: #285e63;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    padding: 4px 27px 6px 27px;
+    border-style: none;
+    border-radius: 7px;
+    }
+  .add-but-right{
+    background-color: #388087;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    padding: 4px 27px 6px 27px;
+    border-style: none;
+    border-radius: 7px;
+    margin-left: 80%;
+      }
+  
+  .add-but-right:hover {
+    background-color: #285e63;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    padding: 4px 27px 6px 27px;
+    border-style: none;
+    border-radius: 7px;
+    }
+    .add-but-center{
+      background-color: #388087;
+      border-radius: 7px;
+      color: white;
+      font-size: 150%;
+      padding: 4px 27px 6px 27px;
+      border-style: none;
+      border-radius: 7px;
+      margin-left: 45%;
+        }
+    
+    .add-but-center:hover {
+      background-color: #285e63;
+      border-radius: 7px;
+      color: white;
+      font-size: 150%;
+      padding: 4px 27px 6px 27px;
+      border-style: none;
+      border-radius: 7px;
+      }
 
 /* End Balqees's Style */
