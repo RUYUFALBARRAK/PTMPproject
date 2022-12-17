@@ -20,8 +20,8 @@
         <label for="star1" title="text" >1 star</label>
     </span>
     <br>
-    <div class="view-reveiws2" style="margin-left: 86.5%; margin-top: 0%;" onClick="">
-            View Reviews
+    <div class="view-reveiws2" style="margin-left: 86.5%; margin-top: 0%;">
+        <a href="#">View Reviews</a>
     </div>
     <br><br><br>
 
