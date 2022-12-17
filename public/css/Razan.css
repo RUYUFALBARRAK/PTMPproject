@@ -2,7 +2,6 @@
 
 .info , .info-sec {
     font-size: 145%;
-    width: 40%;
     color: rgb(85, 82, 101);
     text-align: left;
     margin-left: 5%;
@@ -12,7 +11,6 @@
 .info-sec{
     margin-left: 64%;
     margin-top:-15.3%;
-
 }
 
 .hed{
@@ -24,8 +22,8 @@
 }
 
 .company-report{
-    margin-left: 48%;
-    margin-top:-19.7%;
+    margin-left: 55%;
+    margin-top:-26.3%;
 }
 
 
@@ -68,32 +66,22 @@
 }
 
 .can-but{
-    margin-right:10%;
-    margin-left:35%;
+    margin-left:8%;
     margin-top: 2%;
     background-color: white;
     border-radius: 7px;
-    border-color: #388087;
+    border-color: #38808741;
     border-style: solid;
     border-width: 1px;
-    color: #388087;
+    color: #388087d1;
     font-size: 150%;
     padding: 4px 20px 4px 20px;
     border-radius: 7px;
 }
 
 .can-but:hover{
-    margin-right:10%;
-    margin-left:35%;
-    background-color: #388087;
-    border-radius: 7px;
-    border-color: #388087;
-    border-style: solid;
-    border-width: 1px;
-    color: white;
-    font-size: 150%;
-    padding: 4px 20px 4px 20px;
-    border-radius: 7px;
+    border-color: #38808774;
+    background-color: #38808715;
     }
 
 
@@ -105,6 +93,7 @@
         padding: 4px 27px 6px 27px;
         border-style: none;
         border-radius: 7px;
+        margin-left: 35%;
 
         }
 
@@ -117,15 +106,35 @@
             border-style: none;
             border-radius: 7px;
             }
-
+            .Identification-req-but{
+                background-color: #388087;
+                border-radius: 7px;
+                color: white;
+                font-size: 100%;
+             
+                border-style: none;
+                border-radius: 7px;
+                
+        
+                }
+                .Identification-req-but:hover {
+                    background-color: #285e63;
+                    border-radius: 7px;
+                    color: white;
+                    font-size: 100%;
+                   
+                    border-style: none;
+                    border-radius: 7px;
+                    }
 .del-but{
         background-color: #e72828;
         border-radius: 7px;
         color: white;
         font-size: 150%;
-        padding: 4px 27px 6px 27px;
+        padding: 4px 23px 6px 23px;
         border-style: none;
         border-radius: 7px;
+        margin-left:33%;
 
 }
 
@@ -134,7 +143,6 @@
         border-radius: 7px;
         color: white;
         font-size: 150%;
-        padding: 4px 27px 6px 27px;
         border-style: none;
         border-radius: 7px;
 }
@@ -181,22 +189,49 @@
 .rate2:not(:checked) > label:before {
     content: '★ ';
 }
-.rate2 > input:checked ~ label {
+.checked  {
     color: #ffc700;
-}
-.rate2:not(:checked) > label:hover,
-.rate2:not(:checked) > label:hover ~ label {
-    color: #deb217;
-}
-.rate2 > input:checked + label:hover,
-.rate2 > input:checked + label:hover ~ label,
-.rate2 > input:checked ~ label:hover,
-.rate2 > input:checked ~ label:hover ~ label,
-.rate2 > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+    text-shadow: 0.5px 0.5px 0 #8f8420;
 }
 
 .dt{
-    margin-left: 76%;
-    font-size:80%;
+    margin-left: 87%;
+    font-size:140%;
+    color:rgb(110, 107, 124);
 }
+
+/* rating */
+.rating-css div {
+    color: #ffc700;
+    font-size: 10px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 8px 0;
+    margin-bottom: -4%;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 32px;
+    text-shadow: 0.5px 0.5px 0 #8f8420;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #ccc;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }
+
+/*
+@media screen and (max-width: 1200px) and (max-height: 600px){
+    body{
+        display: none;
+    }
+
+}
+<img src="img/Xicon.png" alt="x icon" width="" height="">

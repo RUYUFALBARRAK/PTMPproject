@@ -10,7 +10,7 @@
     <li><a href="#">TRAINING OPPORTUNITIES REQUESTS</a></li>
     <li><a href="#">OPPORTUNITIES</a></li>
     <li><a href="#">CONTACT US</a></li>
-    <li><a href="#">ANNOUNCEMENTS</a></li>
+    <li><a href="Announcements">ANNOUNCEMENTS</a></li>
     
   </ul>
 </nav>

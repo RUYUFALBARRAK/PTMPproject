@@ -2,13 +2,13 @@
 
 @section('content-training')
 <div class="content">
-<form action="#">
+<form class="form-balqees"action="#">
 <div class="row opportunity-form">
     <p><a class="link" href="#"> training specifications and regulations</a> <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
     <div class="row opportunity-form">   
     <div class="col">
     <label for="validationTooltip01" class="form-label"> Choose Logo:</label>
-    <a href="#" class="btn-upload">choose a file <span class="glyphicon glyphicon-download-alt icon-white"></span> </a>
+    <button class="add-but-noMargin" type = "submit" >choose a file <span class="glyphicon glyphicon-download-alt icon-white"></span> </button>
     <!-- <button class="btn-upload" type="submit">choose file</button>  -->
     </div>
          <div class="col">
@@ -212,7 +212,7 @@
   <br><br>
 
   <div class="col-12">
-    <button class="btn-Register" type="submit">Create account </button>
+    <button class="add-but-center" type="submit">Create account </button>
   </div>
 </div>
 </form>
