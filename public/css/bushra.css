@@ -22,5 +22,13 @@
 
 .view-reveiws2{
     font-size: 130%;
-    text-decoration: underline;
+    color: white;
+}
+
+a:link {
+    color: black;
+  }
+
+a:hover {
+    color: gray;
 }
