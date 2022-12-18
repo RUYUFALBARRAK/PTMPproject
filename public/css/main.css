@@ -441,7 +441,12 @@ text-align: center;
   margin-left: 15px;
   color: #FFFFFF;
 }
+.glyphicon-open1{
+  font-size: 25px;
+  
 
+  color: #FFFFFF;
+}
 .btn-modify{
   background-color: #F1C644;
   border-radius: 7px;
@@ -602,8 +607,28 @@ text-align: center;
     font-size: 150%;
     padding: 4px 27px 6px 27px;
     border-style: none;
-    border-radius: 7px;
+    border-radius: 5px;
     }
+    .add-but-right1{
+      background-color: #388087;
+   
+      color: white;
+      font-size: 60%;
+    
+      border-style: none;
+      border-radius: 7px;
+      margin-left: 9%;
+        }
+    
+    .add-but-right1:hover {
+      background-color: #285e63;
+ 
+      color: white;
+      font-size: 60%;
+     
+      border-style: none;
+   
+      }
     .add-but-center{
       background-color: #388087;
       border-radius: 7px;
@@ -612,7 +637,7 @@ text-align: center;
       padding: 4px 27px 6px 27px;
       border-style: none;
       border-radius: 7px;
-      margin-left: 45%;
+      margin-left:9%;
         }
     
     .add-but-center:hover {
@@ -624,5 +649,44 @@ text-align: center;
       border-style: none;
       border-radius: 7px;
       }
+      .req-icon-caption{
+       padding-bottom: 20px;
+        font-size: 14px;
+        color: red;
+      }
+      .list-of-company1 th{
+        text-align: center;
+        padding-right: 140px;
+        }
+        .list-of-company1 th:nth-child(1){
+         margin-right: 30%;
+          text-align: left;
+        }
+        .list-of-company1 td:nth-child(2){
+          border-top: 1px solid #a7aeae;
+          font-size: 100%;
+          text-align: center;
+        }
+        .list-of-company1 td:nth-child(1){
+          border-top: 1px solid #a7aeae;
+          font-size: 150%;
+          text-align: left;
+        }
+        .list-of-company1 td:nth-child(3){
+          border-top: 1px solid #a7aeae;
+          font-size: 150%;
+          text-align: right;
+        }
+        .list-of-company1 td:nth-child(3) div>button{ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);}
+        .list-of-company1 td:nth-child(3) >.glyphicon{ cursor: pointer; margin-left: 20px;}
+        .list-of-company1{
+          width: 100%;
+        }
+        
+        .list-of-company1 td{
+          border-top: 1px solid #a7aeae;
+          border-bottom: 1px solid #a7aeae;
+          font-size: 130%;
+        }
 
 /* End Balqees's Style */

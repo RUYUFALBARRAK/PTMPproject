@@ -125,8 +125,13 @@ Route::get('/listOfStudents', function () {
 Route::get('/ReuqstIdentfaction', function () {
     return view('trainee/ReuqstIdentfaction');
 });
+Route::get('/listOfStudentsReqLetter', function () {
+    return view('PTunit/listOfStudentsReqLetter');
+});
 
-
+Route::get('/listOfStudentsPTunit', function () {
+    return view('PTunit/listOfStudentsPTunit');
+});
 
 /*Auth::routes();
 
