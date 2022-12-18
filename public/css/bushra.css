@@ -38,6 +38,24 @@ a:hover {
 
 .linkB {
     color: #235d64;
-  font-size: 12px;
+  font-size: 13px;
   display: inline;
 }
+
+.btn-status{
+  text-align: center;
+  width: 16%;
+  height: 3%;
+  border-radius: 7px;
+  color: #fff;
+  margin-left: 30%;
+  font-size: 150%;
+  padding: 4px 20px 4px 20px;
+}
+
+
+
+/*
+background-color: #388087;
+border:  #388087;
+*/
