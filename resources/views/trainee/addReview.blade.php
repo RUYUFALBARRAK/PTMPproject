@@ -28,12 +28,11 @@
     </div>
 
     <div>
-    <button type="button" class="add-but" > Add </button>
+    <button type="button" class="add-but" data-bs-toggle="modal" data-bs-target="#error"> Add </button>
     <button type="button" class="can-but" class="fas fa-edit"> Cancel </button>
     </div>
 
 </form>
-
 
 </div>
 

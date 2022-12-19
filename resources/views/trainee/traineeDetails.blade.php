@@ -56,11 +56,11 @@
   </tr>
   <tr>
     <td>Training Survey</td>
-    <th> <a href="#">VIEW SUBMITTED <a> </th>
+    <th style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
   </tr>
   <tr>
     <td>Presentation</td>
-    <th> <a href="#">VIEW SUBMITTED <a> </th>
+    <th style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
   </tr>
 </table>
 

@@ -23,7 +23,7 @@
 
 .company-report{
     margin-left: 55%;
-    margin-top:-26.3%;
+    margin-top:-19.4%;
 }
 
 
@@ -64,6 +64,28 @@
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+
+.viw{
+    border-radius:4px;
+    font-size:180%;
+    font-family:'Actor';
+    font-weight:200;
+    border-color: rgb(111, 111, 111);
+    padding: 20px 27px 20px 27px;
+    border-style: solid;
+    border-width: 0.7px;
+    width: 70%;
+    margin-bottom: 2%;
+}
+
+.viw p {
+    margin-left: -3%;
+    margin-top: -2%;
+    margin-bottom: -2%;
+}
+
+
+/* BUTTONS */
 
 .can-but{
     margin-left:8%;
@@ -111,18 +133,18 @@
                 border-radius: 7px;
                 color: white;
                 font-size: 100%;
-             
+
                 border-style: none;
                 border-radius: 7px;
-                
-        
+
+
                 }
                 .Identification-req-but:hover {
                     background-color: #285e63;
                     border-radius: 7px;
                     color: white;
                     font-size: 100%;
-                   
+
                     border-style: none;
                     border-radius: 7px;
                     }
@@ -147,24 +169,41 @@
         border-radius: 7px;
 }
 
-.viw{
-    border-radius:4px;
-    font-size:180%;
-    font-family:'Actor';
-    font-weight:200;
-    border-color: rgb(111, 111, 111);
-    padding: 20px 27px 20px 27px;
-    border-style: solid;
-    border-width: 0.7px;
-    width: 70%;
-    margin-bottom: 2%;
+.ok-but{
+    background-color: green;
+    border-radius: 7px;
+    color: white;
+    font-size: 125%;
+    padding: 4px 10px 6px 10px;
+    border-style: none;
+    margin-left: 40%;
+    margin-bottom: 3%;
+    margin-top: 2%;
+    width: 24%;
 }
 
-.viw p {
-    margin-left: -3%;
-    margin-top: -2%;
-    margin-bottom: -2%;
+.ok-but:hover{
+    background-color: rgb(1, 97, 1);
 }
+
+
+.del-msg{
+    background-color: #e72828;
+    border-radius: 7px;
+    color: white;
+    font-size: 125%;
+    padding: 4px 10px 6px 10px;
+    border-style: none;
+    margin-left: 40%;
+    margin-bottom: 3%;
+    margin-top: 2%;
+    width: 24%;
+}
+
+.del-msg:hover{
+background-color: #af1e1e;
+}
+
 
 /* Stars in review page  */
 
@@ -227,11 +266,6 @@
     transition: 0.3s ease;
   }
 
-/*
-@media screen and (max-width: 1200px) and (max-height: 600px){
-    body{
-        display: none;
-    }
-
+.modal{
+    margin-top: 15%;
 }
-<img src="img/Xicon.png" alt="x icon" width="" height="">
