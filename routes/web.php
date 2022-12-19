@@ -100,6 +100,9 @@ Route::get('/personalInfoCompany', function () {
 Route::get('/opportunityPageTrainee', function () {
     return view('trainee/opportunityPageTrainee');
 });
+Route::get('/opportunityDetailsPageT', function () {
+    return view('trainee/opportunityDetailsPageT');
+});
 Route::get('/opportunityPageCommittee', function () {
     return view('PTcommittee/opportunityPageCommittee');
 });
@@ -122,8 +125,13 @@ Route::get('/listOfStudents', function () {
 Route::get('/ReuqstIdentfaction', function () {
     return view('trainee/ReuqstIdentfaction');
 });
+Route::get('/listOfStudentsReqLetter', function () {
+    return view('PTunit/listOfStudentsReqLetter');
+});
 
-
+Route::get('/listOfStudentsPTunit', function () {
+    return view('PTunit/listOfStudentsPTunit');
+});
 
 /*Auth::routes();
 

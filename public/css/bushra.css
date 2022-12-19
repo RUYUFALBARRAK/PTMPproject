@@ -1,0 +1,61 @@
+.oppT-form-label{
+    font-size: 130%;
+    color: black;
+}
+
+.oppD-form-label{
+    font-size: 130%;
+    color: #a7aeae;
+}
+
+.btn-conf{
+    text-align: center;
+    width: 20%;
+    background-color: #388087;
+    border-radius: 7px;
+    border:  #388087;
+    color: #fff;
+    margin-left: 40%;
+    font-size: 170%;
+    padding: 4px 20px 4px 20px;
+  }
+
+.view-reveiws2{
+    font-size: 130%;
+    color: white;
+    position: absolute;
+    margin: -1% 10% 30% 33%;
+
+}
+
+a:link {
+    color: black;
+  }
+
+a:hover {
+    color: gray;
+}
+
+.linkB {
+    color: #235d64;
+  font-size: 13px;
+  display: inline;
+}
+
+.btn-status{
+  text-align: center;
+  width: 16%;
+  height: 3%;
+  border-radius: 7px;
+  color: #fff;
+  margin-left: 30%;
+  font-size: 150%;
+  padding: 4px 20px 4px 20px;
+}
+
+
+
+/*
+background-color: #388087;
+border:  #388087;
+*/
