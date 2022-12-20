@@ -403,6 +403,10 @@ text-align: center;
   font-size: 15px;
 
 }
+.glyphicon-download-alt{
+  color: #000;
+  font-size: 15px;
+}
 /* .glyphicon:hover{
   color: #235d64;
   text-decoration: none;
@@ -412,8 +416,19 @@ text-align: center;
   text-decoration: none;
 }
 .link{
-  color: #235d64;
-  font-size: 15px;
+  color: #388087;
+  font-size: 18px;
+}
+.link:hover{
+  color:#285e63;
+}
+.link-center{
+  color: #388087;
+  font-size: 20px;
+  text-align: center;
+}
+.link-center:hover{
+  color:#285e63;
 }
 .link2{
   color: #000;
@@ -569,6 +584,27 @@ text-align: center;
   border-style: none;
   border-radius: 7px;
   }
+  .add-but-login{
+    background-color: #388087;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    padding: 4px 27px 6px 27px;
+    border-style: none;
+    border-radius: 7px;
+    margin-left: 35%;
+    width: 95%;
+    margin-left: 2%;
+  }
+  .add-but-login:hover {
+    background-color: #285e63;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    padding: 4px 27px 6px 27px;
+    border-style: none;
+    border-radius: 7px;
+    }
   .add-but-noMargin{
     background-color: #388087;
     border-radius: 7px;
@@ -637,7 +673,7 @@ text-align: center;
       padding: 4px 27px 6px 27px;
       border-style: none;
       border-radius: 7px;
-      margin-left:9%;
+      margin-left:40%;
         }
     
     .add-but-center:hover {

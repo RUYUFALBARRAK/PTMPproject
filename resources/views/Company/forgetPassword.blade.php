@@ -25,11 +25,11 @@
 
   
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Log in</button>
+    <button class="add-but-login" type="submit">Log in</button>
   </div>
-  <p>Are you A company and you don’t have an account? <a href="">Sign up</a></p>
-  <p>Are you A company and you already have an account? <a href="">Sign in</a></p>
-  <p>Are you a Student or KSU Staff ?  <a href="">Sign In</a></p>
+  <p>Are you A company and you don’t have an account? <a class="link" href="">Sign up</a></p>
+  <p>Are you A company and you already have an account? <a class="link" href="">Sign in</a></p>
+  <p>Are you a Student or KSU Staff ?  <a class="link"href="">Sign In</a></p>
 </form>
 </div>
 
