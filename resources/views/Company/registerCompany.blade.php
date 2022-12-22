@@ -1,7 +1,10 @@
-@extends('Company.mainpageForRegister')
 
-@section('content-training')
-<div class="content">
+@extends('layouts.layout')
+
+@section('content')
+
+<img src="img/background_ksu2.png" alt="ksu" class="back">
+<div class="container-big">
 <form class="form-balqees"action="#">
 <div class="row opportunity-form">
     <p><a class="link" href="#"> training specifications and regulations</a> <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>

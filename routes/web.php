@@ -82,6 +82,7 @@ Route::get('/CompanyRegestration', function () {
 Route::get('/listOfCompanyRequest', function () {
     return view('PTunit/listOfCompanyRequest');
 });
+//stoped here
 Route::get('/TrainingDocument', function () {
     return view('PTunit/TrainingDocument');
 });

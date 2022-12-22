@@ -1,7 +1,7 @@
 /* trainee details page */
 
 .info , .info-sec {
-    font-size: 145%;
+    font-size: 100%;
     color: rgb(85, 82, 101);
     text-align: left;
     margin-left: 5%;
@@ -10,11 +10,11 @@
 
 .info-sec{
     margin-left: 64%;
-    margin-top:-15.3%;
+    margin-top:-18%;
 }
 
 .hed{
-    font-size: 250%;
+    font-size: 150%;
     color: rgb(85, 82, 101);
     margin-bottom: 3.5%;
     text-indent: 5%;
@@ -23,7 +23,7 @@
 
 .company-report{
     margin-left: 55%;
-    margin-top:-19.4%;
+    margin-top:-24%;
 }
 
 

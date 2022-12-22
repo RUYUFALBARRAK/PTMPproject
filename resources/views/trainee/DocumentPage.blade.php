@@ -11,15 +11,15 @@
     </tr>
     <tr>
         <td class ="fist-col td-balqees">Report.docx</td>
-        <td class="td-balqees"><a href=<span class="glyphicon glyphicon-download-alt"></span></a></td>
+        <td class="td-balqees"><a href= # ><span class="fa fa-download"></span></a></td>
     </tr>
     <tr>
         <td class ="fist-col td-balqees">EffectiveDateNotice.docx</td>
-        <td class="td-balqees"><a href=<span class="glyphicon glyphicon-download-alt"></span></a></td>
+        <td class="td-balqees"><a href=#><span class="fa fa-download"></span></a></td>
     </tr>
     <tr>
         <td class ="fist-col td-balqees">TrainingSurvey.docx</td>
-        <td class="td-balqees"><a href=<span class="glyphicon glyphicon-download-alt"></span></a></td>
+        <td class="td-balqees"><a href=#><span class="fa fa-download"></span></a></td>
     </tr>
 
 

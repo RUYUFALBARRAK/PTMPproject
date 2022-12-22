@@ -9,19 +9,19 @@
 <table style="width:40%" class="Progress-report">
   <tr>
     <td>Effective date notice</td>
-    <th>VIEW SUBMITTED </th>
+    <td> <input type="file" id="EffectiveDateNotice" style="display:none;" /><button type="button" onclick="thisFileUploadEffectiveDateNotice();" class="btn btn-success Report"><i class="fas fa-edit"></i>Submit</button></td>
   </tr>
   <tr>
     <td>Report</td>
-    <td><button type="button" class="btn btn-success"><i class="fas fa-edit"></i>Submit</button></td>
+    <td> <input type="file" id="report" style="display:none;" /><button type="button" onclick="thisFileUploadReport();" class="btn btn-success Report"><i class="fas fa-edit"></i>Submit</button></td>
   </tr>
   <tr>
     <td>Training Survey</td>
-    <td><button type="button" class="btn btn-success"><i class="fas fa-edit"></i>Submit</button></td>
+    <td><input type="file" id="Training-Survey" style="display:none;" /><button type="button" onclick="thisFileUploadTrainingSurvey();" class="btn btn-success TrainingSurvey"><i class="fas fa-edit"></i>Submit</button></td>
   </tr>
   <tr>
     <td>Presentation</td>
-    <td><button type="button" class="btn btn-success"><i class="fas fa-edit"></i>Submit</button></td>
+    <td><input type="file" id="Presentation" style="display:none;" /><button type="button" onclick="thisFileUploadPresentation();" class="btn btn-success Presentation"><i class="fas fa-edit"></i>Submit</button></td>
   </tr>
 </table>    
 </div>

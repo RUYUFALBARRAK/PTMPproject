@@ -21,7 +21,7 @@
     <button type="button" class="btn btn-outline-success">Accept </button>
     <button type="button" class="btn btn-outline-danger">Decline </button>
     </div>
-    <span class="glyphicon glyphicon-triangle-right"></span>
+    <span class="fa fa-chevron-right"></span>
     </td>
   </tr>
 </table>    

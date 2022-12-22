@@ -1,5 +1,5 @@
 <!-- @extends('trainee.mainPage') -->
-@extends('company.mainPage')
+@extends('layouts.layout')
 
 @section('content-training')
 <div class="content">
@@ -9,23 +9,23 @@
     </tr>
     <tr>
         <td class ="fist-col td-balqees">PT_plan.docx</td>
-        <td class="td-balqees"><a href=<span class="glyphicon glyphicon-download-alt"></span></a></td>
-        </tr>
+        <td class="td-balqees"><a href=#><span class="fa fa-download"></span></a></td>
+    </tr>
     <tr>
         <td class ="fist-col td-balqees">Attendance.docx</td>
-        <td class="td-balqees"><a href=<span class="glyphicon glyphicon-download-alt"></span></a></td>
+        <td class="td-balqees"><a href=#><span class="fa fa-download"></span></a></td>
         </tr>
     <tr>
         <td class ="fist-col td-balqees">Follow_up.docx</td>
-        <td class="td-balqees"><a href=<span class="glyphicon glyphicon-download-alt"></span></a></td>
+        <td class="td-balqees"><a href=#><span class="fa fa-download"></span></a></td>
         </tr>
     <tr>
         <td class ="fist-col td-balqees">TraineeEvaluation.docx</td>
-        <td class="td-balqees"><a href=<span class="glyphicon glyphicon-download-alt"></span></a></td>
+        <td class="td-balqees"><a href=#><span class="fa fa-download"></span></a></td>
         </tr>
     <tr>
         <td class ="fist-col td-balqees">EmployeeFeedback.docx</td>
-        <td  class="td-balqees"><a href=<span class="glyphicon glyphicon-download-alt"></span></a></td>
+        <td  class="td-balqees"><a href=#><span class="fa fa-download"></span></a></td>
         </tr>
 
 </table>

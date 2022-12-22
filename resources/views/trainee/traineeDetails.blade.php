@@ -3,7 +3,8 @@
 @section('content-training')
 
 <div class="content" style="margin-bottom:-10%;">
-
+<p class="hed">Student information</p>
+<hr>
     <div class="info" >
     <p> <b> Student Name:&nbsp; </b> Razan Alsaif </p> <br>
     <p> <b> Phone Number:&nbsp;</b> 050999999 </p><br>
@@ -21,6 +22,7 @@
 <div class="content" style="margin-bottom:-10%;">
 
     <p class="hed">CV</p>
+    <hr>
 
     <div class="info" style="width:90%;" >
     <p> <b> Skills:&nbsp; </b> Fast learner</p><br>
@@ -41,26 +43,26 @@
 </div>
 
 
-    <br><br><br><hr><br><br>
-    <h3 style="margin-left:3%;"> Trainee's Progress report</h3><br>
+    <br><br><br><hr><br>
+    <h4 style="margin-left:3%;"> Trainee's Progress report</h4><br>
 
-    <div style="margin-left:3%;">
+<div style="margin-left:3%;">
 <table style="width:40%" class="Progress-report">
   <tr>
     <td>Effective date notice</td>
-    <th> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
   </tr>
   <tr>
     <td>Report</td>
-    <th> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
   </tr>
   <tr>
     <td>Training Survey</td>
-    <th style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    <th class="submited" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
   </tr>
   <tr>
     <td>Presentation</td>
-    <th style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    <th class="submited" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
   </tr>
 </table>
 
@@ -73,21 +75,21 @@
 <table style="width:90%" class="Progress-report">
   <tr>
     <td>Training Plan</td>
-    <th> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
   </tr>
   <tr>
     <td>Follow Up</td>
-    <th> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
   <tr>
     <td>Attendance</td>
-    <th> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
   <tr>
     <td>Trainee Evaluation</td>
-    <th> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
   </tr>
   <tr>
     <td>Employee feedback</td>
-    <th> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
 </table>
 </div>
 
