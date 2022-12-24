@@ -1,4 +1,4 @@
-@extends('trainee.mainPage')
+@extends('company.mainPage')
 
 @section('content-training')
 
@@ -46,11 +46,11 @@
     </p>
 
 
-    </div>
+  </div>
 
 
 
-    <div class="childB">
+  <div class="childB">
 
     <p>
      <label> <b> Office phone number:</b> </label>
@@ -86,7 +86,7 @@
   </div>
  </div>
 
-  <button type="button" class="btn-save"  style="width:8%; margin-left: 86%; margin-top:5%">Save</button>
+  <button type="submit" class="btn-save"  style="width:8%; margin-left: 86%; margin-top:5%">Save</button>
 
 </div>
  
