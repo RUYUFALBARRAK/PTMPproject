@@ -1,4 +1,4 @@
-@extends('trainee.mainPage')
+@extends('PTunit.mainPage')
 
 @section('content-training')
 <div class="content">

@@ -95,6 +95,9 @@ Route::get('/addAnnouncement', function () {
 Route::get('/opportunityPageCompany', function () {
     return view('Company/opportunityPageCompany');
 });
+Route::get('/personalInfoCompanyEdit', function () {
+    return view('Company/personalInfoCompanyEdit');
+});
 Route::get('/personalInfoCompany', function () {
     return view('Company/personalInfoCompany');
 });
