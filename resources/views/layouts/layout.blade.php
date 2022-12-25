@@ -24,34 +24,6 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="assets/js/main.js"></script>
 
-        <script>
-            $(document).ready(function(){
-            $(".circle1").hover(function(){
-            $(".hid1").slideToggle("slow");
-            });
-
-            $(".circle2").hover(function(){
-            $(".hid2").slideToggle("slow");
-            });
-
-            $(".circle5").hover(function(){
-            $(".hid5").slideToggle("slow");
-            });
-
-            $(".circle6").hover(function(){
-            $(".hid6").slideToggle("slow");
-            });
-
-            $(".circle7").hover(function(){
-            $(".hid7").slideToggle("slow");
-            });
-
-            $(".circle10").hover(function(){
-            $(".hid10").slideToggle("slow");
-            });
-
-            });
-</script>
 
         <style>
             body {

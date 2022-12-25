@@ -9,23 +9,21 @@
 </div>
 <br> <br><br>
 
-<!-- First commment -->
+<!-- First Review -->
 <div style="margin-bottom: 8%;">
-<img src="img/ava1.png" alt="avatar" width="5%" hight="5%">
-<span style="margin-left: 1%;  font-size: 160%;"> Razan Alsaif </span> <span class="dt"> Aug. 20,2020 </span>  <br>
+<img src="img/ava1.png" alt="avatar" width="50px" hight="50px">
+<span style="margin-left: 1%;  font-size: 115%;"> Razan Alsaif </span> <span class="rev-date"> Aug. 20,2020 </span>  <br>
 
-<div style="margin-left: 87%;">
-<span class="fa fa-star fa-lg checked"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+<div style="margin-left: 86.5%;">
+<span class="fa fa-star fa checked"></span>
+    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
 </div>
 
-<br>
-<p style="margin-left: 5%; margin-top: -4%; font-size: 150%; width:50%;">  bad </span></p>
+<p style="margin-left: 5%; margin-top: -3%; margin-bottom: 3.5%; font-size: 120%; width:50%;"> bad </span></p>
 
-<br>
 <hr style="width:107%; margin-bottom: -4.4%; margin-left: -3.5%;">
 </div>
 
@@ -34,25 +32,22 @@
 
 
 <div style="">
-<img src="img/ava1.png" alt="avatar" width="5%" hight="5%">
-<span style="margin-left: 1%;  font-size: 160%;"> Razan Alsaif </span> <span class="dt"> Aug. 20,2020 </span>  <br>
+<img src="img/ava1.png" alt="avatar" width="50px" hight="50px">
+<span style="margin-left: 1%;  font-size: 115%;"> Razan Alsaif </span> <span class="rev-date"> Aug. 20,2020 </span>  <br>
 
-<div style="margin-left: 87%;">
-<span class="fa fa-star fa-lg checked"></span>
-<span class="fa fa-star fa-lg checked"></span>
-<span class="fa fa-star fa-lg checked"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+<div style="margin-left: 86.5%;">
+<span class="fa fa-star fa checked"></span>
+    <span class="fa fa-star fa checked"></span>
+    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
 </div>
 
-<br>
-<p style="margin-left: 5%; margin-top: -4%; font-size: 150%; width:50%;"> good lovgood love it it good love it it good love it it good love it it good love it it good love it it good love it it good love it it e it it <> </span></p>
+<p style="margin-left: 5%; margin-top: -3%; margin-bottom: 3.5%; font-size: 120%; width:50%;"> Average </span></p>
 
-<br>
 <hr style="width:107%; margin-bottom: -4.4%; margin-left: -3.5%;">
 </div>
 
 
 </div>
-
 @endsection

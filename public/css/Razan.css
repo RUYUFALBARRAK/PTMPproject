@@ -1,5 +1,9 @@
 /* trainee details page */
 
+.inst p{
+    font-size: 100%;
+}
+
 .info , .info-sec {
     font-size: 100%;
     color: rgb(85, 82, 101);
@@ -16,15 +20,24 @@
 .hed{
     font-size: 150%;
     color: rgb(85, 82, 101);
-    margin-bottom: 3.5%;
+    margin-bottom: 1%;
     text-indent: 5%;
     margin-top: -1%;
 }
 
 .company-report{
     margin-left: 55%;
-    margin-top:-24%;
+    margin-top:-23.5%;
 }
+
+.company-report a , .Progress-report a{
+    color:black;
+  }
+
+  .company-report th , .Progress-report th{
+font-size: 90%;
+padding-right: 2%;
+  }
 
 
 /* add review page */
@@ -67,13 +80,11 @@
 
 .viw{
     border-radius:4px;
-    font-size:180%;
+    font-size:130%;
     font-family:'Actor';
     font-weight:200;
     border-color: rgb(111, 111, 111);
     padding: 20px 27px 20px 27px;
-    border-style: solid;
-    border-width: 0.7px;
     width: 70%;
     margin-bottom: 2%;
 }
@@ -96,7 +107,7 @@
     border-style: solid;
     border-width: 1px;
     color: #388087d1;
-    font-size: 150%;
+    font-size: 120%;
     padding: 4px 20px 4px 20px;
     border-radius: 7px;
 }
@@ -111,23 +122,24 @@
         background-color: #388087;
         border-radius: 7px;
         color: white;
-        font-size: 150%;
+        font-size: 120%;
         padding: 4px 27px 6px 27px;
         border-style: none;
         border-radius: 7px;
         margin-left: 35%;
-
         }
 
-        .add-but:hover {
-            background-color: #285e63;
-            border-radius: 7px;
-            color: white;
-            font-size: 150%;
-            padding: 4px 27px 6px 27px;
-            border-style: none;
-            border-radius: 7px;
-            }
+    .add-but:hover {
+        background-color: #285e63;
+        border-radius: 7px;
+        color: white;
+        font-size: 120%;
+        padding: 4px 27px 6px 27px;
+        border-style: none;
+        border-radius: 7px;
+        margin-left: 35%;
+        }
+
             .Identification-req-but{
                 background-color: #388087;
                 border-radius: 7px;
@@ -152,8 +164,8 @@
         background-color: #e72828;
         border-radius: 7px;
         color: white;
-        font-size: 150%;
-        padding: 4px 23px 6px 23px;
+        font-size: 120%;
+        padding: 4px 22px 6px 22px;
         border-style: none;
         border-radius: 7px;
         margin-left:33%;
@@ -162,11 +174,6 @@
 
 .del-but:hover{
     background-color: #af1e1e;
-        border-radius: 7px;
-        color: white;
-        font-size: 150%;
-        border-style: none;
-        border-radius: 7px;
 }
 
 .ok-but{
@@ -233,10 +240,9 @@ background-color: #af1e1e;
     text-shadow: 0.5px 0.5px 0 #8f8420;
 }
 
-.dt{
-    margin-left: 87%;
-    font-size:140%;
-    color:rgb(110, 107, 124);
+.rev-date{
+    color: rgb(107, 102, 121);
+    margin-left: 86.7%;
 }
 
 /* rating */
@@ -268,4 +274,89 @@ background-color: #af1e1e;
 
 .modal{
     margin-top: 15%;
+}
+
+
+/* INSTRUCTION PAGE */
+
+.process {
+    width: 600px;
+    margin: auto;
+  }
+
+  .processes {
+    border-top: 2px dashed;
+    border-color: #388087 !important;
+    margin:0; padding: 30px;
+    counter-increment: section;
+    position: relative;
+  }
+
+  .processes:nth-child(even):before {
+    content: counter(section);
+    right: 100.8%;
+    margin-right: -20px;
+    position: absolute;
+    border-radius: 50%;
+    padding-top:5px;
+    height: 35px;
+    width: 35px;
+    background-color: #388087;
+    text-align:center;
+    color: white;
+    font-size: 120%;
+  }
+
+  .processes:nth-child(odd):before {
+    content: counter(section);
+    left: 100.6%;
+    margin-left: -20px;
+    position: absolute;
+    border-radius: 50%;
+    padding-top:5px;
+    height: 35px;
+    width: 35px;
+    background-color: #388087;
+    text-align:center;
+    color: white;
+    font-size: 120%;
+  }
+
+  .processes:nth-child(even) {
+    border-left: 2px dashed;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-right: 30px;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .processes:nth-child(odd) {
+    border-right: 2px dashed;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-left: 30px;
+    padding-left: 0;
+    text-align: right;
+  }
+
+  .processes:first-child {
+    border-top: 0;
+    border-top-right-radius:0;
+    border-top-left-radius:0;
+  }
+
+  .processes:last-child {
+    border-bottom-right-radius:0;
+    border-bottom-left-radius:0;
+  }
+
+  /* instruction page */
+
+  .tit{
+    font-size:120%;
+  }
+
+  .dt{
+    color:rgb(85, 82, 96);
 }

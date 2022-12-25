@@ -21,10 +21,10 @@
     </div>
 </div>
 
-    <br> <br><br><br>
+    <br> <br><br>
 
     <div>
-    <p> <label> <textarea name="review" rows="6" cols="60" placeholder="How is your experience?" style="border-radius:4px; font-size:180%; font-family:'Actor'; font-weight:200;"></textarea></label> </p>
+    <p> <label> <textarea name="review" rows="5" cols="50" placeholder="How is your experience?" style="border-radius:4px; font-size:130%; font-family:'Actor'; font-weight:200; padding:1%;"></textarea></label> </p>
     </div>
 
     <div>

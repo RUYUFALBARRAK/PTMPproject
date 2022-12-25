@@ -5,7 +5,8 @@
 <div class="content" style="margin-bottom:-10%;">
 <p class="hed">Student information</p>
 <hr>
-    <div class="info" >
+<br>
+    <div class="trainee-info" >
     <p> <b> Student Name:&nbsp; </b> Razan Alsaif </p> <br>
     <p> <b> Phone Number:&nbsp;</b> 050999999 </p><br>
     <p> <b> GPA :&nbsp; </b> 4.05 <br></p>
@@ -23,8 +24,9 @@
 
     <p class="hed">CV</p>
     <hr>
+    <br>
 
-    <div class="info" style="width:90%;" >
+    <div class="trainee-info" style="width:90%;" >
     <p> <b> Skills:&nbsp; </b> Fast learner</p><br>
     <p> <b> Languages:&nbsp; </b> Arabic, English </p><br>
     <p> <b> Interests :&nbsp; </b> Podcasting </p> <br>
@@ -43,8 +45,8 @@
 </div>
 
 
-    <br><br><br><hr><br>
-    <h4 style="margin-left:3%;"> Trainee's Progress report</h4><br>
+    <br><hr><br>
+    <h4 style="margin-left:3%; font-size:140%;"> Trainee's Progress report</h4><br>
 
 <div style="margin-left:3%;">
 <table style="width:40%" class="Progress-report">
@@ -71,7 +73,7 @@
 
 
 <div class="company-report">
-<h3> Company's Progress report</h3><br>
+<h3 style="font-size:140%;"> Company's Progress report</h3><br>
 <table style="width:90%" class="Progress-report">
   <tr>
     <td>Training Plan</td>
