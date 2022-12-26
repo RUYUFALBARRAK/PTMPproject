@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PTMPController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [PTMPController::class,'viewlogin'])-> name('login');
+Route::post('Authlogin',[PTMPController::class,'Authlogin'])-> name('Authlogin');
 
 Route::get('/instruction', function () {
     return view('trainee/instruction');
@@ -45,11 +44,12 @@ Route::get('/DocumentPage', function () {
 
 Route::get('/registerCompany', function () {
     return view('Company/registerCompany');
-});
+})-> name('regcompany');
+Route::post('Authreg',[PTMPController::class,'Authreg'])-> name('Authreg');
 
 Route::get('/loginCompany', function () {
     return view('Company/LoginForCompany');
-});
+})-> name('logincompany');
 
 Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
@@ -64,7 +64,7 @@ Route::get('/DocumentPageCompany', function () {
 
 Route::get('/traineeMainPage', function () {
     return view('trainee/triningTap');
-});
+})-> name('traineeMainPage');
 
 Route::get('/CVPage', function () {
     return view('trainee/CV-Tap');

@@ -27,9 +27,9 @@
   <div class="col-12">
     <button class="add-but-login" type="submit">Log in</button>
   </div>
-  <p>Are you A company and you don’t have an account? <a class="link" href="">Sign up</a></p>
-  <p>Are you A company and you already have an account? <a class="link" href="">Sign in</a></p>
-  <p>Are you a Student or KSU Staff ?  <a class="link"href="">Sign In</a></p>
+  <p>Are you A company and you don’t have an account? <a class="link" href="registerCompany">Sign up</a></p>
+  <p>Are you A company and you already have an account? <a class="link" href="loginCompany">Sign in</a></p>
+  <p>Are you a Student or KSU Staff ?  <a class="link"href="login">Sign In</a></p>
 </form>
 </div>
 
