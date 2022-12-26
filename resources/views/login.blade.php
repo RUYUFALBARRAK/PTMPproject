@@ -7,28 +7,34 @@
 <img src="img/learning.png" alt="ksu" class="learning" width="30%" hight="30%">
 <h3 class="display-3">Log in</h3>
 <hr>
-<form class="row g-3 needs-validation" method="" novalidate>
+@if(\Session::has('message'))
+  <div class="alert alert-info">
+  {{\Session::get('message')}}
+  </div>
+@endif
+<form class="row g-3 needs-validation" method="POST" action=" {{ route('Authlogin')}}" novalidate>
+  @csrf
   <div class="textField">
     <label for="validationTooltip01" class="form-label">ID</label>
     <input type="text" class="form-control" id="validationTooltip01" placeholder="ID" required>
-    <div class="valid-tooltip">
-      Looks good!
-    </div>
+    @if ($errors->has('email'))
+    <span class="text-danger">{{ $errors->first('email') }}</span>
+    @endif
   </div>
   <div class="textField">
     <label for="validationTooltip01" class="form-label">Password</label>
     <input type="Password" class="form-control" id="validationTooltip01" placeholder="Password" required>
-    <div class="valid-tooltip">
-      Looks good!
-    </div>
+    @if ($errors->has('password'))
+    <span class="text-danger">{{ $errors->first('password') }}</span>
+    @endif
   </div>
 
   
   <div class="col-12">
     <button class="add-but-login" type="submit">Log in</button>
   </div>
-  <p>Are you A company and you don’t have an account? <a class="link" href="">Sign up</a></p>
-  <p>Are you A company and you already have an account? <a class= "link"href="">Sign In</a></p>
+  <p>Are you A company and you don’t have an account? <a class="link" href="registerCompany">Sign up</a></p>
+  <p>Are you A company and you already have an account? <a class= "link"href="loginCompany">Sign In</a></p>
 </form>
 </div>
 

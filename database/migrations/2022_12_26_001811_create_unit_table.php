@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->string('trainee_id')->primary();
+        Schema::create('unit', function (Blueprint $table) {
             $table->string('name',20);
+            $table->string('unit_id',9)->primary();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('Major',20);
-            $table->string('phone',10);
-            $table->boolean('is_request')->default(1);
-            $table->enum('status', ['Available', 'Completed', 'Ongoing'])->default('Available');
             $table->string('password');
-            $table->rememberToken();// for remembr me in the websits
+            $table->string('trainee_id');
+            $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('unit');
     }
 };
