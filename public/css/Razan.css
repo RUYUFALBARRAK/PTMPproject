@@ -4,17 +4,20 @@
     font-size: 100%;
 }
 
-.info , .info-sec {
+.trainee-info , .info-sec , .info {
     font-size: 100%;
-    color: rgb(85, 82, 101);
     text-align: left;
-    margin-left: 5%;
-    height: fit-content;
+    margin-left: 6%;
 }
 
-.info-sec{
-    margin-left: 64%;
-    margin-top:-18%;
+.trainee-info , .info-sec{
+    display: inline-block;
+    vertical-align:top;
+}
+
+.trainee-info  , .info-sec p{
+    width: 18em;
+    margin-top:0%;
 }
 
 .hed{
@@ -25,9 +28,9 @@
     margin-top: -1%;
 }
 
-.company-report{
-    margin-left: 55%;
-    margin-top:-23.5%;
+.company-report , .prog-rep {
+    display: inline-block;
+    vertical-align:top;
 }
 
 .company-report a , .Progress-report a{
@@ -35,7 +38,7 @@
   }
 
   .company-report th , .Progress-report th{
-font-size: 90%;
+font-size: 80%;
 padding-right: 2%;
   }
 
@@ -350,8 +353,6 @@ background-color: #af1e1e;
     border-bottom-right-radius:0;
     border-bottom-left-radius:0;
   }
-
-  /* instruction page */
 
   .tit{
     font-size:120%;

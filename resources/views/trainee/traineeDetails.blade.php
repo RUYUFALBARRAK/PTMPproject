@@ -3,17 +3,17 @@
 @section('content-training')
 
 <div class="content" style="margin-bottom:-10%;">
-<p class="hed">Student information</p>
+<p class="hed">Trainee Information</p>
 <hr>
 <br>
     <div class="trainee-info" >
-    <p> <b> Student Name:&nbsp; </b> Razan Alsaif </p> <br>
+    <p> <b> Student Name:&nbsp; </b>Razan Alsaif </p> <br>
     <p> <b> Phone Number:&nbsp;</b> 050999999 </p><br>
     <p> <b> GPA :&nbsp; </b> 4.05 <br></p>
     </div>
 
-    <div class="info-sec">
-    <p> <b> Email:&nbsp; </b> 439200624@hffnrikkn.com </p> <br>
+    <div class="info-sec" style="margin-left:25%;" >
+    <p> <b> Email:&nbsp; </b> 439200624@ksu.edu.sa</p> <br>
     <p> <b> Major:&nbsp; </b> Software Engineering </p> <br>
     <p> <b> Number of completed hours :&nbsp; </b> 94 <br></p>
     </div>
@@ -46,10 +46,12 @@
 
 
     <br><hr><br>
-    <h4 style="margin-left:3%; font-size:140%;"> Trainee's Progress report</h4><br>
 
-<div style="margin-left:3%;">
-<table style="width:40%" class="Progress-report">
+    <div class="prog-rep" style="margin-left:2%;">
+
+    <h4 style="font-size:145%;"> Trainee's Progress report</h4><br>
+
+<table style="width:130%" class="Progress-report">
   <tr>
     <td>Effective date notice</td>
     <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
@@ -72,9 +74,11 @@
 
 
 
-<div class="company-report">
-<h3 style="font-size:140%;"> Company's Progress report</h3><br>
-<table style="width:90%" class="Progress-report">
+<div class="company-report" style="margin-left: 12em;">
+
+<h3 style="font-size:145%;"> Company's Progress report</h3><br>
+
+<table style="width:135%" class="Progress-report">
   <tr>
     <td>Training Plan</td>
     <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
