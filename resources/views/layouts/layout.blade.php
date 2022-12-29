@@ -72,14 +72,16 @@
   </div>
 </div>
 
-
-        <!-- Core theme JS-->
+      <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+    @guest    
     <div class= heder>
       <img src="img/ksu_logo.png" alt="Ksu logo" width="5%" height="90%" class="ksuLogo">
           <p>KSU <br> Practical Training Management Portal </p>
+     </div>      
+    @else
           <a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
-    </div>
+    @endguest
     @yield('content')
     </body>
 </html>
