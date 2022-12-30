@@ -9,6 +9,9 @@
 </div>
 <br> <br><br>
 
+@foreach($reviews)
+@endforeach
+
 <!-- First Review -->
 <div style="margin-bottom: 8%;">
 <img src="img/ava1.png" alt="avatar" width="50px" hight="50px">
