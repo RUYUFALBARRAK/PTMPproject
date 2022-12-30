@@ -15,20 +15,19 @@ return new class extends Migration
     {
         Schema::create('company', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',50);
-            $table->string('websits');
-            $table->string('Ename',20);
-            $table->string('Reg_number',50);
-            $table->string('about');
-            $table->string('email')->unique();
-            $table->string('logo_img');
-            $table->string('S_name',50);
-            $table->string('off_phone',10);
-            $table->string('S_email',50);
-            $table->string('S_phone',10);
-            $table->string('city',30);
-            $table->string('address',50);
-            $table->string('fax',10);
+            $table->string('orgnizationName',50);
+            $table->string('website');
+            $table->string('SupervisorName',20);
+            $table->string('Registration',50);
+            $table->string('description');
+            $table->string('orgnizationEmail')->unique();
+            $table->string('logoImage');
+            $table->string('OrganizationPhone',10);
+            $table->string('SupervisorEmail',50);
+            $table->string('SupervisorPhone',10);
+            $table->string('country',30);
+            $table->string('Address',50);
+            $table->string('SupervisorFax',10);
             $table->string('password');
             $table->enum('status', ['accept', 'reject', 'Pending'])->default('Pending');
             $table->timestamps();

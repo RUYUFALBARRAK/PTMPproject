@@ -36,14 +36,14 @@ Route::get('/DocumentPage', function () {
     return view('trainee/DocumentPage');
 });
 
-Route::get('/registerCompany', function () {
-    return view('Company/registerCompany');
-})-> name('regcompany');
+Route::get('/registerCompany', [PTMPController::class,'viewreg'])-> name('regcompany');
 Route::post('Authreg',[PTMPController::class,'Authreg'])-> name('Authreg');
+
 
 Route::get('/loginCompany', function () {
     return view('Company/LoginForCompany');
 })-> name('logincompany');
+Route::post('Authlogincompany',[PTMPController::class,'Authlogincompany'])-> name('Authlogincompany');
 
 Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
