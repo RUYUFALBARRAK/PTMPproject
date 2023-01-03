@@ -77,9 +77,10 @@ Route::get('/listOfCompanyRequest', function () {
     return view('PTunit/listOfCompanyRequest');
 });
 //stoped here
+Route::post('/TrainingDocument', [\App\Http\Controllers\BalqeesController::class, 'uploadDoc'])->name('upload_doc');
 Route::get('/TrainingDocument', function () {
     return view('PTunit/TrainingDocument');
-});
+})->name('training_doc');
 Route::get('/Announcements', function () {
     return view('PTcommittee/Announcements');
 });
