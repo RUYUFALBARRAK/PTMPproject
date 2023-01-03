@@ -16,10 +16,11 @@ return new class extends Migration
     {
         Schema::create('document', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('unit_id');
+            $table->string('unit_id')->nullable();
             $table->foreign('unit_id')->references('unit_id')->on('unit')->onDelete('cascade');
-            $table->string('documentName')->unique();
+            $table->string('documentName');
             $table->string('document')->unique();
+            $table->string('uploaded_for')->default('both');
             $table->timestamps();
         });
     }

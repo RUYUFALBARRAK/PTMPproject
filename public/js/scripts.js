@@ -1,7 +1,7 @@
 
 
-$(document).ready(function(){ 
-   
+$(document).ready(function(){
+
 
                });
  function displaymenu(){
@@ -19,38 +19,40 @@ $(document).ready(function(){
 function openNav(){
     document.getElementsByTagName("nav")[0].style.display="block";
     document.getElementById("nav").style.display="none";
-    document.getElementsByClassName("content-wrapper")[0].style.width="calc(100% - 20%)"; 
-    document.getElementsByClassName("content-wrapper")[0].style.left="20%"; 
-    
+    document.getElementsByClassName("content-wrapper")[0].style.width="calc(100% - 20%)";
+    document.getElementsByClassName("content-wrapper")[0].style.left="20%";
+
 }
 
 function closeNav(){
     document.getElementsByTagName("nav")[0].style.display="none";
     document.getElementById("nav").style.display="block";
-    document.getElementsByClassName("content-wrapper")[0].style.width="100%"; 
-    document.getElementsByClassName("content-wrapper")[0].style.left="0%"; 
+    document.getElementsByClassName("content-wrapper")[0].style.width="100%";
+    document.getElementsByClassName("content-wrapper")[0].style.left="0%";
 }
 function thisFileUploadReport() {
     document.getElementById("report").click();
-    
+
 }
 function thisFileUploadTrainingSurvey() {
     document.getElementById("Training-Survey").click();
-    
+
 }
 function thisFileUploadPresentation() {
     document.getElementById("Presentation").click();
-    
+
 }
 function thisFileUploadEffectiveDateNotice() {
     document.getElementById("EffectiveDateNotice").click();
-    
+
 }
 const form = document.querySelector(".form1"),
 fileInput=document.querySelector(".PTuploadedfile"),
 prograssArea=document.querySelector(".prograss-area"),
 uploadedArea=document.querySelector(".upload-area");
-form.addEventListener("click", ()=>{
-    fileInput.click();
-});
+if(form) {
+    form.addEventListener("click", ()=>{
+        fileInput.click();
+    });
+}
 
