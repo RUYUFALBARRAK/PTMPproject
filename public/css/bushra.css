@@ -23,7 +23,6 @@
 .view-reveiws2{
     font-size: 130%;
     color: white;
-    position: absolute;
 }
 
 a:link {
@@ -93,9 +92,16 @@ a:hover {
 }
 
 .rate2-Bushra{
-  float: left;
+  float: center;
   height: 300%;
   padding: 100 1000%;
+}
+
+.viewDetails{
+  position: absolute;
+  margin: -1% 10% 30% 43%;
+  color: black;
+  text-decoration: underline;
 }
 /*
 background-color: #388087;

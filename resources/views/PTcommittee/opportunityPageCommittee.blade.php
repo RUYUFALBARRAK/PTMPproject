@@ -1,4 +1,4 @@
-@extends('PTunit.mainPage')
+@extends('PTcommittee.mainPage')
 
 @section('content-training')
 <div class="content">
@@ -34,6 +34,7 @@
     <tr class="tr-Bushra">
         <td class="fisrt-col-Bushra">
             <img src="img/SDAIA.png" alt="Company logo" width="180%" hight="180%">
+            <br><br>
         </td>
 
         <td class="second-col-Bushra">
@@ -41,9 +42,9 @@
             <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
         </td>
 
-        <td class="td-Bushra">
+        <td class="td-Bushra" >
 
-            <span class="rate2-Bushra" style=" position: absolute;">
+            <span class="rate2-Bushra">
             <span class="fa fa-star fa-lg checked"></span>
             <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
             <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
@@ -69,6 +70,7 @@
 
         <td class="fisrt-col-Bushra">
           <img src="img/ministryOfComm.png" alt="Company logo" width="220%" hight="220%">
+          <br><br>
         </td>
 
         <td class="second-col-Bushra">
@@ -77,7 +79,7 @@
         </td>
 
       <td class="td-Bushra">
-            <span class="rate2-Bushra" style=" position: absolute;">
+            <span class="rate2-Bushra">
             <span class="fa fa-star fa-lg checked"></span>
             <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
             <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
@@ -94,6 +96,38 @@
 
 
     </tr>
+
+
+    <tr class="tr-Bushra">
+
+<td class="fisrt-col-Bushra">
+  <img src="img/ministryOfComm.png" alt="Company logo" width="220%" hight="220%">
+  <br><br>
+</td>
+
+<td class="second-col-Bushra">
+ <h5>Product Manager</h5>
+ <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
+</td>
+
+<td class="td-Bushra">
+    <span class="rate2-Bushra">
+    <span class="fa fa-star fa-lg checked"></span>
+    <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
+    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
+    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
+    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
+    </span>
+    <br>
+   
+    <a class="view-reveiws2" href="#">View Reviews</a>
+  
+</td>
+
+<td class="td-Bushra"><button class="btn-delete" type="submit">Delete </button></td>
+
+
+</tr>
 
 
   </table>

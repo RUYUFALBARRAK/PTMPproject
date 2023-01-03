@@ -110,6 +110,9 @@ Route::get('/opportunityDetailsPage', function () {
 Route::get('/opportunityRequestCommittee', function () {
     return view('PTcommittee/opportunityRequestCommittee');
 });
+Route::get('/viewDetails', function () {
+    return view('PTcommittee/viewDetails');
+});
 Route::get('/listOfTrainees', function () {
     return view('Company/listOfTrainees');
 });
