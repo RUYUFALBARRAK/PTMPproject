@@ -1,4 +1,4 @@
-@extends('PTunit.mainPage')
+@extends('PTcommittee.mainPage')
 
 
 @section('content-training')
@@ -14,8 +14,9 @@
     <tr>
         <td class ="fist-column td-balqees">dates of training  </td>
         <td class="td-balqees">25/10/2022</td>
-        <td class="td-balqees"><button class="btn-modify" type="submit"> Modify </button></td>
-        <td class="td-balqees"><button class="btn-delete" type="submit">Delete </button></td>
+        <td class= "td-balqees"><button type="button" class="btn btn-outline-warning">Modify</button></td>
+        <!-- <td class="td-balqees"><button class="btn-delete" type="submit">Delete </button></td> -->
+        <td class="td-balqees"><button type="button" class="btn btn-outline-danger">Delete </button></td>
     </tr>
 </table>
 <br><br><br>
