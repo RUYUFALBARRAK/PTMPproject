@@ -98,7 +98,7 @@
     </div>
 </div>
 <!-- <a href="#" class="link2">Upload new file:<span class="glyphicon glyphicon-upload"></span></a> -->
-<button class="add-but-center" type="submit">Upload new file</button>
+<button class="add-but" type="submit">Upload new file</button>
 </form>
 </div>
 @endsection

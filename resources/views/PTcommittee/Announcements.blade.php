@@ -21,7 +21,7 @@
 </table>
 <br><br><br>
 <form action = "addAnnouncement">
-<button class="add-but-center" type="submit" >Add announcement </button>
+<button class="add-but" type="submit" >Add announcement </button>
 </form>
 
 
