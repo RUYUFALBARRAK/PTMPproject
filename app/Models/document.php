@@ -11,7 +11,8 @@ class document extends Model
     protected $table='document';
     protected $primaryKey='id';
     protected $fillable = [
-        'document', 
-        'documentName', 
+        'document',
+        'documentName',
+        'uploaded_for'
     ];
 }

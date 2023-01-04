@@ -11,8 +11,8 @@
       <textarea rows="5" class="form-control" placeholder="add your announcement content here " name="announcement-content"></textarea><br>
       
       <div>
-<button class="add-but-right" type="submit">Add</button>
-<button class="can-but-right" type="submit">Cancel</button>
+<button class="add-but" type="submit">Add</button>
+<button class="can-but" type="submit">Cancel</button>
 </div>
 </form>
 

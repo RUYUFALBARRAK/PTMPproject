@@ -1,4 +1,4 @@
-@extends('PTunit.mainPage')
+@extends('PTcommittee.mainPage')
 
 @section('content-training')
 

@@ -1,5 +1,5 @@
-<!-- @extends('trainee.mainPage') -->
-@extends('layouts.layout')
+@extends('trainee.mainPage')
+<!-- @extends('layouts.layout') -->
 
 
 @section('content-training')
