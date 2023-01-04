@@ -35,16 +35,16 @@ class BalqeesController extends Controller
         }
         $file = $request->file('uploudedfile');
         $filename = Str::random(32).'.'.$file->guessClientExtension();
-        $dirpath = 'app/public/docs';
-        $filepath = storage_path($dirpath);
+        $dirpath = 'docs';
+        $filepath = public_path($dirpath);
         $file->move($filepath, $filename);
         $doc = new document();
         $doc->documentName = $file->getClientOriginalName();
-        $doc->document = $dirpath.'/'.$filename;
+        $doc->document = $filename;
         $doc->uploaded_for = $inputs['doc_to'];
         try {
             $doc->unit_id = auth()->user()->trainee_id;
-        } catch () {
+        } catch (\Throwable $th) {
             $doc->unit_id = null;
         }
         if($doc->save()) {
@@ -60,6 +60,24 @@ class BalqeesController extends Controller
                 'theme' => 'danger',
             ], 400);
         }
+    }
+
+    public function deleteDoc(Request $request) {
+        $doc_id = $request->only(['doc_id']);
+        $doc = document::find($doc_id['doc_id']);
+        $doc_path = public_path($doc->documentPath());
+        if(document::destroy($doc_id)) {
+            if(file_exists($doc_path)) {
+                if(unlink($doc_path)) {
+                    return redirect(route('training_doc'))->with('status', 'File Deleted Successfully')->with('theme', 'success');
+                } else {
+                    return redirect(route('training_doc'))->with('status', 'file deleted from the database but cannot delete the file itself')->with('theme', 'warning');
+                }
+            } else {
+                return redirect(route('training_doc'))->with('status', 'file deleted from the database but the file doesnt exist to delete')->with('theme', 'warning');
+            }
+        }
+        return redirect(route('training_doc'))->with('status', 'Error deleting file')->with('theme', 'danger');
     }
 
 }
