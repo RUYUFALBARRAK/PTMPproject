@@ -131,5 +131,11 @@ class PTMPController extends Controller
       ]);
     }    
 
+function ViewMainpage(){
+    $data=['loginIdUser'=> trainee::where('trainee_id','=',session('loginId'))->first()];
+    return view('trainee/triningTap',$data);
+}
+
 
 }
+

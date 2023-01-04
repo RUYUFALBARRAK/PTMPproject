@@ -2,6 +2,7 @@
 
 @section('content-training')
 <div class="content">
+  <h3>Hi {{$loginIdUser['name']}}</h3><hr>
     <img src="img/SDAIA.png" alt="Company logo" width="15%" hight="15%">
     <h3 class="spashlist">Software Engineer</h3> <h4 class="date">Jan. 16, 2022 - Aug. 11/2022 </h4> <h4 class="opportunityState">. CONFIRMED</h4>
     <br><br><br><hr>
