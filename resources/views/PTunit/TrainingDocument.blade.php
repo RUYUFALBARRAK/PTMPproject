@@ -10,63 +10,30 @@
         </div>
         @endif
 
-{{--        <h2>Uplouded document</h2>--}}
-{{--        <table class="table-balqees">--}}
-{{--            <tr>--}}
-{{--                <th class="fist-column th-balqees">File name</th>--}}
-{{--                <th class="th-balqees">Date of added</th>--}}
-{{--                <th class="th-balqees">For</th>--}}
-{{--                <th class="th-balqees">Delete</th>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--                <td class="fist-column td-balqees"><a href=#>AttendanceDocument.docx </a></td>--}}
-{{--                <td class="td-balqees">20/10/2022</td>--}}
-{{--                <td class="td-balqees">Company</td>--}}
-{{--                <td class="td-balqees">--}}
-{{--                    <button type="button" class="btn btn-outline-danger">Delete</button>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--                <td class="fist-column td-balqees"><a href=#>FollowupDocument.docx </a></td>--}}
-{{--                <td class="td-balqees">25/10/2022</td>--}}
-{{--                <td class="td-balqees">Company</td>--}}
-{{--                <td class="td-balqees">--}}
-{{--                    <button type="button" class="btn btn-outline-danger">Delete</button>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--                <td class="fist-column td-balqees"><a href=#>EvaluationDocument.docx </a></td>--}}
-{{--                <td class="td-balqees">25/10/2022</td>--}}
-{{--                <td class="td-balqees">Company</td>--}}
-{{--                <td class="td-balqees">--}}
-{{--                    <button type="button" class="btn btn-outline-danger">Delete</button>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--                <td class="fist-column td-balqees"><a href=#>EmployeeFeedback.docx </a></td>--}}
-{{--                <td class="td-balqees">25/10/2022</td>--}}
-{{--                <td class="td-balqees">Company</td>--}}
-{{--                <td class="td-balqees">--}}
-{{--                    <button type="button" class="btn btn-outline-danger">Delete</button>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--                <td class="fist-column td-balqees"><a href=#>Trainee survey.docx </a></td>--}}
-{{--                <td class="td-balqees">27/10/2022</td>--}}
-{{--                <td class="td-balqees">Student</td>--}}
-{{--                <td class="td-balqees">--}}
-{{--                    <button type="button" class="btn btn-outline-danger">Delete</button>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--                <td class="fist-column td-balqees"><a href=#>EffectiveDateNotice.docx </a></td>--}}
-{{--                <td class="td-balqees">27/10/2022</td>--}}
-{{--                <td class="td-balqees">Student</td>--}}
-{{--                <td class="td-balqees">--}}
-{{--                    <button type="button" class="btn btn-outline-danger">Delete</button>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--        </table>--}}
+        <h2>Uplouded document</h2>
+        <table class="table-balqees">
+            <tr>
+                <th class="fist-column th-balqees">File name</th>
+                <th class="th-balqees">Date of added</th>
+                <th class="th-balqees">For</th>
+                <th class="th-balqees">Delete</th>
+            </tr>
+            @foreach($docs as $doc)
+            <tr>
+                <td class="fist-column td-balqees"><a href="{{ $doc->getDocumentURL() }}">{{ $doc->documentName }}</a></td>
+                <td class="td-balqees">{{ $doc->created_at }}</td>
+                <td class="td-balqees">{{ $doc->uploaded_for }}</td>
+                <td class="td-balqees">
+                    <form action="{{ route('delete_doc') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="delete_doc" value="1">
+                        <input type="hidden" name="doc_id" value="{{ $doc->id }}">
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
         <br><br>
         <hr>
         <h3>Uploud new document</h3>
