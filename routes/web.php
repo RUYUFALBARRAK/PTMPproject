@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PTMPController;
+use App\Http\Controllers\RazanController;
+use App\Models\Review;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,25 +22,16 @@ Route::get('/', function () {
 Route::get('/login', [PTMPController::class,'viewlogin'])-> name('login');
 Route::post('Authlogin',[PTMPController::class,'Authlogin'])-> name('Authlogin');
 
-Route::get('/instruction', function () {
-    return view('trainee/instruction');
-});
+Route::get('/instruction', [RazanController::class,'inst']);
 
-Route::get('/traineeDetails', function () {
-    return view('trainee/traineeDetails');
-});
+Route::get('/traineeDetails', [RazanController::class,'details']);
 
-Route::get('/reviews', function () {
-    return view('trainee/reviews');
-});
+Route::get('/viewReview', [RazanController::class,'viewReview']);
 
-Route::get('/viewReview', function () {
-    return view('trainee/viewReview');
-});
+Route::get('/addReview', [RazanController::class,'addReview']);
 
-Route::get('/addReview', function () {
-    return view('trainee/addReview');
-});
+Route::get('/reviews', [RazanController::class,'showReviews']);
+
 Route::get('/DocumentPage', function () {
     return view('trainee/DocumentPage');
 });
@@ -83,9 +77,10 @@ Route::get('/listOfCompanyRequest', function () {
     return view('PTunit/listOfCompanyRequest');
 });
 //stoped here
+Route::post('/TrainingDocument', [\App\Http\Controllers\BalqeesController::class, 'uploadDoc'])->name('upload_doc');
 Route::get('/TrainingDocument', function () {
     return view('PTunit/TrainingDocument');
-});
+})->name('training_doc');
 Route::get('/Announcements', function () {
     return view('PTcommittee/Announcements');
 });
@@ -115,6 +110,9 @@ Route::get('/opportunityDetailsPage', function () {
 });
 Route::get('/opportunityRequestCommittee', function () {
     return view('PTcommittee/opportunityRequestCommittee');
+});
+Route::get('/viewDetails', function () {
+    return view('PTcommittee/viewDetails');
 });
 Route::get('/listOfTrainees', function () {
     return view('Company/listOfTrainees');

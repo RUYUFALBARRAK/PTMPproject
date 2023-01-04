@@ -3,7 +3,7 @@
 @section('content-training')
 
 <div class="content" style="margin-bottom:-10%;">
-<p class="hed">Trainee Information</p>
+<p class="hed-de">Trainee Information</p>
 <hr>
 <br>
     <div class="trainee-info" >
@@ -22,7 +22,7 @@
 
 <div class="content" style="margin-bottom:-10%;">
 
-    <p class="hed">CV</p>
+    <p class="hed-de">CV</p>
     <hr>
     <br>
 
@@ -39,9 +39,9 @@
 
 <div class="content">
 
-<div>
+<div style="margin-left:4%;">
     <img src="img/SDAIA.png" alt="Company logo" width="15%" hight="15%">
-    <h3 class="spashlist">Software Engineer</h3> <h4 class="date">Jan. 16, 2022 - Aug. 11/2022 </h4> <h4 class="opportunityState">. CONFIRMED</h4>
+    <h3 class="spashlist">Software Engineer</h3> <h4 class="date">Jan. 16, 2022 - Aug. 11/2022 </h4>
 </div>
 
 

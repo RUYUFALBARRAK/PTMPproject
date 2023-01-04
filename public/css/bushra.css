@@ -23,9 +23,6 @@
 .view-reveiws2{
     font-size: 130%;
     color: white;
-    position: absolute;
-    margin: -1% 10% 30% 33%;
-
 }
 
 a:link {
@@ -69,7 +66,43 @@ a:hover {
 
 }
 
+.table-Bushra {
+  width: 100%;
+  overflow: scroll;
+}
 
+.th-Bushra, .td-Bushra{
+  padding: 8px;
+  text-align: center;
+}
+
+.tr-Bushra {
+  border-bottom:1pt solid #ddd;
+}
+
+.fisrt-col-Bushra{
+  text-align:left ;
+  width:140px;
+}
+
+.second-col-Bushra{
+  padding-left: 200px ;
+  text-align:left ;
+  width:50%;
+}
+
+.rate2-Bushra{
+  float: center;
+  height: 300%;
+  padding: 100 1000%;
+}
+
+.viewDetails{
+  position: absolute;
+  margin: -1% 10% 30% 43%;
+  color: black;
+  text-decoration: underline;
+}
 /*
 background-color: #388087;
 border:  #388087;

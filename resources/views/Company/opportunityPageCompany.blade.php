@@ -1,4 +1,4 @@
-@extends('trainee.mainPage')
+@extends('company.mainPage')
 
 @section('content-training')
 <div class="content">
