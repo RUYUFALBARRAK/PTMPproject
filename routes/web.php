@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PTMPController;
 use App\Http\Controllers\RazanController;
-use App\Models\Review;
 
 /*
 |--------------------------------------------------------------------------

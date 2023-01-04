@@ -5,52 +5,94 @@
 <div class="content">
 
 <div>
-<img src="img/SDAIA.png" alt="Company logo" width="15%" hight="15%" style="margin-left:40%;">
+<img src="img/SDAIA.png" alt="Company logo" width="20%" hight="20%" style="margin-left:38%;">
 </div>
 <br> <br><br>
 
-@foreach($reviews)
-@endforeach
 
-<!-- First Review -->
+@if( count($reviews) == 0)  <!-- in case for no review -->
+<hr style="margin-top: -20px; margin-bottom: 35px;">
+<div class="noReviews"> No Reviews </div>
+
+
+@else  <!-- if available review existed-->
+
+@foreach($reviews as $review)
+<!-- foreach (trainees as trainee) **ADD AFTER ADDING FOREIGN KEY** + add **endforeach**  -->
+
+<span style="display:none;"> {{$reviewDate = $review->Create_at}} {{ $stars = $review -> star_rating}} </span>
+
+@php
+$date = substr("$reviewDate",0,10);
+$greyStar = 5 - $stars;
+@endphp
+
+@if(!($loop->last))
+
 <div style="margin-bottom: 8%;">
 <img src="img/ava1.png" alt="avatar" width="50px" hight="50px">
-<span style="margin-left: 1%;  font-size: 115%;"> Razan Alsaif </span> <span class="rev-date"> Aug. 20,2020 </span>  <br>
+<span style="margin-left: 1%; font-size: 120%; color:rgb(64, 60, 74);"> {{ $review-> orgnizationName}} </span> <span class="rev-date"> {{$date}} </span> <br>
 
-<div style="margin-left: 86.5%;">
-<span class="fa fa-star fa checked"></span>
-    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+
+<!-- begining of star rating -->
+
+<div style="margin-left: 84%;">
+
+@for($i=0; $i<$stars; $i++) <!-- checked stars -->
+<span class="fa fa-star fa-lg checked"></span>
+@endfor
+
+
+@if( ($greyStar) != 0) <!-- Unchecked stars -->
+@for($i=0; $i<$greyStar; $i++)
+    <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+    @endfor
+    @endif
+
 </div>
 
-<p style="margin-left: 5%; margin-top: -3%; margin-bottom: 3.5%; font-size: 120%; width:50%;"> bad </span></p>
+<p style="margin-left: 5%; margin-top: -4%; margin-bottom: 3.5%; font-size: 120%; width:50%;"> {{$review->review}} </span></p>
 
-<hr style="width:107%; margin-bottom: -4.4%; margin-left: -3.5%;">
+<hr style="width:107%; margin-bottom: -4.4%; margin-top: 4%; margin-left: -3.5%;">
 </div>
 
 
-<!-- if it is the last review don't add margin-bottom: 8% -->
+@else <!-- last review -->
+<div>
 
-
-<div style="">
 <img src="img/ava1.png" alt="avatar" width="50px" hight="50px">
-<span style="margin-left: 1%;  font-size: 115%;"> Razan Alsaif </span> <span class="rev-date"> Aug. 20,2020 </span>  <br>
+<span style="margin-left: 1%;  font-size: 120%; color: rgb(64, 60, 74);;"> razan </span> <span class="rev-date"> {{$date}} </span> <br>
 
-<div style="margin-left: 86.5%;">
-<span class="fa fa-star fa checked"></span>
-    <span class="fa fa-star fa checked"></span>
-    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+
+<!-- begining of star rating -->
+
+<div style="margin-left: 84%;">
+
+@for($i=0; $i<$stars; $i++) <!-- checked stars -->
+<span class="fa fa-star fa-lg checked"></span>
+@endfor
+
+
+@if( ($greyStar) != 0) <!-- Unchecked stars -->
+@for($i=0; $i<$greyStar; $i++)
+    <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+    @endfor
+    @endif
+
 </div>
 
-<p style="margin-left: 5%; margin-top: -3%; margin-bottom: 3.5%; font-size: 120%; width:50%;"> Average </span></p>
+<p style="margin-left: 5%; margin-top: -4%; margin-bottom: 3.5%; font-size: 120%; width:50%;"> {{$review->review}} </span></p>
 
-<hr style="width:107%; margin-bottom: -4.4%; margin-left: -3.5%;">
+<hr style="width:107%; margin-bottom: -4.4%; margin-top: 5%; margin-left: -3.5%;">
 </div>
 
 
+@endif
+
+@endforeach
+
+@endif
+
 </div>
+
 @endsection

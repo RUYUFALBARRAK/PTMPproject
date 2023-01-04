@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RazanModel extends Model
+class review extends Model
 {
     use HasFactory;
-    public $table = "_review";
+    protected $table = '_review';
 }
