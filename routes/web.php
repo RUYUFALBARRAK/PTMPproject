@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PTMPController;
 use App\Http\Controllers\RazanController;
-
+use App\Http\Controllers\khawlahController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -114,15 +114,16 @@ Route::get('/opportunityRequestCommittee', function () {
 Route::get('/viewDetails', function () {
     return view('PTcommittee/viewDetails');
 });
-Route::get('/listOfTrainees', function () {
-    return view('Company/listOfTrainees');
-});
-Route::get('/listOfTraineesRequests', function () {
-    return view('Company/listOfTraineesRequests');
-});
-Route::get('/listOfStudents', function () {
-    return view('PTcommittee/listOfStudents');
-});
+
+Route::get('/listOfTraineesRequests', [khawlahController::class,'viewtraineeList']);
+Route::get('/searchTraineeRequest', [khawlahController::class,'search']);
+//2:07
+Route::get('/listOfStudents', [khawlahController::class,'studentList']);
+
+Route::get('/searchStudent', [khawlahController::class,'searchStudent']);
+
+
+
 
 Route::get('/ReuqstIdentfaction', function () {
     return view('trainee/ReuqstIdentfaction');
