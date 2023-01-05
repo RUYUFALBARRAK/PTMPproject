@@ -1,4 +1,4 @@
-/* trainee details page */
+/* TRAINEE DETAILS  page */
 
 .inst p{
     font-size: 100%;
@@ -43,43 +43,34 @@ padding-right: 2%;
   }
 
 
-/* add review page */
+/* VIEW REVIEW page */
 
-.rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:32px;
-    color:#ccc;
-}
-.rate:not(:checked) > label:before {
-    content: '★ ';
-}
-.rate > input:checked ~ label {
+/* rating */
+.rating-css div {
     color: #ffc700;
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: #deb217;
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
-}
+    font-size: 10px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 8px 0;
+    margin-bottom: -4%;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 32px;
+    text-shadow: 0.5px 0.5px 0 #8f8420;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #ccc;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }
 
 .viw{
     border-radius:4px;
@@ -89,13 +80,23 @@ padding-right: 2%;
     border-color: rgb(111, 111, 111);
     padding: 20px 27px 20px 27px;
     width: 70%;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
+    margin-top: -30px;
 }
 
 .viw p {
     margin-left: -3%;
     margin-top: -2%;
-    margin-bottom: -2%;
+    margin-bottom: -4px;
+}
+
+.review-date{
+    font-size:108%;
+    color:rgb(91, 89, 103);
+    margin-left:1%;
+    margin-top:3px;
+    padding-right: -5%;
+    position: absolute;
 }
 
 
@@ -215,29 +216,7 @@ background-color: #af1e1e;
 }
 
 
-/* Stars in review page  */
-
-.rate2 {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.rate2:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.rate2:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:24px;
-    color:#ccc;
-}
-.rate2:not(:checked) > label:before {
-    content: '★ ';
-}
+/* REVIEWS page  */
 .checked  {
     color: #ffc700;
     text-shadow: 0.5px 0.5px 0 #8f8420;
@@ -245,35 +224,13 @@ background-color: #af1e1e;
 
 .rev-date{
     color: rgb(107, 102, 121);
-    margin-left: 86.7%;
+    margin-left: 85.7%;
+    font-size: 105%;
+    display: inline-block;
+    vertical-align:top;
 }
 
-/* rating */
-.rating-css div {
-    color: #ffc700;
-    font-size: 10px;
-    font-family: sans-serif;
-    font-weight: 800;
-    text-align: left;
-    text-transform: uppercase;
-    padding: 8px 0;
-    margin-bottom: -4%;
-  }
-  .rating-css input {
-    display: none;
-  }
-  .rating-css input + label {
-    font-size: 32px;
-    text-shadow: 0.5px 0.5px 0 #8f8420;
-    cursor: pointer;
-  }
-  .rating-css input:checked + label ~ label {
-    color: #ccc;
-  }
-  .rating-css label:active {
-    transform: scale(0.8);
-    transition: 0.3s ease;
-  }
+/* MODAL */
 
 .modal{
     margin-top: 15%;
@@ -360,4 +317,12 @@ background-color: #af1e1e;
 
   .dt{
     color:rgb(85, 82, 96);
+}
+
+.noReviews{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 130%;
+    color: rgb(64, 60, 74);
+
 }
