@@ -5,6 +5,7 @@
 <div class="content">
 
 <div>
+    <!-- NEED to get image from DB -->
 <img src="img/SDAIA.png" alt="Company logo" width="20%" hight="20%" style="margin-left:38%;">
 </div>
 <br> <br><br>
@@ -31,7 +32,7 @@ $greyStar = 5 - $stars;
 
 <div style="margin-bottom: 8%;">
 <img src="img/ava1.png" alt="avatar" width="50px" hight="50px">
-<span style="margin-left: 1%; font-size: 120%; color:rgb(64, 60, 74);"> {{ $review-> orgnizationName}} </span> <span class="rev-date"> {{$date}} </span> <br>
+<span style="margin-left: 1%; font-size: 120%; color:rgb(64, 60, 74);"> {{ $review-> name }} </span> <span class="rev-date"> {{$date}} </span> <br>
 
 
 <!-- begining of star rating -->
@@ -61,7 +62,7 @@ $greyStar = 5 - $stars;
 <div>
 
 <img src="img/ava1.png" alt="avatar" width="50px" hight="50px">
-<span style="margin-left: 1%;  font-size: 120%; color: rgb(64, 60, 74);;"> razan </span> <span class="rev-date"> {{$date}} </span> <br>
+<span style="margin-left: 1%;  font-size: 120%; color: rgb(64, 60, 74);;"> {{ $review-> name }} </span> <span class="rev-date"> {{$date}} </span> <br>
 
 
 <!-- begining of star rating -->

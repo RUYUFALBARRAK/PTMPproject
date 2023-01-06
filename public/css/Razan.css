@@ -91,7 +91,7 @@ padding-right: 2%;
 }
 
 .review-date{
-    font-size:108%;
+    font-size:110%;
     color:rgb(91, 89, 103);
     margin-left:1%;
     margin-top:3px;
@@ -120,6 +120,29 @@ padding-right: 2%;
     border-color: #38808774;
     background-color: #38808715;
     }
+
+
+    /* CANCEL BUTTON IN VIEW REVIW PAGE */
+
+    .can-but2{
+        margin-left:42%;
+        margin-top: -3.2%;
+        background-color: white;
+        border-radius: 7px;
+        border-color: #38808741;
+        border-style: solid;
+        border-width: 1px;
+        color: #388087d1;
+        font-size: 120%;
+        padding: 4px 20px 4px 20px;
+        border-radius: 7px;
+        position:absolute;
+    }
+
+    .can-but2:hover{
+        border-color: #38808774;
+        background-color: #38808715;
+        }
 
 
     .add-but{

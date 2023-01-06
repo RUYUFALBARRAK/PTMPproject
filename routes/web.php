@@ -26,8 +26,10 @@ Route::get('/instruction', [RazanController::class,'inst']);
 Route::get('/traineeDetails', [RazanController::class,'details']);
 
 Route::get('/viewReview', [RazanController::class,'viewReview']);
+Route::delete('/traineeMainPage/{id}', [RazanController::class,'destroy'])-> name('destroy');
 
-Route::get('/addReview', [RazanController::class,'addReview']);
+Route::get('/addReview', [RazanController::class,'addReview'])-> name('addReview');
+Route::post('/traineeMainPage', [RazanController::class,'add'])-> name('add');
 
 Route::get('/reviews', [RazanController::class,'showReviews']);
 

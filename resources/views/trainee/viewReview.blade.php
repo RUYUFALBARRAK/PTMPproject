@@ -35,8 +35,14 @@ $greyStar = 5 - $stars;
         <br>
 
     <div>
+
+    <form action="/traineeMainPage/{{$review->id}}" method="POST">
+    @csrf
+    @method('DELETE')
     <button type="button" class="del-but"> Delete </button>
-    <a href="/triningTap"><button type="button" class="can-but" class="fas fa-edit"> Cancel </button></a>
+    </form>
+
+    <a href="{{ url()->previous() }}"><button type="button" class="can-but2" class="fas fa-edit"> Cancel </button> </a>
     </div>
 
 

@@ -4,8 +4,8 @@
 
 <div class="content">
 
-    <form action="" method="">
-
+    <form action="/traineeMainPage" method="POST">
+    @csrf
     <div class="rating-css">
     <div class="star-icon">
         <input type="radio" value="1" name="product_rating" checked id="rating1">
@@ -23,13 +23,17 @@
 
     <br> <br><br>
 
-    <div>
-    <p> <label> <textarea name="review" rows="5" cols="50" placeholder="How is your experience?" style="border-radius:4px; font-size:130%; font-family:'Actor'; font-weight:200; padding:1%;"></textarea></label> </p>
+
+    <div style="margin-top: -1%;">
+    <p> <label> <textarea id="review" name="review"  rows="5" cols="50" placeholder="How is your experience?" style="border-radius:4px; font-size:130%; font-family:'Actor';
+    font-weight:200; padding:1%;  @error('review') border-color:#e72828; border-width:1.5px; @enderror "></textarea></label> </p>
     </div>
 
+    @error('review') <p style="color:#e72828; margin-top: -2%;"> *This field is required  </p> @enderror
+
     <div>
-    <button type="button" class="add-but" data-bs-toggle="modal" data-bs-target="#error"> Add </button>
-    <button type="button" class="can-but" class="fas fa-edit"> Cancel </button>
+    <input type="submit" value="Add" class="add-but" >  </input> <!-- data-bs-toggle="modal" data-bs-target="#error" -->
+    <a href="{{ url()->previous() }}"><button type="button" class="can-but" class="fas fa-edit"> Cancel </button> </a>
     </div>
 
 </form>
