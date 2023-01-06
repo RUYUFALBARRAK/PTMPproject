@@ -18,7 +18,7 @@
       </select>
     </div>
 
-@if( count($students) == 0)  <!-- in case for no review -->
+@if( count($studentResult) == 0)  <!-- in case for no review -->
 <br> <br><br>
 <hr style="margin-top: -20px; margin-bottom: 35px;">
 <div class="noReviews"> No students </div>
@@ -34,7 +34,7 @@
         <th style="text-align: right; padding-right:9%;">status</th>
         <th></th>
      </tr>
-     @foreach($students as $student)
+     @foreach($studentResult as $student)
      <tr>
     <td>{{$student->name}}</td>
     <td style="font-size: 16px;"> {{$student->trainee_id }} </td>

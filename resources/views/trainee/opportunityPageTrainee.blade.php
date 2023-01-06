@@ -11,13 +11,13 @@
     </div>
 
     <div>
-    <span style=" font-size: 12px; display:inline-block; margin-top:1.5%" class="input-group">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Didn't see your opportunity? <a class="linkB" style="color:blue;" href="#"> Invite a Company</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span style=" font-size: 12px; display:inline-block; margin-top:1.5%" class="input-group">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Didn't see your opportunity? <a class="linkB" style="color:blue;" href="#"> Invite a Company</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
 
-  <div style="margin-left: 65%; margin-top:-3%; " class="input-group">
-    <div style="font-size: 14px; margin-top:0.8%;">
-    Status&nbsp;
+    <div style="margin-left: 65%; margin-top:-3%; " class="input-group">
+      <div style="font-size: 14px; margin-top:0.8%;">
+      Status&nbsp;
     </div>
 
 
@@ -50,7 +50,7 @@
 
  </div>
 
-  </div>
+ 
 
 
     <br><br>
@@ -64,7 +64,7 @@
     <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
     <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
     <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-</div>
+ </div>
     </span>
     <br>
     <div class="view-reveiws2" style="margin-left: 69%; ">

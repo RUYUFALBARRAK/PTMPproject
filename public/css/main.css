@@ -863,3 +863,11 @@ section .detal{
   margin-top: 2%;
   margin-bottom: 3%;
 }
+.fa-sign-out{
+position: absolute;
+color: rgb(251, 249, 249);
+z-index: 2;
+margin-left: 92%;
+margin-top: 3%;
+cursor: pointer;
+}

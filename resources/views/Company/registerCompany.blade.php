@@ -8,6 +8,7 @@
 
 <form class="form-balqees" method="POST" enctype="multipart/form-data" action=" {{ route('Authreg')}}" novalidate>
 @csrf
+
   @if(Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>
   @endif
@@ -15,8 +16,8 @@
   <div class="alert alert-danger">{{Session::get('fail')}}</div>
   @endif
 
-    <p><a class="link" href=""> training specifications and regulations</a> <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
-    <div class="row opportunity-form">  
+    <p><a class="link" href="#"> training specifications and regulations</a> <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
+    <div class="row opportunity-form">   
     <div class="col">
     <label for="validationTooltip01" class="form-label"> Choose Logo:</label>
     <input type="file" class="form-control @error('logoImage') is-invalid @enderror" value="{{ old('logoImage') }}" name="logoImage">
@@ -32,6 +33,8 @@
         <span class="text-danger">{{ $errors->first('website') }}</span>
         @endif
     </div>
+ 
+
   </div>
 
   <div class="row opportunity-form">

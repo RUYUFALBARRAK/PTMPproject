@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('Major',20);
             $table->string('phone',10);
             $table->boolean('is_request')->default(1);
+            $table->enum('role', ['1', '2', '3','4'])->default('1');
             $table->enum('status', ['Available', 'Completed', 'Ongoing'])->default('Available');
             $table->string('password');
             $table->rememberToken();// for remembr me in the websits

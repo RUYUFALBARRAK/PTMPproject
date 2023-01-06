@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PTMPController;
 use App\Http\Controllers\RazanController;
+use App\Models\Review;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,17 +35,17 @@ Route::post('/traineeMainPage', [RazanController::class,'add'])-> name('add');
 Route::get('/reviews', [RazanController::class,'showReviews']);
 
 Route::get('/DocumentPage', function () {
-    return view('trainee/DocumentPage');
+    return view('trainee/DocumentPage', ['docs' => \App\Models\document::where('uploaded_for', '=', 'trainee')->orWhere('uploaded_for', '=', 'both')->get()]);
 });
 
-Route::get('/registerCompany', [PTMPController::class,'viewreg'])-> name('regcompany');
-Route::post('Authreg',[PTMPController::class,'Authreg'])-> name('Authreg');
-
+Route::get('/registerCompany', [companyController::class,'viewreg'])-> name('regcompany');
+Route::post('Authreg',[companyController::class,'Authreg'])-> name('Authreg');
+Route::post('Authopportunity',[companyController::class,'Authopportunity'])-> name('Authopportunity');
 
 Route::get('/loginCompany', function () {
     return view('Company/LoginForCompany');
 })-> name('logincompany');
-Route::post('Authlogincompany',[PTMPController::class,'Authlogincompany'])-> name('Authlogincompany');
+Route::post('Authlogincompany',[companyController::class,'Authlogincompany'])-> name('Authlogincompany');
 
 Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
@@ -54,13 +55,13 @@ Route::get('/addOppourtunityForCompany', function () {
 });
 
 Route::get('/DocumentPageCompany', function () {
-    return view('Company/DocumentPageCompany');
+    return view('Company/DocumentPageCompany', ['docs' => \App\Models\document::where('uploaded_for', '=', 'company')->orWhere('uploaded_for', '=', 'both')->get()]);
 });
 
-Route::get('/traineeMainPage', function () {
-    return view('trainee/triningTap');
-})-> name('traineeMainPage');
 
+Route::get('/traineeMainPage', [PTMPController::class,'ViewMainpage'])-> name('traineeMainPage')->middleware('isloggedin');
+Route::post('/traineeMainPage', [PTMPController::class,'uploadfile'])-> name('uploadfile')->middleware('isloggedin');
+Route::get('/logout', [PTMPController::class,'logout']);
 Route::get('/CVPage', function () {
     return view('trainee/CV-Tap');
 });
@@ -79,8 +80,9 @@ Route::get('/listOfCompanyRequest', function () {
 });
 //stoped here
 Route::post('/TrainingDocument', [\App\Http\Controllers\BalqeesController::class, 'uploadDoc'])->name('upload_doc');
+Route::post('/TrainingDocument/delete', [\App\Http\Controllers\BalqeesController::class, 'deleteDoc'])->name('delete_doc');
 Route::get('/TrainingDocument', function () {
-    return view('PTunit/TrainingDocument');
+    return view('PTunit/TrainingDocument', ['docs' => \App\Models\document::all()]);
 })->name('training_doc');
 Route::get('/Announcements', function () {
     return view('PTcommittee/Announcements');
@@ -115,15 +117,16 @@ Route::get('/opportunityRequestCommittee', function () {
 Route::get('/viewDetails', function () {
     return view('PTcommittee/viewDetails');
 });
-Route::get('/listOfTrainees', function () {
-    return view('Company/listOfTrainees');
-});
-Route::get('/listOfTraineesRequests', function () {
-    return view('Company/listOfTraineesRequests');
-});
-Route::get('/listOfStudents', function () {
-    return view('PTcommittee/listOfStudents');
-});
+
+Route::get('/listOfTraineesRequests', [khawlahController::class,'viewtraineeList']);
+Route::get('/searchTraineeRequest', [khawlahController::class,'search']);
+//2:07
+Route::get('/listOfStudents', [khawlahController::class,'studentList']);
+
+Route::get('/searchStudent', [khawlahController::class,'searchStudent']);
+
+
+
 
 Route::get('/ReuqstIdentfaction', function () {
     return view('trainee/ReuqstIdentfaction');

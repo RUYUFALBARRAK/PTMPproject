@@ -17,14 +17,14 @@
   @csrf
   <div class="textField">
     <label for="validationTooltip01" class="form-label">ID</label>
-    <input type="text" class="form-control @error('orgnizationEmail') is-invalid @enderror" value="{{ old('id') }}" id="validationTooltip01" placeholder="ID" name="id"required>
+    <input type="text" class="form-control @error('id') is-invalid @enderror" value="{{ old('id') }}" id="validationTooltip01" placeholder="ID" name="id"required>
     @if ($errors->has('id'))
     <span class="text-danger">{{ $errors->first('id') }}</span>
     @endif
   </div>
   <div class="textField">
     <label for="validationTooltip01" class="form-label">Password</label>
-    <input type="Password" class="form-control @error('orgnizationEmail') is-invalid @enderror"  name="password" placeholder="Password" required>
+    <input type="Password" class="form-control @error('password') is-invalid @enderror"  name="password" placeholder="Password" required>
     @if ($errors->has('password'))
     <span class="text-danger">{{ $errors->first('password') }}</span>
     @endif
