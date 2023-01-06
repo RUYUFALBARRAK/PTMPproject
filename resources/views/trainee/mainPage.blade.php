@@ -14,8 +14,8 @@
     <a  href="ReuqstIdentfaction"><li>IDENTIFICATION LETTER</li></a>
     <a onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon glyphicon glyphicon-chevron-down" id="submenu2" data-toggle="collapse" href="#submenu-2"><li>  CONTACT US</li> </a></span>
                         <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-                            <li><a href="#" class="abc"></i>Email</a></li>
-                            <li><a href="#" class="abc"></i>Phone: </a></li>
+                            <li><a href="mailto:someone@example.com" class="abc"></i>Email</a></li>
+                            <li><a href="tel:+4733378901" class="abc"></i>Phone: </a></li>
                         </ul>
                     
   </ul>
