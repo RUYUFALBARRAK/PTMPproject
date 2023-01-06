@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sendsdocuments', function (Blueprint $table) {
-            $table->timestamp('Sends_at');
             $table->string('doc_name');
             $table->string('trainee_id')->nullable();
             $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');

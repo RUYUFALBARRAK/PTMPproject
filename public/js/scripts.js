@@ -30,21 +30,55 @@ function closeNav(){
     document.getElementsByClassName("content-wrapper")[0].style.width="100%";
     document.getElementsByClassName("content-wrapper")[0].style.left="0%";
 }
-function thisFileUploadReport() {
+function thisFileUploadReport(myFile) {
+    if(document.getElementById("report").value == "")
+    {
     document.getElementById("report").click();
+    }else{
+        var file = myFile.files[0]; 
+        var filename = file.name;
+        document.getElementById("reportName").innerHTML=filename;
+        document.getElementsByClassName("Report")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("Report")[0].type="submit";
+    }
 
 }
-function thisFileUploadTrainingSurvey() {
+function thisFileUploadTrainingSurvey(myFile) {
+    if(document.getElementById("Training-Survey").value == "")
+    {
     document.getElementById("Training-Survey").click();
+    }else{
+        document.getElementsByClassName("TrainingSurvey")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("TrainingSurvey")[0].type="submit";
+        var file = myFile.files[0]; 
+        var filename = file.name;
+        document.getElementById("TrainingSurveyName").innerHTML=filename;
+    }
 
 }
-function thisFileUploadPresentation() {
+function thisFileUploadPresentation(myFile) {
+    if(document.getElementById("Presentation").value == "")
+    {
     document.getElementById("Presentation").click();
-
+    }else{
+        document.getElementsByClassName("Presentation")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("Presentation")[0].type="submit";
+        var file = myFile.files[0];  
+        var filename = file.name;
+        document.getElementById("PresentationName").innerHTML=filename;
+    }
 }
-function thisFileUploadEffectiveDateNotice() {
+function thisFileUploadEffectiveDateNotice(myFile) {
+    if(document.getElementById("EffectiveDateNotice").value == "")
+    {
     document.getElementById("EffectiveDateNotice").click();
-
+    }else{
+        var file = myFile.files[0]; 
+        var filename = file.name;
+        document.getElementById("EffectiveDateNoticeName").innerHTML=filename;
+        document.getElementsByClassName("EffectiveDateNotice")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("EffectiveDateNotice")[0].type="submit";
+    }
 }
 const form = document.querySelector(".form1"),
 fileInput=document.querySelector(".PTuploadedfile"),
@@ -55,4 +89,28 @@ if(form) {
         fileInput.click();
     });
 }
+// start
+let filename = '';
+        function resetInfo(show = false) {
+            $('.detal .precent').css('display', (show ? 'block' : 'none'));
+        }
+        function updateFileInfo(filename, percentage) {
+            $('.detal .name').text(filename);
+            $('.detal .precent').text(percentage);
+        }
+        $(function () {
+            $(document).ready(function () {
+                $('[name=uploudedfile]').on('change', (ev) => {
+                    resetInfo();
+                    const files = ev.target.files;
+                    console.log(files);
+                    if(files) {
+                        filename = files[0].name;
+                        $('.prograss-area').css('display', 'block');
+                        updateFileInfo(filename, '0%');
+                    }
+                });
+            });
+        });
 
+//ends
