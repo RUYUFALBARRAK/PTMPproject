@@ -4,28 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Enum\fileNameEnum;
 class Sendsdocument extends Model
 {
     use HasFactory;
     protected $table='sendsdocuments';
+    protected $casts = [
+    'doc_name' => fileNameEnum::class,
+];
     protected $fillable = [
-        'doc_name'
+        'document',
+        'opportunity_id',
+        'trainee_id',
+        'committee_id',
     ];
-       public function oppourtunity()
+     public function trainee()
     {
-        return $this->hasOne('App\Models\oppourtunity');
+        return $this->belongsTo('App\Models\trainee','trainee_id');
     }
-       public function trainee()
-    {
-        return $this->hasOne('App\Models\trainee');
-    }
-       public function committee()
-    {
-        return $this->hasOne('App\Models\committee');
-    }
-       public function document()
-    {
-        return $this->hasOne('App\Models\document');
-    }
+
 }

@@ -26,8 +26,8 @@ class companyController extends Controller
         $company= company::where('orgnizationEmail','=',$request->orgnizationEmail)->first();
         if($company){
             if(Hash::check($request->password ,$company->password)){
-                    $request->session()->put('loginId',$company->id);
-                    return redirect('traineeMainPage');
+                    $request->session()->put('logincompId',$company->id);
+                    return redirect('personalInfoCompany');
             } else{
                 return back()->with('fail','email or password worng');
             }
@@ -68,16 +68,31 @@ class companyController extends Controller
           }else{
             return back()->with('fail','something wrong');}*/
             if(request()->hasfile('logoImage')){
-                $avatarName = time().'.'.request()->logoImage->getClientOriginalExtension();
-                request()->logoImage->move(public_path('logoImage'), $avatarName);
+                $avatarName = $request->logoImage->getClientOriginalName();
+                $request->logoImage->storeAs('images', $avatarName,'public');
             }
-            $data = $request->all();
-            $check = $this->create($data);
-            return redirect('LoginForCompany');
+     $company= new company();
+        $company->orgnizationName= $request['orgnizationName'];
+        $company->website= $request['website'];
+        $company->orgnizationEmail= $request['orgnizationEmail'];
+        $company->OrganizationPhone= $request['OrganizationPhone'];
+        $company->Registration= $request['Registration'];
+        $company->description= $request['description'];
+        $company->logoImage= $request->logoImage->getClientOriginalName();
+        $company->country= $request['country'];
+        $company->SupervisorName= $request['SupervisorName'];
+        $company->SupervisorPhone= $request['SupervisorPhone'];
+        $company->SupervisorEmail= $request['SupervisorEmail'];
+        $company->password=Hash::make( $request['password']);
+        $company->SupervisorFax= $request['SupervisorFax'];
+        $company->Address= $request['Address'];
+   
+    $company->save();
+            return redirect('loginCompany');
           
     }
 
-    public function create(array $data)
+   /* public function create(array $data)
     {
       return company::create([
         'orgnizationName' => $data['orgnizationName'],
@@ -95,37 +110,56 @@ class companyController extends Controller
         'Address' => $data['Address'],
         'password' => Hash::make($data['password'])
       ]);
-    } 
+    } */
 
     function Authopportunity(Request $request){
-                $request->validate([
+        if(request()->has('Start_at'))
+            $request->validate([
             'jobTitle' => 'required',
             'workHours' => 'required|numeric',
-            'orgnizationEmail' => 'required|email|unique:company',
-            'supervisorPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
+            'supervisorPhone' => 'required|regex:/(05)[0-9]{8}/|numeric|digits:10',
             'supervisorName' => 'required',
             'Start_at' => 'required|date',
-            'end_at' => 'required|date',
+            'end_at' => 'required|date|after:Start_at',
             'address' => 'required',
-            'AppDeadline' => 'required|date',
+            'AppDeadline' => 'required|date|before_or_equal:Start_at',
             'requirement' => 'required',
             'numberOfTrainee' => 'required|numeric',
-            'RoleDescription' => 'required'
-           
-            
+            'RoleDescription' => 'required',   
+            'majors' => 'required', 
+            'incentive' => 'required', 
+            'uploudedfile' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt', 
         ]);
-       
-        $data = $request->all();
-            $check = $this->createopportunity($data);
-            return redirect('LoginForCompany');
+             if(request()->hasfile('uploudedfile')){
+                $fileName =$request->uploudedfile->getClientOriginalName();
+                $request->uploudedfile->storeAs('files', $fileName,'public');
+            }      
+        $oppourtunity= new oppourtunity();
+        $oppourtunity->jobTitle= $request['jobTitle'];
+        $oppourtunity->workHours= $request['workHours'];
+        $oppourtunity->supervisorPhone= $request['supervisorPhone'];
+        $oppourtunity->supervisorName= $request['supervisorName'];
+        $oppourtunity->Start_at= $request['Start_at'];
+        $oppourtunity->end_at= $request['end_at'];
+        $oppourtunity->PtPlan= $request->uploudedfile->getClientOriginalName();
+        $oppourtunity->address= $request['address'];
+        $oppourtunity->AppDeadline= $request['AppDeadline'];
+        $oppourtunity->requirement= $request['requirement'];
+        $oppourtunity->numberOfTrainee= $request['numberOfTrainee'];
+        $oppourtunity->RoleDescription= $request['RoleDescription'];
+        $oppourtunity->majors=$request['majors'];
+        $oppourtunity->incentive= $request['incentive'];
+        $oppourtunity->company_id= company::where('id','=',session('logincompId'))->first()->id;
+   
+    $oppourtunity->save();
+            return redirect('addOppourtunityForCompany')->with('success','Successfully added opportunity!');
     }
-    function createopportunity(array $data){
+   /* function createopportunity(array $data){
+        
         return oppourtunity::create([
         'jobTitle' => $data['jobTitle'],
         'workHours' => $data['workHours'],
-        'orgnizationEmail' => $data['orgnizationEmail'],
         'supervisorPhone'=>$data['supervisorPhone'],
-        'orgnizationEmail' => $data['orgnizationEmail'],
         'supervisorName' => $data['supervisorName'],
         'Start_at' => $data['Start_at'],
         'end_at' => $data['end_at'],
@@ -134,8 +168,17 @@ class companyController extends Controller
         'requirement' => $data['requirement'],
         'numberOfTrainee' => $data['numberOfTrainee'],
         'RoleDescription' => $data['RoleDescription'],
-        
-        
+        'majors' => $data['majors'],
+        'incentive' => $data['incentive'],
+        'PtPlan' => $data['uploudedfile'],
       ]);
+
+    }*/
+
+    function addOpportunityview(){
+        
+        if(Session::has('logincompId')){
+        $data=['loginIdcompUser'=> company::where('id','=',session('logincompId'))->first()];}
+        return view('Company/addOpportunity',$data);
     }
 }

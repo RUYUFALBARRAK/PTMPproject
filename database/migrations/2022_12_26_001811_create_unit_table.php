@@ -18,9 +18,8 @@ return new class extends Migration
             $table->string('unit_id',9)->primary();
             $table->string('email')->unique();
             $table->string('Major',20);
+            $table->string('role')->default('2');
             $table->string('password');
-            $table->string('trainee_id');
-            $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

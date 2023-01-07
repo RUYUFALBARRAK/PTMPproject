@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('opportunity', function (Blueprint $table) {
+       Schema::create('opportunity', function (Blueprint $table) {
             $table->increments('id');
             $table->date('Start_at');
             $table->date('end_at');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('supervisorName');
             $table->string('supervisorPhone');
             $table->string('RoleDescription');
-            $table->boolean('incentive')->default(1);
+            $table->boolean('incentive');
             $table->string('requirement');
             $table->string('majors');
             $table->integer('numberOfTrainee');
@@ -32,8 +32,6 @@ return new class extends Migration
             $table->enum('status', ['accept', 'reject', 'Pending'])->default('Pending');
             $table->unsignedInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('company')->onDelete('cascade');
-            $table->string('trainee_id');
-            $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

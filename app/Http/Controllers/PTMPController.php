@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\trainee;
 use App\Models\company;
 use App\Models\document;
+use App\Models\Sendsdocument;
+use App\Models\committee;
+use App\Models\oppourtunity;
+use \App\Enum\fileNameEnum;
 use Validator;
 use DB;
 use File;
@@ -49,24 +53,61 @@ class PTMPController extends Controller
 
 function ViewMainpage(){
     if(Session::has('loginId')){
-    $data=['loginIdUser'=> trainee::where('trainee_id','=',session('loginId'))->first()];}
-    return view('trainee/triningTap',$data);
+    $data=['loginIdUser'=>  trainee::with('oppourtunity')->get()->first(),
+    'file'=> trainee::with('Sendsdocument')->get()->first()
+];}
+    
+    return trainee::with('Sendsdocument')->get()->first();
 }
 
 
 function logout(Request $request){
 $logout= $request->session()->flush();
-return redirect('login');
+return redirect('welcome');
 }
 
 function uploadfile(Request $request){
-            if(request()->hasfile('Presentation')||request()->hasfile('TrainingSurvey')||request()->hasfile('report')||request()->hasfile('EffectiveDateNotice')){
-                $avatarName = time().'.'.request()->logoImage->getClientOriginalExtension();
-                request()->logoImage->move(public_path('logoImage'), $avatarName);
-            }
-            $data = $request->all();
-            $check = $this->create($data);
-            return redirect('LoginForCompany');
+    $Sendsdocument= new Sendsdocument();
+    if(request()->hasfile('Presentation')!=null){
+        $request->validate([
+            'Presentation' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+        ]);
+            $fileName = $request->Presentation->getClientOriginalName();
+            $request->Presentation->storeAs('PresentationFiles', $fileName,'public');
+            $Sendsdocument->doc_name= fileNameEnum::Presentation;
+            $Sendsdocument->document =$request->Presentation->getClientOriginalName();
+    }else if(request()->hasfile('TrainingSurvey')!=null){
+         $request->validate([
+            'TrainingSurvey' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+        ]);
+            $fileName = $request->TrainingSurvey->getClientOriginalName();
+            $request->TrainingSurvey->storeAs('TrainingSurveyFiles', $fileName,'public');
+            $Sendsdocument->doc_name= fileNameEnum::TrainingSurvey;
+            $Sendsdocument->document= $request->TrainingSurvey->getClientOriginalName();
+    }else if(request()->hasfile('report')!=null){
+        $request->validate([
+            'report' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+        ]);
+            $fileName = $request->report->getClientOriginalName();
+            $request->report->storeAs('reportFiles', $fileName,'public');
+            $Sendsdocument->doc_name= fileNameEnum::report;
+            $Sendsdocument->document= $request->report->getClientOriginalName();
+    }else if(request()->hasfile('EffectiveDateNotice')!=null){
+        $request->validate([
+            'EffectiveDateNotice' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+        ]);
+            $fileName = $request->EffectiveDateNotice->getClientOriginalName();
+            $request->EffectiveDateNotice->storeAs('EffectiveDateNoticeFiles', $fileName,'public');
+            $Sendsdocument->document= $request->EffectiveDateNotice->getClientOriginalName();
+            $Sendsdocument->doc_name= fileNameEnum::EffectiveDateNotice;
+    }
+
+    
+            $Sendsdocument->opportunity_id=trainee::where('trainee_id','=',session('loginId'))->first()->opportunity_id;
+            $Sendsdocument->committee_id= trainee::where('trainee_id','=',session('loginId'))->first()->committee_id;
+            $Sendsdocument->trainee_id= trainee::where('trainee_id','=',session('loginId'))->first()->trainee_id;
+            $Sendsdocument->save();
+            return redirect('traineeMainPage')->with('success','Successfully uploaded!');
 
 }
 }

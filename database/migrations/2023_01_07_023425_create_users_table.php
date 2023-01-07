@@ -13,14 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sendsdocuments', function (Blueprint $table) {
-            $table->string('doc_name');
-            $table->string('trainee_id')->nullable();
-            $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');
+            Schema::create('users', function (Blueprint $table) {
+            $table->string('trainee_id')->primary();
+            $table->string('name',50);
+            $table->string('email')->unique();
+            $table->string('major',20);
+            $table->string('phone',10);
+            $table->string('role')->default('1');
+            $table->boolean('is_request');
+            $table->string('password');
+            $table->string('unit_id')->nullable();
+            $table->foreign('unit_id')->references('unit_id')->on('unit')->onDelete('cascade');
             $table->string('committee_id')->nullable();
             $table->foreign('committee_id')->references('committee_id')->on('committee')->onDelete('cascade');
-            $table->unsignedInteger('doc_id');
-            $table->foreign('doc_id')->references('id')->on('document')->onDelete('cascade');
+            $table->enum('status', ['Available', 'Completed', 'Ongoing'])->default('Available');
             $table->unsignedInteger('opportunity_id')->nullable();
             $table->foreign('opportunity_id')->references('id')->on('opportunity')->onDelete('cascade');
             $table->timestamps();
@@ -34,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sendsdocuments');
+        Schema::dropIfExists('users');
     }
 };

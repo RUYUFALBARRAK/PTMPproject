@@ -9,13 +9,13 @@
    <a href="traineeMainPage"><li>TRAINING</li></a>
   <a href="instruction"><li>INSTRUCTION</li></a>
    <a href="CVPage"> <li>CV</li></a>
-    <a href="#"><li>OPPORTUNITIES</li></a>
+    <a href="opportunityPageTrainee"><li>OPPORTUNITIES</li></a>
     <a href="DocumentPage"><li>DOCUMENTS TEMPLATE</li></a>
     <a  href="ReuqstIdentfaction"><li>IDENTIFICATION LETTER</li></a>
-    <a onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon glyphicon glyphicon-chevron-down" id="submenu2" data-toggle="collapse" href="#submenu-2"><li>  CONTACT US</li> </a></span>
+    <a onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon glyphicon glyphicon-chevron-down" id="submenu2" data-toggle="collapse" href="#submenu-2"><li>  CONTACT US</li> </a>
                         <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-                            <li><a href="mailto:someone@example.com" class="abc"></i>Email</a></li>
-                            <li><a href="tel:+4733378901" class="abc"></i>Phone: </a></li>
+                            <a href="mailto:someone@example.com" class="abc"><li>Email</li></a>
+                            <a href="tel:+4733378901" class="abc"><li>Phone: </li></a>
                         </ul>
                     
   </ul>
