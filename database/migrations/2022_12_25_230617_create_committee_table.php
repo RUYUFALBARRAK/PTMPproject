@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('committee', function (Blueprint $table) {
             $table->string('name',20);
-            $table->string('committee_id',9)->primary();
+            $table->string('committee_id')->primary();
             $table->string('email')->unique();
             $table->string('Major',20);
             $table->string('password');
-            $table->string('trainee_id');
-            $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');
+            $table->string('role')->default('3');
             $table->timestamps();
         });
     }

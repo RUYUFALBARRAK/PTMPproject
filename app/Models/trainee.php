@@ -18,12 +18,20 @@ class trainee extends Model
         'email', 
         'Major', 
         'phone',
+        'role',
         'is_request',
         'status',
-        'password'
+        'password',
+        'committee_id',
+        'opportunity_id',
+        'unit_id',
     ];
      public function oppourtunity()
     {
-        return $this->hasOne('App\Models\oppourtunity','trainee_id');
+        return $this->belongsTo('App\Models\oppourtunity','opportunity_id');
+    }
+         public function Sendsdocument()
+    {
+        return $this->hasMany('App\Models\Sendsdocument','trainee_id');
     }
 }

@@ -21,6 +21,7 @@ class company extends Model
         'country',
         'SupervisorPhone',
         'SupervisorEmail',
+        'SupervisorName',
         'password',
         'SupervisorFax',
         'Address',

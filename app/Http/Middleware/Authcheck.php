@@ -16,8 +16,8 @@ class Authcheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Session()->has('loginId'))
-        return redirect('login');
+        if((!Session()->has('loginId'))&&(!Session()->has('logincompId')))
+        return redirect('welcome');
         return $next($request);
 }
 }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('orgnizationEmail')->unique();
             $table->string('logoImage');
+            $table->string('role')->default('4');
             $table->string('OrganizationPhone',10);
             $table->string('SupervisorEmail',50);
             $table->string('SupervisorPhone',10);

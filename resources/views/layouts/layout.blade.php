@@ -79,7 +79,7 @@
       <img src="img/ksu_logo.png" alt="Ksu logo" width="5%" height="90%" class="ksuLogo">
           <p>KSU <br> Practical Training Management Portal </p>
      </div>
-    @if(Session::has('loginId'))
+    @if(Session::has('loginId')||Session::has('logincompId'))
          <a href="/logout"> <span class="fa fa-sign-out"> Log out</span>  </a>
     @endif
     @yield('content')

@@ -28,8 +28,8 @@
 
 
 <div >
-    <button class="btn btn-primary" type="submit"
-    style="width: 120%; height:90%; margin-left:17% ; font-size: 140%; background-color: #388087;" >Add training opportunity</button>
+   <a href="addOppourtunityForCompany"> <button class="btn btn-primary" type="button"
+    style="width: 120%; height:90%; margin-left:17% ; font-size: 140%; background-color: #388087;" >Add training opportunity</button></a>
   </div>
 </div>
 

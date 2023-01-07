@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PTMPController;
 use App\Http\Controllers\RazanController;
 use App\Models\Review;
-
+use App\Http\Controllers\companyController;
+use App\Http\Controllers\khawlahController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,7 @@ use App\Models\Review;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get('/login', [PTMPController::class,'viewlogin'])-> name('login');
@@ -50,9 +51,7 @@ Route::post('Authlogincompany',[companyController::class,'Authlogincompany'])-> 
 Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
 });
-Route::get('/addOppourtunityForCompany', function () {
-    return view('Company/addOpportunity');
-});
+Route::get('/addOppourtunityForCompany', [companyController::class,'addOpportunityview'])->name('addOppourtunityForCompany');
 
 Route::get('/DocumentPageCompany', function () {
     return view('Company/DocumentPageCompany', ['docs' => \App\Models\document::where('uploaded_for', '=', 'company')->orWhere('uploaded_for', '=', 'both')->get()]);
@@ -60,7 +59,7 @@ Route::get('/DocumentPageCompany', function () {
 
 
 Route::get('/traineeMainPage', [PTMPController::class,'ViewMainpage'])-> name('traineeMainPage')->middleware('isloggedin');
-Route::post('/traineeMainPage', [PTMPController::class,'uploadfile'])-> name('uploadfile')->middleware('isloggedin');
+Route::post('/uploadfile', [PTMPController::class,'uploadfile'])-> name('uploadfile')->middleware('isloggedin');
 Route::get('/logout', [PTMPController::class,'logout']);
 Route::get('/CVPage', function () {
     return view('trainee/CV-Tap');

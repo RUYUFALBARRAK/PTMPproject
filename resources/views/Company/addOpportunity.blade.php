@@ -2,8 +2,8 @@
 
 @section('content-training')
 <div class="content">
-<img src="img/SDAIA.png" alt="Company logo" class="logoCompany">
-<h3 class="spashlist">SAMI (ADVANCED ELECTRONICS)</h3>
+<img src="{{asset('storage/images/'. $loginIdcompUser['logoImage'])}}" alt="Company logo" class="logoCompany">
+<h3 class="spashlist">{{$loginIdcompUser['orgnizationName']}}</h3>
 <br><br><hr>
 <form action="{{ route('Authopportunity') }}" enctype="multipart/form-data" method="POST">
   @csrf
@@ -117,12 +117,12 @@
 <br> <br> <br> <br>
  <label for="comment">include incentive:</label>
     <div class="form-check">
-  <input type="radio"  class="form-check-input" id="radio1" name="incentive"  checked>Yes
+  <input type="radio"  class="form-check-input" id="radio1" name="incentive"  value="1" checked>Yes
   <label class="form-check-label" for="radio1"></label>
     </div>
 
 <div class="form-check">
-  <input type="radio" class="form-check-input" id="radio2"  name="incentive" >No
+  <input type="radio" class="form-check-input" id="radio2" value="0"  name="incentive" >No
 </div>
  @if ($errors->has('incentive'))
         <span class="text-danger">{{ $errors->first('incentive') }}</span>
@@ -141,17 +141,16 @@
                     <p>Browse file to upload</p>
                 </div>
 
-                @error('uploudedfile')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-
+                @if ($errors->has('uploudedfile'))
+                <div class="alert alert-danger">{{ $errors->first('uploudedfile') }}</div>
+               @endif
+     
                 <section class="prograss-area" style="display: none">
                     <div class="row">
                         <i class="fas fa-file-alt"></i>
                         <div class="cont">
                             <div class="detal">
-                                <span class="name">s</span>
-                                <span class="precent">0</span>
+                                <span class="name"></span>
                             </div>
                         </div>
                     </div>

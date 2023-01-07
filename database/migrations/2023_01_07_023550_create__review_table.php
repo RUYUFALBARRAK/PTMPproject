@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('_review', function (Blueprint $table) {
+            Schema::create('_review', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamp('Create_at');
             $table->string('review');
             $table->integer('star_rating');
             $table->string('trainee_id');
@@ -24,9 +23,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('company')->onDelete('cascade');
         });
- 
     }
-   
 
     /**
      * Reverse the migrations.

@@ -11,7 +11,6 @@ class oppourtunity extends Model
     protected $table='opportunity';
     protected $primaryKey='id';
     protected $fillable = [
-        'id', 
         'Start_at', 
         'end_at', 
         'jobTitle', 
@@ -26,6 +25,10 @@ class oppourtunity extends Model
         'address',
         'AppDeadline',
         'PtPlan',
-        'status'
+        'company_id'
     ];
+         public function trainee()
+    {
+        return $this->hasMany('App\Models\trainee');
+    }
 }
