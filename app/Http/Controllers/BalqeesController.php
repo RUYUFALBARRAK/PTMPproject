@@ -52,7 +52,7 @@ class BalqeesController extends Controller
                 'success' => true,
                 'message' => 'File uploaded & saved successfully.',
                 'theme' => 'success',
-            ], 400);
+            ], 201);
         } else {
             return response()->json([
                 'success' => false,
