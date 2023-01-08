@@ -5,7 +5,7 @@
 <div class='content'>
 
     <img src="img/SDAIA.png" alt="Company logo" class="logoCompany">
-    <h3 class="spashlist">SDAIA (Saudi Data & AL Authority)</h3>
+    <h3 class="spashlist" style="margin-top: -2%;">SDAIA (Saudi Data & AL Authority)</h3>
     <br><br>
     
     <hr>
@@ -18,7 +18,7 @@
 
     <p>
      <label> <b>Registration number:</b> </label>
-     <input type="text" id="comRegNum" name="comRegNum" value="XoXO1123XPasd"></input>
+     <input type="text" id="comRegNum" name="comRegNum">XoXO1123XPasd</input>
     </p>
 
     <br><br>
@@ -26,7 +26,7 @@
 
     <p>
      <label><b> Employee full name:</b> </label>
-     <input type="text" id="comEmpName" name="comEmpName" value="saleah mohamad"></input>
+     <input type="text" id="comEmpName" name="comEmpName">saleah mohamad</input>
     </p>
 
     <br><br>
@@ -34,7 +34,7 @@
 
     <p>
      <label><b> Email:</b></label>
-     <input type="email" id="comEmail" name="comEmail" value="company@mail.com"></input>
+     <input type="email" id="comEmail" name="comEmail">company@mail.com</input>
     </p>
    
   
@@ -42,7 +42,7 @@
 
     <p>
      <label> <b> brief description about the company:</b> </label>
-     <textarea type="text" id="comDes" name="comDes" placeholder="description" rows="7" cols="40"></textarea>
+     <textarea type="text" id="comDes" name="comDes" placeholder="description" rows="7" cols="40">tjfjkfjkv</textarea>
     </p>
 
 
@@ -54,7 +54,7 @@
 
     <p>
      <label> <b> Office phone number:</b> </label>
-     <input type="text" id="comOfficeNum" name="comOfficeNum" value="01143847423"></input>
+     <input type="text" id="comOfficeNum" name="comOfficeNum" >0114384743</input>
     </p>
 
     <br><br>
@@ -62,7 +62,7 @@
 
     <p>
       <label> <b> Employee mobile number: </b> </label>
-      <input type="text" id="comMobileNum" name="comMobileNum" value="0505142037"></input>
+      <input type="text" id="comMobileNum" name="comMobileNum">0505142037</input>
     </p>
 
     <br><br>
@@ -70,7 +70,7 @@
 
     <p>
      <label> <b> Website:</b> </label> 
-     <input type="text" id="comWebsite" name="comWebsite" value="www.company.com"></input>
+     <input type="text" id="comWebsite" name="comWebsite" >www.company.com</input>
     </p>
 
   
@@ -78,7 +78,7 @@
 
     <p>
      <label> <b> City:</b> </label>
-     <input type="text" id="comCity" name="comCity" value="Jeddah"></input>
+     <input type="text" id="comCity" name="comCity">Jeddah</input>
     </p>
 
 

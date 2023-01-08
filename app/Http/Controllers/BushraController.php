@@ -23,9 +23,4 @@ class BushraController extends Controller
 
     //committee
 
-
-
-
-
-
 }
