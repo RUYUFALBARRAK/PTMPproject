@@ -4,7 +4,7 @@
 
 <div class='content'>
     <img src="img/SDAIA.png" alt="Company logo" class="logoCompany">
-    <h3 class="spashlist">SDAIA (Saudi Data & AL Authority)</h3>
+    <h3 class="spashlistB">SDAIA (Saudi Data & AL Authority)</h3>
     <br>
 
     <span class="rate2" style="margin-left: 84%; margin-top: -3%;">
@@ -15,7 +15,7 @@
     <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
     </span>
     <br>
-    <div class="view-reveiws2" style="margin-left: 69%; ">
+    <div class="view-reveiws2" style="margin-left: 84%; ">
         <a href="#">View Reviews</a>
     </div>
     <br><br><br>

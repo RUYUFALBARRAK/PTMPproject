@@ -4,7 +4,7 @@
 
 <div class='content'>
     <img src="img/SDAIA.png" alt="Company logo" class="logoCompany">
-    <h3 class="spashlist">SDAIA (Saudi Data & AL Authority)</h3>
+    <h3 class="spashlistB">SDAIA (Saudi Data & AL Authority)</h3>
     <br><br>
     
     <br><br><br>
@@ -88,7 +88,7 @@
     <div class="input-group" style="margin-bottom:3%;">
     <button type="button" class="btn-status" style="background-color:green; border:green; border-radius: 7px;">Accept</button>&nbsp;&nbsp;
     <button type="button" class="btn-status" style="background-color:red; border:red; border-radius: 7px;">Decline</button>&nbsp;&nbsp;
-    <button type="button" class="btn-status" style="background-color:#dadd28; border:#dadd28; border-radius: 7px;">Need modification</button>
+    <button type="button" class="btn-status" style="background-color:#dadd28; border:#dadd28; border-radius: 7px; width: 18%;">Need modification</button>
     </div>
 
     <div style="margin-bottom:0.5%;">
