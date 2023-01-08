@@ -61,9 +61,9 @@
                     </div>
                 </section>
 
-                <section style="display: none" id="file-success-block">
-                    <div class="alert fs-2 file-text"></div>
-                </section>
+{{--                <section style="display: none" id="file-success-block">--}}
+{{--                    <div class="alert fs-2 file-text"></div>--}}
+{{--                </section>--}}
 
                 <div class="file-state">
                     <label for="validationTooltip01" class="form-label">File uploaded for :* </label>
@@ -99,7 +99,7 @@
         $(function () {
             $(document).ready(function () {
                 $('[name=uploudedfile]').on('change', (ev) => {
-                    $('#file-success-block').hide();
+                    // $('#file-success-block').hide();
                     resetInfo();
                     const files = ev.target.files;
                     console.log(files);
@@ -130,9 +130,16 @@
                         console.log(res);
                         resetInfo(false);
                         $('.prograss-area').hide();
-                        $('#file-success-block').show();
-                        $('#file-success-block .file-text').removeClass('alert-danger').removeClass('alert-success').addClass('alert-'+res.theme).html(res.message);
+                        // $('#file-success-block').show();
+                        // $('#file-success-block .file-text').removeClass('alert-danger').removeClass('alert-success').addClass('alert-'+res.theme).html(res.message);
                         document.querySelector('[name=uploudedfile]').value = null;
+                    },
+                    success: function (res) {
+                        $('#file_uploaded_success').modal('show');
+                        $('#file_uploaded_success__text').text(res.message);
+                        // setTimeout(() => {
+                        //     $('#file-success-block').hide();
+                        // }, 1);
                     },
                     error: function (xhr) {
                         const res = xhr.responseJSON;
@@ -146,6 +153,11 @@
                                 $('#upload_file__err_msg').text(msg);
                             }
                         });
+                        $('#file_uploaded_error').modal('show');
+                        $('#file_uploaded_error__text').text(res.message);
+                        // setTimeout(() => {
+                        //     $('#file-success-block').hide();
+                        // }, 1);
                     }
                 });
             });

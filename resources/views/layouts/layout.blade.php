@@ -53,11 +53,33 @@
   </div>
 </div>
 
+
+    <!-- File deleted success message -->
+    <div class="modal fade" id="file_uploaded_success" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="img/check.png" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"> </h1>
+                <div class="modal-body" style="text-align: center; font-size:120%;" id="file_uploaded_success__text"></div>
+                <button type="button" class="ok-but" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="file_uploaded_error" tabindex="-1" aria-labelledby="error" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="img/Xicon.png" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"> </h1>
+                <div class="modal-body" style="text-align:center; font-size:120%;" id="file_uploaded_error__text"></div>
+                <button type="button" class="del-msg" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+
     <!-- File Deletion Confirmation modal-->
     <div class="modal fade" id="confirm_delete_file" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <h1 class="modal-title fs-5" id="exampleModalLabel"> <img src="img/check.png" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"> </h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="img/check.png" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"></h1>
                 <div class="modal-body" style="text-align: center; font-size:120%;">
                     Are you sure you want to delete this file?
                 </div>
