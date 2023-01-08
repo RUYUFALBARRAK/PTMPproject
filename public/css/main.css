@@ -2,7 +2,7 @@ body {
     font-family: 'Nunito', sans-serif !important;
     color: #000;
     box-sizing: border-box;
-  
+
 }
 /*slider background welcome page*/
 .container > figure{
@@ -37,7 +37,7 @@ body {
   animation-delay: 24s;
   background-image: url('/img/background_ksu2.png');
 }
-@keyframes 
+@keyframes
 imageAnimation {  0% {
  animation-timing-function: ease-in;
  opacity: 0;
@@ -641,7 +641,7 @@ text-align: center;
       padding: 4px 20px 4px 20px;
       border-radius: 7px;
   }
-  
+
   .can-but:hover{
       border-color: #38808774;
       background-color: #38808715;
@@ -678,7 +678,7 @@ text-align: center;
     border-radius: 7px;
     margin-left: 5%;
       }
-  
+
   .add-but-noMargin:hover {
     background-color: #285e63;
     border-radius: 7px;
@@ -698,7 +698,7 @@ text-align: center;
     border-radius: 7px;
     margin-left: 80%;
       }
-  
+
   .add-but-right:hover {
     background-color: #285e63;
     border-radius: 7px;
@@ -716,15 +716,15 @@ text-align: center;
       border-radius: 7px;
       margin-left: 9%;
         }
-    
+
     .add-but-right1:hover {
       background-color: #285e63;
- 
+
       color: white;
       font-size: 60%;
-     
+
       border-style: none;
-   
+
       }
     .add-but-center{
       background-color: #388087;
@@ -736,7 +736,7 @@ text-align: center;
       border-radius: 7px;
       margin-left: 40%;
       }
-    
+
     .add-but-center:hover {
       background-color: #285e63;
       border-radius: 7px;
@@ -779,7 +779,7 @@ text-align: center;
         .list-of-company1{
           width: 100%;
         }
-        
+
         .list-of-company1 td{
           border-top: 1px solid #a7aeae;
           border-bottom: 1px solid #a7aeae;
@@ -870,4 +870,8 @@ z-index: 2;
 margin-left: 92%;
 margin-top: 3%;
 cursor: pointer;
+}
+.warp .form1.is-invalid {
+    border-color: red;
+    color: red;
 }

@@ -42,22 +42,21 @@
             <form method="POST" action="{{ route('upload_doc') }}" enctype="multipart/form-data" id="upload-doc-form">
                 @csrf
 
-                <div class="form1" onclick="document.querySelector('[name=uploudedfile]').click()">
-                    <input type="file" name="uploudedfile" class="PTuploadedfile" hidden>
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p>Browse file to upload</p>
+                <div class="has-validation">
+                    <div class="form1" id="upload_file_clickable" onclick="document.querySelector('[name=uploudedfile]').click()">
+                        <input type="file" name="uploudedfile" class="PTuploadedfile" hidden>
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Browse file to upload</p>
+                    </div>
                 </div>
-
-                @error('uploudedfile')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+                <div class="invalid-feedback" id="upload_file__err_msg"></div>
 
                 <section class="prograss-area" style="display: none">
                     <div class="row">
                         <i class="fas fa-file-alt"></i>
                         <div class="cont">
                             <div class="detal">
-                                <span class="name">s</span>
+                                <span class="name">filename</span>
                                 <span class="precent">0</span>
                             </div>
                             <div class="prog-bar">
@@ -73,19 +72,18 @@
 
                 <div class="file-state">
                     <label for="validationTooltip01" class="form-label">File uploaded for :* </label>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 has-validation">
                         <select id="inputState" class="form-select" name="doc_to">
-                            <option selected disabled>For..</option>
+                            <option :value="null" selected disabled>For..</option>
                             <option value="company">company</option>
                             <option value="trainee">trainee</option>
                             <option value="both">both</option>
                         </select>
                     </div>
                 </div>
-                @error('doc_to')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            <!-- <a href="#" class="link2">Upload new file:<span class="glyphicon glyphicon-upload"></span></a> -->
+                <div class="invalid-feedback" id="doc_to__err_msg"></div>
+
+                <!-- <a href="#" class="link2">Upload new file:<span class="glyphicon glyphicon-upload"></span></a> -->
                 <button class="add-but-center" type="submit">Upload new file</button>
             </form>
         </div>
@@ -93,7 +91,7 @@
 
 
     <script>
-        let filename = '';
+        var uploaded_filename = '';
         function resetInfo(show = false) {
             $('.prog-bar').css('display', (show ? 'block' : 'none'));
             $('.detal .precent').css('display', (show ? 'block' : 'none'));
@@ -111,20 +109,26 @@
                     const files = ev.target.files;
                     console.log(files);
                     if(files) {
-                        filename = files[0].name;
+                        uploaded_filename = files[0].name;
                         $('.prograss-area').css('display', 'block');
-                        updateFileInfo(filename, '0%');
+                        updateFileInfo(uploaded_filename, '0%');
+                        $('#upload_file__err_msg').text('');
+                        $('#upload_file_clickable').removeClass('is-invalid');
                     }
                 });
                 $('#upload-doc-form').ajaxForm({
                     beforeSend: function () {
                         var percentage = '0';
+                        $('#doc_to__err_msg').text('');
+                        $('[name=doc_to]').removeClass('is-invalid');
+                        $('#upload_file__err_msg').text('');
+                        $('#upload_file_clickable').removeClass('is-invalid');
                     },
                     uploadProgress: function (event, position, total, percentComplete) {
                         resetInfo(true);
                         var percentage = percentComplete;
                         var per = percentage+'%';
-                        updateFileInfo(filename, per);
+                        updateFileInfo(uploaded_filename, per);
                     },
                     complete: function (xhr) {
                         const res = xhr.responseJSON;
@@ -135,6 +139,19 @@
                         $('#file-success-block .file-text').removeClass('alert-danger').removeClass('alert-success').addClass('alert-'+res.theme).html(res.message);
                         document.querySelector('[name=uploudedfile]').value = null;
                     },
+                    error: function (xhr) {
+                        const res = xhr.responseJSON;
+                        console.log('err', xhr);
+                        Array.from(res.message).forEach(msg => {
+                            if(msg.includes('doc to') || msg.includes('doc_to')) {
+                                $('[name=doc_to]').addClass('is-invalid');
+                                $('#doc_to__err_msg').text(msg);
+                            } else if(msg.includes('uploudedfile')) {
+                                $('#upload_file_clickable').addClass('is-invalid');
+                                $('#upload_file__err_msg').text(msg);
+                            }
+                        });
+                    }
                 });
             });
         });
