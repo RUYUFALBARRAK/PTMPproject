@@ -53,6 +53,25 @@
   </div>
 </div>
 
+    <!-- File Deletion Confirmation modal-->
+    <div class="modal fade" id="confirm_delete_file" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> <img src="img/check.png" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"> </h1>
+                <div class="modal-body" style="text-align: center; font-size:120%;">
+                    Are you sure you want to delete this file?
+                </div>
+                <form action="{{ route('delete_doc') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="delete_doc" value="1">
+                    <input type="hidden" name="doc_id" id="delete_doc_confirmation_id" value="0">
+                    <button type="submit" class="ok-but">Yes</button>
+                </form>
+                <button type="button" class="del-msg" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+
 
 <!-- Error modal-->
 

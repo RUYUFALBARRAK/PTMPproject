@@ -24,12 +24,7 @@
                 <td class="td-balqees">{{ $doc->created_at }}</td>
                 <td class="td-balqees">{{ $doc->uploaded_for }}</td>
                 <td class="td-balqees">
-                    <form action="{{ route('delete_doc') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="delete_doc" value="1">
-                        <input type="hidden" name="doc_id" value="{{ $doc->id }}">
-                        <button type="submit" class="btn btn-outline-danger">Delete</button>
-                    </form>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#confirm_delete_file" onclick="document.querySelector('#delete_doc_confirmation_id').value = '{{ $doc->id }}'" class="btn btn-outline-danger">Delete</button>
                 </td>
             </tr>
             @endforeach
