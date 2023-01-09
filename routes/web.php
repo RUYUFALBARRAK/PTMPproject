@@ -83,14 +83,27 @@ Route::post('/TrainingDocument/delete', [\App\Http\Controllers\BalqeesController
 Route::get('/TrainingDocument', function () {
     return view('PTunit/TrainingDocument', ['docs' => \App\Models\document::all()]);
 })->name('training_doc');
+
+
 Route::get('/Announcements', function () {
     return view('PTcommittee/Announcements', ['announcements' => \App\Models\announcement::all()]);
 })->name('announcements');
+
 Route::post('/Announcements/delete', [\App\Http\Controllers\BalqeesController::class, 'deleteAnnouncement'])->name('delete_announcement');
-Route::get('/Announcements/{announcement}/edit', [\App\Http\Controllers\BalqeesController::class, 'deleteAnnouncement'])->name('edit_announcement');
+
+// Edit announcement
+Route::get('/EditAnnouncements{announcement}', function(\App\Models\announcement $announcement){
+    return view('PTcommittee.addAnnouncement', ['announcement' => $announcement]);
+})->name('edit_announcement');
+Route::post('/EditAnnouncements{announcement}', [\App\Http\Controllers\BalqeesController::class, 'editAnnouncement'])->name('do_edit_announcement');
+
+// add announcement
 Route::get('/addAnnouncement', function () {
     return view('PTcommittee/addAnnouncement');
 })->name('add_announcement');
+Route::post('/addAnnouncement', [\App\Http\Controllers\BalqeesController::class, 'addAnnouncement'])->name('do_add_announcement');
+
+
 Route::get('/opportunityPageCompany', function () {
     return view('Company/opportunityPageCompany');
 });
