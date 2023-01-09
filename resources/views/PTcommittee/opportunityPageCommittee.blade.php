@@ -3,29 +3,22 @@
 @section('content-training')
 <div class="content">
 
-    <div class="input-group">
+<form method="GET" action="{{url('/opportunityPageCommittee')}}">
+  <div style="width:50%" class="input-group">
+  <input type="search" class="form-control rounded" name="query" placeholder="Search for opportunity name..." aria-label="Search" aria-describedby="search-addon" />
+  <button type="submit" class="btn btn-outline-dark">Search</button>
+</div>
+</form>
 
-    <div style="width:20%" class="input-group">
-    <input type="search" class="form-control rounded" placeholder="Search..." aria-label="Search" aria-describedby="search-addon" />
-    <button type="button" class="btn btn-outline-dark" >search</button>
-    </div>
-    </div>
 
-
-    <div style=" width:80%; margin-left: 82%; margin-top:-2.5%; " class="input-group">
-    <div style="font-size: 14px; margin-top:0.6%;">
-    Location&nbsp;
-    </div>
-
-    <div style="width:10%">
-    <select id="inputLoc" class="form-select form-select-lg" >
-        <option></option>
-        <option></option>
-        <option></option>
-        <option></option>
-        <option selected>All</option>
-    </select>
-    </div>
+    <div class="form-group col-md-2 state-menu" style="margin-top: -2.5%;">
+      <select id="inputLocationCommettii" class="form-select ">
+        <option selected>Location</option>
+        <option >Riyadh</option>
+        <option>Jeddah</option>
+        <option>Dammam</option>
+        <option>All</option>
+      </select>
     </div>
 
     <br><br>
