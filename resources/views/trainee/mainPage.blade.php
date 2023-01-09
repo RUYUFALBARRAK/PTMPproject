@@ -17,7 +17,7 @@
             <a href="mailto:someone@example.com" class="abc"><li>Email</li></a>
             <a href="tel:+4733378901" class="abc"><li>Phone: </li></a>
         </ul>
-      <a href="announcements"><li>ANNOUNCEMENTS</li></a>
+      <a href="Announcements"><li>ANNOUNCEMENTS</li></a>
       <marquee direction="up" scrollamount="2" behavior="scroll" class="homeMarquee" onmouseover="this.stop()" onmouseout="this.start()" style="height: 150px;">
           <table>
               <tbody>
@@ -35,13 +35,5 @@
 <div class="content-wrapper">
 @yield('content-training')
 </div>
-
-        <script>
-            function openAnnouncement(title, content) {
-                $('#view_announcement_modal__title').text(title);
-                $('#view_announcement_modal__content').text(content);
-                $('#view_announcement_modal').modal('show');
-            }
-        </script>
 
 @endsection

@@ -84,11 +84,13 @@ Route::get('/TrainingDocument', function () {
     return view('PTunit/TrainingDocument', ['docs' => \App\Models\document::all()]);
 })->name('training_doc');
 Route::get('/Announcements', function () {
-    return view('PTcommittee/Announcements');
-});
+    return view('PTcommittee/Announcements', ['announcements' => \App\Models\announcement::all()]);
+})->name('announcements');
+Route::post('/Announcements/delete', [\App\Http\Controllers\BalqeesController::class, 'deleteAnnouncement'])->name('delete_announcement');
+Route::get('/Announcements/{announcement}/edit', [\App\Http\Controllers\BalqeesController::class, 'deleteAnnouncement'])->name('edit_announcement');
 Route::get('/addAnnouncement', function () {
     return view('PTcommittee/addAnnouncement');
-});
+})->name('add_announcement');
 Route::get('/opportunityPageCompany', function () {
     return view('Company/opportunityPageCompany');
 });
@@ -137,6 +139,7 @@ Route::get('/listOfStudentsReqLetter', function () {
 Route::get('/listOfStudentsPTunit', function () {
     return view('PTunit/listOfStudentsPTunit');
 });
+
 
 /*Auth::routes();
 

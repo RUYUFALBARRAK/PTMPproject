@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\announcement;
 use App\Models\document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -78,6 +79,14 @@ class BalqeesController extends Controller
             }
         }
         return redirect(route('training_doc'))->with('status', 'Error deleting file')->with('theme', 'danger');
+    }
+
+    public function deleteAnnouncement(Request $request) {
+        $announcement_id = $request->only(['announcement_id'])['announcement_id'];
+        if(announcement::destroy($announcement_id)) {
+            return redirect(route('announcements'))->with('status', 'Announcement Deleted Successfully')->with('theme', 'success');
+        }
+        return redirect(route('announcements'))->with('status', 'Error Deleting Announcement')->with('theme', 'danger');
     }
 
 }
