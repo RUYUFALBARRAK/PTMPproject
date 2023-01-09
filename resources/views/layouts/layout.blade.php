@@ -53,6 +53,19 @@
   </div>
 </div>
 
+    <!-- view announcement modal -->
+    <div class="modal fade" id="view_announcement_modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-title d-flex flex-row pt-4">
+                    <h1 class="fs-5 pt-0" id="view_announcement_modal__title"></h1>
+                    <div style="flex: 1 0;"></div>
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">X</button>
+                </div>
+                <div class="modal-body" style="text-align: center; font-size:120%;" id="view_announcement_modal__content"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- File deleted success message -->
     <div class="modal fade" id="file_uploaded_success" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
@@ -79,17 +92,19 @@
     <div class="modal fade" id="confirm_delete_file" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="img/check.png" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"></h1>
+{{--                <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="img/check.png" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"></h1>--}}
                 <div class="modal-body" style="text-align: center; font-size:120%;">
                     Are you sure you want to delete this file?
                 </div>
-                <form action="{{ route('delete_doc') }}" method="post">
-                    @csrf
-                    <input type="hidden" name="delete_doc" value="1">
-                    <input type="hidden" name="doc_id" id="delete_doc_confirmation_id" value="0">
-                    <button type="submit" class="ok-but">Yes</button>
-                </form>
-                <button type="button" class="del-msg" data-bs-dismiss="modal">No</button>
+                <div class="d-flex flex-row justify-content-center">
+                    <form action="{{ route('delete_doc') }}" method="post" class="d-inline-block col-4 mx-2">
+                        @csrf
+                        <input type="hidden" name="delete_doc" value="1">
+                        <input type="hidden" name="doc_id" id="delete_doc_confirmation_id" value="0">
+                        <button type="submit" class="ok-but2 col-12">Yes</button>
+                    </form>
+                    <button type="button" class="del-msg2 col-4 mx-2" data-bs-dismiss="modal">No</button>
+                </div>
             </div>
         </div>
     </div>

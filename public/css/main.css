@@ -875,3 +875,30 @@ cursor: pointer;
     border-color: red;
     color: red;
 }
+
+.ok-but2{
+    background-color: green;
+    border-radius: 7px;
+    color: white;
+    font-size: 125%;
+    padding: 4px 10px 6px 10px;
+    border-style: none;
+}
+
+.ok-but2:hover{
+    background-color: rgb(1, 97, 1);
+}
+
+.del-msg2{
+    background-color: #e72828;
+    border-radius: 7px;
+    color: white;
+    font-size: 125%;
+    padding: 4px 10px 6px 10px;
+    border-style: none;
+}
+
+.del-msg2:hover{
+    background-color: #af1e1e;
+}
+
