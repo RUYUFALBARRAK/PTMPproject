@@ -93,13 +93,13 @@ Route::post('/Announcements/delete', [\App\Http\Controllers\BalqeesController::c
 
 // Edit announcement
 Route::get('/EditAnnouncements{announcement}', function(\App\Models\announcement $announcement){
-    return view('PTcommittee.addAnnouncement', ['announcement' => $announcement]);
+    return view('PTcommittee.addAnnouncement', ['announcement' => $announcement, 'action' => 'edit']);
 })->name('edit_announcement');
 Route::post('/EditAnnouncements{announcement}', [\App\Http\Controllers\BalqeesController::class, 'editAnnouncement'])->name('do_edit_announcement');
 
 // add announcement
 Route::get('/addAnnouncement', function () {
-    return view('PTcommittee/addAnnouncement');
+    return view('PTcommittee/addAnnouncement', ['action' => 'add']);
 })->name('add_announcement');
 Route::post('/addAnnouncement', [\App\Http\Controllers\BalqeesController::class, 'addAnnouncement'])->name('do_add_announcement');
 
