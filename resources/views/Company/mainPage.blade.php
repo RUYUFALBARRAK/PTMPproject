@@ -6,12 +6,12 @@
  <nav class="vertical-menu-wrapper">
  <a href="javascript:void(0)" style="cursor:pointer; right: 2%; color: black; text-decoration: none; font-size: 150%;" class="closebtn" onclick="closeNav()">&times;</a>
   <ul class="vertical-menu">
-    <a href="personalInfoCompany"><li>PERSONAL INFORMATION</li></a>
-    <a href="listOfTraineesRequests"><li>TRAINEES REQUESTS</li></a>
-    <a href="opportunityPageCompany"><li>OPPORTUNITIES</li></a>
-    <a href="listOfTrainees"> <li>TRAINEES</li></a>
-    <a href="#"> <li>CONTACT US</li></a>
-    <a href="DocumentPageCompany"> <li>DOCUMENTS TEMPLATE</li></a>
+    <li><a href="personalInfoCompany">PERSONAL INFORMATION</a></li>
+    <li><a href="listOfTraineesRequests">TRAINEES REQUESTS</a></li>
+     <li><a href="opportunityPageCompany">OPPORTUNITIES</a></li>
+     <li><a href="listOfTrainees">TRAINEES</a></li>
+     <li><a href="#">CONTACT US</a></li>
+      <li><a href="DocumentPageCompany"> DOCUMENTS TEMPLATE</a></li>
     
   </ul>
 </nav>

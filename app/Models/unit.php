@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class committee extends Model
+class unit extends Model
 {
     use HasFactory;
-    protected $table='committee';
-    protected $primaryKey='committee_id';
+     protected $table='unit';
+    protected $primaryKey='unit_id';
     protected $fillable = [
-        'committee_id', 
+        'unit_id', 
         'name', 
         'email', 
         'Major', 

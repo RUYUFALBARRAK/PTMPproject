@@ -1,23 +1,35 @@
 @extends('layouts.layout')
 
 @section('content')
+<script>
+    
 
+
+window.onload = () => {
+    document.querySelectorAll('nav a').forEach(link => {
+       
+  if(link.href === window.location.href){
+    link.setAttribute('class', 'active'); console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+  }
+});
+}
+</script>
         <!-- Sidebar -->
  <nav class="vertical-menu-wrapper" style="overflow: auto !important;">
- <a href="javascript:void(0)" style="cursor:pointer; right: 2%; color: black; text-decoration: none; font-size: 150%;" class="closebtn" onclick="closeNav()">&times;</a>
+ <a style="cursor:pointer; right: 2%; color: black; text-decoration: none; font-size: 150%;" class="closebtn" onclick="closeNav()">&times;</a>
   <ul class="vertical-menu" style="overflow: auto !important;">
-   <a href="traineeMainPage"><li>TRAINING</li></a>
-  <a href="instruction"><li>INSTRUCTION</li></a>
-   <a href="CVPage"> <li>CV</li></a>
-    <a href="opportunityPageTrainee"><li>OPPORTUNITIES</li></a>
-    <a href="DocumentPage"><li>DOCUMENTS TEMPLATE</li></a>
-    <a  href="ReuqstIdentfaction"><li>IDENTIFICATION LETTER</li></a>
-    <a onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon glyphicon glyphicon-chevron-down" id="submenu2" data-toggle="collapse" href="#submenu-2"><li>  CONTACT US</li> </a>
+   <li ><a href="traineeMainPage">TRAINING</a></li>
+   <li ><a  href="instruction">INSTRUCTION</a></li>
+    <li> <a  href="CVPage">CV</a></li>
+   <li> <a  href="opportunityPageTrainee">OPPORTUNITIES</a></li>
+   <li> <a  href="DocumentPage">DOCUMENTS TEMPLATE</a></li>
+   <li> <a  href="ReuqstIdentfaction">IDENTIFICATION LETTER</a></li>
+   <li> <a  href="Announcements">ANNOUNCEMENTS</a></li>
+   <li>  <a  onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon glyphicon glyphicon-chevron-down" id="submenu2" data-toggle="collapse" href="#submenu-2"> CONTACT US</a> 
         <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-            <a href="mailto:someone@example.com" class="abc"><li>Email</li></a>
-            <a href="tel:+4733378901" class="abc"><li>Phone: </li></a>
-        </ul>
-      <a href="Announcements"><li>ANNOUNCEMENTS</li></a>
+           <li> <a  href="mailto:someone@example.com" class="abc">Email</a></li>
+           <li> <a href="tel:+4733378901" class="abc">Phone:</a> </li>
+        </ul></li>
       <marquee direction="up" scrollamount="2" behavior="scroll" class="homeMarquee" onmouseover="this.stop()" onmouseout="this.start()" style="height: 150px;">
           <table>
               <tbody>
