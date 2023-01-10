@@ -95,14 +95,14 @@ class BalqeesController extends Controller
             'content' => ['required', 'string', 'max:500'],
         ]);
         if ($inputs->fails()) {
-            return redirect(route('add_announcement'))->with('status', 'Announcement validation error. Please check errors.')->with('theme', 'danger')->withErrors($inputs)->withInput();
+            return redirect(route('add_announcement'))->with('status', 'Please fill all fields.')->with('theme', 'danger')->withErrors($inputs)->withInput();
         }
         $inputs = $inputs->getData();
         $announcement = new announcement();
         $announcement->title = $inputs['title'];
         $announcement->content = $inputs['content'];
         if($announcement->save()) {
-            return redirect(route('add_announcement'))->with('status', 'Announcement Added Successfully.')->with('theme', 'success');
+            return redirect(route('announcements'))->with('status', 'Announcement Added Successfully.')->with('theme', 'success');
         } else {
             return redirect(route('add_announcement'))->with('status', 'Error: cannot add announcement.')->with('theme', 'danger')->withInput();
         }
@@ -114,13 +114,13 @@ class BalqeesController extends Controller
             'content' => ['required', 'string', 'max:500'],
         ]);
         if ($inputs->fails()) {
-            return redirect(route('edit_announcement', ['announcement' => $announcement]))->with('status', 'Announcement validation error. Please check errors.')->with('theme', 'danger')->withErrors($inputs)->withInput();
+            return redirect(route('edit_announcement', ['announcement' => $announcement]))->with('status', 'Please fill all fields.')->with('theme', 'danger')->withErrors($inputs)->withInput();
         }
         $inputs = $inputs->getData();
         $announcement->title = $inputs['title'];
         $announcement->content = $inputs['content'];
         if($announcement->save()) {
-            return redirect(route('edit_announcement', ['announcement' => $announcement]))->with('status', 'The Announcement is Updated Successfully.')->with('theme', 'success');
+            return redirect(route('announcements'))->with('status', 'The Announcement is Updated Successfully.')->with('theme', 'success');
         } else {
             return redirect(route('edit_announcement', ['announcement' => $announcement]))->with('status', 'Error: cannot update the announcement.')->with('theme', 'danger')->withInput();
         }
