@@ -88,7 +88,7 @@ class companyController extends Controller
         $company->Address= $request['Address'];
    
     $company->save();
-            return redirect('loginCompany');
+            return redirect('loginCompany')->with('correctReg','the account is registered successfully' );;
           
     }
 

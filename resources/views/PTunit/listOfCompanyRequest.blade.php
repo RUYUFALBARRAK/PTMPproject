@@ -21,7 +21,7 @@
     <button type="button" class="btn btn-outline-success">Accept </button>
     <button type="button" class="btn btn-outline-danger">Decline </button>
     </div>
-    <span class="fa fa-chevron-right"></span>
+    <a href="CompanyRegestration"><span class="fa fa-chevron-right"></span></a>
     </td>
   </tr>
 </table>    

@@ -3,7 +3,7 @@
 @section('content-training')
 <div class="content">
 <img src="{{asset('storage/images/'. $loginIdcompUser['logoImage'])}}" alt="Company logo" class="logoCompany">
-<h3 class="spashlist">{{$loginIdcompUser['orgnizationName']}}</h3>
+<h3 class="spashlist">{{$loginIdcompUser['orgnizationName']}} Company</h3>
 <br><br><hr>
 <form action="{{ route('Authopportunity') }}" enctype="multipart/form-data" method="POST">
   @csrf
