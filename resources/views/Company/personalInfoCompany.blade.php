@@ -11,8 +11,8 @@
     <br><br>
     
     <hr>
-    <button type="button" class="btn-save" 
-    style="width:8%; font-size:100%; margin-left: 85%; margin-top:1%; margin-bottom:-2%;">Edit</button>
+    <a href="personalInfoCompanyEdit"> <button type="button" class="btn-save" 
+    style="width:8%; font-size:100%; margin-left: 85%; margin-top:1%; margin-bottom:-2%;">Edit</button></a>
 
  <div class="parentB">
 
