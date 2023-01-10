@@ -7,14 +7,10 @@ $(document).ready(function(){
  function displaymenu(){
     if(document.getElementById("submenu-2").style.display=="block"){
         document.getElementById("submenu-2").style.display="none";
-        document.getElementById("submenu-2").classList.remove("glyphicon glyphicon-chevron-down");
-        document.getElementById("submenu-2").classList.add("glyphicon glyphicon-chevron-up");
 
 
     }else
     document.getElementById("submenu-2").style.display = "block";
-    document.getElementById("submenu-2").classList.remove("glyphicon glyphicon-chevron-up");
-    document.getElementById("submenu-2").classList.add("glyphiconglyphicon-chevron-down");
     }
 function openNav(){
     document.getElementsByTagName("nav")[0].style.display="block";
@@ -89,6 +85,16 @@ if(form) {
         fileInput.click();
     });
 }
+//hover on nav
+window.onload = () => {
+    document.querySelectorAll('nav a').forEach(link => {
+       
+  if(link.href === window.location.href){
+    link.setAttribute('class', 'active'); 
+  }
+});
+}
+// End hover on nav
 // start
 let filename = '';
         function resetInfo(show = false) {

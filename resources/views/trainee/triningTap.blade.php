@@ -3,10 +3,12 @@
 @section('content-training')
 <div class="content">
   <h3>Hi {{$loginIdUser['name']}}</h3><hr> 
+ 
   @if($loginIdUser['opportunity_id']!=null)
     <img src="img/SDAIA.png" alt="Company logo" width="15%" hight="15%">
     <h3 class="spashlist">{{$loginIdUser['oppourtunity']['jobTitle']}}</h3> <h4 class="date">{{$loginIdUser['oppourtunity']['Start_at']}} - {{$loginIdUser['oppourtunity']['end_at']}}</h4> <h4 class="opportunityState">. CONFIRMED</h4>
     <br><br><br><hr>
+    
     <h3>Progress report</h3><div style="color: #808080" >upload your files down below </div><br>
      @if(Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>

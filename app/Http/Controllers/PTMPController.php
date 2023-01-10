@@ -11,6 +11,7 @@ use App\Models\company;
 use App\Models\document;
 use App\Models\Sendsdocument;
 use App\Models\committee;
+use App\Models\unit;
 use App\Models\oppourtunity;
 use \App\Enum\fileNameEnum;
 use Validator;
@@ -36,13 +37,34 @@ class PTMPController extends Controller
                         ->with('message', 'Signed in!');
         }*/
         $user= trainee::where('trainee_id','=',$request->id)->first();
-        if($user){
-            if($request->password == $user->password){
+        $committee=committee::where('committee_id','=',$request->id)->first();
+        $unit=unit::where('unit_id','=',$request->id)->first();
+        
+
+        if($user||$committee||$unit){
+                if($user){
+                    if(($request->password == $user->password)){
                     $request->session()->put('loginId',$user->trainee_id);
-                    return redirect('traineeMainPage');
-            } else{
-                return back()->with('fail','id or password worng');
-            }
+                    return redirect('traineeMainPage');}
+                    else{
+                        return back()->with('fail','id or password worng');
+                    }
+                }else if($committee){
+                    if(($request->password == $committee->password)){
+                    $request->session()->put('loginId',$committee->committee_id);
+                    return redirect('listOfStudents');}
+                    else{
+                        return back()->with('fail','id or password worng');
+                    }
+                }else if ($unit){
+                    if(($request->password == $unit->password)){
+                    $request->session()->put('loginId',$unit->unit_id);
+                    return redirect('listOfStudentsPTunit');}
+                    else{
+                        return back()->with('fail','id or password worng');
+                    }
+                } 
+             
         }else{
             return back()->with('fail','did not find the id');
         }
@@ -57,7 +79,7 @@ function ViewMainpage(){
     'file'=> trainee::with('Sendsdocument')->get()->first()
 ];}
     
-    return trainee::with('Sendsdocument')->get()->first();
+    return view('trainee/triningTap',$data);
 }
 
 

@@ -13,6 +13,9 @@
   @if(Session::has('fail'))
   <div class="alert alert-danger">{{Session::get('fail')}}</div>
   @endif
+    @if(Session::has('correctReg'))
+  <div class="alert alert-success">{{Session::get('correctReg')}}</div>
+  @endif
 <form class="row g-3 needs-validation" method="POST" action=" {{ route('Authlogincompany')}}" novalidate>
 @csrf
   <div class="textField">

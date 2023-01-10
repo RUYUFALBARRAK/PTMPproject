@@ -24,34 +24,53 @@
 
 
     
-    <button class="btn btn-primary" type="button"
+   <a href="addOppourtunityForCompany"> <button class="btn btn-primary"  type="button"
     style=" margin-left:75%; margin-top:-6%; font-size:140%;
-    background-color: #388087;">Add training opportunity</button>
+    background-color: #388087;">Add training opportunity</button></a>
   
 
 
 
     <br><br>
 
-    <div>
-    <img src="img/SDAIA.png" alt="Company logo" width="15%" hight="15%">
-    <h3 class="spashlist">Software Engineer</h3> <h4 class="date">Jan. 16, 2022 - Aug. 11/2022 </h4> <h4 class="opportunityStateB">Accepted</h4>
-    </div>
-    <div>
-            <span class="glyphicon glyphicon-triangle-right" style="margin-left: 95%; margin-top: 0%;" ></span>
-        </div>
+    <table class="table-Bushra">
+      <tr class="tr-Bushra">
+          <td class="fisrt-col-Bushra">
+              <img src="img/SDAIA.png" alt="Company logo" width="180%" hight="180%">
+              <br><br>
+          </td>
+
+          <td class="second-col-Bushra">
+              <h5>Software Engineer</h5>
+              <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
+          </td>
+
+        <td>
+          <h4 class="opportunityStateB2">Accepted</h4>
+        </td>
+      
+      </tr> 
     
-    <br><hr>
 
-    <div>
-    <img src="img/ministryOfComm.png" alt="Company logo" width="17%" hight="22%" style="margin-top:2%" >
-    <h3 class="spashlist">Product Manager</h3> <h4 class="date">Jan. 16, 2022 - Aug. 11/2022 </h4> <h4 class="opportunityStateB" >Needs Modification</h4>
+      <tr class="tr-Bushra">
 
-        <div>
-            <span class="glyphicon glyphicon-triangle-right" style="margin-left: 95%; margin-top: 0%;" ></span>
-        </div>
-    </div>
-    <br><hr>
+          <td class="fisrt-col-Bushra">
+            <img src="img/ministryOfComm.png" alt="Company logo" width="220%" hight="220%">
+            <br><br>
+          </td>
+
+          <td class="second-col-Bushra">
+          <h5>Product Manager</h5>
+          <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
+          </td>
+
+        <td>
+          <h4 class="opportunityStateB2">Needs Modification</h4>
+        </td>
+
+      </tr>
+
+  </table>
     
    
 </div>
