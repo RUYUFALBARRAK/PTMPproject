@@ -26,7 +26,7 @@
     <td><img src="img/SDAIA.png" alt="Company logo"  class= "logoCompany"> </td>
     <td>
     <button type="button"  class="btn btn-outline-danger delet-btn">Delete</button>
-    <span class="	fa fa-chevron-right"></span>
+    <a href="Company"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
 </table>    

@@ -24,9 +24,9 @@
 
 
     
-    <button class="btn btn-primary" type="button"
+   <a href="addOppourtunityForCompany"> <button class="btn btn-primary"  type="button"
     style=" margin-left:75%; margin-top:-6%; font-size:140%;
-    background-color: #388087;">Add training opportunity</button>
+    background-color: #388087;">Add training opportunity</button></a>
   
 
 
