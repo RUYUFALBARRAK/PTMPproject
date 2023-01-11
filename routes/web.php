@@ -116,6 +116,9 @@ Route::get('/opportunityPageTrainee', function () {
 Route::get('/opportunityDetailsPageT', function () {
     return view('trainee/opportunityDetailsPageT');
 });
+Route::get('/opportunityDetailsApply', function () {
+    return view('trainee/opportunityDetailsApply');
+});
 Route::get('/opportunityPageCommittee', function () {
     return view('PTcommittee/opportunityPageCommittee');
 });
