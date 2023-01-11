@@ -31,7 +31,7 @@ Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
 });
 
-Route::group(['middleware'=>'isloggedin'],function(){
+Route::group(['middleware'=>'isloggedin'], function(){
 
     Route::get('/instruction', [RazanController::class,'inst']);
     Route::get('/viewReview', [RazanController::class,'viewReview']);
@@ -76,11 +76,12 @@ Route::get('/TrainingDocument', function () {
 })->name('training_doc');
 
 
-Route::get('/Announcements', function () {
+// Announcements committee
+Route::get('/AnnouncementsCommittee', function () {
     return view('PTcommittee/Announcements', ['announcements' => \App\Models\announcement::all()]);
 })->name('announcements');
 
-Route::post('/Announcements/delete', [\App\Http\Controllers\BalqeesController::class, 'deleteAnnouncement'])->name('delete_announcement');
+Route::post('/AnnouncementsCommittee/delete', [\App\Http\Controllers\BalqeesController::class, 'deleteAnnouncement'])->name('delete_announcement');
 
 // Edit announcement
 Route::get('/EditAnnouncements{announcement}', function(\App\Models\announcement $announcement){
@@ -93,6 +94,11 @@ Route::get('/addAnnouncement', function () {
     return view('PTcommittee/addAnnouncement', ['action' => 'add']);
 })->name('add_announcement');
 Route::post('/addAnnouncement', [\App\Http\Controllers\BalqeesController::class, 'addAnnouncement'])->name('do_add_announcement');
+
+// Announcements trainee
+Route::get('/AnnouncementsTrainee', function () {
+    return view('trainee.Announcements', ['announcements' => \App\Models\announcement::all()]);
+})->name('announcements_trainee');
 
 
 Route::get('/opportunityPageCompany', function () {
