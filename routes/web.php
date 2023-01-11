@@ -31,7 +31,7 @@ Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
 });
 
-Route::group(['middleware'=>'isloggedin'], function(){
+//Route::group(['middleware'=>'isloggedin'], function(){
 
     Route::get('/instruction', [RazanController::class,'inst']);
     Route::get('/viewReview', [RazanController::class,'viewReview']);
@@ -149,7 +149,7 @@ Route::get('/listOfStudentsReqLetter', function () {
 Route::get('/listOfStudentsPTunit', function () {
     return view('PTunit/listOfStudentsPTunit');
 });
-});
+//});
 
 
 
