@@ -112,13 +112,14 @@ Route::get('/opportunityPageCompany', function () {
 Route::get('/personalInfoCompanyEdit/{id}', function ($id) {
     $company = App\Models\company::findOrFail($id);
     return view('Company/personalInfoCompanyEdit' , compact('company'));
-});
+})->name('company.edit');
 
 Route::post('/personalInfoCompanyUpdate/{id}', [companyController::class , 'updateCompany'])->name('company.update');
 
-Route::get('/personalInfoCompany', function () {
-    return view('Company/personalInfoCompany');
-});
+Route::get('/personalInfoCompany/{id}', function ($id) {
+    $company = App\Models\company::findOrFail($id);
+    return view('Company/personalInfoCompany' , compact('company'));
+})->name('company.show');
 
 Route::get('/opportunityPageTrainee', function () {
     return view('trainee/opportunityPageTrainee');

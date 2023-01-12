@@ -16,9 +16,9 @@
           <div class="childB" style=" margin-left:6%;">
           <p>
             <label> <b>Registration number:</b> </label>
-            <input type="text" class="form-control" id="comRegNum" name="id" value="{{ $company->id }}">
-            @if ($errors->has('id'))
-            <span class="text-danger">{{ $errors->first('id') }}</span>
+            <input type="text" class="form-control" id="comRegNum" name="Registration" value="{{ $company->id }}">
+            @if ($errors->has('Registration'))
+            <span class="text-danger">{{ $errors->first('Registration') }}</span>
             @endif
           </p>
       
@@ -95,9 +95,9 @@
       
           <p>
             <label class="d-block"> <b> City:</b> </label>
-            <input type="text" class="form-control" id="comCity" name="city" value="{{ $company->Address }}">
-            @if ($errors->has('city'))
-            <span class="text-danger">{{ $errors->first('city') }}</span>
+            <input type="text" class="form-control" id="comCity" name="Address" value="{{ $company->Address }}">
+            @if ($errors->has('Address'))
+            <span class="text-danger">{{ $errors->first('Address') }}</span>
             @endif
           </p>
       

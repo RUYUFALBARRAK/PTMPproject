@@ -193,13 +193,13 @@ class companyController extends Controller
 
         Validator::make($request->all() , [
 
-            'id' => ['required' , Rule::unique('company')->ignore($company)],
+            'Registration' => 'required',
             'website' => 'required|url',
             'orgnizationEmail' => ['required' , 'email' , Rule::unique('company')->ignore($company)],
             'OrganizationPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
             'description' => 'required',
             'SupervisorName' => 'required',
-            'city' => 'required',
+            'Address' => 'required',
             'SupervisorPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
 
         ])->validate();
@@ -207,10 +207,10 @@ class companyController extends Controller
 
         $company->update($request->all());
 
-        Alert::success('Congrats', 'Company Information Updated Successfully');
+        Alert::success('', 'Company Information Updated Successfully');
 
 
-        return redirect()->back();
+        return redirect()->route('company.show' , $company->id);
 
 
         //$company = Company::findOrfail($id);
