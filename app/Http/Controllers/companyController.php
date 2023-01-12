@@ -181,4 +181,31 @@ class companyController extends Controller
         $data=['loginIdcompUser'=> company::where('id','=',session('logincompId'))->first()];}
         return view('Company/addOpportunity',$data);
     }
+
+
+
+    public function updateCompany(Request $request){
+
+        Validator::make($request->all() , [
+            'orgnizationName' => 'required',
+            'website' => 'required|url',
+            'orgnizationEmail' => 'required|email|unique:company',
+            'OrganizationPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
+            'Registration' => 'required',
+            'description' => 'required',
+            'SupervisorName' => 'required',
+            'city' => 'required',
+            'country' => 'required',
+            'SupervisorPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'SupervisorEmail' => 'required',
+            'SupervisorEmailConfirm' => 'required|email',
+            'password' => 'required|confirmed|min:6',
+            'SupervisorFax' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
+            'Address' => 'required',
+            'password_confirmation' => 'required|min:6',
+            'logoImage'=> 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ])->validate();
+
+
+    }
 }

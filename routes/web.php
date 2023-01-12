@@ -104,12 +104,22 @@ Route::get('/AnnouncementsTrainee', function () {
 Route::get('/opportunityPageCompany', function () {
     return view('Company/opportunityPageCompany');
 });
-Route::get('/personalInfoCompanyEdit', function () {
-    return view('Company/personalInfoCompanyEdit');
+
+// Route::get('/personalInfoCompanyEdit', function () {
+//     return view('Company/personalInfoCompanyEdit');
+// });
+
+Route::get('/personalInfoCompanyEdit/{id}', function ($id) {
+    $company = App\Models\company::findOrFail($id);
+    return view('Company/personalInfoCompanyEdit' , compact('company'));
 });
+
+Route::get('/personalInfoCompanyUpdate/{id}', [companyController::class , 'updateCompany'])->name('company.update');
+
 Route::get('/personalInfoCompany', function () {
     return view('Company/personalInfoCompany');
 });
+
 Route::get('/opportunityPageTrainee', function () {
     return view('trainee/opportunityPageTrainee');
 });
