@@ -6,6 +6,8 @@ use App\Http\Controllers\RazanController;
 use App\Models\Review;
 use App\Http\Controllers\companyController;
 use App\Http\Controllers\khawlahController;
+use App\Models\oppourtunity;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,8 +103,9 @@ Route::get('/AnnouncementsTrainee', function () {
 })->name('announcements_trainee');
 
 
-Route::get('/opportunityPageCompany', function () {
-    return view('Company/opportunityPageCompany');
+Route::get('/opportunityPageCompany/{id}', function ($id) {
+    $opportunities = oppourtunity::where('company_id' , $id)->get();
+    return view('Company/opportunityPageCompany' , compact('opportunities'));
 });
 
 // Route::get('/personalInfoCompanyEdit', function () {

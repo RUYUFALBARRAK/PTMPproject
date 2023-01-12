@@ -33,28 +33,38 @@
 
     <br><br>
 
-    <table class="table-Bushra">
-      <tr class="tr-Bushra">
+    @if(count($opportunities) > 0)
+      <table class="table-Bushra">
+        @foreach ($opportunities as $opportunity)
+        <tr class="tr-Bushra">
           <td class="fisrt-col-Bushra">
-              <img src="img/SDAIA.png" alt="Company logo" width="180%" hight="180%">
+              <img src="{{ asset('img/SDAIA.png') }}" alt="Company logo" width="180%" hight="180%">
               <br><br>
           </td>
 
           <td class="second-col-Bushra">
-              <h5>jobTitle</h5>
-              <h5> Start_at - end_at </h5>
+              <h5>{{ $opportunity->jobTitle }}</h5>
+              <p class="opportunityStateB2 text-secondary"> {{ $opportunity->Start_at }}  -  {{ $opportunity->end_at }}  </p>
           </td>
 
         <td>
-          <h4 class="opportunityStateB2">Accepted</h4>
+          @if($opportunity->status == 'Pending')
+            <h5 class="opportunityStateB2 text-warning">{{ $opportunity->status }}</h5>
+          @elseif ($opportunity->status == 'accept')
+            <h5 class="opportunityStateB2 text-success">{{ $opportunity->status }}</h5>
+          @elseif ($opportunity->status == 'need modification')
+          <h5 class="opportunityStateB2 text-blue">{{ $opportunity->status }}</h5>
+          @elseif ($opportunity->status == 'reject')
+          <h5 class="opportunityStateB2 text-danger">{{ $opportunity->status }}</h5>
+          @endif
         </td>
       
       </tr> 
-    
-
-      
-
-  </table>
+        @endforeach
+    </table>
+  @else
+    <div class="alert-info">Company has no opportunities</div>
+  @endif
     
    
 </div>
