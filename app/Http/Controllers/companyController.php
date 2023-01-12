@@ -15,6 +15,7 @@ use DB;
 use File;
 use Response;
 use Illuminate\Validation\Rule;
+use Alert;
 
 
 class companyController extends Controller
@@ -205,6 +206,8 @@ class companyController extends Controller
 
 
         $company->update($request->all());
+
+        Alert::success('Congrats', 'Company Information Updated Successfully');
 
 
         return redirect()->back();

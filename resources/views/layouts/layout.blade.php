@@ -34,6 +34,7 @@
     </head>
 
     <body class="antialiased">
+        @include('sweetalert::alert')
 
 
     <!-- Confirmation modal-->
@@ -159,6 +160,7 @@
          <a href="/logout"> <span class="fa fa-sign-out"> Log out</span>  </a>
     @endif
     @yield('content')
+
     </body>
 
     <script>
