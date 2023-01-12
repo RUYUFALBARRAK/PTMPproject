@@ -27,8 +27,13 @@ class oppourtunity extends Model
         'PtPlan',
         'company_id'
     ];
-         public function trainee()
+
+    public function trainee()
     {
         return $this->hasMany('App\Models\trainee');
+    }
+
+    public function company(){
+        return $this->belongsTo('App\Models\company');
     }
 }

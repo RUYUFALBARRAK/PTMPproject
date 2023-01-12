@@ -136,8 +136,10 @@ Route::get('/opportunityDetailsApply', function () {
 Route::get('/opportunityPageCommittee', function () {
     return view('PTcommittee/opportunityPageCommittee');
 });
-Route::get('/opportunityDetailsPage', function () {
-    return view('PTcommittee/opportunityDetailsPage');
+Route::get('/opportunityDetailsPage/{id}', function ($id) {
+    $opportunity = oppourtunity::findOrFail($id);
+
+    return view('PTcommittee/opportunityDetailsPage' , compact('opportunity'));
 });
 Route::get('/opportunityRequestCommittee', function () {
     return view('PTcommittee/opportunityRequestCommittee');
