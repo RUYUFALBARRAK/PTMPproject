@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BushraController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PTMPController;
 use App\Http\Controllers\RazanController;
@@ -117,7 +118,7 @@ Route::get('/personalInfoCompanyEdit/{id}', function ($id) {
     return view('Company/personalInfoCompanyEdit' , compact('company'));
 })->name('company.edit');
 
-Route::post('/personalInfoCompanyUpdate/{id}', [companyController::class , 'updateCompany'])->name('company.update');
+Route::post('/personalInfoCompanyUpdate/{id}', [BushraController::class , 'updateCompany'])->name('company.update');
 
 Route::get('/personalInfoCompany/{id}', function ($id) {
     $company = App\Models\company::findOrFail($id);
@@ -136,11 +137,16 @@ Route::get('/opportunityDetailsApply', function () {
 Route::get('/opportunityPageCommittee', function () {
     return view('PTcommittee/opportunityPageCommittee');
 });
+
 Route::get('/opportunityDetailsPage/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
 
     return view('PTcommittee/opportunityDetailsPage' , compact('opportunity'));
 });
+ 
+Route::post('/opportunityUpdateStatus/{id}' , [BushraController::class , 'updateOpportunityStatus'])->name('opportunity.update_status');
+
+
 Route::get('/opportunityRequestCommittee', function () {
     return view('PTcommittee/opportunityRequestCommittee');
 });

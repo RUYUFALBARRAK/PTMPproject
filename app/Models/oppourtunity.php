@@ -25,7 +25,9 @@ class oppourtunity extends Model
         'address',
         'AppDeadline',
         'PtPlan',
-        'company_id'
+        'company_id',
+        'status',
+        'note'
     ];
 
     public function trainee()

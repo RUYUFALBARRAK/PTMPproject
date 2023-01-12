@@ -52,7 +52,7 @@
             <h5 class="opportunityStateB2 text-warning">{{ $opportunity->status }}</h5>
           @elseif ($opportunity->status == 'accept')
             <h5 class="opportunityStateB2 text-success">{{ $opportunity->status }}</h5>
-          @elseif ($opportunity->status == 'need modification')
+          @elseif ($opportunity->status == 'need_modification')
           <h5 class="opportunityStateB2 text-blue">{{ $opportunity->status }}</h5>
           @elseif ($opportunity->status == 'reject')
           <h5 class="opportunityStateB2 text-danger">{{ $opportunity->status }}</h5>

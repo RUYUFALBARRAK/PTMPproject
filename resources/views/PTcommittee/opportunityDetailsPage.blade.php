@@ -85,30 +85,36 @@
 
     <br><br>
 
-    <div class="input-group" style="margin-bottom:3%;">
-        <button type="button" class="btn-status" style="background-color:green; border:green; border-radius: 7px;">Accept</button>&nbsp;&nbsp;
-        <button type="button" class="btn-status" style="background-color:red; border:red; border-radius: 7px;">Decline</button>&nbsp;&nbsp;
-    </div>
+    <form action="{{ route('opportunity.update_status',$opportunity->id) }}" method="POST">
+        @csrf
+        <div class="input-group" style="margin-bottom:3%;">
+            <button type="submit" name="status" value="accept" class="btn-status" style="background-color:green; border:green; border-radius: 7px;">Accept</button>&nbsp;&nbsp;
+            <button type="submit" name="status" value="reject" class="btn-status" style="background-color:red; border:red; border-radius: 7px;">Decline</button>&nbsp;&nbsp;
+        </div>
+
+        <h6 class="text-secondary">This opportunity need modification ?</h6>
+        <hr style="color: rgb(212, 212, 212)">
+        
+        <div style="margin-bottom:0.5%;">
+            <input type="text" class="form-control" name="note" style="width:50%" placeholder="hours not accepted (need more hours)" >
+            
+            @if ($errors->has('note'))
+                <label for="validationTooltip01" class="oppT-form-label" style="color: red; font-size:12px">{{ $errors->first('note') }}</label>
+            @endif
+    
+        </div>
+
+        <div>
+            <button type="submit" name="status" value="need_modification" class="btn btn-warning text-white float-left">Require Modification</button>
+        </div>
+
+    </form>
 
     <br> <br>
-    <h6 class="text-secondary">This opportunity need modification ?</h6>
-    <hr style="color: rgb(212, 212, 212)">
 
     {{-- <button type="button" class="btn-status" style="background-color:#dadd28; border:#dadd28; border-radius: 7px; width: 18%;">Need modification</button> --}}
 
-
-    <div style="margin-bottom:0.5%;">
-    <input type="text" class="form-control" style="width:50%" placeholder="hours not accepted (need more hours)" >
-    </div>
-
-
-    {{-- <div style="margin-bottom:2%;">
-    <label for="validationTooltip01" class="oppT-form-label" style="color: red; font-size:12px">Fill the empty field</label>
-    </div> --}}
-
-
-    <div>
-        <button type="button" class="btn btn-warning text-white float-left">Require Modification</button>
+    <div style="margin-bottom:2%;">
     </div>
 
 </div>

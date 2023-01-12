@@ -29,7 +29,8 @@ return new class extends Migration
             $table->string('address');
             $table->date('AppDeadline');
             $table->string('PtPlan');
-            $table->enum('status', ['accept', 'reject', 'Pending'])->default('Pending');
+            $table->enum('status', ['accept', 'reject', 'pending' , 'need_modification'])->default('pending');
+            $table->text('note')->nullable();
             $table->unsignedInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('company')->onDelete('cascade');
             $table->timestamps();
