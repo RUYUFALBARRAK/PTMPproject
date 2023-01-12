@@ -114,7 +114,7 @@ Route::get('/personalInfoCompanyEdit/{id}', function ($id) {
     return view('Company/personalInfoCompanyEdit' , compact('company'));
 });
 
-Route::get('/personalInfoCompanyUpdate/{id}', [companyController::class , 'updateCompany'])->name('company.update');
+Route::post('/personalInfoCompanyUpdate/{id}', [companyController::class , 'updateCompany'])->name('company.update');
 
 Route::get('/personalInfoCompany', function () {
     return view('Company/personalInfoCompany');

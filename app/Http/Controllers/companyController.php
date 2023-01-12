@@ -14,6 +14,8 @@ use Validator;
 use DB;
 use File;
 use Response;
+use Illuminate\Validation\Rule;
+
 
 class companyController extends Controller
 {
@@ -184,27 +186,31 @@ class companyController extends Controller
 
 
 
-    public function updateCompany(Request $request){
+    public function updateCompany(Request $request, $id){
+
+        $company = Company::findOrFail($id);
 
         Validator::make($request->all() , [
-            'orgnizationName' => 'required',
+
+            'id' => ['required' , Rule::unique('company')->ignore($company)],
             'website' => 'required|url',
-            'orgnizationEmail' => 'required|email|unique:company',
+            'orgnizationEmail' => ['required' , 'email' , Rule::unique('company')->ignore($company)],
             'OrganizationPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
-            'Registration' => 'required',
             'description' => 'required',
             'SupervisorName' => 'required',
             'city' => 'required',
-            'country' => 'required',
             'SupervisorPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'SupervisorEmail' => 'required',
-            'SupervisorEmailConfirm' => 'required|email',
-            'password' => 'required|confirmed|min:6',
-            'SupervisorFax' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
-            'Address' => 'required',
-            'password_confirmation' => 'required|min:6',
-            'logoImage'=> 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
+
         ])->validate();
+
+
+        $company->update($request->all());
+
+
+        return redirect()->back();
+
+
+        //$company = Company::findOrfail($id);
 
 
     }

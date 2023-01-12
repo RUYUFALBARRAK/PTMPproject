@@ -11,75 +11,95 @@
     <hr>
 
     <div class="parentB">
-      {{-- <form action="{{ route('company.update', $company->id) }}" method="POST"> --}}
+      <form action="{{ route('company.update', $company->id) }}" method="POST">
+        @csrf
           <div class="childB" style=" margin-left:6%;">
-      
-            <p>
+          <p>
             <label> <b>Registration number:</b> </label>
-            <input type="text" class="form-control" id="comRegNum" name="comRegNum" value="{{ $company->id }}">
-            @if ($errors->has('website'))
-            <span class="text-danger">{{ $errors->first('website') }}</span>
+            <input type="text" class="form-control" id="comRegNum" name="id" value="{{ $company->id }}">
+            @if ($errors->has('id'))
+            <span class="text-danger">{{ $errors->first('id') }}</span>
             @endif
-            </p>
+          </p>
       
             <br><br>
       
       
-            <p>
+          <p>
             <label><b> Employee full name:</b> </label>
-            <input type="text" class="form-control" id="comEmpName" name="comEmpName" value="{{ $company->SupervisorName }}">
-            </p>
+            <input type="text" class="form-control" id="comEmpName" name="SupervisorName" value="{{ $company->SupervisorName }}">
+            @if ($errors->has('SupervisorName'))
+            <span class="text-danger">{{ $errors->first('SupervisorName') }}</span>
+            @endif
+          </p>
       
             <br><br>
       
-      
-            <p>
+          <p>
             <label class="d-block"><b> Email:</b></label>
-            <input type="email" class="form-control" id="comEmail" name="comEmail" value="{{ $company->orgnizationEmail }}">
-            </p>
+            <input type="email" class="form-control" id="comEmail" name="orgnizationEmail" value="{{ $company->orgnizationEmail }}">
+            @if ($errors->has('orgnizationEmail'))
+            <span class="text-danger">{{ $errors->first('orgnizationEmail') }}</span>
+            @endif
+          </p>
           
           
             <br><br>
       
-            <p>
+          <p>
             <label> <b> brief description about the company:</b> </label>
-            <textarea type="text" class="form-control" id="comDes" name="comDes" placeholder="description" rows="5" cols="35">
+            <textarea type="text" class="form-control" id="comDes" name="description" placeholder="description" rows="5" cols="35">
               {{ $company->description }}
             </textarea>
-            </p>
+            @if ($errors->has('description'))
+            <span class="text-danger">{{ $errors->first('description') }}</span>
+            @endif
+          </p>
       
       
           </div>
           <div class="childB">
       
-            <p>
+          <p>
             <label> <b> Office phone number:</b> </label>
-            <input type="text" class="form-control" id="comOfficeNum" name="comOfficeNum" value="{{ $company->OrganizationPhone }}">
-            </p>
+            <input type="text" class="form-control" id="comOfficeNum" name="OrganizationPhone" value="{{ $company->OrganizationPhone }}">
+            @if ($errors->has('OrganizationPhone'))
+            <span class="text-danger">{{ $errors->first('OrganizationPhone') }}</span>
+            @endif
+          </p>
       
             <br><br>
       
       
             <p>
               <label> <b> Employee mobile number: </b> </label>
-              <input type="text" class="form-control" id="comMobileNum" name="comMobileNum" value="{{ $company->SupervisorPhone }}">
+              <input type="text" class="form-control" id="comMobileNum" name="SupervisorPhone" value="{{ $company->SupervisorPhone }}">
+              @if ($errors->has('SupervisorPhone'))
+              <span class="text-danger">{{ $errors->first('SupervisorPhone') }}</span>
+              @endif
             </p>
       
             <br><br>
       
       
-            <p>
+          <p>
             <label class="d-block"> <b> Website:</b> </label> 
-            <input type="text" class="form-control" id="comWebsite" name="comWebsite" value="{{ $company->website }}">
-            </p>
+            <input type="text" class="form-control" id="comWebsite" name="website" value="{{ $company->website }}">
+            @if ($errors->has('website'))
+            <span class="text-danger">{{ $errors->first('website') }}</span>
+            @endif
+          </p>
       
           
             <br><br>
       
-            <p>
+          <p>
             <label class="d-block"> <b> City:</b> </label>
-            <input type="text" class="form-control" id="comCity" name="comCity" value="{{ $company->Address }}">
-            </p>
+            <input type="text" class="form-control" id="comCity" name="city" value="{{ $company->Address }}">
+            @if ($errors->has('city'))
+            <span class="text-danger">{{ $errors->first('city') }}</span>
+            @endif
+          </p>
       
       
       
@@ -87,7 +107,7 @@
       
         <button type="submit" class="btn-save"  style="width:15%; margin-left: 78%; margin-top:5%">Save</button>
       
-      {{-- </form> --}}
+      </form>
     </div>
 
 </div>
