@@ -34,9 +34,7 @@ class RazanController extends Controller
 
         $companyInfo = company::where( 'id' , '3')->first(); /* NEED to change id */
 
-        $reviews = review::join('company', 'company.id', '=', '_review.company_id')->where('company_id', '3')->orderBy('Create_at' , 'desc')->get();
-
-         $reviews = review::join('users', 'users.trainee_id', '=', '_review.trainee_id')->where('company_id', '3')->orderBy('Create_at' , 'desc')->get(); /* CHANGE AFTER ADDING FOREIGN KEY */
+         $reviews = review::join('users', 'users.trainee_id', '=', '_review.trainee_id')->where('company_id', '3')->orderBy('Create_at' , 'desc')->get(); /* NEED to change id */
 
         return view('trainee/reviews',[
             'reviews' => $reviews ,
@@ -46,7 +44,7 @@ class RazanController extends Controller
 
     public function viewReview(){
 
-        $review = review::join('users', 'users.trainee_id', '=', '_review.trainee_id')->where('_review.trainee_id', '3')->first();
+        $review = review::join('users', 'users.trainee_id', '=', '_review.trainee_id')->where('_review.trainee_id', '=', session('loginId'))->first();
 
         return view('trainee/viewReview',[
             'review' => $review
@@ -54,13 +52,20 @@ class RazanController extends Controller
     }
 
     public function addReview(){
-        return view('trainee/addReview');
+
+        $id = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', session('loginId'))->value('opportunity.company_id');
+        $comapnyInfo = company::where('id', $id)->first();
+
+
+        return view('trainee/addReview',[
+            'comapnyInfo' => $comapnyInfo
+        ]);
     }
 
     public function add(Request $req){
 
         $req->validate([
-            'review'=>'required'
+            'review'=>'required | max:300'
         ]);
 
         $review = new review();
@@ -68,18 +73,21 @@ class RazanController extends Controller
         $review -> star_rating = request('product_rating');
         $review -> review = request('review');
         $review -> Create_at = Carbon::now()->toDateTimeString();
-        $review -> trainee_id = 3;
-        $review -> company_id = 3;
+
+        $review -> trainee_id = session('loginId');
+
+        $id = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', session('loginId'))->value('opportunity.company_id');
+        $review -> company_id = $id;
 
         $review->save();
 
-       return redirect('/traineeMainPage')->with('msg','review was submitted successfully');
+       return redirect('/traineeMainPage'); /* ->with('msg','review was submitted successfully') */
     }
 
-    public function destroy($id){
-        $review = review::FindorFail($id);
-        $pizza->delete();
-        return redirect('/traineeMainPage')->with('msg','review was deleted successfully');    }
+    public function destroy(){
 
-
+        $review = review::where('trainee_id', '=', session('loginId'))->first();
+        $review->delete();
+        return redirect('/traineeMainPage');
+    }
 }

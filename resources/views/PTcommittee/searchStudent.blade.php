@@ -1,4 +1,4 @@
-@extends('company.mainPage')
+@extends('PTcommittee.mainPage')
 
 @section('content-training')
 <div class="content">
@@ -8,16 +8,19 @@
   <button type="submit" class="btn btn-outline-dark">Search</button>
 </div>
 </form>
+<form method="GET" action="">
 
 <div class="form-group col-md-2 state-menu">
-      <select id="inputState" class="form-select ">
+      <select name="status"id="inputState" class="form-select ">
         <option selected>Status..</option>
         <option>Available</option>
         <option>Ongoing</option>
         <option>Completed</option>
       </select>
+
     </div>
 
+</form>
 @if( count($studentResult) == 0)  <!-- in case for no review -->
 <br> <br><br>
 <hr style="margin-top: -20px; margin-bottom: 35px;">
@@ -41,7 +44,7 @@
     <td   style="padding-right:8%;">{{$student->status}}</td>
     <td>
     
-    <span class="glyphicon glyphicon-triangle-right"></span>
+    <a href="traineeDetails" style="color:grey;"> <span  style="padding-left:50%;"class="	fa fa-chevron-right"> </span> </a>  </td>
     </td>
   </tr>
 @endforeach
