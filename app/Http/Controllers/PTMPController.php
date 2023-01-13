@@ -75,10 +75,14 @@ class PTMPController extends Controller
 
 function ViewMainpage(){
     if(Session::has('loginId')){
-    $data=['loginIdUser'=>  trainee::with('oppourtunity')->get()->first(),
-    'file'=> trainee::with('Sendsdocument')->get()->first()
+    $data=['loginIdUser'=>  trainee::where('trainee_id','=',session('loginId'))->first(),// trainee::with('oppourtunity')->get()->first(),
+   // 'file'=> trainee::with('Sendsdocument')->get()->first()
+   'file'=>  Sendsdocument::whereHas('trainee',function($q){
+    $q->where('trainee_id', '=', session('loginId'));
+})->get()->toArray(),
 ];}
-    
+
+   //$data['file'][1]['doc_name'];
     return view('trainee/triningTap',$data);
 }
 

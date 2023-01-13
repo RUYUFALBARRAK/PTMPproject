@@ -2,6 +2,15 @@
 
 @section('content-training')
 <div class="content">
+@if(Session::has('msgcompanyDelete'))
+  <div class="alert alert-success">{{Session::get('msgcompanyDelete')}}</div>
+@endif
+  @if(count($company) == 0)
+      <div class="not-found">
+      <img src="img/paper.png" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
+      <p>No Company Found</p>
+    </div>
+  @else
 <div style="width:50%" class="input-group">
   <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
   <button type="button" class="btn btn-outline-dark">search</button>
@@ -13,7 +22,7 @@
         <option>need modification</option>
         <option>rejected</option>
       </select>
-    </div>
+  </div>
 <hr>
 <table class="list-of-company">
     <tr>
@@ -21,15 +30,18 @@
         <th>logo</th>
         <th style="text-align: right; padding-right:8%;">Delete</th>
      </tr>
+  @foreach($company as $company)
   <tr class="company1">
-    <td>Advanced Electronics</td>
-    <td><img src="img/SDAIA.png" alt="Company logo"  class= "logoCompany"> </td>
+    <td>{{$company->orgnizationName}}</td>
+    <td><img src="{{asset('storage/images/'. $company->logoImage)}}" alt="Company logo"  class= "logoCompany"> </td>
     <td>
-    <button type="button"  class="btn btn-outline-danger delet-btn">Delete</button>
-    <a href="Company"><span class="	fa fa-chevron-right"></span></a>
+    <a href="{{ route('deleteCompanyPTunit',[$company->id]) }}"> <button type="button"  class="btn btn-outline-danger delet-btn">Delete</button></a>
+    <a href="{{ route('CompanyDetails',[$company->id]) }}"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
-</table>    
+  @endforeach
+</table>
+ @endif   
 </div>
 
 @endsection

@@ -56,18 +56,13 @@ Route::get('/logout', [PTMPController::class,'logout']);
 Route::get('/CVPage', function () {
     return view('trainee/CV-Tap');
 });
-Route::get('/listOfCompany', function () {
-    return view('PTunit/listOfCompany');
-});
-Route::get('/Company', function () {
-    return view('PTunit/companyDetails');
-});
-Route::get('/CompanyRegestration', function () {
-    return view('PTunit/regestrationRequest');
-});
-Route::get('/listOfCompanyRequest', function () {
-    return view('PTunit/listOfCompanyRequest');
-});
+Route::get('/listOfCompany',[companyController::class,'listOfcompany']);
+Route::get('/company-delete.{id}',[companyController::class,'deleteCompany'])->name('deleteCompanyPTunit');
+Route::get('/Company.{id}',[companyController::class,'CompanyDetails'])->name('CompanyDetails');
+Route::get('/CompanyRegestration.{id}', [companyController::class,'CompanyRegestrationDetails'])->name('regestrationRequest');
+Route::get('/company-accept.{id}', [companyController::class,'AcceptCompany'])->name('accept');
+Route::get('/company-reject.{id}', [companyController::class,'rejectCompany'])->name('reject');
+Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequest']);
 //stoped here
 Route::post('/TrainingDocument', [\App\Http\Controllers\BalqeesController::class, 'uploadDoc'])->name('upload_doc');
 Route::post('/TrainingDocument/delete', [\App\Http\Controllers\BalqeesController::class, 'deleteDoc'])->name('delete_doc');

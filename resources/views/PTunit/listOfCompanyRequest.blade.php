@@ -2,28 +2,38 @@
 
 @section('content-training')
 <div class="content">
+    @if(count($companyRequest) == 0)
+    <div class="not-found">
+      <img src="img/paper.png" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
+      <p>No Company Request Found</p>
+    </div>
+  @else
 <div class="input-group">
   <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
   <button type="button" class="btn btn-outline-dark">search</button>
 </div>
 <hr>
 <table class="list-of-company">
+  
     <tr>
         <th style="padding-left:4%; text-align: left;">Company name </th>
         <th>logo</th>
         <th style="text-align: right; padding-right:9%;">accept/reject</th>
      </tr>
+   @foreach($companyRequest as $company)
   <tr>
-    <td>Advanced Electronics</td>
-    <td><img src="img/SDAIA.png" alt="Company logo"  class= "logoCompany">  </td>
+    <td>{{$company->orgnizationName}}</td>
+    <td><img src="{{asset('storage/images/'. $company->logoImage)}}" alt="Company logo"  class= "logoCompany">  </td>
     <td>
-    <div class="btn-group">
-    <button type="button" class="btn btn-outline-success">Accept </button>
-    <button type="button" class="btn btn-outline-danger">Decline </button>
+  <div class="btn-group">
+    <a class="btn btn-outline-success" href="{{ route('accept',[$company->id]) }}">Accept</a>
+    <a class="btn btn-outline-danger" href="{{ route('reject',[$company->id]) }}">Decline</a>
     </div>
-    <a href="CompanyRegestration"><span class="fa fa-chevron-right"></span></a>
+    <a href="{{ route('regestrationRequest',[$company->id]) }}"><span class="fa fa-chevron-right"></span></a>
     </td>
   </tr>
-</table>    
+@endforeach
+</table>
+ @endif   
 </div>
 @endsection
