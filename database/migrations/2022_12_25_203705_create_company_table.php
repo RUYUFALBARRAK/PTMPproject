@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('orgnizationName',50);
             $table->string('website');
-            $table->string('SupervisorName',20);
+            $table->string('SupervisorName',50);
             $table->string('Registration',50);
             $table->string('description');
             $table->string('orgnizationEmail')->unique();

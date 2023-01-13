@@ -10,71 +10,88 @@
     <br><br><br><hr>
     
     <h3>Progress report</h3><div style="color: #808080" >upload your files down below </div><br>
-     @if(Session::has('success'))
+ @if(Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>
   @endif
   @if(Session::has('fail'))
   <div class="alert alert-danger">{{Session::get('fail')}}</div>
   @endif
+  
 <table style="width:40%" class="Progress-report">
   <tr>
     <td>Effective date notice<div style="color: #808080" id="EffectiveDateNoticeName"></div></td>
      <td>
-      @if($file!=null&&$file['doc_name']=='EffectiveDateNotice')
+      @foreach ($file as $fil)
+      @if($fil!=null&&$fil['doc_name']=='EffectiveDateNotice')
       <a href="">view submitted</a>
+      @break
       @else
      <form action="{{ route('uploadfile') }}" enctype="multipart/form-data" method="post">
       @csrf
       <input type="file" id="EffectiveDateNotice" name="EffectiveDateNotice" onchange="thisFileUploadEffectiveDateNotice(this);" style="display:none;"/>
      <button type="button" onclick="thisFileUploadEffectiveDateNotice();" class="btn btn-success EffectiveDateNotice"><i class="fa fa-upload"></i> </button>
      </form>
+     @break
      @endif
+     @endforeach
     </td>
   </tr>
   <tr>
     <td>Report<div style="color: #808080" id="reportName"></div></td>
     <td> 
-        @if($file!=null&&$file['doc_name']=='report')
+      @foreach($file as $file)
+      @if($file!=null && $file['doc_name']=='report')
       <a href="">view submitted</a>
+      @break
       @else
   <form action="{{ route('uploadfile') }}" enctype="multipart/form-data" method="post">
     @csrf
         <input type="file" id="report" style="display:none;" name="report" onchange="thisFileUploadReport(this);" />
   <button type="button" onclick="thisFileUploadReport();" class="btn btn-success Report"><i class="fa fa-upload"></i> </button> 
+  @break
 </form>
  @endif
+ @endforeach
 </td>
   </tr>
   <tr>
     <td>Training Survey <div style="color: #808080" id="Training-SurveyName"></div></td>
     <td> 
+      @foreach ($file as $file)
       @if($file!=null&&$file['doc_name']=='TrainingSurvey')
       <a href="">view submitted</a>
+      @break
       @else
       <form action="{{ route('uploadfile') }}"  enctype="multipart/form-data" method="post">
         @csrf
         <input type="file" id="Training-Survey" style="display:none;"  name="TrainingSurvey" onchange="thisFileUploadTrainingSurvey(this);"/>
       <button type="button" onclick="thisFileUploadTrainingSurvey();" class="btn btn-success TrainingSurvey"><i class="fa fa-upload"></i> </button>
-    </form>
+    </form>@break
      @endif
+     @endforeach
     </td>
   </tr>
   <tr>
+   
     <td>Presentation<div style="color: #808080" id="PresentationName"></div></td>
     <td> 
+       @foreach ($file as $file)
        @if($file!=null&&$file['doc_name']=='Presentation')
-      <a href="">view submitted</a>
+      <a href="">view submitted</a>@break
       @else
     <form action="{{ route('uploadfile') }}" enctype="multipart/form-data" method="post">
       @csrf
     <input type="file" id="Presentation" style="display:none;" name="Presentation"  onchange="thisFileUploadPresentation(this);"/>
    <button type="button" onclick="thisFileUploadPresentation();" class="btn btn-success Presentation"><i class="fa fa-upload"></i> </button>
-   </form>
+   </form>@break
     @endif
+    @endforeach
   </td>
   </tr>
-</table>  
+</table>
+  
 @else
+
 <div> No oppourtunity selected</div>
 @endif  
 

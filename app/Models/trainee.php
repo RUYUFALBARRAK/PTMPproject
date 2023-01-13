@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Sofa\Eloquence\Mappable;
-
+use App\Models\Sendsdocument;
 class trainee extends Model
 {
     use HasFactory;
