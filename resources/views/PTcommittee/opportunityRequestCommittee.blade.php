@@ -24,45 +24,38 @@
     <br><br>
 
 
+    @if(count($opportunities) > 0)
 
     <table class="table-Bushra">
-      <tr class="tr-Bushra">
-          <td class="fisrt-col-Bushra">
-              <img src="img/SDAIA.png" alt="Company logo" width="180%" hight="180%">
-              <br><br>
+      @foreach($opportunities as $opportunitiy)
+        <tr class="tr-Bushra">
+            <td class="fisrt-col-Bushra">
+                <img class="img-thumbnail" src="{{ asset( $opportunitiy->company->logoImage ? $opportunitiy->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
+                <br><br>
+            </td>
+
+            <td class="second-col-Bushra">
+                <h5>{{ $opportunitiy->jobTitle }}</h5>
+                <h6 class="text-secondary">{{ Carbon\Carbon::parse($opportunitiy->Start_at)->toFormattedDateString() }} - {{ Carbon\Carbon::parse($opportunitiy->end_at)->toFormattedDateString() }} </h6>
+            </td>
+
+          <td>
+            <h4 class="opportunityStateB2 text-warning">{{ $opportunitiy->status }}</h4>
           </td>
-
-          <td class="second-col-Bushra">
-              <h5>Software Engineer</h5>
-              <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
+          <td>
+            <a href="{{ route('opportunity.details' , $opportunitiy->id) }}" class="btn btn-light"><i class="fa-solid fa-arrow-right"></i></a>
           </td>
-
-        <td>
-          <h4 class="opportunityStateB2">Accepted</h4>
-        </td>
-      
-      </tr> 
-    
-
-      <tr class="tr-Bushra">
-
-          <td class="fisrt-col-Bushra">
-            <img src="img/ministryOfComm.png" alt="Company logo" width="220%" hight="220%">
-            <br><br>
-          </td>
-
-          <td class="second-col-Bushra">
-          <h5>Product Manager</h5>
-          <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
-          </td>
-
-        <td>
-          <h4 class="opportunityStateB2">Rejected</h4>
-        </td>
-
-      </tr>
+        
+        </tr>
+      @endforeach 
 
   </table>
+
+  @else
+
+  <div class="alert alert-info text-ceneter">There are no opportunities requested</div>
+
+  @endif
     
    
 </div>

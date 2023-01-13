@@ -126,13 +126,15 @@ Route::get('/personalInfoCompany/{id}', function ($id) {
 })->name('company.show');
 
 Route::get('/opportunityPageTrainee', function () {
-    return view('trainee/opportunityPageTrainee');
+    $opportunities = oppourtunity::where('status' , 'accept')->get();
+    return view('trainee/opportunityPageTrainee' , compact('opportunities'));
 });
 Route::get('/opportunityDetailsPageT', function () {
     return view('trainee/opportunityDetailsPageT');
 });
-Route::get('/opportunityDetailsApply', function () {
-    return view('trainee/opportunityDetailsApply');
+Route::get('/opportunityDetailsApply/{id}', function ($id) {
+    $opportunity = oppourtunity::findOrFail($id);
+    return view('trainee/opportunityDetailsApply' , compact('opportunity'));
 });
 Route::get('/opportunityPageCommittee', function () {
     return view('PTcommittee/opportunityPageCommittee');
@@ -140,16 +142,17 @@ Route::get('/opportunityPageCommittee', function () {
 
 Route::get('/opportunityDetailsPage/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
-
     return view('PTcommittee/opportunityDetailsPage' , compact('opportunity'));
-});
+})->name('opportunity.details');
  
 Route::post('/opportunityUpdateStatus/{id}' , [BushraController::class , 'updateOpportunityStatus'])->name('opportunity.update_status');
 
 
 Route::get('/opportunityRequestCommittee', function () {
-    return view('PTcommittee/opportunityRequestCommittee');
+    $opportunities = oppourtunity::where('status' , 'pending')->get();
+    return view('PTcommittee/opportunityRequestCommittee' , compact('opportunities'));
 });
+
 Route::get('/viewDetails', function () {
     return view('PTcommittee/viewDetails');
 });

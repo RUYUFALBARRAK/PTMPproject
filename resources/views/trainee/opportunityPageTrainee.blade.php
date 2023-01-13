@@ -38,75 +38,53 @@
     <br><br>
 
 
+
+    @if(count($opportunities) > 0)
+
     <table class="table-Bushra">
-    <tr class="tr-Bushra">
-        <td class="fisrt-col-Bushra">
-            <img src="img/SDAIA.png" alt="Company logo" width="180%" hight="180%">
-            <br><br>
-        </td>
+      @foreach($opportunities as $opportunitiy)
+        <tr class="tr-Bushra">
 
-        <td class="second-col-Bushra">
-            <h5>Software Engineer</h5>
-            <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
-        </td>
+          <td class="fisrt-col-Bushra">
+              <img class="img-thumbnail" src="{{ asset( $opportunitiy->company->logoImage ? $opportunitiy->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
+              <br><br>
+          </td>
 
-        <td class="td-Bushra" >
+          <td class="second-col-Bushra">
+              <h5>{{ $opportunitiy->jobTitle }}</h5>
+              <h6 class="text-secondary">{{ Carbon\Carbon::parse($opportunitiy->Start_at)->toFormattedDateString() }} - {{ Carbon\Carbon::parse($opportunitiy->end_at)->toFormattedDateString() }} </h6>
+          </td>
 
-            <span class="rate2-Bushra">
-            <span class="fa fa-star fa-lg checked"></span>
-            <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-            </span>
-            <br>
-    
-            <a class="view-reveiws2" href="#">View Reviews</a>
+          <td class="td-Bushra">
+              <span class="rate2-Bushra">
+              <span class="fa fa-star fa-lg checked"></span>
+              <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+              </span>
+              <br>
+              <a class="view-reveiws2" href="#">View Reviews</a>
+          </td>
 
-        </td>
+          {{-- <td>
+            <h4 class="opportunityStateB2 text-success">{{ $opportunitiy->status }}</h4>
+          </td> --}}
 
-     
-        <td class="td-Bushra"><h4 >Accepted</h4></td>
-    
-    </tr>
-
-    
-    
-
-
-    <tr class="tr-Bushra">
-
-        <td class="fisrt-col-Bushra">
-          <img src="img/ministryOfComm.png" alt="Company logo" width="220%" hight="220%">
-          <br><br>
-        </td>
-
-        <td class="second-col-Bushra">
-         <h5>Product Manager</h5>
-         <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
-        </td>
-
-      <td class="td-Bushra">
-            <span class="rate2-Bushra">
-            <span class="fa fa-star fa-lg checked"></span>
-            <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-            </span>
-            <br>
-           
-            <a class="view-reveiws2" href="#">View Reviews</a>
-          
-      </td>
-
-      <td class="td-Bushra"><h4>Rejected</h4></td>
-
-
-    </tr>
-
+          <td>
+            <a href="{{ route('opportunity.details' , $opportunitiy->id) }}" class="btn btn-success ml-4">Apply</a>
+          </td>
+        
+        </tr>
+      @endforeach 
 
   </table>
+
+  @else
+
+  <div class="alert alert-info">There are no opportunities requested</div>
+
+  @endif
 
 
 </div>
