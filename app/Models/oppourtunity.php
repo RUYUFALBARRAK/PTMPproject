@@ -25,10 +25,17 @@ class oppourtunity extends Model
         'address',
         'AppDeadline',
         'PtPlan',
-        'company_id'
+        'company_id',
+        'status',
+        'note'
     ];
-         public function trainee()
+
+    public function trainee()
     {
         return $this->hasMany('App\Models\trainee');
+    }
+
+    public function company(){
+        return $this->belongsTo('App\Models\company');
     }
 }

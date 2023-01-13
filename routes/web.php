@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\BushraController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PTMPController;
 use App\Http\Controllers\RazanController;
 use App\Models\Review;
 use App\Http\Controllers\companyController;
 use App\Http\Controllers\khawlahController;
+use App\Models\oppourtunity;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,15 +104,27 @@ Route::get('/AnnouncementsTrainee', function () {
 })->name('announcements_trainee');
 
 
-Route::get('/opportunityPageCompany', function () {
-    return view('Company/opportunityPageCompany');
+Route::get('/opportunityPageCompany/{id}', function ($id) {
+    $opportunities = oppourtunity::where('company_id' , $id)->get();
+    return view('Company/opportunityPageCompany' , compact('opportunities'));
 });
-Route::get('/personalInfoCompanyEdit', function () {
-    return view('Company/personalInfoCompanyEdit');
-});
-Route::get('/personalInfoCompany', function () {
-    return view('Company/personalInfoCompany');
-});
+
+// Route::get('/personalInfoCompanyEdit', function () {
+//     return view('Company/personalInfoCompanyEdit');
+// });
+
+Route::get('/personalInfoCompanyEdit/{id}', function ($id) {
+    $company = App\Models\company::findOrFail($id);
+    return view('Company/personalInfoCompanyEdit' , compact('company'));
+})->name('company.edit');
+
+Route::post('/personalInfoCompanyUpdate/{id}', [BushraController::class , 'updateCompany'])->name('company.update');
+
+Route::get('/personalInfoCompany/{id}', function ($id) {
+    $company = App\Models\company::findOrFail($id);
+    return view('Company/personalInfoCompany' , compact('company'));
+})->name('company.show');
+
 Route::get('/opportunityPageTrainee', function () {
     return view('trainee/opportunityPageTrainee');
 });
@@ -122,9 +137,16 @@ Route::get('/opportunityDetailsApply', function () {
 Route::get('/opportunityPageCommittee', function () {
     return view('PTcommittee/opportunityPageCommittee');
 });
-Route::get('/opportunityDetailsPage', function () {
-    return view('PTcommittee/opportunityDetailsPage');
+
+Route::get('/opportunityDetailsPage/{id}', function ($id) {
+    $opportunity = oppourtunity::findOrFail($id);
+
+    return view('PTcommittee/opportunityDetailsPage' , compact('opportunity'));
 });
+ 
+Route::post('/opportunityUpdateStatus/{id}' , [BushraController::class , 'updateOpportunityStatus'])->name('opportunity.update_status');
+
+
 Route::get('/opportunityRequestCommittee', function () {
     return view('PTcommittee/opportunityRequestCommittee');
 });

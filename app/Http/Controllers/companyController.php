@@ -14,6 +14,9 @@ use Validator;
 use DB;
 use File;
 use Response;
+use Illuminate\Validation\Rule;
+use Alert;
+
 
 class companyController extends Controller
 {
@@ -181,4 +184,6 @@ class companyController extends Controller
         $data=['loginIdcompUser'=> company::where('id','=',session('logincompId'))->first()];}
         return view('Company/addOpportunity',$data);
     }
+
+
 }
