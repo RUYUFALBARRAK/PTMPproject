@@ -17,12 +17,12 @@
 
     <div>
     <label for="validationTooltip01" class="oppT-form-label">Start Date:</label>
-    <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->Start_at }}</label>
+    <label for="validationTooltip01" class="oppD-form-label">{{ Carbon\Carbon::parse($opportunitiy->Start_at)->toFormattedDateString() }}</label>
     </div><br>
 
     <div>
     <label for="validationTooltip01" class="oppT-form-label">End Date:</label>
-    <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->end_at }}</label>
+    <label for="validationTooltip01" class="oppD-form-label">{{ Carbon\Carbon::parse($opportunitiy->end_at)->toFormattedDateString() }}</label>
     </div><br>
 
     <div>
