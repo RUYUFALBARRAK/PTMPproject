@@ -6,7 +6,7 @@
 
 <div>
     <!-- NEED to get image from DB -->
-<img src="img/SDAIA.png" alt="Company logo" width="20%" hight="20%" style="margin-left:38%;">
+<img src="img/SDAIA.png"  alt="Company logo" width="23%" hight="23%" style="margin-left:38%;">
 </div>
 <br> <br><br>
 
@@ -18,9 +18,8 @@
 
 @else  <!-- if available review existed-->
 
-@foreach($reviews as $review)
-<!-- foreach (trainees as trainee) **ADD AFTER ADDING FOREIGN KEY** + add **endforeach**  -->
 
+@foreach($reviews as $review)
 <span style="display:none;"> {{$reviewDate = $review->Create_at}} {{ $stars = $review -> star_rating}} </span>
 
 @php

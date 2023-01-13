@@ -4,6 +4,12 @@
 
 <div class="content">
 
+<div style="font-size:23px;"> Add A Review To <b>{{ $comapnyInfo -> orgnizationName }} </b> </div>
+
+
+<br>
+
+
     <form action="/traineeMainPage" method="POST">
     @csrf
     <div class="rating-css">
@@ -29,8 +35,9 @@
     font-weight:200; padding:1%;  @error('review') border-color:#e72828; border-width:1.5px; @enderror "></textarea></label> </p>
     </div>
 
-    @error('review') <p style="color:#e72828; margin-top: -2%;"> *This field is required  </p> @enderror
+    @error('review') <p style="color:#e72828; margin-top: -2%;"> {{$message}} </p> @enderror
 
+    <!-- data-bs-toggle="modal" data-bs-target="#error" -->
     <div>
     <input type="submit" value="Add" class="add-but" >  </input> <!-- data-bs-toggle="modal" data-bs-target="#error" -->
     <a href="{{ url()->previous() }}"><button type="button" class="can-but" class="fas fa-edit"> Cancel </button> </a>

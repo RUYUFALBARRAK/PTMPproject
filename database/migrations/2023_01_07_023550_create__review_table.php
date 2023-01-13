@@ -15,6 +15,7 @@ return new class extends Migration
     {
             Schema::create('_review', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamp('Create_at');
             $table->string('review');
             $table->integer('star_rating');
             $table->string('trainee_id');

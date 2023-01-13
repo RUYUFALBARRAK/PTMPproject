@@ -32,14 +32,12 @@ $greyStar = 5 - $stars;
 
         <div class="viw"> <p> {{$review->review}} </p></div>
 
-        <br>
-
     <div>
 
-    <form action="/traineeMainPage/{{$review->id}}" method="POST">
+    <form action="/traineeMainPage" method="POST">
     @csrf
     @method('DELETE')
-    <button type="button" class="del-but"> Delete </button>
+    <button class="del-but"> Delete </button>
     </form>
 
     <a href="{{ url()->previous() }}"><button type="button" class="can-but2" class="fas fa-edit"> Cancel </button> </a>
