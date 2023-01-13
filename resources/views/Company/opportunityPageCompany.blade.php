@@ -48,7 +48,7 @@
           </td>
 
         <td>
-          @if($opportunity->status == 'Pending')
+          @if($opportunity->status == 'pending')
             <h5 class="opportunityStateB2 text-warning">{{ $opportunity->status }}</h5>
           @elseif ($opportunity->status == 'accept')
             <h5 class="opportunityStateB2 text-success">{{ $opportunity->status }}</h5>

@@ -142,14 +142,16 @@ Route::get('/opportunityDetailsPage/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
 
     return view('PTcommittee/opportunityDetailsPage' , compact('opportunity'));
-});
+})->name('opportunity.details');
  
 Route::post('/opportunityUpdateStatus/{id}' , [BushraController::class , 'updateOpportunityStatus'])->name('opportunity.update_status');
 
 
 Route::get('/opportunityRequestCommittee', function () {
-    return view('PTcommittee/opportunityRequestCommittee');
+    $opportunities = oppourtunity::where('status' , 'pending')->get();
+    return view('PTcommittee/opportunityRequestCommittee' , compact('opportunities'));
 });
+
 Route::get('/viewDetails', function () {
     return view('PTcommittee/viewDetails');
 });
