@@ -17,12 +17,12 @@
 
     <div>
     <label for="validationTooltip01" class="oppT-form-label">Start Date:</label>
-    <label for="validationTooltip01" class="oppD-form-label">{{ Carbon\Carbon::parse($opportunitiy->Start_at)->toFormattedDateString() }}</label>
+    <label for="validationTooltip01" class="oppD-form-label">{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}</label>
     </div><br>
 
     <div>
     <label for="validationTooltip01" class="oppT-form-label">End Date:</label>
-    <label for="validationTooltip01" class="oppD-form-label">{{ Carbon\Carbon::parse($opportunitiy->end_at)->toFormattedDateString() }}</label>
+    <label for="validationTooltip01" class="oppD-form-label">{{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</label>
     </div><br>
 
     <div>
@@ -83,8 +83,7 @@
     <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
     </div><br>
 
-    <br><br>
-
+    @if ($opportunity->status == 'pending')
     <form action="{{ route('opportunity.update_status',$opportunity->id) }}" method="POST">
         @csrf
         <div class="input-group" style="margin-bottom:3%;">
@@ -109,14 +108,30 @@
         </div>
 
     </form>
-
     <br> <br>
-
     {{-- <button type="button" class="btn-status" style="background-color:#dadd28; border:#dadd28; border-radius: 7px; width: 18%;">Need modification</button> --}}
-
     <div style="margin-bottom:2%;">
     </div>
+    @elseif ($opportunity->status == 'accept')
+    <div>
+        <label for="validationTooltip01" class="oppT-form-label">Status:</label>
+        <label for="validationTooltip01" class="oppD-form-label text-success">Accepted</label>
+    </div><br>
+    @elseif ($opportunity->status == 'reject')
+    <div>
+        <label for="validationTooltip01" class="oppT-form-label">Status:</label>
+        <label for="validationTooltip01" class="oppD-form-label text-danger">Rejected</label>
+    </div><br>
+    @elseif($opportunity->status == 'need_modification')
+    <div>
+        <label for="validationTooltip01" class="oppT-form-label">Status:</label>
+        <label for="validationTooltip01" class="oppD-form-label text-warning">Need Modification</label>
+    </div><br>
+    @endif
 
+    <br><br>
+
+    <a href="{{ url('/opportunityRequestCommittee') }}" class="btn btn-light">Back</a>
 </div>
  
 

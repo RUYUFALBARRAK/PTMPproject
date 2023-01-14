@@ -71,8 +71,18 @@
             <h4 class="opportunityStateB2 text-success">{{ $opportunitiy->status }}</h4>
           </td> --}}
 
+          @php 
+            $is_apply = \App\Models\requestedopportunity::where('opportunity_id' , $opportunitiy->id)->where('trainee_id' , session()->get('loginId'))->first();
+
+            // dd($is_apply)
+          @endphp
+
           <td>
-            <a href="{{ route('opportunity.details' , $opportunitiy->id) }}" class="btn btn-success ml-4">Apply</a>
+            @if($is_apply)
+              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}" class="btn btn-success ml-4">Apply</a>
+            @else
+              <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}" class="btn btn-success ml-4">Apply</a>
+            @endif
           </td>
         
         </tr>
