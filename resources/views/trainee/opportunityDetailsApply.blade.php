@@ -88,8 +88,11 @@
 
 
         <div class="mt-4">
-            <a href="#" class="btn btn-success text-white" style="background: rgb(0, 150, 0)">Apply</a>
-            <a href="#" class="btn btn-secondary text-white" style="border-radius: 38%">Cancell</a>
+            <form class="d-inline" action="{{ route('opportunity.apply.submit' ,  $opportunity->id) }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-success text-white" style="background: rgb(0, 150, 0)">Apply</button>
+            </form>
+            <a href="{{ url('/opportunityPageTrainee') }}" class="btn btn-light border" style="border-radius: 38%">Cancell</a>
         </div>
    
 

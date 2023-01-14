@@ -10,7 +10,12 @@ class requestedopportunity extends Model
     use HasFactory;
     protected $table='requestedopportunity';
     protected $fillable = [
-'oppourtunity_id',
+        'oppourtunity_id',
+        'statusbytrainee',
+        'statusbycommittee',
+        'trainee_id',
+        'opportunity_id',
+        'company_id',
     ];
        public function oppourtunity()
     {

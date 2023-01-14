@@ -131,11 +131,14 @@ Route::get('/opportunityPageTrainee', function () {
 });
 Route::get('/opportunityDetailsPageT', function () {
     return view('trainee/opportunityDetailsPageT');
-});
+})->name('opportunity.confirm');
 Route::get('/opportunityDetailsApply/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
     return view('trainee/opportunityDetailsApply' , compact('opportunity'));
-});
+})->name('opportunity.apply');
+
+Route::post('/opportunityDetailsApply/{id}', [BushraController::class , 'opportunityApplySubmit'])->name('opportunity.apply.submit');
+
 Route::get('/opportunityPageCommittee', function () {
     return view('PTcommittee/opportunityPageCommittee');
 });
