@@ -221,5 +221,16 @@ function AcceptCompany($id){
         $companyRequest->update();
     return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was deleted successfully');  
 }
-
+public function searchCompanyList(){
+    
+    $search_company = $_GET['query'];
+    $companyResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_company . '%' )->get();
+        return view('PTunit/searchlistOfCompany', compact('companyResult'));   
+}
+public function searchCompanyRequestList(){
+    
+    $search_companyRequest = $_GET['query'];
+    $companyRequestResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_companyRequest . '%' )->get();
+        return view('PTunit/searchlistOfCompanyRequest', compact('companyRequestResult'));   
+}
 }

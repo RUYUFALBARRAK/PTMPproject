@@ -60,6 +60,8 @@ Route::get('/CVPage', function () {
     return view('trainee/CV-Tap');
 });
 Route::get('/listOfCompany',[companyController::class,'listOfcompany']);
+Route::get('/searchlistOfCompany',[companyController::class,'searchCompanyList']);
+Route::get('/searchlistOfCompanyRequest',[companyController::class,'searchCompanyRequestList']);
 Route::get('/company-delete.{id}',[companyController::class,'deleteCompany'])->name('deleteCompanyPTunit');
 Route::get('/Company.{id}',[companyController::class,'CompanyDetails'])->name('CompanyDetails');
 Route::get('/CompanyRegestration.{id}', [companyController::class,'CompanyRegestrationDetails'])->name('regestrationRequest');
