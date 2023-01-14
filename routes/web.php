@@ -129,9 +129,11 @@ Route::get('/opportunityPageTrainee', function () {
     $opportunities = oppourtunity::where('status' , 'accept')->get();
     return view('trainee/opportunityPageTrainee' , compact('opportunities'));
 });
-Route::get('/opportunityDetailsPageT', function () {
-    return view('trainee/opportunityDetailsPageT');
+Route::get('/opportunityDetailsPageT/{id}', function ($id) {
+    $opportunity = oppourtunity::findOrFail($id);
+    return view('trainee/opportunityDetailsPageT' , compact('opportunity'));
 })->name('opportunity.confirm');
+
 Route::get('/opportunityDetailsApply/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
     return view('trainee/opportunityDetailsApply' , compact('opportunity'));
