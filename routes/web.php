@@ -53,13 +53,13 @@ Route::get('/DocumentPageCompany', function () {
     return view('Company/DocumentPageCompany', ['docs' => \App\Models\document::where('uploaded_for', '=', 'company')->orWhere('uploaded_for', '=', 'both')->get()]);
 });
 
-Route::get('/traineeMainPage', [PTMPController::class,'ViewMainpage'])-> name('traineeMainPage')->middleware('isloggedin');
-Route::post('/uploadfile', [PTMPController::class,'uploadfile'])-> name('uploadfile')->middleware('isloggedin');
+Route::get('/traineeMainPage', [PTMPController::class,'ViewMainpage'])-> name('traineeMainPage');
+Route::post('/uploadfile', [PTMPController::class,'uploadfile'])-> name('uploadfile');
 Route::get('/logout', [PTMPController::class,'logout']);
-Route::get('/CVPage', function () {
-    return view('trainee/CV-Tap');
-});
+Route::get('/CVPage',[PTMPController::class,'CVshow']);
 Route::get('/listOfCompany',[companyController::class,'listOfcompany']);
+Route::get('/searchlistOfCompany',[companyController::class,'searchCompanyList']);
+Route::get('/searchlistOfCompanyRequest',[companyController::class,'searchCompanyRequestList']);
 Route::get('/company-delete.{id}',[companyController::class,'deleteCompany'])->name('deleteCompanyPTunit');
 Route::get('/Company.{id}',[companyController::class,'CompanyDetails'])->name('CompanyDetails');
 Route::get('/CompanyRegestration.{id}', [companyController::class,'CompanyRegestrationDetails'])->name('regestrationRequest');
@@ -169,6 +169,11 @@ Route::get('/listOfStudentsReqLetter', function () {
 Route::get('/listOfStudentsPTunit', function () {
     return view('PTunit/listOfStudentsPTunit');
 });
+Route::post('/addSkill', [PTMPController::class,'addSkill'])-> name('addSkill');
+Route::post('/addLanguages', [PTMPController::class,'addLanguages'])-> name('addLanguages');
+Route::post('/addInterests', [PTMPController::class,'addInterests'])-> name('addInterests');
+Route::post('/addExperience', [PTMPController::class,'addExperience'])-> name('addExperience');
+Route::post('/addfile', [PTMPController::class,'addfile'])-> name('addfile');
 });
 
 
