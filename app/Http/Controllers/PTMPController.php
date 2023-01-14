@@ -75,15 +75,35 @@ class PTMPController extends Controller
 
 function ViewMainpage(){
     if(Session::has('loginId')){
+        $TrainingSurvey= false;
+        $Presentation=false;
+        $report=false;
+        $EffectiveDateNotice=false;
+    $find =Sendsdocument::whereHas('trainee',function($q){
+    $q->where('trainee_id', '=', session('loginId'));})->get();
+    foreach($find as $find){
+    if($find->doc_name==fileNameEnum::TrainingSurvey){
+        $TrainingSurvey=true;
+    }
+     if($find->doc_name==fileNameEnum::Presentation){
+        $Presentation=true;
+    }
+     if($find->doc_name==fileNameEnum::report){
+        $report=true;
+    }
+    if($find->doc_name==fileNameEnum::EffectiveDateNotice){
+        $EffectiveDateNotice=true;
+    }}
     $data=['loginIdUser'=>  trainee::where('trainee_id','=',session('loginId'))->first(),// trainee::with('oppourtunity')->get()->first(),
    // 'file'=> trainee::with('Sendsdocument')->get()->first()
-   'file'=>  Sendsdocument::whereHas('trainee',function($q){
-    $q->where('trainee_id', '=', session('loginId'));
-})->get()->toArray(),
-];}
-
+   'TrainingSurvey'=> $TrainingSurvey,
+   'Presentation'=> $Presentation,
+   'report'=> $report,
+   'EffectiveDateNotice'=> $EffectiveDateNotice,
+];
+}
    //$data['file'][1]['doc_name'];
-    return view('trainee/triningTap',$data);
+    return  view('trainee/triningTap',$data);
 }
 
 
@@ -114,9 +134,9 @@ function uploadfile(Request $request){
         $request->validate([
             'report' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
         ]);
+            $Sendsdocument->doc_name= fileNameEnum::report;
             $fileName = $request->report->getClientOriginalName();
             $request->report->storeAs('reportFiles', $fileName,'public');
-            $Sendsdocument->doc_name= fileNameEnum::report;
             $Sendsdocument->document= $request->report->getClientOriginalName();
     }else if(request()->hasfile('EffectiveDateNotice')!=null){
         $request->validate([
