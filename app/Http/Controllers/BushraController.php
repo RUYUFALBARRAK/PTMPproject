@@ -114,4 +114,20 @@ class BushraController extends Controller
 
     }
 
+    // Excute When student Confirm opportunity
+    public function confirmOpportunity(Request $request,$id){
+
+        $req_opportunity = requestedopportunity::findOrFail($id);
+
+        $req_opportunity->update([
+            'statusbytrainee' => 'accept',
+            'statusbycompany' => 'accept',
+        ]);
+
+        Alert::success('', 'Opportunity has been Confirmed');
+        return redirect()->back();
+
+    }
+    
+
 }

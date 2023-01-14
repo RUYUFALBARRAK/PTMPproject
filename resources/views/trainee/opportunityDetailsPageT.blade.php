@@ -99,13 +99,24 @@
             </div><br><br>
         @endif
 
-            <form action="#" method="post">
+        @if ($req_opportunity->statusbytrainee == 'accept')
+
+            <div>
+                <label for="validationTooltip01" class="oppT-form-label">Status:</label>
+                <label for="validationTooltip01" class="oppD-form-label text-success" style="font-weight: bold"> Confirmed</label>
+            </div><br><br>
+
+        @else
+            <form action="{{ route('opportunity.confirm.submit',$opportunity->id) }}" method="post">
+                @csrf
                 @if ($req_opportunity->statusbycompany == 'accept')
                     <button type="submit" class="btn-conf">Confirm</button>
                 @elseif($req_opportunity->statusbycompany == 'pending')
-                    <button disabled type="submit" class="btn btn-secondary d-block mx-auto">Waitting for Approval..</button>                
+                    <button disabled type="button" class="btn btn-secondary d-block mx-auto">Waitting for Approval..</button>                
                 @endif
             </form>
+
+        @endif
 
 
             

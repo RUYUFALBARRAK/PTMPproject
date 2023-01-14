@@ -133,7 +133,7 @@ Route::get('/opportunityDetailsPageT/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
     return view('trainee/opportunityDetailsPageT' , compact('opportunity'));
 })->name('opportunity.confirm');
-
+Route::post('/trainee/opportunityDetailsPageT/{id}' , [BushraController::class , 'confirmOpportunity'])->name('opportunity.confirm.submit');
 Route::get('/opportunityDetailsApply/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
     return view('trainee/opportunityDetailsApply' , compact('opportunity'));
