@@ -16,7 +16,7 @@ return new class extends Migration
             Schema::create('users', function (Blueprint $table) {
             $table->string('trainee_id')->primary();
             $table->string('name',50);
-            $table->integer('CompletedHours',5);
+            $table->string('CompletedHours',5);
             $table->string('GPA',5);
             $table->string('email')->unique();
             $table->string('major',20);
