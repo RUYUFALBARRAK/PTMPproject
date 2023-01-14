@@ -24,7 +24,7 @@ window.onload = () => {
    <li> <a  href="opportunityPageTrainee">OPPORTUNITIES</a></li>
    <li> <a  href="DocumentPage">DOCUMENTS TEMPLATE</a></li>
    <li> <a  href="ReuqstIdentfaction">IDENTIFICATION LETTER</a></li>
-{{--   <li> <a  href="AnnouncementsTrainee">ANNOUNCEMENTS</a></li>--}}
+   <li> <a  href="AnnouncementsTrainee">ANNOUNCEMENTS</a></li>
 {{--  <marquee direction="up" scrollamount="2" behavior="scroll" class="homeMarquee" onmouseover="this.stop()" onmouseout="this.start()" style="height: 150px;">--}}
 {{--      <table>--}}
 {{--          <tbody>--}}
