@@ -8,6 +8,7 @@ use App\Models\Review;
 use App\Http\Controllers\companyController;
 use App\Http\Controllers\khawlahController;
 use App\Models\oppourtunity;
+use App\Models\requestedopportunity;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,12 +132,17 @@ Route::get('/opportunityPageTrainee', function () {
 });
 Route::get('/opportunityDetailsPageT/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
-    return view('trainee/opportunityDetailsPageT' , compact('opportunity'));
+    $has_opportunity = requestedopportunity::where('trainee_id' , session()->get('loginId'))->where('statusbytrainee','accept')->get();
+    return view('trainee/opportunityDetailsPageT' , compact('opportunity' , 'has_opportunity'));
 })->name('opportunity.confirm');
+
 Route::post('/trainee/opportunityDetailsPageT/{id}' , [BushraController::class , 'confirmOpportunity'])->name('opportunity.confirm.submit');
+
 Route::get('/opportunityDetailsApply/{id}', function ($id) {
+    $has_opportunity = requestedopportunity::where('trainee_id' , session()->get('loginId'))->where('statusbytrainee','accept')->get();
+
     $opportunity = oppourtunity::findOrFail($id);
-    return view('trainee/opportunityDetailsApply' , compact('opportunity'));
+    return view('trainee/opportunityDetailsApply' , compact('opportunity' , 'has_opportunity'));
 })->name('opportunity.apply');
 
 Route::post('/opportunityDetailsApply/{id}', [BushraController::class , 'opportunityApplySubmit'])->name('opportunity.apply.submit');

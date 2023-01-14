@@ -79,7 +79,7 @@
 
           <td>
             @if($is_apply)
-              <a href="{{ route('opportunity.confirm') }}" class="btn btn-success ml-4">Apply</a>
+              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}" class="btn btn-success ml-4">Apply</a>
             @else
               <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}" class="btn btn-success ml-4">Apply</a>
             @endif

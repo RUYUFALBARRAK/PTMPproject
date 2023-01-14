@@ -110,12 +110,15 @@
             <form action="{{ route('opportunity.confirm.submit',$opportunity->id) }}" method="post">
                 @csrf
                 @if ($req_opportunity->statusbycompany == 'accept')
-                    <button type="submit" class="btn-conf">Confirm</button>
+                    @if(count($has_opportunity) >= 1)
+                        <button disabled type="button" class="btn-conf" style="background: gray;">Confirm</button>
+                    @else
+                        <button type="submit" class="btn-conf">Confirm</button>
+                    @endif
                 @elseif($req_opportunity->statusbycompany == 'pending')
                     <button disabled type="button" class="btn btn-secondary d-block mx-auto">Waitting for Approval..</button>                
                 @endif
             </form>
-
         @endif
 
 
