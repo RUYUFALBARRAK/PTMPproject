@@ -85,9 +85,30 @@
         <div>
             <label for="validationTooltip01" class="oppT-form-label">Application deadline:</label>
             <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->AppDeadline }}</label>
+        </div><br><br>
+
+        
+        @php 
+            $req_opportunity = \App\Models\requestedopportunity::where('opportunity_id' , $opportunity->id)->where('trainee_id' , session()->get('loginId'))->first();
+        @endphp
+
+        @if ($req_opportunity->statusbycompany == 'reject')
+            <div>
+                <label for="validationTooltip01" class="oppT-form-label">Status:</label>
+                <label for="validationTooltip01" class="oppD-form-label text-danger">Rejected</label>
             </div><br><br>
-            <br><br>
-            <button type="button" class="btn-conf">Confirm</button>
+        @endif
+
+            <form action="#" method="post">
+                @if ($req_opportunity->statusbycompany == 'accept')
+                    <button type="submit" class="btn-conf">Confirm</button>
+                @elseif($req_opportunity->statusbycompany == 'pending')
+                    <button disabled type="submit" class="btn btn-secondary d-block mx-auto">Waitting for Approval..</button>                
+                @endif
+            </form>
+
+
+            
         <div>
 
 </div>

@@ -13,6 +13,7 @@ class requestedopportunity extends Model
         'oppourtunity_id',
         'statusbytrainee',
         'statusbycommittee',
+        'statusbycompany',
         'trainee_id',
         'opportunity_id',
         'company_id',

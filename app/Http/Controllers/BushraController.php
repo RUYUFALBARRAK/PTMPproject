@@ -102,6 +102,7 @@ class BushraController extends Controller
 
         requestedopportunity::create([
             'statusbycommittee' => 'pending',
+            'statusbycompany' => 'pending',
             'statusbytrainee'  => 'pending',
             'trainee_id' => session()->get('loginId'),
             'opportunity_id' => $opportunity->id,

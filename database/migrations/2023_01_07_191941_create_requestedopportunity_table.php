@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
              $table->string('statusbycommittee');
             $table->string('statusbytrainee');
+            $table->string('statusbycompany');
             $table->string('trainee_id')->nullable();
             $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');
             $table->string('committee_id')->nullable();
