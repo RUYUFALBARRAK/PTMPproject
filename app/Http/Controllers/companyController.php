@@ -30,7 +30,7 @@ class companyController extends Controller
         if($company){
             if(Hash::check($request->password ,$company->password)){
                     $request->session()->put('logincompId',$company->id);
-                    return redirect('personalInfoCompany');
+                    return redirect()->route('company.show' , $company->id);
             } else{
                 return back()->with('fail','email or password worng');
             }
