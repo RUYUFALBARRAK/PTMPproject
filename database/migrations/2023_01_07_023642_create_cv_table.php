@@ -17,10 +17,11 @@ return new class extends Migration
             $table->increments('id');
             $table->json('skills');
             $table->json('languages');
-            $table->json('exp');
-            $table->string('certifaction_file');
-            $table->string('acdamic_file');
-            $table->string('iden_file');
+            $table->json('Experience');
+            $table->json('interests');
+            $table->string('certifactionFile');
+            $table->string('acdamicFile');
+            $table->string('identificationLetter');
             $table->string('trainee_id');
             $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');
             $table->timestamps();

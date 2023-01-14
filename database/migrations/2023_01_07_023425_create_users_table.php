@@ -16,6 +16,8 @@ return new class extends Migration
             Schema::create('users', function (Blueprint $table) {
             $table->string('trainee_id')->primary();
             $table->string('name',50);
+            $table->integer('CompletedHours',5);
+            $table->string('GPA',5);
             $table->string('email')->unique();
             $table->string('major',20);
             $table->string('phone',10);
@@ -27,6 +29,7 @@ return new class extends Migration
             $table->string('committee_id')->nullable();
             $table->foreign('committee_id')->references('committee_id')->on('committee')->onDelete('cascade');
             $table->enum('status', ['Available', 'Completed', 'Ongoing'])->default('Available');
+            $table->enum('statusFormCompany', ['accept', 'reject', 'Pending'])->default('Pending');
             $table->unsignedInteger('opportunity_id')->nullable();
             $table->foreign('opportunity_id')->references('id')->on('opportunity')->onDelete('cascade');
             $table->timestamps();

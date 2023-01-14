@@ -13,6 +13,7 @@ use App\Models\Sendsdocument;
 use App\Models\committee;
 use App\Models\unit;
 use App\Models\oppourtunity;
+use App\Models\cv;
 use \App\Enum\fileNameEnum;
 use Validator;
 use DB;
@@ -154,6 +155,38 @@ function uploadfile(Request $request){
             $Sendsdocument->trainee_id= trainee::where('trainee_id','=',session('loginId'))->first()->trainee_id;
             $Sendsdocument->save();
             return redirect('traineeMainPage')->with('success','Successfully uploaded!');
+
+}
+function CVshow(){
+     if(Session::has('loginId')){
+         $data=['loginIdUser'=>  trainee::where('trainee_id','=',session('loginId'))->first(),
+        'skills'=> cv::where('trainee_id','=',session('loginId'))->get('skills'),
+        'Languages'=> cv::where('trainee_id','=',session('loginId'))->get('Languages'),
+        //'Interests'=> cv::where('trainee_id','=',session('loginId'))->get('Interests'),
+        'Experience'=> cv::where('trainee_id','=',session('loginId'))->get('Experience'),
+        
+    ];
+     }
+  return  cv::where('trainee_id','=',session('loginId'))->get('Experience');//view('trainee/CV-Tap',$data);
+}
+
+function addSkill($request){
+cv::where('trainee_id','=',session('loginId'))->first();
+
+}
+function addLanguages($request){
+
+}
+
+function addInterests($request){
+
+}
+
+function addExperience($request){
+
+}
+
+function addfile($request){
 
 }
 }
