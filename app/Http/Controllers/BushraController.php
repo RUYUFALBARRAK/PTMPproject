@@ -9,6 +9,8 @@ use App\Models\company;
 use Illuminate\Support\Facades\Validator;
 use Alert;
 use App\Models\oppourtunity;
+use App\Models\requestedopportunity;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class BushraController extends Controller
@@ -52,9 +54,6 @@ class BushraController extends Controller
 
     //Trainee
 
-
-
-
     //committee
     public function updateOpportunityStatus(Request $request,$id){
 
@@ -93,5 +92,42 @@ class BushraController extends Controller
 
         }
     }
+
+
+
+    // Excute When student apply on opportunity
+    public function opportunityApplySubmit(Request $request,$id){
+
+        $opportunity = oppourtunity::findOrFail($id);
+
+        requestedopportunity::create([
+            'statusbycommittee' => 'pending',
+            'statusbycompany' => 'pending',
+            'statusbytrainee'  => 'pending',
+            'trainee_id' => session()->get('loginId'),
+            'opportunity_id' => $opportunity->id,
+            'company_id' => $opportunity->company->id,
+        ]);
+
+        Alert::success('', 'Opportunity has been applied for');
+        return redirect()->back();
+
+    }
+
+    // Excute When student Confirm opportunity
+    public function confirmOpportunity(Request $request,$id){
+
+        $req_opportunity = requestedopportunity::findOrFail($id);
+
+        $req_opportunity->update([
+            'statusbytrainee' => 'accept',
+            'statusbycompany' => 'accept',
+        ]);
+
+        Alert::success('', 'Opportunity has been Confirmed');
+        return redirect()->back();
+
+    }
+    
 
 }

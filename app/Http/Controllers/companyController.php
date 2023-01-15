@@ -10,11 +10,13 @@ use App\Models\trainee;
 use App\Models\company;
 use App\Models\document;
 use App\Models\oppourtunity;
-use \App\Enum\companyStatus;
 use Validator;
 use DB;
 use File;
 use Response;
+use Illuminate\Validation\Rule;
+use Alert;
+
 
 class companyController extends Controller
 {
@@ -28,7 +30,7 @@ class companyController extends Controller
         if($company){
             if(Hash::check($request->password ,$company->password)){
                     $request->session()->put('logincompId',$company->id);
-                    return redirect('/personalInfoCompany');
+                    return redirect()->route('company.show' , $company->id);
             } else{
                 return back()->with('fail','email or password worng');
             }
@@ -184,53 +186,4 @@ class companyController extends Controller
     }
 
 
-function listOfcompany(){
-    $company= DB::table('company')->where('status', 'accept')->get(); //DB::table('company')->whereIn('status', ['reject','accept'])->get();
-
-    return view('PTunit/listOfCompany',compact('company'));
-}
-function listOfCompanyRequest(){
-    $companyRequest = DB::table('company')->where('status', 'Pending')->get();
-     return view('PTunit/listOfCompanyRequest',compact('companyRequest'));
-}
-function CompanyDetails($id){
-    //view('PTunit/company',compact('id'));
-    $company =['company'=> DB::table('company')->where('id', $id)->get()];
-    return view("PTunit/companyDetails",$company);//view('PTunit/companyDetails',compact('company')); //view('PTunit/companyDetails');
-}
-
-function deleteCompany($id){
-        $company = company::FindorFail($id);
-        $company->delete();
-        return redirect('/listOfCompany')->with('msgcompanyDelete','company was deleted successfully'); 
-}
-
-function CompanyRegestrationDetails($id){
-    $company =['company'=> DB::table('company')->where('id', $id)->get()];
-    return view("PTunit/regestrationRequest",$company);
-}
-function rejectCompany($id){
-        $companyRequest = company::FindorFail($id);
-        $companyRequest->status=companyStatus::reject;
-        $companyRequest->update();
-return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was deleted successfully');  
-}
-function AcceptCompany($id){
-        $companyRequest = company::FindorFail($id);
-        $companyRequest->status=companyStatus::accept;
-        $companyRequest->update();
-    return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was deleted successfully');  
-}
-public function searchCompanyList(){
-    
-    $search_company = $_GET['query'];
-    $companyResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_company . '%' )->get();
-        return view('PTunit/searchlistOfCompany', compact('companyResult'));   
-}
-public function searchCompanyRequestList(){
-    
-    $search_companyRequest = $_GET['query'];
-    $companyRequestResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_companyRequest . '%' )->get();
-        return view('PTunit/searchlistOfCompanyRequest', compact('companyRequestResult'));   
-}
 }
