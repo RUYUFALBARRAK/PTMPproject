@@ -42,7 +42,7 @@
 
           <td class="second-col-Bushra">
               <h5>{{ $opportunity->jobTitle }}</h5>
-              <p class="opportunityStateB2 text-secondary"> {{ Carbon\Carbon::parse($opportunitiy->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunitiy->end_at)->toFormattedDateString() }}  </p>
+              <p class="opportunityStateB2 text-secondary"> {{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}  </p>
               <p class="opportunityStateB2 text-secondary"> {{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}  </p>
           </td>
 
