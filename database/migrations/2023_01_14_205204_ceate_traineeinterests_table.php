@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cv', function (Blueprint $table) {
+            Schema::create('traineeinterests', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('certifactionFile');
-            $table->string('acdamicFile');
-            $table->string('identificationLetter');
+            $table->string('interests');
             $table->string('trainee_id');
             $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
+    
     }
 
     /**
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv');
+        //
     }
 };
