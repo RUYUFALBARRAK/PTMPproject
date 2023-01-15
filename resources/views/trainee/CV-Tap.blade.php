@@ -8,48 +8,75 @@
 <strong style="font-size: 100%;">Email:</strong><span id="email"> &nbsp;{{$loginIdUser->email}}</span><br><br>
 <strong style="font-size: 100%;">Mobile:</strong><span id="mobile"> &nbsp;{{$loginIdUser->phone}}</span><br><br>
 <strong style="font-size: 100%;">Major:</strong><span id="major"> &nbsp;{{$loginIdUser->major}}</span><br><br>
-<strong style="font-size: 100%;">GPA:</strong><span id="gpa"> &nbsp;{{$loginIdUser->status}}</span> <br><br>
+<strong style="font-size: 100%;">GPA:</strong><span id="gpa"> &nbsp;{{$loginIdUser->GPA}}</span> <br><br>
 </div>
 <!--skills-->
 
 <div class="content-CV">
     <strong style="font-size: 130%;">skills</strong><span> Enter your skills saparated with comma(,)</span><hr>
- 
-    <p class="btn btn-outline-secondary"><i class="fa fa-times"></i> fast learning</p>
-
+ @foreach($skills as $skills)
+    <span class="btn btn-outline-secondary"> <a style="text-decoration: none;color: #000;"  href="{{ route('deleteskills', [$skills->id] ) }}"><i class="fa fa-times"></i> </a> &nbsp;{{$skills->skills}}</span>
+@endforeach
+<br><br>
     <div class="textField">
         <form action="{{ route('addSkill') }}" method="post">
-        <input type="text" class="form-control" name="skills" id="validationTooltip01" placeholder="E.g, adabtaple, team work, etc." required>
+        @csrf
+        <input type="text" class="form-control @error('skills') is-invalid @enderror" name="skills"  placeholder="E.g, adabtaple, team work, etc." >
+        <button type="submit" hidden></button>
+        @if ($errors->has('skills'))
+        <span class="text-danger">{{ $errors->first('skills') }}</span>
+        @endif
        </form>
     </div>
 </div>
 <!--langugers-->
 <div class="content-CV">
     <strong style="font-size: 130%;">Languages</strong><span>   Enter your languages saparated with comma(,)</span><hr>
-    <p class="btn btn-outline-secondary"><i class="fa fa-times"></i> Arabic</p>
+     @foreach($Languages as $Languages)
+    <span class="btn btn-outline-secondary"><a style="text-decoration: none;color: #000;"  href="{{ route('deleteLanguages', [$Languages->id] ) }}"><i class="fa fa-times"></i></a>&nbsp;{{$Languages->languages}}</span>
+    @endforeach
+    <br><br>
     <div class="textField">
         <form action="{{ route('addLanguages') }}" method="post">
-        <input type="text" class="form-control" name="languages" id="validationTooltip01" placeholder="E.g, Arabic, English, etc." required>
+        @csrf
+        <input type="text" class="form-control @error('Languages') is-invalid @enderror" name="Languages" id="validationTooltip01" placeholder="E.g, Arabic, English, etc." required>
+        @if ($errors->has('Languages'))
+        <span class="text-danger">{{ $errors->first('Languages') }}</span>
+        @endif
         </form> 
     </div>
 </div>
 <!--Interests-->
 <div class="content-CV">
 <strong style="font-size: 130%;">Interests</strong><span> Enter your interests saparated with comma(,)</span><hr>
-    <p class="btn btn-outline-secondary"><i class="fa fa-times"></i> Podcasting</p>
+     @foreach($Interests as $Interests)
+    <span class="btn btn-outline-secondary"><a style="text-decoration: none;color: #000;" href="{{ route('deleteInterests', [$Interests->id] ) }}"><i class="fa fa-times"></i></a>&nbsp;{{$Interests->interests}}</span>
+    @endforeach
+    <br><br>
     <div class="textField">
         <form action="{{ route('addInterests') }}" method="post">
-        <input type="text" class="form-control" name="interests" id="validationTooltip01" placeholder="E.g, Marketing, Learning languages, etc." required>
+        @csrf
+        <input type="text" class="form-control @error('Interests') is-invalid @enderror" name="Interests" id="validationTooltip01" placeholder="E.g, Marketing, Learning languages, etc." required>
+        @if ($errors->has('Interests'))
+        <span class="text-danger">{{ $errors->first('Interests') }}</span>
+        @endif
         </form> 
     </div>
 </div>
 <!--Experience-->
 <div class= "content-CV">
 <strong style="font-size: 130%;">Experience</strong><hr>
-    <p class="btn"></p>
+     @foreach($Experience as $Experience)
+    <span class="btn btn-outline-secondary"><a style="text-decoration: none;color: #000;"  href="{{ route('deleteExperience', [$Experience->id] ) }}"><i class="fa fa-times"></i></a>&nbsp;{{$Experience->Experience}}</span>
+    @endforeach
+    <br><br>
     <div class="textField">
         <form action="{{ route('addExperience') }}" method="post">
-        <input type="text" class="form-control" name="experience" id="validationTooltip01" placeholder="E.g, adabtaple, team work, etc." required>
+        @csrf
+        <input type="text" class="form-control @error('experience') is-invalid @enderror" name="Experience" id="validationTooltip01" placeholder="E.g, adabtaple, team work, etc." required>
+        @if ($errors->has('Experience'))
+        <span class="text-danger">{{ $errors->first('Experience') }}</span>
+        @endif
          </form>
     </div>
 

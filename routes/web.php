@@ -170,9 +170,13 @@ Route::get('/listOfStudentsPTunit', function () {
     return view('PTunit/listOfStudentsPTunit');
 });
 Route::post('/addSkill', [PTMPController::class,'addSkill'])-> name('addSkill');
+Route::get('/deleteSkills/{id}', [PTMPController::class,'deleteSkills'])-> name('deleteskills');
 Route::post('/addLanguages', [PTMPController::class,'addLanguages'])-> name('addLanguages');
+Route::get('/deleteLanguages/{id}', [PTMPController::class,'deleteLanguages'])-> name('deleteLanguages');
 Route::post('/addInterests', [PTMPController::class,'addInterests'])-> name('addInterests');
+Route::get('/deleteInterests/{id}', [PTMPController::class,'deleteInterests'])-> name('deleteInterests');
 Route::post('/addExperience', [PTMPController::class,'addExperience'])-> name('addExperience');
+Route::get('/deleteExperience/{id}', [PTMPController::class,'deleteExperience'])-> name('deleteExperience');
 Route::post('/addfile', [PTMPController::class,'addfile'])-> name('addfile');
 });
 
