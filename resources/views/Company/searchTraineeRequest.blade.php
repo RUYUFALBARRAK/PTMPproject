@@ -9,11 +9,12 @@
 </div>
 </form>
 
-
+<hr>
 @if( count($traineesResult) == 0)  <!-- in case for no review -->
-<br> <br><br>
-<hr style="margin-top: -20px; margin-bottom: 35px;">
-<div class="noReviews"> No trainee found </div>
+<div class="not-found">
+      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
+      <p>No Trainee Request Found</p>
+    </div>
 @else
 <hr>
 
@@ -26,11 +27,11 @@
      @foreach($traineesResult as $trainee)
      <tr>
     <td>{{$trainee->name}}</td>
-    <td style="font-size: 16px;"> {{$trainee->Major}} </td>
+    <td style="font-size: 16px;"> {{$trainee->jobTitle}} </td>
     <td>
     <span class="glyphicon glyphicon-triangle-right"></span>
 
-    <span class="glyphicon glyphicon-triangle-right"></span>
+    <a href="traineeDetails"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
 @endforeach

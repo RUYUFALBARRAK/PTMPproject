@@ -262,8 +262,8 @@ h1{
 }
 .delet-btn{border-radius: 20px !important; position: absolute; margin-left: 60%; font-size: 100%;}
 .list-of-company .delet-btn{margin: -1% 0% 0% -8%; }
-.requset-details{margin-left: 43%;}
-.requset-details>button{font-size: 150%;}
+.requset-details{margin-left: 42%; position: fixed !important; background-color: #fff !important; z-index: 2; }
+.requset-details>button{font-size: 120%;}
 .btn-success, .btn-outline-secondary {border-radius: 20px !important; font-size: 100%;}
 .Progress-report{
   border: 1px solid #a7aeae;
@@ -908,4 +908,18 @@ cursor: pointer;
 .del-msg2:hover{
     background-color: #af1e1e;
 }
+.not-found{
+  text-align: center;
+}
+a{
+  text-decoration: none;color: #000;
 
+}
+
+#view_announcement_modal__title {
+    font-weight: bold;
+    color: #074e4e;
+}
+.modal-body {
+    word-break: break-word;
+}

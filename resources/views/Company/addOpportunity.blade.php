@@ -12,17 +12,20 @@
   @endif
   @if(Session::has('fail'))
   <div class="alert alert-danger">{{Session::get('fail')}}</div>
-  @endif
+  @endif 
+   @if ($errors->has('uploudedfile'))
+                <div class="alert alert-danger">{{ $errors->first('uploudedfile') }}</div>
+               @endif
 <div class="row opportunity-form">
     <div class="col">
-    <label for="validationTooltip01" class="form-label">job title :</label>
+    <label for="validationTooltip01" class="form-label">Job Title :</label>
       <input type="text" class="form-control @error('jobTitle') is-invalid @enderror" placeholder="Enter job title " value="{{ old('jobTitle') }}" name="jobTitle">
        @if ($errors->has('jobTitle'))
         <span class="text-danger">{{ $errors->first('jobTitle') }}</span>
         @endif
     </div>
     <div class="col">
-    <label for="validationTooltip01" class="form-label">  work hours :</label>
+    <label for="validationTooltip01" class="form-label">  Work Hours :</label>
       <input type="number" class="form-control @error('workHours') is-invalid @enderror" placeholder="Enter work hours" value="{{ old('workHours') }}" name="workHours">
        @if ($errors->has('workHours'))
         <span class="text-danger">{{ $errors->first('workHours') }}</span>
@@ -32,14 +35,14 @@
 
   <div class="row opportunity-form">
     <div class="col">
-    <label for="validationTooltip01" class="form-label">Supervisor full name:</label>
+    <label for="validationTooltip01" class="form-label">Supervisor Full Name:</label>
       <input type="text" class="form-control @error('supervisorName') is-invalid @enderror" placeholder="Enter Supervisor full name" value="{{ old('supervisorName') }}" name="supervisorName">
        @if ($errors->has('supervisorName'))
         <span class="text-danger">{{ $errors->first('supervisorName') }}</span>
         @endif
     </div>
     <div class="col">
-    <label for="validationTooltip01" class="form-label">Supervisor mobile number:</label>
+    <label for="validationTooltip01" class="form-label">Supervisor Mobile Number:</label>
       <input type="tel" class="form-control @error('supervisorPhone') is-invalid @enderror" placeholder="Enter Supervisor mobile number" value="{{ old('supervisorPhone') }}" name="supervisorPhone">
        @if ($errors->has('supervisorPhone'))
         <span class="text-danger">{{ $errors->first('supervisorPhone') }}</span>
@@ -49,14 +52,14 @@
 
   <div class="row opportunity-form">
          <div class="col">
-          <label for="validationTooltip01" class="form-label"> Start date:</label>
+          <label for="validationTooltip01" class="form-label"> Start Date:</label>
               <input type="date" class="form-control @error('Start_at') is-invalid @enderror" placeholder="Enter start date" value="{{ old('Start_at') }}" name="Start_at">
                @if ($errors->has('Start_at'))
               <span class="text-danger">{{ $errors->first('Start_at') }}</span>
               @endif
            </div>
                     <div class="col">
-                      <label for="validationTooltip01" class="form-label"> End date:</label>
+                      <label for="validationTooltip01" class="form-label"> End Date:</label>
                         <input type="date" class="form-control @error('end_at') is-invalid @enderror" placeholder="Enter start date" value="{{ old('end_at') }}" name="end_at">
                          @if ($errors->has('end_at'))
                         <span class="text-danger">{{ $errors->first('end_at') }}</span>
@@ -73,7 +76,7 @@
         @endif
     </div>
     <div class="col">
-    <label for="validationTooltip01" class="form-label">Application deadline:</label>
+    <label for="validationTooltip01" class="form-label">Application Deadline:</label>
       <input type="date" class="form-control @error('AppDeadline') is-invalid @enderror" placeholder="Enter Application deadline" value="{{ old('AppDeadline') }}" name="AppDeadline">
        @if ($errors->has('AppDeadline'))
         <span class="text-danger">{{ $errors->first('AppDeadline') }}</span>
@@ -87,7 +90,7 @@
       <textarea rows="2" class="form-control @error('requirement') is-invalid @enderror" placeholder="Enter Training Requirements" value="{{ old('requirement') }}" name="requirement"></textarea>
     </div>
     <div class="col">
-    <label for="validationTooltip01" class="form-label">Number of trainees:</label>
+    <label for="validationTooltip01" class="form-label">Number Of Trainees:</label>
       <input type="number" class="form-control @error('numberOfTrainee') is-invalid @enderror" placeholder="Enter Number of trainees" value="{{ old('numberOfTrainee') }}" name="numberOfTrainee">
        @if ($errors->has('numberOfTrainee'))
         <span class="text-danger">{{ $errors->first('numberOfTrainee') }}</span>
@@ -95,14 +98,14 @@
     </div>
   </div>
   <div class="row opportunity-form">
-  <label for="comment">brief descriptionof the role:</label>
+  <label for="comment">Brief Description Of The Role:</label>
     <textarea class="form-control @error('RoleDescription') is-invalid @enderror" rows="5" id="comment" value="{{ old('RoleDescription') }}" name="RoleDescription"></textarea>
      @if ($errors->has('RoleDescription'))
         <span class="text-danger">{{ $errors->first('RoleDescription') }}</span>
         @endif
 </div>
 <div class="row opportunity-form">
-  <label for="comment">Required majors:</label>
+  <label for="comment">Required Majors:</label>
     <div class="form-group col-md-2">
       <select name="majors" id="inputState" class="form-select form-select-lg">
         <option selected> Required majors</option>
@@ -115,7 +118,7 @@
       </select>
     </div>
 <br> <br> <br> <br>
- <label for="comment">include incentive:</label>
+ <label for="comment">Include Incentive?</label>
     <div class="form-check">
   <input type="radio"  class="form-check-input" id="radio1" name="incentive"  value="1" checked>Yes
   <label class="form-check-label" for="radio1"></label>
@@ -130,7 +133,7 @@
 </div><br>
 <hr>
 
-        <h4>Uploud PT plan</h4>
+        <h4>Uploud PT Plan</h4>
         <hr>
         <div class="warp">
             
@@ -141,9 +144,7 @@
                     <p>Browse file to upload</p>
                 </div>
 
-                @if ($errors->has('uploudedfile'))
-                <div class="alert alert-danger">{{ $errors->first('uploudedfile') }}</div>
-               @endif
+              
      
                 <section class="prograss-area" style="display: none">
                     <div class="row">
