@@ -913,5 +913,13 @@ cursor: pointer;
 }
 a{
   text-decoration: none;color: #000;
-  
+
+}
+
+#view_announcement_modal__title {
+    font-weight: bold;
+    color: #074e4e;
+}
+.modal-body {
+    word-break: break-word;
 }

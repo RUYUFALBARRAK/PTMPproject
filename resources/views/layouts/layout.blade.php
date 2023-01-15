@@ -59,10 +59,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-title d-flex flex-row pt-4">
-                    <h1 class="fs-5 pt-0" id="view_announcement_modal__title"></h1>
                     <div style="flex: 1 0;"></div>
-                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">X</button>
+                    <h1 class="fs-4 pt-0" id="view_announcement_modal__title"></h1>
+                    <div style="flex: 1 0;"></div>
+                    <button type="button" class="btn btn-outline-dark mx-3" data-bs-dismiss="modal">X</button>
                 </div>
+                <hr>
                 <div class="modal-body" style="text-align: center; font-size:120%;" id="view_announcement_modal__content"></div>
             </div>
         </div>
