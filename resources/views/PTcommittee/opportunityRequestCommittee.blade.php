@@ -43,7 +43,7 @@
             <div style="color: #fff;">-------</div>
           </td>
           <td>
-            <a href="{{ route('opportunity.details' , $opportunitiy->id) }}" class="btn btn-light"><i class="fa-solid fa-arrow-right"></i></a>
+            <a href="{{ route('opportunity.details' , $opportunitiy->id) }}"><span class="fa fa-chevron-right"></span></a>
           </td>
         
         </tr>
@@ -53,7 +53,10 @@
 
   @else
 
-  <div>No opportunities</div>
+    <div class="not-found">
+      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
+      <p>No Opportunities Founded</p>
+    </div>
 
   @endif
     

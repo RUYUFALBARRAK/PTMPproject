@@ -82,7 +82,7 @@ class companyController extends Controller
         $company->OrganizationPhone= $request['OrganizationPhone'];
         $company->Registration= $request['Registration'];
         $company->description= $request['description'];
-        $company->logoImage= $request->logoImage->getClientOriginalName();
+        $company->logoImage= 'storage/images/' . $request->logoImage->getClientOriginalName();
         $company->country= $request['country'];
         $company->SupervisorName= $request['SupervisorName'];
         $company->SupervisorPhone= $request['SupervisorPhone'];

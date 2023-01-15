@@ -21,9 +21,10 @@ class BushraController extends Controller
     return view('Company/personalInfoCompanyEdit');
     }
 
-    public function updateCompany(Request $request, $id){
+    public function updateCompany(Request $request){
 
-        $company = Company::findOrFail($id);
+        $company_id = session()->get('logincompId');
+        $company = Company::findOrFail($company_id);
 
         Validator::make($request->all() , [
 

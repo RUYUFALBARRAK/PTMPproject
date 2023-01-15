@@ -9,11 +9,11 @@
       <div style="width:50%" class="input-group">
       <input type="search" class="form-control rounded" name="query" placeholder="Search for opportunity name..." aria-label="Search" aria-describedby="search-addon" />
       <button type="submit" class="btn btn-outline-dark">Search</button>
-      <span style=" font-size: 13px; margin-top:1.5%;">&nbsp;Didn't see your opportunity? <a class="linkB" style="color:blue;" href="#"> Invite a Company</a> </span>
       </div>
+      <span style=" font-size: 14px; margin-top:1.5%;">&nbsp;Didn't see your opportunity? <a class="linkB" style="color:blue;" href="#"> Invite a Company</a> </span>
     </form>
 
-    <div class="form-group col-md-2 state-menu" style=" margin-left:47%; margin-top:-2.5%;">
+    <div class="form-group col-md-2 state-menu" style=" margin-left:47%; margin-top:-3.8%;">
       <select id="inputLocationCommettii" class="form-select ">
         <option selected>Location..</option>
         <option >Riyadh</option>
@@ -23,7 +23,7 @@
       </select>
     </div>
 
-    <div class="form-group col-md-2 state-menu" style="margin-left:66%; margin-top:-2.5%;">
+    <div class="form-group col-md-2 state-menu" style="margin-left:66%; margin-top:-3.8%;">
       <select id="inputLocationCompany" class="form-select">
         <option selected>Status..</option>
         <option>Accepted</option>
@@ -79,9 +79,9 @@
 
           <td>
             @if($is_apply)
-              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}" class="btn btn-light ml-4"><i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}" ><span class="	fa fa-chevron-right"></span></a>
             @else
-              <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}" class="btn btn-light ml-4"><i class="fa-solid fa-arrow-right"></i></a>
+              <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}" ><span class="	fa fa-chevron-right"></span></a>
             @endif
           </td>
         
@@ -92,7 +92,10 @@
 
   @else
 
-  <div>No opportunities</div>
+    <div class="not-found">
+      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
+      <p>No Opportunities yet</p>
+    </div>
 
   @endif
 

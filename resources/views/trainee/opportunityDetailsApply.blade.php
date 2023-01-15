@@ -87,16 +87,16 @@
         </div><br>
 
 
-        <div class="mt-4">
+        <div style="margin: 20px auto !important;">
             @if(count($has_opportunity) >= 1)
-                <button disabled type="button" class="btn btn-secondary" style="border-radius: 38px;">Apply</button>
+                <button disabled type="button" class="btn btn-secondary">Apply</button>
             @else
                 <form class="d-inline" action="{{ route('opportunity.apply.submit' ,  $opportunity->id) }}" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-success text-white" style="background: rgb(0, 150, 0)">Apply</button>
+                    <button type="submit" class="btn text-white" style="background: #388087;">Apply</button>
                 </form>
             @endif
-            <a href="{{ url('/opportunityPageTrainee') }}" class="btn btn-light border" style="border-radius: 38%">Cancell</a>
+            <a href="{{ url('/opportunityPageTrainee') }}" class="btn btn-light border">Cancel</a>
         </div>
    
 

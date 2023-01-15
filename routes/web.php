@@ -102,8 +102,12 @@ Route::get('/AnnouncementsTrainee', function () {
 })->name('announcements_trainee');
 
 
-Route::get('/opportunityPageCompany/{id}', function ($id) {
-    $opportunities = oppourtunity::where('company_id' , $id)->get();
+
+
+
+Route::get('/opportunityPageCompany', function () {
+    $company_id = session()->get('logincompId');
+    $opportunities = oppourtunity::where('company_id' , $company_id)->get();
     return view('Company/opportunityPageCompany' , compact('opportunities'));
 });
 
@@ -111,15 +115,17 @@ Route::get('/opportunityPageCompany/{id}', function ($id) {
 //     return view('Company/personalInfoCompanyEdit');
 // });
 
-Route::get('/personalInfoCompanyEdit/{id}', function ($id) {
-    $company = App\Models\company::findOrFail($id);
+Route::get('/personalInfoCompanyEdit', function () {
+    $company_id = session()->get('logincompId');
+    $company = App\Models\company::findOrFail($company_id);
     return view('Company/personalInfoCompanyEdit' , compact('company'));
 })->name('company.edit');
 
-Route::post('/personalInfoCompanyUpdate/{id}', [BushraController::class , 'updateCompany'])->name('company.update');
+Route::post('/personalInfoCompanyUpdate', [BushraController::class , 'updateCompany'])->name('company.update');
 
-Route::get('/personalInfoCompany/{id}', function ($id) {
-    $company = App\Models\company::findOrFail($id);
+Route::get('/personalInfoCompany', function () {
+    $company_id = session()->get('logincompId');
+    $company = App\Models\company::findOrFail($company_id);
     return view('Company/personalInfoCompany' , compact('company'));
 })->name('company.show');
 
