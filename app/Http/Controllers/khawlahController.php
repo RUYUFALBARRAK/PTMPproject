@@ -24,13 +24,13 @@ class khawlahController extends Controller
     }
     function listOfTraineesCompany(){
         $id = Auth::id(); 
-        $trainee= DB::table('users')->join('opportunity', 'users.opportunity_id', '=', 'opportunity.id')->where('company_id',  $id)->Where('statusFormCompany', 'accept') ->get(); 
+        $trainee= DB::table('users')->join('opportunity', 'users.opportunity_id', '=', 'opportunity.id')->Where('statusFormCompany', 'accept') ->get(); 
         return view('Company/listOfTrainees',compact('trainee'));
     }
     function searchlistOfTraineesCompany(){
         $id = Auth::id(); 
         $search_trainee = $_GET['query'];
-        $traineesResult = DB::table('users')->join('opportunity', 'users.opportunity_id', '=', 'opportunity.id')->where('company_id',  $id)->Where('statusFormCompany', 'accept') ->where('name', 'LIKE', '%' . $search_trainee . '%' )-> orWhere ('trainee_id', 'LIKE', '%' . $search_trainee . '%')->get();
+        $traineesResult = DB::table('users')->join('opportunity', 'users.opportunity_id', '=', 'opportunity.id')->Where('statusFormCompany', 'accept') ->where('name', 'LIKE', '%' . $search_trainee . '%' )-> orWhere ('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get();
         return view('Company/searchlistOfTraineesCompany',compact('traineesResult'));
     }
     //pt committee

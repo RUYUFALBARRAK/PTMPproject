@@ -28,7 +28,7 @@
     <td style="font-size: 14px;"> {{$student->jobTitle}} </td>
     <td>
     
-    <a href="{{ route('traineeDetails',[$student->id]) }}"><span class="	fa fa-chevron-right"></span></a>
+    <a href="traineeDetails"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
 @endforeach
