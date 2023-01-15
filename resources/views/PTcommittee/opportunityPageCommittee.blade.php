@@ -21,112 +21,49 @@
       </select>
     </div>
 
-    <br><br>
+      <br><br>
 
-  <table class="table-Bushra">
-    <tr class="tr-Bushra">
-        <td class="fisrt-col-Bushra">
-            <img src="img/SDAIA.png" alt="Company logo" width="180%" hight="180%">
-            <br><br>
-        </td>
+    @if(count($opportunities) > 0)
+      <table class="table-Bushra">
+        @foreach ($opportunities as $opportunity)
+        <tr class="tr-Bushra">
+          <td class="fisrt-col-Bushra">
+              <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
+              <br><br>
+          </td>
 
-        <td class="second-col-Bushra">
-            <h5>Software Engineer</h5>
-            <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
-        </td>
+          <td class="second-col-Bushra">
+              <h5>{{ $opportunity->jobTitle }}</h5>
+              <h6>{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</h6>
+          </td>
 
-        <td class="td-Bushra" >
+          <td class="td-Bushra" >
 
-            <span class="rate2-Bushra">
-            <span class="fa fa-star fa-lg checked"></span>
-            <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-            </span>
-            <br>
-    
-            <a class="view-reveiws2" href="#">View Reviews</a>
+              <span class="rate2-Bushra">
+              <span class="fa fa-star fa-lg checked"></span>
+              <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+              </span>
+              <br>
+      
+              <a class="view-reveiws2" href="#">View Reviews</a>
 
-        </td>
+          </td>
 
-     
-        <td class="td-Bushra"><button class="btn-delete" type="submit">Delete </button></td>
-    
-    </tr>
-
-    
-    
-
-
-    <tr class="tr-Bushra">
-
-        <td class="fisrt-col-Bushra">
-          <img src="img/ministryOfComm.png" alt="Company logo" width="220%" hight="220%">
-          <br><br>
-        </td>
-
-        <td class="second-col-Bushra">
-         <h5>Product Manager</h5>
-         <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
-        </td>
-
-      <td class="td-Bushra">
-            <span class="rate2-Bushra">
-            <span class="fa fa-star fa-lg checked"></span>
-            <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-            <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-            </span>
-            <br>
-           
-            <a class="view-reveiws2" href="#">View Reviews</a>
-          
-      </td>
-
-      <td class="td-Bushra"><button class="btn-delete" type="submit">Delete </button></td>
+      
+          <td class="td-Bushra"><button class="btn-delete" type="submit">Delete </button></td>
+      
+      </tr>
+        @endforeach
+      </table>
+    @else
+      <div>No opportunities</div>
+    @endif
 
 
-    </tr>
-
-
-    <tr class="tr-Bushra">
-
-<td class="fisrt-col-Bushra">
-  <img src="img/ministryOfComm.png" alt="Company logo" width="220%" hight="220%">
-  <br><br>
-</td>
-
-<td class="second-col-Bushra">
- <h5>Product Manager</h5>
- <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
-</td>
-
-<td class="td-Bushra">
-    <span class="rate2-Bushra">
-    <span class="fa fa-star fa-lg checked"></span>
-    <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 33% 33% 0% #8f8420;"></span>
-    </span>
-    <br>
-   
-    <a class="view-reveiws2" href="#">View Reviews</a>
-  
-</td>
-
-<td class="td-Bushra"><button class="btn-delete" type="submit">Delete </button></td>
-
-
-</tr>
-
-
-  </table>
-
-
-</div>
+    </div>
 
 @endsection
 
