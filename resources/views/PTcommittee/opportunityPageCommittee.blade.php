@@ -28,7 +28,7 @@
         @foreach ($opportunities as $opportunity)
         <tr class="tr-Bushra">
           <td class="fisrt-col-Bushra">
-              <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
+              <img src="{{ asset( $opportunity->company->logoImage ? 'storage/images/' . $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
               <br><br>
           </td>
 

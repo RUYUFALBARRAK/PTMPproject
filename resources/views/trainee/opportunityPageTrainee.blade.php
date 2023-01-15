@@ -46,7 +46,7 @@
         <tr class="tr-Bushra">
 
           <td class="fisrt-col-Bushra">
-              <img class="img-thumbnail" src="{{ asset( $opportunitiy->company->logoImage ? $opportunitiy->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
+              <img class="img-thumbnail" src="{{ asset(  $opportunitiy->company->logoImage ? 'storage/images/' . $opportunitiy->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
               <br><br>
           </td>
 
