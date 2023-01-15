@@ -162,6 +162,9 @@ Route::get('/opportunityRequestCommittee', function () {
 Route::get('/viewDetails', function () {
     return view('PTcommittee/viewDetails');
 });
+Route::get('/listOfTrainees', [khawlahController::class,'listOfTraineesCompany']);
+Route::get('/searchlistOfTraineesCompany', [khawlahController::class,'searchlistOfTraineesCompany']);
+
 
 Route::get('/listOfTraineesRequests', [khawlahController::class,'viewtraineeList']);
 Route::get('/searchTraineeRequest', [khawlahController::class,'search']);
@@ -177,9 +180,10 @@ Route::get('/listOfStudentsReqLetter', function () {
     return view('PTunit/listOfStudentsReqLetter');
 });
 
-Route::get('/listOfStudentsPTunit', function () {
-    return view('PTunit/listOfStudentsPTunit');
-});
+Route::get('/listOfStudentsPTunit', [khawlahController::class,'studentListPT']);
+Route::get('/searchlistOfStudentsPTunit', [khawlahController::class,'searchstudentListPT']);
+
+
 Route::post('/addSkill', [PTMPController::class,'addSkill'])-> name('addSkill');
 Route::get('/deleteSkills/{id}', [PTMPController::class,'deleteSkills'])-> name('deleteskills');
 Route::post('/addLanguages', [PTMPController::class,'addLanguages'])-> name('addLanguages');
