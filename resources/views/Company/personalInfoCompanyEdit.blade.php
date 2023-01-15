@@ -16,7 +16,7 @@
           <div class="childB" style=" margin-left:6%;">
           <p>
             <label> <b>Registration number:</b> </label>
-            <input type="text" class="form-control" id="comRegNum" name="Registration" value="{{ $company->id }}">
+            <input type="text" class="form-control" id="comRegNum" name="Registration" value="{{ $company->Registration }}">
             @if ($errors->has('Registration'))
             <span class="text-danger">{{ $errors->first('Registration') }}</span>
             @endif

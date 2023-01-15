@@ -27,7 +27,7 @@
 
     <p>
      <label><b> Employee full name:</b></label>
-     <label>{{ $company->supervisorName }} </label>
+     <label>{{ $company->SupervisorName }} </label>
     </p>
 
     <br><br>

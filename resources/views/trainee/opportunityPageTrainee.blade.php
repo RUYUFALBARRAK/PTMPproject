@@ -92,7 +92,7 @@
 
   @else
 
-  <div class="alert alert-info">There are no opportunities requested</div>
+  <div>There are no opportunities requested</div>
 
   @endif
 
