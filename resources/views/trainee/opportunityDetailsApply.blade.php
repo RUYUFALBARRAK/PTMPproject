@@ -96,7 +96,7 @@
                     <button type="submit" class="btn text-white" style="background: #388087;">Apply</button>
                 </form>
             @endif
-            <a href="{{ url('/opportunityPageTrainee') }}" class="btn btn-light border">Cancell</a>
+            <a href="{{ url('/opportunityPageTrainee') }}" class="btn btn-light border">Cancel</a>
         </div>
    
 
