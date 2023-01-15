@@ -51,14 +51,13 @@
             @elseif ($opportunity->status == 'accept')
               <h5 class="opportunityStateB2 text-success">Accepted</h5>
             @elseif ($opportunity->status == 'need_modification')
-            <h5 class="opportunityStateB2 text-blue">Need Modification</h5>
+            <h5 class="opportunityStateB2" style="color:#dadd28;">Need Modification</h5>
             @elseif ($opportunity->status == 'reject')
             <h5 class="opportunityStateB2 text-danger">Rejected</h5>
             @endif
           </td>
         
         </tr> 
-        
         @endforeach
     </table>
   @else

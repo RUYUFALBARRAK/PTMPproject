@@ -48,9 +48,7 @@
       
           <p>
             <label> <b> brief description about the company:</b> </label>
-            <textarea type="text" class="form-control" id="comDes" name="description" placeholder="description" rows="5" cols="35">
-              {{ $company->description }}
-            </textarea>
+            <textarea type="text" class="form-control" id="comDes" name="description" placeholder="description" rows="5" cols="35">{{ $company->description }}</textarea>
             @if ($errors->has('description'))
             <span class="text-danger">{{ $errors->first('description') }}</span>
             @endif
