@@ -24,7 +24,7 @@
 
 
     
-    <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:75%; position:relative; bottom:30px; background-color: #388087;">Add training opportunity</a>
+    <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:75%; font-size:20px; position:relative; bottom:50px; background-color: #388087;">Add training opportunity</a>
   
 
 
