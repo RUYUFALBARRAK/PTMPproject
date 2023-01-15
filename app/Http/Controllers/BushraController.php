@@ -23,7 +23,8 @@ class BushraController extends Controller
 
     public function updateCompany(Request $request, $id){
 
-        $company = Company::findOrFail($id);
+        $company_id = session()->get('logincompId');
+        $company = Company::findOrFail($company_id);
 
         Validator::make($request->all() , [
 
