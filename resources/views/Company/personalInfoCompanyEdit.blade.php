@@ -4,8 +4,8 @@
 
 <div class='content'>
 
-    <img src="{{ asset('img/SDAIA.png') }}" alt="Company logo" class="logoCompany">
-    <h3 class="spashlistB">SDAIA (Saudi Data & AL Authority)</h3>
+    <img src="{{ asset( $company->logoImage ? $company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
+    <h3 class="spashlistB">{{ $company->orgnizationName }}</h3>
     <br><br>
     
     <hr>
