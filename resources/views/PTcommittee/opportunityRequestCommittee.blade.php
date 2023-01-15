@@ -40,7 +40,7 @@
             </td>
 
           <td>
-            <h4 class="opportunityStateB2 text-warning">{{ $opportunitiy->status }}</h4>
+            <div style="color: #fff;">-------</div>
           </td>
           <td>
             <a href="{{ route('opportunity.details' , $opportunitiy->id) }}" class="btn btn-light"><i class="fa-solid fa-arrow-right"></i></a>
@@ -53,7 +53,7 @@
 
   @else
 
-  <div class="alert alert-info text-ceneter">There are no opportunities requested</div>
+  <div>No opportunities</div>
 
   @endif
     

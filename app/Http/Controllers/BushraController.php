@@ -110,7 +110,7 @@ class BushraController extends Controller
         ]);
 
         Alert::success('', 'Opportunity has been applied for');
-        return redirect()->back();
+        return redirect()->route('opportunity.confirm' , $opportunity->id);
 
     }
 
