@@ -4,12 +4,11 @@
 <div class="content">
     @if(count($companyRequest) == 0)
     <div class="not-found">
-      <img src="img/paper.png" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
+      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
       <p>No Company Request Found</p>
     </div>
-
-    <form method="GET" action="{{url('/searchlistOfCompanyRequest')}}">
-
+    @else
+ <form method="GET" action="{{url('/searchlistOfCompanyRequest')}}">
 <div class="input-group">
   <input type="search" class="form-control rounded" name="query" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
   <button type="submit" class="btn btn-outline-dark">search</button>
@@ -36,7 +35,7 @@
     </td>
   </tr>
 @endforeach
-</table>
- @endif   
+</table> 
+@endif
 </div>
 @endsection
