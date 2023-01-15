@@ -59,7 +59,10 @@
         @endforeach
       </table>
     @else
-      <div>No opportunities</div>
+     <div class="not-found">
+       <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
+       <p>No Opportunities Founded</p>
+     </div>
     @endif
 
 
