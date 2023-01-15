@@ -143,7 +143,8 @@ Route::get('/opportunityDetailsApply/{id}', function ($id) {
 Route::post('/opportunityDetailsApply/{id}', [BushraController::class , 'opportunityApplySubmit'])->name('opportunity.apply.submit');
 
 Route::get('/opportunityPageCommittee', function () {
-    return view('PTcommittee/opportunityPageCommittee');
+    $opportunities = oppourtunity::where('status' , 'accept')->get();
+    return view('PTcommittee/opportunityPageCommittee' , compact('opportunities'));
 });
 
 Route::get('/opportunityDetailsPage/{id}', function ($id) {

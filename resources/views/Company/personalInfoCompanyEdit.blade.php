@@ -4,8 +4,8 @@
 
 <div class='content'>
 
-    <img src="{{ asset('img/SDAIA.png') }}" alt="Company logo" class="logoCompany">
-    <h3 class="spashlistB">SDAIA (Saudi Data & AL Authority)</h3>
+    <img src="{{ asset( $company->logoImage ? $company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
+    <h3 class="spashlistB">{{ $company->orgnizationName }}</h3>
     <br><br>
     
     <hr>
@@ -16,7 +16,7 @@
           <div class="childB" style=" margin-left:6%;">
           <p>
             <label> <b>Registration number:</b> </label>
-            <input type="text" class="form-control" id="comRegNum" name="Registration" value="{{ $company->id }}">
+            <input type="text" class="form-control" id="comRegNum" name="Registration" value="{{ $company->Registration }}">
             @if ($errors->has('Registration'))
             <span class="text-danger">{{ $errors->first('Registration') }}</span>
             @endif

@@ -24,9 +24,7 @@
 
 
     
-    <a href="addOppourtunityForCompany"><button class="btn btn-primary" type="button"
-    style=" margin-left:75%; margin-top:-6%; font-size:140%;
-    background-color: #388087;">Add training opportunity</button></a>
+    <a href="{{ url('/addOppourtunityForCompany') }}" class="btn btn-primary" style="margin-left:75%; margin-top:-6%; font-size:140%; background-color: #388087;">Add training opportunity</a>
   
 
 
@@ -38,24 +36,24 @@
         @foreach ($opportunities as $opportunity)
         <tr class="tr-Bushra">
           <td class="fisrt-col-Bushra">
-              <img src="{{ asset('img/SDAIA.png') }}" alt="Company logo" width="180%" hight="180%">
+              <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
               <br><br>
           </td>
 
           <td class="second-col-Bushra">
               <h5>{{ $opportunity->jobTitle }}</h5>
-              <p class="opportunityStateB2 text-secondary"> {{ $opportunity->Start_at }}  -  {{ $opportunity->end_at }}  </p>
+              <p class="opportunityStateB2 text-secondary"> {{ Carbon\Carbon::parse($opportunitiy->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunitiy->end_at)->toFormattedDateString() }}  </p>
           </td>
 
         <td>
           @if($opportunity->status == 'pending')
-            <h5 class="opportunityStateB2 text-warning">{{ $opportunity->status }}</h5>
+            <h5 class="opportunityStateB2 text-warning">Pending</h5>
           @elseif ($opportunity->status == 'accept')
-            <h5 class="opportunityStateB2 text-success">{{ $opportunity->status }}</h5>
+            <h5 class="opportunityStateB2 text-success">Accepted</h5>
           @elseif ($opportunity->status == 'need_modification')
-          <h5 class="opportunityStateB2 text-blue">{{ $opportunity->status }}</h5>
+          <h5 class="opportunityStateB2 text-blue">Need Modification</h5>
           @elseif ($opportunity->status == 'reject')
-          <h5 class="opportunityStateB2 text-danger">{{ $opportunity->status }}</h5>
+          <h5 class="opportunityStateB2 text-danger">Rejected</h5>
           @endif
         </td>
       
@@ -63,7 +61,7 @@
         @endforeach
     </table>
   @else
-    <div class="alert-info">Company has no opportunities</div>
+    <div>No opportunities</div>
   @endif
     
    

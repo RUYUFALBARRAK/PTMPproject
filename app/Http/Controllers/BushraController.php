@@ -32,7 +32,7 @@ class BushraController extends Controller
             'orgnizationEmail' => ['required' , 'email' , Rule::unique('company')->ignore($company)],
             'OrganizationPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
             'description' => 'required',
-            'SupervisorName' => 'required',
+            'SupervisorName' => 'required|max:20',
             'Address' => 'required',
             'SupervisorPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
 
@@ -110,7 +110,7 @@ class BushraController extends Controller
         ]);
 
         Alert::success('', 'Opportunity has been applied for');
-        return redirect()->back();
+        return redirect()->route('opportunity.confirm' , $opportunity->id);
 
     }
 
