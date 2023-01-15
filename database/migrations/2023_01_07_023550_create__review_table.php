@@ -16,7 +16,7 @@ return new class extends Migration
             Schema::create('_review', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('Create_at');
-            $table->string('review');
+            $table->string('review',400);
             $table->integer('star_rating');
             $table->string('trainee_id');
             $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');

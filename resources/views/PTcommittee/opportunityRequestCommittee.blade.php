@@ -43,7 +43,7 @@
             <div style="color: #fff;">-------</div>
           </td>
           <td>
-            <a href="{{ route('opportunity.details' , $opportunitiy->id) }}" class="btn btn-light"><i class="fa fa-chevron-right"></i></a>
+            <a href="{{ route('opportunity.details' , $opportunitiy->id) }}"><span class="fa fa-chevron-right"></span></a>
           </td>
         
         </tr>
