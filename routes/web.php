@@ -35,7 +35,7 @@ Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
 });
 
-Route::group([], function(){//'middleware'=>'isloggedin'
+Route::group(['middleware'=>'isloggedin'], function(){
 
     Route::get('/instruction', [RazanController::class,'inst']);
     Route::get('/viewReview', [RazanController::class,'viewReview']);
