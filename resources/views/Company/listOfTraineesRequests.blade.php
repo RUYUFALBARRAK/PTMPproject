@@ -4,7 +4,7 @@
 <div class="content">
   <form method="GET" action="{{url('/searchTraineeRequest')}}">
 <div class="input-group">
-  <input type="search" class="form-control rounded" name="query" placeholder="Search for trainee by name or major..." aria-label="Search" aria-describedby="search-addon" />
+  <input type="search" class="form-control rounded" name="query" placeholder="Search for trainee by name or opportunity..." aria-label="Search" aria-describedby="search-addon" />
   <button type="submit" class="btn btn-outline-dark">Search</button>
 </div>
 </form>
@@ -31,7 +31,7 @@
     <td style="font-size: 16px;"> {{$trainee->jobTitle}} </td>
     <td>
     
-    <a href="traineeDetails"><span class="	fa fa-chevron-right"></span></a>
+    <a href="{{ route('detailsForCompany',[$trainee->trainee_id]) }}"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
 @endforeach

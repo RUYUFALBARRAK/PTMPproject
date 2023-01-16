@@ -413,10 +413,20 @@ text-align: center;
   overflow: scroll;
 }
 
-.th-balqees, .td-balqees,.td-balqees-link,.th-khawlah {
+.th-balqees, .td-balqees,.th-khawlah {
   padding: 8px;
   border-bottom: 1px solid #ddd;
   text-align: center;
+}
+.td-khawlah{
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+}
+.td-balqees-link
+{
+
+  border-bottom: 1px solid #ddd;
+width: 70%;
 }
 .th-balqees{
   background-color: #6fb3b89e;
@@ -441,8 +451,12 @@ text-align: center;
   width: 90%;
   text-align:left ;
 }
+.second-col{
+  width: 70%;
+  text-align:right ;
+}
 .fist-col-khawlah{
-  width: 50%;
+  width: 30%;
   text-align:left ;
 }
 .fist-column{
