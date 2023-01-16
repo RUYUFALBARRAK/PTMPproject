@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreign('unit_id')->references('unit_id')->on('unit')->onDelete('cascade');
             $table->string('documentName');
             $table->string('document')->unique();
+            $table->string('size')->nullable()->default(null);
             $table->string('uploaded_for')->default('both');
             $table->timestamps();
         });
