@@ -26,10 +26,10 @@
     <br>
 
     <div class="trainee-info" style="width:90%;" >
-    <p> <b> Skills:&nbsp; </b> Fast learner</p><br>
-    <p> <b> Languages:&nbsp; </b> Arabic, English </p><br>
-    <p> <b> Interests :&nbsp; </b> Podcasting </p> <br>
-    <p> <b> Experience:&nbsp; </b> </p> <br>
+    <p> <b> Skills:&nbsp; </b> {{$skill}} </p><br>
+    <p> <b> Languages:&nbsp; </b> {{$language}} </p><br>
+    <p> <b> Interests :&nbsp; </b> {{$interest}} </p> <br>
+    <p> <b> Experience:&nbsp; </b> {{$experience}} </p> <br>
     <p> <b> Uploaded Files:&nbsp; </b> </p>
     </div>
 

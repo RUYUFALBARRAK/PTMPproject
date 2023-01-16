@@ -9,8 +9,14 @@ use Illuminate\Support\Facades\DB;
 use App\Repositories\UserRepository;
 
 use App\Models\review;
-use App\Models\trainee;
 use App\Models\company;
+use App\Models\trainee;
+use App\Models\traineeExperience;
+use App\Models\traineeInterests;
+use App\Models\traineeLanguages;
+use App\Models\traineeSkills;
+use App\Models\Sendsdocument;
+use App\Models\oppourtunity;
 
 use Hash;
 use Session;
@@ -26,19 +32,66 @@ class RazanController extends Controller
         return view('trainee/instruction');
     }
 
-    public function detailsForCommittee($id){
+    public function detailsForCommittee($id){  /* INCOMPLETE */
         $trainee = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->first();
-        return view('PTcommittee/traineeDetailsCommittee', ['trainee' => $trainee]);
+        $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
+        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
+        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
+        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+
+        $int = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', $id)->value('opportunity.company_id');
+        $comapnyInfo = company::where('id', $int)->first();
+
+        $documents = Sendsdocument::where( 'trainee_id' , $id)->get(); /*NEED TO PASS IT TO VIEW + UPLOADED DOCS*/
+
+        $num = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', $id)->value('opportunity.id');
+        $oppourtunity = oppourtunity::where('id', $num)->first();
+
+        $status = trainee::where('trainee_id', $id)->value('statusFormCompany');
+
+
+        return view('PTcommittee/traineeDetailsCommittee', [
+            'trainee' => $trainee ,
+            'comapnyInfo' => $comapnyInfo ,
+            'oppourtunity' => $oppourtunity ,
+            'status' => $status ,
+            'experience' => $experience ,
+            'interest' => $interest ,
+            'language' => $language ,
+            'skill' => $skill
+        ]);
     }
 
     public function detailsForCompany($id){
         $trainee = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->first();
-        return view('Company/traineeDetailsCompany', ['trainee' => $trainee]);
+        $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
+        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
+        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
+        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+
+        return view('Company/traineeDetailsCompany', [
+            'trainee' => $trainee ,
+            'experience' => $experience ,
+            'interest' => $interest ,
+            'language' => $language ,
+            'skill' => $skill
+        ]);
     }
 
     public function detailsForUnit($id){
         $trainee = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->first();
-        return view('PTunit/traineeDetailsUnit', ['trainee' => $trainee]);
+        $experience = traineeExperience::where( 'trainee_id' , '=', $id)->value('Experience');
+        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
+        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
+        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+
+        return view('PTunit/traineeDetailsUnit', [
+            'trainee' => $trainee ,
+            'experience' => $experience ,
+            'interest' => $interest ,
+            'language' => $language ,
+            'skill' => $skill
+        ]);
     }
 
     public function showReviews($id){

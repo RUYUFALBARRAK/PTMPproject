@@ -26,21 +26,23 @@
     <br>
 
     <div class="trainee-info" style="width:90%;" >
-    <p> <b> Skills:&nbsp; </b> Fast learner</p><br>
-    <p> <b> Languages:&nbsp; </b> Arabic, English </p><br>
-    <p> <b> Interests :&nbsp; </b> Podcasting </p> <br>
-    <p> <b> Experience:&nbsp; </b> </p> <br>
+    <p> <b> Skills:&nbsp; </b> {{$skill}} </p><br>
+    <p> <b> Languages:&nbsp; </b> {{$language}} </p><br>
+    <p> <b> Interests :&nbsp; </b> {{$interest}} </p> <br>
+    <p> <b> Experience:&nbsp; </b> {{$experience}} </p> <br>
     <p> <b> Uploaded Files:&nbsp; </b> </p>
     </div>
 
 </div>
 
 
+@if($status == "accept")
+
 <div class="content">
 
 <div style="margin-left:4%;">
-    <img src="img/SDAIA.png" alt="Company logo" width="15%" hight="15%">
-    <h3 class="spashlist">Software Engineer</h3> <h4 class="date">Jan. 16, 2022 - Aug. 11/2022 </h4>
+    <img src="{{asset('/img/'.$comapnyInfo->logoImage)}}" alt="Company logo" width="20%" hight="20%" style=" margin-left:-3%;">
+    <h3 style=" margin-top:-5%;" class="spashlist">{{$oppourtunity-> jobTitle}}</h3> <h4 style=" margin-top:-2%;" class="date">{{$oppourtunity-> Start_at}} - {{$oppourtunity-> end_at}}  </h4>
 </div>
 
 
@@ -72,7 +74,6 @@
 </div>
 
 
-
 <div class="company-report" style="margin-left: 12em;">
 
 <h3 style="font-size:145%;"> Company's Progress report</h3><br>
@@ -97,6 +98,24 @@
     <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
 </table>
 </div>
+
+@else
+
+<div class="content" style="margin-bottom:-10%;">
+<p class="hed-de">Progress Report</p>
+<hr>
+<br>
+
+<div class="not-found">
+    <br> <br>
+      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br>
+    </div>
+
+<div class="noReviews"> Trainee have not been accepted in an opportunity </div>
+
+</div>
+
+@endif
 
 
 </div>

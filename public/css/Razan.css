@@ -343,9 +343,8 @@ background-color: #af1e1e;
 }
 
 .noReviews{
-    margin-top: 20px;
+    margin-top: -10px;
     text-align: center;
     font-size: 130%;
     color: rgb(64, 60, 74);
-
 }
