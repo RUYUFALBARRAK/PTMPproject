@@ -35,14 +35,25 @@ class BalqeesController extends Controller
             ], 400);
         }
         $file = $request->file('uploudedfile');
+        $currentFileSize = $file->getSize();
+        $currentFileName = $file->getClientOriginalName();
+        $documentFromNameAndSize = document::where([['size', '=', $currentFileSize], ['documentName', '=', $currentFileName]])->first();
+        if($documentFromNameAndSize) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Document already exist.',
+                'theme' => 'danger',
+            ], 400);
+        }
         $filename = Str::random(32).'.'.$file->guessClientExtension();
         $dirpath = 'docs';
         $filepath = public_path($dirpath);
         $file->move($filepath, $filename);
         $doc = new document();
-        $doc->documentName = $file->getClientOriginalName();
+        $doc->documentName = $currentFileName;
         $doc->document = $filename;
         $doc->uploaded_for = $inputs['doc_to'];
+        $doc->size = $currentFileSize;
         try {
             $doc->unit_id = auth()->user()->trainee_id;
         } catch (\Throwable $th) {
