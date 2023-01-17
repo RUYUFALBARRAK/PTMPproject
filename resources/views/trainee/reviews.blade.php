@@ -5,8 +5,7 @@
 <div class="content">
 
 <div>
-    <!-- NEED to get image from DB -->
-    <img src="{{asset('/img/'.$companyInfo->logoImage)}}" alt="Company logo" width="23%" hight="23%" style=" margin-left:38% ;">
+    <img src="{{asset($companyInfo->logoImage)}}" alt="Company logo" width="23%" hight="23%" style=" margin-left:38% ;">
 </div>
 
 
@@ -14,7 +13,7 @@
 <div class="not-found">
     <br>
     <hr> <br> <br>
-      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br>
+      <img src="{{asset('/img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br>
     </div>
 
 <div class="noReviews"> {{$companyInfo->orgnizationName}} Have No Reviews </div>

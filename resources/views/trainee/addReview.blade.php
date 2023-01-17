@@ -32,7 +32,7 @@
 
     <div style="margin-top: -1%;">
     <p> <label> <textarea id="review" name="review"  rows="5" cols="50" placeholder="How is your experience?" style="border-radius:4px; font-size:130%; font-family:'Actor';
-    font-weight:200; padding:1%;  @error('review') border-color:#e72828; border-width:1.5px; @enderror "></textarea></label> </p>
+    font-weight:200; padding:1%; @error('review') border-color:#e72828; border-width:1.5px; @enderror "></textarea></label> </p>
     </div>
 
     @error('review') <p style="color:#e72828; margin-top: -2%;"> {{$message}} </p> @enderror
@@ -40,7 +40,7 @@
     <!-- data-bs-toggle="modal" data-bs-target="#error" -->
     <div>
     <input type="submit" value="Add" class="add-but" >  </input> <!-- data-bs-toggle="modal" data-bs-target="#error" -->
-    <a href="{{ url()->previous() }}"><button type="button" class="can-but" class="fas fa-edit"> Cancel </button> </a>
+    <a href="{{ url()->previous() }}"><button type="button" class="can-but1" class="fas fa-edit"> Cancel </button> </a>
     </div>
 
 </form>

@@ -34,11 +34,7 @@ $greyStar = 5 - $stars;
 
     <div>
 
-    <form action="/traineeMainPage" method="POST">
-    @csrf
-    @method('DELETE')
-    <button class="del-but"> Delete </button>
-    </form>
+    <button type="button" class="del-but" data-bs-toggle="modal" data-bs-target="#exampleModal"> Delete </button>
 
     <a href="{{ url()->previous() }}"><button type="button" class="can-but2" class="fas fa-edit"> Cancel </button> </a>
     </div>

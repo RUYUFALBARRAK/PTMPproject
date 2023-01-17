@@ -41,7 +41,7 @@
 <div class="content">
 
 <div style="margin-left:4%;">
-    <img src="{{asset('/img/'.$comapnyInfo->logoImage)}}" alt="Company logo" width="20%" hight="20%" style=" margin-left:-3%;">
+    <img src="{{asset($companyInfo->logoImage)}}" alt="Company logo" width="20%" hight="20%" style=" margin-left:-3%;">
     <h3 style=" margin-top:-5%;" class="spashlist">{{$oppourtunity-> jobTitle}}</h3> <h4 style=" margin-top:-2%;" class="date">{{$oppourtunity-> Start_at}} - {{$oppourtunity-> end_at}}  </h4>
 </div>
 
@@ -111,7 +111,7 @@
       <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br>
     </div>
 
-<div class="noReviews"> Trainee have not been accepted in an opportunity </div>
+<div class="noReviews"> Trainee has not been accepted in an opportunity </div>
 
 </div>
 

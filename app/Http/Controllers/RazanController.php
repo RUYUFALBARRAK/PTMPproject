@@ -33,14 +33,17 @@ class RazanController extends Controller
     }
 
     public function detailsForCommittee($id){  /* INCOMPLETE */
-        $trainee = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->first();
+        $trainee = trainee::where('trainee_id', $id)->first();
+
+        $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
+
         $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
         $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
         $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
         $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
 
         $int = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', $id)->value('opportunity.company_id');
-        $comapnyInfo = company::where('id', $int)->first();
+        $companyInfo = company::where('id', $int)->first();
 
         $documents = Sendsdocument::where( 'trainee_id' , $id)->get(); /*NEED TO PASS IT TO VIEW + UPLOADED DOCS*/
 
@@ -52,7 +55,7 @@ class RazanController extends Controller
 
         return view('PTcommittee/traineeDetailsCommittee', [
             'trainee' => $trainee ,
-            'comapnyInfo' => $comapnyInfo ,
+            'companyInfo' => $companyInfo ,
             'oppourtunity' => $oppourtunity ,
             'status' => $status ,
             'experience' => $experience ,
@@ -63,7 +66,10 @@ class RazanController extends Controller
     }
 
     public function detailsForCompany($id){
-        $trainee = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->first();
+        $trainee = trainee::where('trainee_id', $id)->first();
+
+        $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
+
         $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
         $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
         $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
@@ -79,7 +85,10 @@ class RazanController extends Controller
     }
 
     public function detailsForUnit($id){
-        $trainee = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->first();
+        $trainee = trainee::where('trainee_id', $id)->first();
+
+        $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
+
         $experience = traineeExperience::where( 'trainee_id' , '=', $id)->value('Experience');
         $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
         $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
@@ -145,13 +154,13 @@ class RazanController extends Controller
 
         $review->save();
 
-       return redirect('/traineeMainPage'); /* ->with('msg','review was submitted successfully') */
+       return redirect('/traineeMainPage')->with('msg','review');
     }
 
     public function destroy(){
 
         $review = review::where('trainee_id', '=', session('loginId'))->first();
         $review->delete();
-        return redirect('/traineeMainPage');
+        return redirect('/traineeMainPage')->with('msg','delete');
     }
 }
