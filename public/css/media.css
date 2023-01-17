@@ -9,7 +9,10 @@
     background-color: #3880871d;
 }
 
-
+.second-col {
+    width: 70%;
+    text-align: right;
+}
 .form-balqees {
     font-size: 16px
 }
@@ -20,7 +23,7 @@
 }
 
 .fist-col-khawlah {
-    width: 50%;
+    width: 30%;
     text-align: left;
 }
 
