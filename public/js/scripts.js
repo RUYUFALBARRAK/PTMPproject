@@ -120,3 +120,12 @@ let filename = '';
         });
 
 //ends
+
+document.querySelector('#announcement-title-length').textContent = document.querySelector('#validationTooltip01').value.length;
+document.querySelector('#announcement-content-length').textContent = document.querySelector('#validationTooltip02').value.length;
+document.querySelector('#validationTooltip01').oninput = (e) => {
+    $('#announcement-title-length').text($('#validationTooltip01').val().length);
+};
+document.querySelector('#validationTooltip02').oninput = (e) => {
+    $('#announcement-content-length').text($('#validationTooltip02').val().length);
+};

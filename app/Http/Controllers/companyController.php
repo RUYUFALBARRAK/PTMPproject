@@ -10,6 +10,7 @@ use App\Models\trainee;
 use App\Models\company;
 use App\Models\document;
 use App\Models\oppourtunity;
+use \App\Enum\companyStatus;
 use Validator;
 use DB;
 use File;
@@ -46,24 +47,31 @@ class companyController extends Controller
 
     function Authreg(Request $request){
         $request->validate([
-            'orgnizationName' => 'required',
+            'orgnizationName' => 'required|alpha|max:50',
             'website' => 'required|url',
             'orgnizationEmail' => 'required|email|unique:company',
-            'OrganizationPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
-            'Registration' => 'required',
-            'description' => 'required',
-            'SupervisorName' => 'required',
+            'OrganizationPhone' => 'required|regex:/(966)[0-9]{9}/|numeric|digits:12|numeric',
+            'Registration' => 'required|digits:10',
+            'description' => 'required|max:250',
+            'SupervisorName' => 'required|alpha',
             'city' => 'required',
-            'country' => 'required',
-            'SupervisorPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'SupervisorEmail' => 'required',
-            'SupervisorEmailConfirm' => 'required|email',
-            'password' => 'required|confirmed|min:6',
+            'SupervisorPhone' => 'required|regex:/(966)[0-9]{9}/|numeric|digits:12|numeric',
+            'SupervisorEmail' => 'required|confirmed',
+            'SupervisorEmail_confirmation' => 'required|email',
+            'password' => 'required|confirmed|min:8|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
             'SupervisorFax' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
             'Address' => 'required',
-            'password_confirmation' => 'required|min:6',
+            'password_confirmation' => 'required|min:8',
             'logoImage'=> 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
+        ],
+         [
+            'unique' => 'The email already been registered.',
+            'password.regex'  => 'Password must contain at least 8 number and both uppercase and lowercase letters.',
+        ]
+    );
+ 
+
+
       /*  
           $res= $company->save();
           if($res){
@@ -82,7 +90,7 @@ class companyController extends Controller
         $company->Registration= $request['Registration'];
         $company->description= $request['description'];
         $company->logoImage= $request->logoImage->getClientOriginalName();
-        $company->country= $request['country'];
+        $company->country= $request['city'];
         $company->SupervisorName= $request['SupervisorName'];
         $company->SupervisorPhone= $request['SupervisorPhone'];
         $company->SupervisorEmail= $request['SupervisorEmail'];
@@ -118,17 +126,17 @@ class companyController extends Controller
     function Authopportunity(Request $request){
         if(request()->has('Start_at'))
             $request->validate([
-            'jobTitle' => 'required',
+            'jobTitle' => 'required|alpha',
             'workHours' => 'required|numeric',
-            'supervisorPhone' => 'required|regex:/(05)[0-9]{8}/|numeric|digits:10',
-            'supervisorName' => 'required',
+            'supervisorPhone' => 'required|regex:/(966)[0-9]{9}/|numeric|digits:12',
+            'supervisorName' => 'required|alpha',
             'Start_at' => 'required|date',
             'end_at' => 'required|date|after:Start_at',
             'address' => 'required',
             'AppDeadline' => 'required|date|before_or_equal:Start_at',
             'requirement' => 'required',
             'numberOfTrainee' => 'required|numeric',
-            'RoleDescription' => 'required',   
+            'RoleDescription' => 'required|alpha',   
             'majors' => 'required', 
             'incentive' => 'required', 
             'uploudedfile' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt', 
@@ -181,9 +189,46 @@ class companyController extends Controller
     function addOpportunityview(){
         
         if(Session::has('logincompId')){
-        $data=['loginIdcompUser'=> company::where('id','=',session('logincompId'))->first()];}
-        return view('Company/addOpportunity',$data);
+        $data=['loginIdcompUser'=> company::where('id','=',session('logincompId'))->first()];
+        return view('Company/addOpportunity',$data);}
+        return redirect('loginCompany');
     }
+function listOfcompany(){
+    $company= DB::table('company')->where('status', 'accept')->get(); //DB::table('company')->whereIn('status', ['reject','accept'])->get();
 
+    return view('PTunit/listOfCompany',compact('company'));
+}
+function listOfCompanyRequest(){
+    $companyRequest = DB::table('company')->where('status', 'Pending')->get();
+     return view('PTunit/listOfCompanyRequest',compact('companyRequest'));
+}
+function CompanyDetails($id){
+    //view('PTunit/company',compact('id'));
+    $company =['company'=> DB::table('company')->where('id', $id)->get()];
+    return view("PTunit/companyDetails",$company);//view('PTunit/companyDetails',compact('company')); //view('PTunit/companyDetails');
+}
+
+function deleteCompany($id){
+        $company = company::FindorFail($id);
+        $company->delete();
+        return redirect('/listOfCompany')->with('msgcompanyDelete','company was deleted successfully'); 
+}
+
+function CompanyRegestrationDetails($id){
+    $company =['company'=> DB::table('company')->where('id', $id)->get()];
+    return view("PTunit/regestrationRequest",$company);
+}
+function rejectCompany($id){
+        $companyRequest = company::FindorFail($id);
+        $companyRequest->status=companyStatus::reject;
+        $companyRequest->update();
+return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was deleted successfully');  
+}
+function AcceptCompany($id){
+        $companyRequest = company::FindorFail($id);
+        $companyRequest->status=companyStatus::accept;
+        $companyRequest->update();
+    return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was deleted successfully');  
+}
 
 }

@@ -19,20 +19,30 @@
 <form class="row g-3 needs-validation" method="POST" action=" {{ route('Authlogincompany')}}" novalidate>
 @csrf
   <div class="textField">
-    <label for="validationTooltip01" class="form-label">Email</label>
+    <label for="validationTooltip01" class="form-label">Email:</label>
     <input type="text" class="form-control @error('orgnizationEmail') is-invalid @enderror" id="validationTooltip01" value="{{ old('orgnizationEmail') }}" name="orgnizationEmail" placeholder="Email" required>
     @if ($errors->has('orgnizationEmail'))
     <span class="text-danger">{{ $errors->first('orgnizationEmail') }}</span>
     @endif
   </div>
   <div class="textField">
-    <label for="validationTooltip01" class="form-label">Password</label>
-    <input type="Password" class="form-control  @error('password') is-invalid @enderror" id="validationTooltip01"  name="password" placeholder="Password" required>
+    <label for="validationTooltip01" class="form-label">Password:</label>
+    <div class="col input-group mb-3">
+    <input type="Password" class="form-control  @error('password') is-invalid @enderror" id="password2"  name="password" placeholder="Password" required>
+    <span class="input-group-text"><i class="far fa-eye-slash" id="togglePassword2"></i></span>
+    </div>
     @if ($errors->has('password'))
     <span class="text-danger">{{ $errors->first('password') }}</span>
     @endif
   </div>
-
+<script>
+ const password2 = document.querySelector("#password2");
+document.querySelector("#togglePassword2").addEventListener("click", function () {
+const type2 = password2.getAttribute("type") == "password" ? "text" : "password";
+password2.setAttribute("type", type2);
+this.classList.toggle('fa-eye');
+});
+</script>
   
   <div class="col-12">
     <button class="add-but-login" type="submit">Log in</button>

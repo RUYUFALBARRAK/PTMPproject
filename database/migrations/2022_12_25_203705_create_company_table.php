@@ -23,12 +23,12 @@ return new class extends Migration
             $table->string('orgnizationEmail')->unique();
             $table->string('logoImage');
             $table->string('role')->default('4');
-            $table->string('OrganizationPhone',10);
+            $table->string('OrganizationPhone',13);
             $table->string('SupervisorEmail',50);
-            $table->string('SupervisorPhone',10);
+            $table->string('SupervisorPhone',13);
             $table->string('country',30);
             $table->string('Address',50);
-            $table->string('SupervisorFax',10);
+            $table->string('SupervisorFax',13);
             $table->string('password');
             $table->enum('status', ['accept', 'reject', 'Pending'])->default('Pending');
             $table->timestamps();

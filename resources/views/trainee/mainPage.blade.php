@@ -7,9 +7,8 @@
 
 window.onload = () => {
     document.querySelectorAll('nav a').forEach(link => {
-
   if(link.href === window.location.href){
-    link.setAttribute('class', 'active'); console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+    link.setAttribute('class', 'active'); 
   }
 });
 }
