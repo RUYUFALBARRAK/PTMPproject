@@ -5,7 +5,7 @@
 <img src="img/background_ksu2.png" alt="ksu" class="back">
 <div class="container-sm">
 <img src="img/learning.png" alt="ksu" class="learning" width="30%" hight="30%">
-<h3 class="display-3">Log in</h3>
+<p class="display-3">Log in</p>
 <hr>
 @if(Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>
@@ -24,12 +24,22 @@
   </div>
   <div class="textField">
     <label for="validationTooltip01" class="form-label">Password</label>
-    <input type="Password" class="form-control @error('password') is-invalid @enderror"  name="password" placeholder="Password" required>
+    <div class="col input-group mb-3">
+    <input type="Password" id="password2" class="form-control @error('password') is-invalid @enderror"  name="password" placeholder="Password" required>
+      <span class="input-group-text"><i class="far fa-eye-slash" id="togglePassword2"></i></span>
+    </div>
     @if ($errors->has('password'))
     <span class="text-danger">{{ $errors->first('password') }}</span>
     @endif
   </div>
-
+<script>
+ const password2 = document.querySelector("#password2");
+document.querySelector("#togglePassword2").addEventListener("click", function () {
+const type2 = password2.getAttribute("type") == "password" ? "text" : "password";
+password2.setAttribute("type", type2);
+this.classList.toggle('fa-eye');
+});
+</script>
   
   <div class="col-12">
     <button class="add-but-login" type="submit">Log in</button>

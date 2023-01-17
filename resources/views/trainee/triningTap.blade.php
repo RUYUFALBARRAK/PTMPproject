@@ -2,6 +2,15 @@
 
 @section('content-training')
 <div class="content">
+  <style>
+    @media screen and (max-width: 700px){
+ .add-but{
+  margin-left:10vw;
+ }
+}
+  </style>
+  <h3>Hi {{$loginIdUser['name']}}</h3><hr>
+
   <h3>Hi {{$loginIdUser['name']}}</h3>
 
 @if(session('msg') == 'review')
@@ -15,8 +24,11 @@
 <hr>
 
   @if($loginIdUser['opportunity_id']!=null)
+  @if($loginIdUser['status']=='Completed')
+  <a href="{{route('addReview')}}"><button type="button" style="margin-left:50vw; font-size: 1.6vw; position: absolute; " class="add-but">Add Review</button></a>
+  @endif
     <img src="{{asset('storage/images/'. $loginIdUser['oppourtunity']['company']['logoImage'])}}" alt="Company logo" width="15%" hight="15%">
-    <h3 class="spashlist">{{$loginIdUser['oppourtunity']['jobTitle']}}</h3> <h4 class="date">{{$loginIdUser['oppourtunity']['Start_at']}} - {{$loginIdUser['oppourtunity']['end_at']}}</h4> <h4 class="opportunityState">. CONFIRMED</h4>
+    <h3 class="spashlist">{{$loginIdUser['oppourtunity']['jobTitle']}}</h3> <h4 class="date">{{$loginIdUser['oppourtunity']['Start_at']}} - {{$loginIdUser['oppourtunity']['end_at']}}</h4><h4 class="opportunityState">.</h4> <h4 class="opportunityState">CONFIRMED</h4>
     <br><br><br><hr>
 
        @if ($errors->has('uploudedfile'))
