@@ -79,9 +79,9 @@
 
           <td>
             @if($is_apply)
-              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}" class="btn btn-light ml-4"><i class="fa fa-chevron-right"></i></a>
+              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}"><span class="fa fa-chevron-right"></span></a>
             @else
-              <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}" class="btn btn-light ml-4"><i class="fa fa-chevron-right"></i></a>
+              <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}"><span class="fa fa-chevron-right"></span></a>
             @endif
           </td>
         
