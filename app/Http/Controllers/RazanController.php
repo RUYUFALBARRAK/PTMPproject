@@ -26,26 +26,15 @@ class RazanController extends Controller
         return view('trainee/instruction');
     }
 
-    public function detailsForCommittee($id){
-        $trainee = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->first();
-        return view('PTcommittee/traineeDetailsCommittee', ['trainee' => $trainee]);
+    public function details(){
+        return view('trainee/traineeDetails');
     }
 
-    public function detailsForCompany($id){
-        $trainee = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->first();
-        return view('Company/traineeDetailsCompany', ['trainee' => $trainee]);
-    }
+    public function showReviews(){
 
-    public function detailsForUnit($id){
-        $trainee = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->first();
-        return view('PTunit/traineeDetailsUnit', ['trainee' => $trainee]);
-    }
+        $companyInfo = company::where( 'id' , '3')->first(); /* NEED to change id */
 
-    public function showReviews($id){
-
-        $companyInfo = company::where( 'id' , $id)->first();
-
-         $reviews = review::join('users', 'users.trainee_id', '=', '_review.trainee_id')->where('company_id', $id)->orderBy('Create_at' , 'desc')->get();
+         $reviews = review::join('users', 'users.trainee_id', '=', '_review.trainee_id')->where('company_id', '3')->orderBy('Create_at' , 'desc')->get(); /* NEED to change id */
 
         return view('trainee/reviews',[
             'reviews' => $reviews ,
@@ -76,7 +65,7 @@ class RazanController extends Controller
     public function add(Request $req){
 
         $req->validate([
-            'review'=>'required | max:400'
+            'review'=>'required | max:300'
         ]);
 
         $review = new review();

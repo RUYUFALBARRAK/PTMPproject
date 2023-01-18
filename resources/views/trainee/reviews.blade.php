@@ -6,7 +6,7 @@
 
 <div>
     <!-- NEED to get image from DB -->
-    <img src="{{ asset('/public/img/'.$companyInfo->logoImage)}}" alt="Company logo" width="23%" hight="23%"></img>
+<img src="img/SDAIA.png"  alt="Company logo" width="23%" hight="23%" style="margin-left:38%;">
 </div>
 <br> <br><br>
 
@@ -30,7 +30,7 @@ $greyStar = 5 - $stars;
 @if(!($loop->last))
 
 <div style="margin-bottom: 8%;">
-<img src="/public/img/ava1.png" alt="Avatar" width="50px" hight="50px">
+<img src="img/ava1.png" alt="avatar" width="50px" hight="50px">
 <span style="margin-left: 1%; font-size: 120%; color:rgb(64, 60, 74);"> {{ $review-> name }} </span> <span class="rev-date"> {{$date}} </span> <br>
 
 
