@@ -102,31 +102,12 @@ padding-right: 2%;
 
 /* BUTTONS */
 
-.can-but{
-    margin-left:8%;
-    margin-top: 2%;
-    background-color: white;
-    border-radius: 7px;
-    border-color: #38808741;
-    border-style: solid;
-    border-width: 1px;
-    color: #388087d1;
-    font-size: 120%;
-    padding: 4px 20px 4px 20px;
-    border-radius: 7px;
-}
-
-.can-but:hover{
-    border-color: #38808774;
-    background-color: #38808715;
-    }
-
 
     /* CANCEL BUTTON IN VIEW REVIW PAGE */
 
     .can-but2{
-        margin-left:42%;
-        margin-top: -3.2%;
+        margin-left:7%;
+        margin-top: 0.1%;
         background-color: white;
         border-radius: 7px;
         border-color: #38808741;
@@ -139,10 +120,31 @@ padding-right: 2%;
         position:absolute;
     }
 
-    .can-but2:hover{
+    /* CANCEL BUTTON IN ADD REVIW PAGE */
+    .can-but1:hover{
         border-color: #38808774;
         background-color: #38808715;
         }
+
+        .can-but1{
+            margin-left:7%;
+            margin-top: 4.7%;
+            background-color: white;
+            border-radius: 7px;
+            border-color: #38808741;
+            border-style: solid;
+            border-width: 1px;
+            color: #388087d1;
+            font-size: 120%;
+            padding: 4px 20px 4px 20px;
+            border-radius: 7px;
+            position:absolute;
+        }
+
+        .can-but2:hover{
+            border-color: #38808774;
+            background-color: #38808715;
+            }
 
 
     .add-but{
@@ -154,6 +156,7 @@ padding-right: 2%;
         border-style: none;
         border-radius: 7px;
         margin-left: 35%;
+        margin-top: 6%;
         }
 
     .add-but:hover {
@@ -171,7 +174,7 @@ padding-right: 2%;
                 background-color: #388087;
                 border-radius: 7px;
                 color: white;
-                font-size: 100%;
+                font-size: 120%;
 
                 border-style: none;
                 border-radius: 7px;
@@ -182,7 +185,7 @@ padding-right: 2%;
                     background-color: #285e63;
                     border-radius: 7px;
                     color: white;
-                    font-size: 100%;
+                    font-size: 120%;
 
                     border-style: none;
                     border-radius: 7px;
@@ -220,18 +223,36 @@ padding-right: 2%;
     background-color: rgb(1, 97, 1);
 }
 
+.can-but{ /* THIS BUTOON IS FOR MODAL*/
+    margin-left:58%;
+    margin-top: -7.8%;
+    background-color: white;
+    border-radius: 7px;
+    border-color: #38808741;
+    border-style: solid;
+    border-width: 1px;
+    color: #388087d1;
+    font-size: 122%;
+    padding: 4px 20px 4px 20px;
+    display: inline-block;
+    vertical-align:top;
+}
 
-.del-msg{
+.can-but:hover{
+    border-color: #38808774;
+    background-color: #38808715;
+    }
+
+.del-msg{ /* THIS BUTOON IS FOR MODAL*/
     background-color: #e72828;
     border-radius: 7px;
     color: white;
-    font-size: 125%;
-    padding: 4px 10px 6px 10px;
+    font-size: 123%;
+    padding: 4px 20px 4px 20px;
     border-style: none;
-    margin-left: 40%;
-    margin-bottom: 3%;
-    margin-top: 2%;
-    width: 24%;
+    margin-left: 24%;
+    margin-bottom: 0%;
+    margin-top: 4%;
 }
 
 .del-msg:hover{
@@ -343,9 +364,8 @@ background-color: #af1e1e;
 }
 
 .noReviews{
-    margin-top: 20px;
+    margin-top: -10px;
     text-align: center;
     font-size: 130%;
     color: rgb(64, 60, 74);
-
 }

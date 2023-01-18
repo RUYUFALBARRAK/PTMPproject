@@ -6,11 +6,11 @@
  <nav class="vertical-menu-wrapper">
  <a href="javascript:void(0)" style="cursor:pointer; right: 2%; color: black; text-decoration: none; font-size: 150%;" class="closebtn" onclick="closeNav()">&times;</a>
   <ul class="vertical-menu">
-    <li><a href="listOfStudentsPTunit">Students (Trainee)</a></li>
-    <li><a href="TrainingDocument">Training Document</a></li>
-    <li><a href="listOfStudentsReqLetter">Identification letter requests</a></li>   
-    <li><a href="listOfCompany">Companies</a></li>
-    <li><a href="listOfCompanyRequest">Company registration request</a></li>
+    <li><a href="{{ url('/listOfStudentsPTunit') }}">Students (Trainee)</a></li>
+    <li><a href="{{ url('/TrainingDocument') }}">Training Document</a></li>
+    <li><a href="{{ url('/listOfStudentsReqLetter') }}">Identification letter requests</a></li>
+    <li><a href="{{ url('/listOfCompany') }}">Companies</a></li>
+    <li><a href="{{ url('/listOfCompanyRequest') }}">Company registration request</a></li>
 
 
   </ul>

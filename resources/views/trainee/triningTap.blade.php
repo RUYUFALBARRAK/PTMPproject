@@ -2,17 +2,39 @@
 
 @section('content-training')
 <div class="content">
-  <h3>Hi {{$loginIdUser['name']}}</h3><hr> 
- 
+  <style>
+    @media screen and (max-width: 700px){
+ .add-but{
+  margin-left:10vw;
+ }
+}
+  </style>
+  <h3>Hi {{$loginIdUser['name']}}</h3><hr>
+
+  <h3>Hi {{$loginIdUser['name']}}</h3>
+
+@if(session('msg') == 'review')
+<div class="alert alert-success">Feedback was Added successfully!</div>
+@endif
+
+@if(session('msg') == 'delete')
+<div class="alert alert-success">Feedback was Deleted successfully!</div>
+@endif
+
+<hr>
+
   @if($loginIdUser['opportunity_id']!=null)
+  @if($loginIdUser['status']=='Completed')
+  <a href="{{route('addReview')}}"><button type="button" style="margin-left:50vw; font-size: 1.6vw; position: absolute; " class="add-but">Add Review</button></a>
+  @endif
     <img src="{{asset('storage/images/'. $loginIdUser['oppourtunity']['company']['logoImage'])}}" alt="Company logo" width="15%" hight="15%">
-    <h3 class="spashlist">{{$loginIdUser['oppourtunity']['jobTitle']}}</h3> <h4 class="date">{{$loginIdUser['oppourtunity']['Start_at']}} - {{$loginIdUser['oppourtunity']['end_at']}}</h4> <h4 class="opportunityState">. CONFIRMED</h4>
+    <h3 class="spashlist">{{$loginIdUser['oppourtunity']['jobTitle']}}</h3> <h4 class="date">{{$loginIdUser['oppourtunity']['Start_at']}} - {{$loginIdUser['oppourtunity']['end_at']}}</h4><h4 class="opportunityState">.</h4> <h4 class="opportunityState">CONFIRMED</h4>
     <br><br><br><hr>
-    
+
        @if ($errors->has('uploudedfile'))
                 <div class="alert alert-danger">{{ $errors->first('uploudedfile') }}</div>
       @endif
-    
+
     <h3>Progress report</h3><div style="color: #808080" >upload your files down below </div><br>
  @if(Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>
@@ -25,10 +47,10 @@
   <tr>
     <td>Effective date notice<div style="color: #808080" id="EffectiveDateNoticeName"></div></td>
      <td>
-    
+
   @if($EffectiveDateNotice)
       <a href="">view submitted</a>
-     
+
    @else
      <form action="{{ route('uploadfile') }}" enctype="multipart/form-data" method="post">
       @csrf
@@ -36,20 +58,20 @@
      <button type="button" onclick="thisFileUploadEffectiveDateNotice();" class="btn btn-success EffectiveDateNotice"><i class="fa fa-upload"></i> </button>
      </form>
     @endif
-    
+
     </td>
   </tr>
   <tr>
     <td>Report<div style="color: #808080" id="reportName"></div></td>
-    <td> 
-      
+    <td>
+
     @if($report)
       <a href="">view submitted</a>
     @else
   <form action="{{ route('uploadfile') }}" enctype="multipart/form-data" method="post">
     @csrf
         <input type="file" id="report" style="display:none;" name="report" onchange="thisFileUploadReport(this);" />
-  <button type="button" onclick="thisFileUploadReport();" class="btn btn-success Report"><i class="fa fa-upload"></i> </button> 
+  <button type="button" onclick="thisFileUploadReport();" class="btn btn-success Report"><i class="fa fa-upload"></i> </button>
 
 </form>
 @endif
@@ -58,8 +80,8 @@
   </tr>
   <tr>
     <td>Training Survey <div style="color: #808080" id="Training-SurveyName"></div></td>
-    <td> 
-      
+    <td>
+
     @if($TrainingSurvey)
       <a href="">view submitted</a>
     @else
@@ -72,9 +94,9 @@
     </td>
   </tr>
   <tr>
-   
+
     <td>Presentation<div style="color: #808080" id="PresentationName"></div></td>
-    <td> 
+    <td>
    @if($Presentation)
       <a href="">view submitted</a>
      @else

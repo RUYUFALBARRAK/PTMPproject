@@ -57,14 +57,14 @@ class PTMPController extends Controller
                     }
                 }else if($committee){
                     if(($request->password == $committee->password)){
-                    $request->session()->put('loginId',$committee->committee_id);
+                    $request->session()->put('logincommiteeId',$committee->committee_id);
                     return redirect('listOfStudents');}
                     else{
                         return back()->with('fail','id or password worng');
                     }
                 }else if ($unit){
                     if(($request->password == $unit->password)){
-                    $request->session()->put('loginId',$unit->unit_id);
+                    $request->session()->put('loginunitId',$unit->unit_id);
                     return redirect('listOfStudentsPTunit');}
                     else{
                         return back()->with('fail','id or password worng');
@@ -171,8 +171,9 @@ function CVshow(){
         'Experience'=> traineeExperience::where('trainee_id','=',session('loginId'))->get(),
         
     ];
-     }
-  return view('trainee/CV-Tap',$data);
+     
+  return view('trainee/CV-Tap',$data);}
+  return redirect('welcome');
 }
 
 function addSkill(Request $request){

@@ -9,8 +9,14 @@ use Illuminate\Support\Facades\DB;
 use App\Repositories\UserRepository;
 
 use App\Models\review;
-use App\Models\trainee;
 use App\Models\company;
+use App\Models\trainee;
+use App\Models\traineeExperience;
+use App\Models\traineeInterests;
+use App\Models\traineeLanguages;
+use App\Models\traineeSkills;
+use App\Models\Sendsdocument;
+use App\Models\oppourtunity;
 
 use Hash;
 use Session;
@@ -26,15 +32,82 @@ class RazanController extends Controller
         return view('trainee/instruction');
     }
 
-    public function details(){
-        return view('trainee/traineeDetails');
+    public function detailsForCommittee($id){  /* INCOMPLETE */
+        $trainee = trainee::where('trainee_id', $id)->first();
+
+        $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
+
+        $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
+        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
+        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
+        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+
+        $int = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', $id)->value('opportunity.company_id');
+        $companyInfo = company::where('id', $int)->first();
+
+        $documents = Sendsdocument::where( 'trainee_id' , $id)->get(); /*NEED TO PASS IT TO VIEW + UPLOADED DOCS*/
+
+        $num = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', $id)->value('opportunity.id');
+        $oppourtunity = oppourtunity::where('id', $num)->first();
+
+        $status = trainee::where('trainee_id', $id)->value('statusFormCompany');
+
+
+        return view('PTcommittee/traineeDetailsCommittee', [
+            'trainee' => $trainee ,
+            'companyInfo' => $companyInfo ,
+            'oppourtunity' => $oppourtunity ,
+            'status' => $status ,
+            'experience' => $experience ,
+            'interest' => $interest ,
+            'language' => $language ,
+            'skill' => $skill
+        ]);
     }
 
-    public function showReviews(){
+    public function detailsForCompany($id){
+        $trainee = trainee::where('trainee_id', $id)->first();
 
-        $companyInfo = company::where( 'id' , '3')->first(); /* NEED to change id */
+        $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
 
-         $reviews = review::join('users', 'users.trainee_id', '=', '_review.trainee_id')->where('company_id', '3')->orderBy('Create_at' , 'desc')->get(); /* NEED to change id */
+        $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
+        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
+        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
+        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+
+        return view('Company/traineeDetailsCompany', [
+            'trainee' => $trainee ,
+            'experience' => $experience ,
+            'interest' => $interest ,
+            'language' => $language ,
+            'skill' => $skill
+        ]);
+    }
+
+    public function detailsForUnit($id){
+        $trainee = trainee::where('trainee_id', $id)->first();
+
+        $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
+
+        $experience = traineeExperience::where( 'trainee_id' , '=', $id)->value('Experience');
+        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
+        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
+        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+
+        return view('PTunit/traineeDetailsUnit', [
+            'trainee' => $trainee ,
+            'experience' => $experience ,
+            'interest' => $interest ,
+            'language' => $language ,
+            'skill' => $skill
+        ]);
+    }
+
+    public function showReviews($id){
+
+        $companyInfo = company::where( 'id' , $id)->first();
+
+         $reviews = review::join('users', 'users.trainee_id', '=', '_review.trainee_id')->where('company_id', $id)->orderBy('Create_at' , 'desc')->get();
 
         return view('trainee/reviews',[
             'reviews' => $reviews ,
@@ -65,7 +138,7 @@ class RazanController extends Controller
     public function add(Request $req){
 
         $req->validate([
-            'review'=>'required | max:300'
+            'review'=>'required | max:400'
         ]);
 
         $review = new review();
@@ -81,13 +154,13 @@ class RazanController extends Controller
 
         $review->save();
 
-       return redirect('/traineeMainPage'); /* ->with('msg','review was submitted successfully') */
+       return redirect('/traineeMainPage')->with('msg','review');
     }
 
     public function destroy(){
 
         $review = review::where('trainee_id', '=', session('loginId'))->first();
         $review->delete();
-        return redirect('/traineeMainPage');
+        return redirect('/traineeMainPage')->with('msg','delete');
     }
 }

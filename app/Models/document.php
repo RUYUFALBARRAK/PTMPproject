@@ -23,7 +23,7 @@ class document extends Model
     }
 
     public function getDocumentURL() {
-        return url('public/'.$this->documentPath());
+        return url($this->documentPath());
     }
 
 

@@ -6,18 +6,18 @@
 <div class="content">
 <table class="table-balqees">
     <tr>
-        <th class="th-khawlah">Identification letter</th> <th class="th-khawlah"></th>
+        <th style="text-align: center;" class="th-khawlah">Identification letter</th> <th class="th-khawlah"></th>
     </tr>
     <tr>
-        <td class="fist-col-khawlah td-balqees"><button type="button" class="Identification-req-but" > Requst identification letter </button>
+        <td class="fist-col-khawlah td-khawlah"><button type="button" class="Identification-req-but" > Requst identification letter </button>
 </td>
 
-<td class="td-balqees-link"> <a href="#" style="color:grey">View Identification letter<a> <a href=<span class="glyphicon glyphicon-download-alt"></span></td>
+<td  style="text-align: center;" class="td-balqees-link"> <a href="#" style="color:grey">View Identification letter<a> <a href=<span class="fa fa-download"></span></td>
   
     </tr>
     <tr>
         <td class ="fist-col-khawlah td-balqees">uploaded file:</td>
-        <td class="td-balqees-link"> <a href="#" >Upload Identification letter<a> <a href=<span class="glyphicon glyphicon-open" style="font-size:16px;"></span></td>
+        <td style="text-align: center;" class="td-balqees-link"> <a href="#" >Upload Identification letter<a> <a href=<span class="fa fa-upload" style="font-size:16px;"></span></td>
 </td>
 
     </tr>
