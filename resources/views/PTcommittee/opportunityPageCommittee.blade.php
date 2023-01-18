@@ -54,6 +54,10 @@
 
       
           <td class="td-Bushra"><button class="btn-delete" type="submit">Delete </button></td>
+
+          <td>
+            <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right"></span></a>
+          </td>
       
       </tr>
         @endforeach

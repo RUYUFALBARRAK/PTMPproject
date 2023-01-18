@@ -56,6 +56,10 @@
             <h5 class="opportunityStateB2 text-danger">Rejected</h5>
             @endif
           </td>
+
+          <td class="oppoArrow">
+            <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right"></span></a>
+          </td>
         
         </tr> 
         @endforeach

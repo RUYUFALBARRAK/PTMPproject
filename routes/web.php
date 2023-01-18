@@ -148,10 +148,27 @@ Route::get('/opportunityDetailsApply/{id}', function ($id) {
 
 Route::post('/opportunityDetailsApply/{id}', [BushraController::class , 'opportunityApplySubmit'])->name('opportunity.apply.submit');
 
+
+
+//Company see its opportunities Details:
+Route::get('/opportunityDetails/{id}', function ($id) {
+    $opportunity = oppourtunity::findOrFail($id);
+    return view('Company/opportunityDetails' , compact('opportunity'));
+})->name('opportunityDetails.show');
+
+
+
+
 Route::get('/opportunityPageCommittee', function () {
     $opportunities = oppourtunity::where('status' , 'accept')->get();
     return view('PTcommittee/opportunityPageCommittee' , compact('opportunities'));
 });
+
+
+Route::get('/acceptedOpportunityDetails/{id}', function ($id) {
+    $opportunity = oppourtunity::findOrFail($id);
+    return view('PTcommittee/acceptedOpportunityDetails' , compact('opportunity'));
+})->name('accOpportunity.details');
 
 Route::get('/opportunityDetailsPage/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);

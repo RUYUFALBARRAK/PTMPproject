@@ -86,6 +86,12 @@
         <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->AppDeadline }}</label>
         </div><br>
 
+        <div class="input-group" style="width: 100%;">
+        <label for="validationTooltip01" class="oppT-form-label">PT Plan:</label>&nbsp;&nbsp;
+        &nbsp;&nbsp;<p><a class="linkB" href="#" style="color: blue;">{{ $opportunity->PtPlan }}</a>&nbsp;
+        <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
+        </div><br>
+
 
         <div style="margin: 20px auto !important;">
             @if(count($has_opportunity) >= 1)
