@@ -3,7 +3,7 @@
 @section('content-training')
 
 <div class='content'>
-    <img src="{{ asset( $company->opportunity->logoImage ? 'storage/images/' . $company->opportunity->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
+    <img src="{{ asset('img/SDAIA.png') }}" alt="Company logo" class="logoCompany">
     <h3 class="spashlistB">{{ $opportunity->company->orgnizationName }}</h3>
     <br><br>
     
