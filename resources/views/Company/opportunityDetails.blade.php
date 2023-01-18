@@ -5,19 +5,8 @@
 <div class='content'>
     <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
     <h3 class="spashlistB">{{ $opportunity->company->orgnizationName }}</h3>
-    <br>
+    <br><br>
 
-    <span class="rate2" style="margin-left: 84%; margin-top: -3%;">
-    <span class="fa fa-star fa-lg checked"></span>
-    <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    </span>
-    <br>
-    <div class="view-reveiws2" style="margin-left: 84%; ">
-        <a href="#">View Reviews</a>
-    </div>
     <br><br><br>
 
 

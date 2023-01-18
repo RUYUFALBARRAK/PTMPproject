@@ -165,6 +165,7 @@ Route::get('/opportunityPageCommittee', function () {
 });
 
 
+//Opportunities details from committee side
 Route::get('/acceptedOpportunityDetails/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
     return view('PTcommittee/acceptedOpportunityDetails' , compact('opportunity'));
