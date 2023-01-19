@@ -227,11 +227,9 @@ Route::post('/addfile', [PTMPController::class,'addfile'])-> name('addfile');
 });
 
 //download PT Plan from the details page:
-Route::get('/downloade/{id}', [BushraController::class, 'downloade'])->name('downloade');
+Route::get('/downloade/{id}', [BushraController::class,'downloade'])->name('downloade');
 
-/*Route::get('/acceptedOpportunityDetails', function () {
-   return view('PTcommittee/acceptedOpportunityDetails', ['download'=>\App\Models\oppourtunity::get()]);
-});*/
+
 
 
 

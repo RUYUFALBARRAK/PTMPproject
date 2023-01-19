@@ -6,7 +6,7 @@
     <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
     <h3 class="spashlistB">{{ $opportunity->company->orgnizationName }}</h3>
     <br>
-
+<!--
     <span class="rate2" style="margin-left: 84%; margin-top: -3%;">
     <span class="fa fa-star fa-lg checked"></span>
     <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
@@ -18,6 +18,7 @@
     <div class="view-reveiws2" style="margin-left: 84%; ">
         <a href="#">View Reviews</a>
     </div>
+-->
     <br><br><br>
 
 
@@ -87,8 +88,9 @@
         </div><br>
 
         <div class="input-group" style="width: 100%;">
-        <label for="validationTooltip01" class="oppT-form-label">PT Plan:</label>&nbsp;&nbsp;
-        &nbsp;&nbsp;<p><a class="linkB" href="#" style="color: blue;">{{ $opportunity->PtPlan }}</a>&nbsp;
+        <label for="validationTooltip01" class="oppT-form-label">PT Plan:</label>&nbsp;
+        &nbsp;
+        <p><a class="linkB" href="{{url('/downloade/' .$opportunity->id)}}" style="color: blue;">{{ $opportunity->PtPlan }}</a>&nbsp;
         <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
         </div><br>
 
