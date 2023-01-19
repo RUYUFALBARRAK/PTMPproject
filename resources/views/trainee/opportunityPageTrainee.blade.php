@@ -172,8 +172,10 @@
               <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
               </span>
               <br>
-              <a class="view-reveiws2" href="#">View Reviews</a>
-          </td>
+
+              <a class="view-reveiws2" href="{{route('reeviews', $opportunitiy->company_id)}}">View Reviews</a>
+          
+            </td>
 
           {{-- <td>
             <h4 class="opportunityStateB2 text-success">{{ $opportunitiy->status }}</h4>
