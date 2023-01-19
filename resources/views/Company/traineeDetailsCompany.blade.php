@@ -45,17 +45,23 @@
 <div class="content" style="margin-bottom:-10%;">
 <p class="hed-de">Progress Report</p>
 <hr>
-<br>
 
-<div style="color: #808080" >upload your files down below </div><br>
- @if(Session::has('success'))
+<div style="color: #808080; margin-left:4%;" >upload your files down below </div><br>
+
+    @if ($errors->has('uploudedfile'))
+                <div class="alert alert-danger">{{ $errors->first('uploudedfile') }}</div>
+    @endif
+
+    @if(Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>
   @endif
   @if(Session::has('fail'))
   <div class="alert alert-danger">{{Session::get('fail')}}</div>
   @endif
 
-<table style="width:40%" class="Progress-report">
+  <div style="margin-left:4%;">
+
+<table style="width:40% " class="Progress-report">
   <tr>
     <td>Training Plan<div style="color: #808080" id="trainingPlanName"></div></td>
      <td>
@@ -64,7 +70,7 @@
       <a href="{{ url('/download/'.$trainingPlan) }}">view submitted</a>
 
    @else
-   <form action="{{ route('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
+   <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
       @csrf
       <input type="file" id="trainingPlan" name="trainingPlan" onchange="thisFileUploadTrainingPlan(this);" style="display:none;"/>
      <button type="button" onclick="thisFileUploadTrainingPlan();" class="btn btn-success TrainingPlan"><i class="fa fa-upload"></i> </button>
@@ -82,10 +88,10 @@
     @if($followUp !=0)
     <a href="{{ url('/download/'.$followUp) }}">view submitted</a>
     @else
-    <form action="{{ route('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
+    <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
     @csrf
         <input type="file" id="followUp" style="display:none;" name="followUp" onchange="thisFileUploadFollowUp(this);" />
-  <button type="button" onclick="thisFileUploadFollowUp();" class="btn btn-success FollowUp"><i class="fa fa-upload"></i> </button>
+        <button type="button" onclick="thisFileUploadFollowUp();" class="btn btn-success FollowUp"><i class="fa fa-upload"></i> </button>
 
 </form>
 @endif
@@ -98,10 +104,10 @@
     <td> Attendance <div style="color: #808080" id="attendanceName"></div></td>
     <td>
 
-    @if($attendance)
+    @if($attendance !=0)
     <a href="{{ url('/download/'.$attendance) }}">view submitted</a>
     @else
-    <form action="{{ route('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
+    <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
         @csrf
         <input type="file" id="attendance" style="display:none;"  name="attendance" onchange="thisFileUploadAttendance(this);"/>
       <button type="button" onclick="thisFileUploadAttendance();" class="btn btn-success Attendance"><i class="fa fa-upload"></i> </button>
@@ -113,10 +119,10 @@
   <tr>
     <td>Trainee Evaluation<div style="color: #808080" id="traineeEvaluationName"></div></td>
     <td>
-   @if($traineeEvaluation)
+   @if($traineeEvaluation !=0)
    <a href="{{ url('/download/'.$traineeEvaluation) }}">view submitted</a>
      @else
-     <form action="{{ route('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
+     <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
       @csrf
     <input type="file" id="traineeEvaluation" style="display:none;" name="traineeEvaluation"  onchange="thisFileUploadTraineeEvaluation(this);"/>
    <button type="button" onclick="thisFileUploadTraineeEvaluation();" class="btn btn-success TraineeEvaluation"><i class="fa fa-upload"></i> </button>
@@ -130,10 +136,10 @@
     <td> Employee Feedback <div style="color: #808080" id="employeeFeedbackName"></div></td>
     <td>
 
-    @if($employeeFeedback)
+    @if($employeeFeedback !=0)
     <a href="{{ url('/download/'.$employeeFeedback) }}">view submitted</a>
     @else
-    <form action="{{ route('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
+    <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
         @csrf
         <input type="file" id="employeeFeedback" style="display:none;"  name="employeeFeedback" onchange="thisFileUploadEmployeeFeedback(this);"/>
       <button type="button" onclick="thisFileUploadEmployeeFeedback();" class="btn btn-success EmployeeFeedback"><i class="fa fa-upload"></i> </button>
@@ -143,6 +149,8 @@
   </tr>
 
 </table>
+
+</div>
 
 </div>
 

@@ -70,6 +70,7 @@
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
   </tr>
+
   <tr>
     <td>Report</td>
     @if($report != 0)
@@ -77,6 +78,8 @@
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
+</tr>
+
   <tr>
     <td>Training Survey</td>
     @if($survey != 0)
@@ -84,13 +87,17 @@
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
-  <tr>
+</tr>
+
+<tr>
     <td>Presentation</td>
     @if($presentation != 0)
     <th class="subm"> <a href="{{ url('/download/'.$presentation) }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
+</tr>
+
 </table>
 
 </div>
@@ -101,23 +108,53 @@
 <h3 style="font-size:145%;"> Company's Progress report</h3><br>
 
 <table style="width:135%" class="ProgressReport">
+
   <tr>
     <td>Training Plan</td>
-    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
-  </tr>
+    @if($TrainingPlan != 0)
+    <th class="subm"> <a href="{{ url('/download/'.$TrainingPlan) }}">VIEW SUBMITTED </a> </th>
+    @else
+    <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    @endif
+</tr>
+
   <tr>
     <td>Follow Up</td>
-    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
-  <tr>
+    @if($FollowUp != 0)
+    <th class="subm"> <a href="{{ url('/download/'.$FollowUp) }}">VIEW SUBMITTED </a> </th>
+    @else
+    <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    @endif
+    </tr>
+
+    <tr>
     <td>Attendance</td>
-    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
-  <tr>
+    @if($Attendance != 0)
+    <th class="subm"> <a href="{{ url('/download/'.$Attendance) }}">VIEW SUBMITTED </a> </th>
+    @else
+    <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    @endif
+    </tr>
+
+    <tr>
     <td>Trainee Evaluation</td>
-    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
-  </tr>
+    @if($TraineeEvaluation != 0)
+    <th class="subm"> <a href="{{ url('/download/'.$TraineeEvaluation) }}">VIEW SUBMITTED </a> </th>
+    @else
+    <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    @endif
+    </tr>
+
   <tr>
     <td>Employee Feedback</td>
-    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
+    @if($EmployeeFeedback != 0)
+    <th class="subm"> <a href="{{ url('/download/'.$EmployeeFeedback) }}">VIEW SUBMITTED </a> </th>
+    @else
+    <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    @endif
+    </tr>
+
+
 </table>
 </div>
 

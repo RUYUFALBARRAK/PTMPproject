@@ -64,6 +64,40 @@ class RazanController extends Controller
         else{
             $presentation = 0;
         }
+        if (Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'TrainingPlan')->exists()) {
+            $TrainingPlan = Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'TrainingPlan')->value('id');
+        }
+        else{
+            $TrainingPlan = 0;
+        }
+
+        if (Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'EmployeeFeedback')->exists()) {
+            $EmployeeFeedback = Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'EmployeeFeedback')->value('id');
+        }
+        else{
+            $EmployeeFeedback = 0;
+        }
+
+        if (Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'FollowUp')->exists()) {
+            $FollowUp = Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'FollowUp')->value('id');
+        }
+        else{
+            $FollowUp = 0;
+        }
+
+        if (Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'TraineeEvaluation')->exists()) {
+            $TraineeEvaluation = Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'TraineeEvaluation')->value('id');
+        }
+        else{
+            $TraineeEvaluation = 0;
+        }
+
+        if (Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'Attendance')->exists()) {
+            $Attendance = Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'Attendance')->value('id');
+        }
+        else{
+            $Attendance = 0;
+        }
 
         $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
 
@@ -89,6 +123,12 @@ class RazanController extends Controller
             'survey' => $survey ,
             'presentation' => $presentation ,
 
+            'TrainingPlan' => $TrainingPlan ,
+            'FollowUp' => $FollowUp ,
+            'Attendance' => $Attendance ,
+            'TraineeEvaluation' => $TraineeEvaluation ,
+            'EmployeeFeedback' => $EmployeeFeedback ,
+
             'files' => $files ,
             'companyInfo' => $companyInfo ,
             'oppourtunity' => $oppourtunity ,
@@ -104,7 +144,7 @@ class RazanController extends Controller
         $trainee = trainee::where('trainee_id', $id)->first();
 
         /* NEED TO CHANGE JOINT TO CV*/
-        $files = trainee::join('sendsdocuments', 'sendsdocuments.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
+        $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
 
         $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
         $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
@@ -117,8 +157,7 @@ class RazanController extends Controller
             $traineeEvaluation=0;
             $employeeFeedback=0;
 
-        $find =Sendsdocument::whereHas('trainee',function($q){
-        $q->where('trainee_id', '=', $id );})->get();
+        $find =Sendsdocument::where('trainee_id', '=', $id )->get();
         foreach($find as $find){
 
         if($find->doc_name==fileNameEnum::TrainingPlan){
@@ -150,6 +189,61 @@ class RazanController extends Controller
             'traineeEvaluation' => $traineeEvaluation,
             'employeeFeedback' => $employeeFeedback
         ]);
+    }
+
+
+    public function companyUpload(Request $request , $id){
+        //$id = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('company_id', '=', session('logincomid'))->value('users.trainee_id');
+
+        $Sendsdocument= new Sendsdocument();
+        if(request()->hasfile('employeeFeedback')!=null){
+            $request->validate([
+                'employeeFeedback' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $fileName = $request->employeeFeedback->getClientOriginalName();
+                $request->employeeFeedback->storeAs('EmployeeFeedback', $fileName,'public');
+                $Sendsdocument->doc_name= fileNameEnum::EmployeeFeedback;
+                $Sendsdocument->document =$request->employeeFeedback->getClientOriginalName();
+        }else if(request()->hasfile('traineeEvaluation')!=null){
+             $request->validate([
+                'traineeEvaluation' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $fileName = $request->traineeEvaluation->getClientOriginalName();
+                $request->traineeEvaluation->storeAs('TraineeEvaluation', $fileName,'public');
+                $Sendsdocument->doc_name= fileNameEnum::TraineeEvaluation;
+                $Sendsdocument->document= $request->traineeEvaluation->getClientOriginalName();
+        }else if(request()->hasfile('attendance')!=null){
+            $request->validate([
+                'attendance' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $Sendsdocument->doc_name= fileNameEnum::Attendance;
+                $fileName = $request->attendance->getClientOriginalName();
+                $request->attendance->storeAs('Attendance', $fileName,'public');
+                $Sendsdocument->document= $request->attendance->getClientOriginalName();
+        }else if(request()->hasfile('followUp')!=null){
+            $request->validate([
+                'followUp' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $fileName = $request->followUp->getClientOriginalName();
+                $request->followUp->storeAs('FollowUp', $fileName,'public');
+                $Sendsdocument->document= $request->followUp->getClientOriginalName();
+                $Sendsdocument->doc_name= fileNameEnum::FollowUp;
+        }else if(request()->hasfile('trainingPlan')!=null){
+            $request->validate([
+                'trainingPlan' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $fileName = $request->trainingPlan->getClientOriginalName();
+                $request->trainingPlan->storeAs('TrainingPlan', $fileName,'public');
+                $Sendsdocument->document= $request->trainingPlan->getClientOriginalName();
+                $Sendsdocument->doc_name= fileNameEnum::TrainingPlan;
+        }
+
+                $Sendsdocument->opportunity_id=trainee::where('trainee_id','=', $id)->first()->opportunity_id;
+                $Sendsdocument->committee_id= trainee::where('trainee_id','=',$id)->first()->committee_id;
+                $Sendsdocument->trainee_id= trainee::where('trainee_id','=',$id)->first()->trainee_id;
+                $Sendsdocument->save();
+                return back()->with('success','Successfully uploaded!');
+
     }
 
 
@@ -193,58 +287,6 @@ class RazanController extends Controller
         }
     }
 
-    public function companyUpload(Request $request , $id){
-        $Sendsdocument= new Sendsdocument();
-        if(request()->hasfile('EmployeeFeedback')!=null){
-            $request->validate([
-                'EmployeeFeedback' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
-            ]);
-                $fileName = $request->EmployeeFeedback->getClientOriginalName();
-                $request->EmployeeFeedback->storeAs('EmployeeFeedback', $fileName,'public');
-                $Sendsdocument->doc_name= fileNameEnum::EmployeeFeedback;
-                $Sendsdocument->document =$request->EmployeeFeedback->getClientOriginalName();
-        }else if(request()->hasfile('TraineeEvaluation')!=null){
-             $request->validate([
-                'TraineeEvaluation' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
-            ]);
-                $fileName = $request->TraineeEvaluation->getClientOriginalName();
-                $request->TraineeEvaluation->storeAs('TraineeEvaluation', $fileName,'public');
-                $Sendsdocument->doc_name= fileNameEnum::TraineeEvaluation;
-                $Sendsdocument->document= $request->TraineeEvaluation->getClientOriginalName();
-        }else if(request()->hasfile('Attendance')!=null){
-            $request->validate([
-                'Attendance' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
-            ]);
-                $Sendsdocument->doc_name= fileNameEnum::Attendance;
-                $fileName = $request->Attendance->getClientOriginalName();
-                $request->Attendance->storeAs('Attendance', $fileName,'public');
-                $Sendsdocument->document= $request->Attendance->getClientOriginalName();
-        }else if(request()->hasfile('FollowUp')!=null){
-            $request->validate([
-                'FollowUp' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
-            ]);
-                $fileName = $request->FollowUp->getClientOriginalName();
-                $request->FollowUp->storeAs('FollowUp', $fileName,'public');
-                $Sendsdocument->document= $request->FollowUp->getClientOriginalName();
-                $Sendsdocument->doc_name= fileNameEnum::FollowUp;
-        }else if(request()->hasfile('TrainingPlan')!=null){
-            $request->validate([
-                'TrainingPlan' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
-            ]);
-                $fileName = $request->TrainingPlan->getClientOriginalName();
-                $request->TrainingPlan->storeAs('TrainingPlan', $fileName,'public');
-                $Sendsdocument->document= $request->TrainingPlan->getClientOriginalName();
-                $Sendsdocument->doc_name= fileNameEnum::TrainingPlan;
-        }
-
-                $Sendsdocument->opportunity_id=trainee::where('trainee_id','=', $id)->first()->opportunity_id;
-                $Sendsdocument->committee_id= trainee::where('trainee_id','=',$id)->first()->committee_id;
-                $Sendsdocument->trainee_id= trainee::where('trainee_id','=',$id)->first()->trainee_id;
-                $Sendsdocument->save();
-                return redirect('traineeDetailsCompany/'.$id)->with('success','Successfully uploaded!');
-
-    }
-
 
     public function download ($id){
         $doc_name = Sendsdocument::where('id', $id)->value('doc_name');
@@ -267,6 +309,31 @@ class RazanController extends Controller
 
         elseif($doc_name == fileNameEnum::Presentation){
             $filepath = storage_path("app/public/PresentationFiles/{$path}");
+            return \Response::download($filepath);
+        }
+
+        if($doc_name == fileNameEnum::TrainingPlan){
+            $filepath = storage_path("app/public/TrainingPlan/{$path}");
+            return \Response::download($filepath);
+        }
+
+        elseif($doc_name == fileNameEnum::FollowUp){
+            $filepath = storage_path("app/public/FollowUp/{$path}");
+            return \Response::download($filepath);
+        }
+
+        elseif($doc_name == fileNameEnum::Attendance){
+            $filepath = storage_path("app/public/Attendance/{$path}");
+            return \Response::download($filepath);
+        }
+
+        elseif($doc_name == fileNameEnum::TraineeEvaluation){
+            $filepath = storage_path("app/public/TraineeEvaluation/{$path}");
+            return \Response::download($filepath);
+        }
+
+        elseif($doc_name == fileNameEnum::EmployeeFeedback){
+            $filepath = storage_path("app/public/EmployeeFeedback/{$path}");
             return \Response::download($filepath);
         }
 

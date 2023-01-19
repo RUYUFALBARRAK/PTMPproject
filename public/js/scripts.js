@@ -142,8 +142,8 @@ function thisFileUploadFollowUp(myFile) {
     {
     document.getElementById("followUp").click();
     }else{
-        document.getElementsByClassName("followUp")[0].innerHTML=" Submit ";
-        document.getElementsByClassName("followUp")[0].type="submit";
+        document.getElementsByClassName("FollowUp")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("FollowUp")[0].type="submit";
         var file = myFile.files[0];
         var filename = file.name;
         document.getElementById("followUpName").innerHTML=filename;
@@ -155,8 +155,8 @@ function thisFileUploadAttendance(myFile) {
     {
     document.getElementById("attendance").click();
     }else{
-        document.getElementsByClassName("attendance")[0].innerHTML=" Submit ";
-        document.getElementsByClassName("attendance")[0].type="submit";
+        document.getElementsByClassName("Attendance")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("Attendance")[0].type="submit";
         var file = myFile.files[0];
         var filename = file.name;
         document.getElementById("attendanceName").innerHTML=filename;
@@ -170,8 +170,8 @@ function thisFileUploadTraineeEvaluation(myFile) {
         var file = myFile.files[0];
         var filename = file.name;
         document.getElementById("traineeEvaluationName").innerHTML=filename;
-        document.getElementsByClassName("traineeEvaluation")[0].innerHTML=" Submit ";
-        document.getElementsByClassName("traineeEvaluation")[0].type="submit";
+        document.getElementsByClassName("TraineeEvaluation")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("TraineeEvaluation")[0].type="submit";
     }
 }
 
@@ -183,8 +183,8 @@ function thisFileUploadEmployeeFeedback(myFile) {
         var file = myFile.files[0];
         var filename = file.name;
         document.getElementById("employeeFeedbackName").innerHTML=filename;
-        document.getElementsByClassName("employeeFeedback")[0].innerHTML=" Submit ";
-        document.getElementsByClassName("employeeFeedback")[0].type="submit";
+        document.getElementsByClassName("EmployeeFeedback")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("EmployeeFeedback")[0].type="submit";
     }
 }
 
