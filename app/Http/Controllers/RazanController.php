@@ -17,10 +17,12 @@ use App\Models\traineeLanguages;
 use App\Models\traineeSkills;
 use App\Models\Sendsdocument;
 use App\Models\oppourtunity;
+use App\Models\cv;
 
 use Hash;
 use Session;
 use Validator;
+use \App\Enum\fileNameEnum;
 use File;
 use Response;
 use Carbon\Carbon;
@@ -32,8 +34,36 @@ class RazanController extends Controller
         return view('trainee/instruction');
     }
 
-    public function detailsForCommittee($id){  /* INCOMPLETE */
+    public function detailsForCommittee($id){  /* INCOMPLETE missing CV */
         $trainee = trainee::where('trainee_id', $id)->first();
+
+        if (Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'EffectiveDateNotice')->exists()) {
+            $effective = Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'EffectiveDateNotice')->value('id');
+        }
+        else{
+            $effective = 0;
+        }
+
+        if (Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'report')->exists()) {
+            $report = Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'report')->value('id');
+        }
+        else{
+            $report = 0;
+        }
+
+        if (Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'TrainingSurvey')->exists()) {
+            $survey = Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'TrainingSurvey')->value('id');
+        }
+        else{
+            $survey = 0;
+        }
+
+        if (Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'Presentation')->exists()) {
+            $presentation = Sendsdocument::where( 'trainee_id' , $id)->where( 'doc_name' , 'Presentation')->value('id');
+        }
+        else{
+            $presentation = 0;
+        }
 
         $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
 
@@ -45,8 +75,6 @@ class RazanController extends Controller
         $int = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', $id)->value('opportunity.company_id');
         $companyInfo = company::where('id', $int)->first();
 
-        $documents = Sendsdocument::where( 'trainee_id' , $id)->get(); /*NEED TO PASS IT TO VIEW + UPLOADED DOCS*/
-
         $num = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', $id)->value('opportunity.id');
         $oppourtunity = oppourtunity::where('id', $num)->first();
 
@@ -55,6 +83,13 @@ class RazanController extends Controller
 
         return view('PTcommittee/traineeDetailsCommittee', [
             'trainee' => $trainee ,
+
+            'effective' => $effective ,
+            'report' => $report ,
+            'survey' => $survey ,
+            'presentation' => $presentation ,
+
+            'files' => $files ,
             'companyInfo' => $companyInfo ,
             'oppourtunity' => $oppourtunity ,
             'status' => $status ,
@@ -65,7 +100,60 @@ class RazanController extends Controller
         ]);
     }
 
-    public function detailsForCompany($id){
+    public function detailsForCompany($id){ /* INCOMPLETE */
+        $trainee = trainee::where('trainee_id', $id)->first();
+
+        /* NEED TO CHANGE JOINT TO CV*/
+        $files = trainee::join('sendsdocuments', 'sendsdocuments.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
+
+        $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
+        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
+        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
+        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+
+            $trainingPlan= 0;
+            $followUp=0;
+            $attendance=0;
+            $traineeEvaluation=0;
+            $employeeFeedback=0;
+
+        $find =Sendsdocument::whereHas('trainee',function($q){
+        $q->where('trainee_id', '=', $id );})->get();
+        foreach($find as $find){
+
+        if($find->doc_name==fileNameEnum::TrainingPlan){
+            $trainingPlan=Sendsdocument::where('trainee_id', '=', $id)->where('doc_name', '=', 'TrainingPlan')->value('id');
+        }
+         if($find->doc_name==fileNameEnum::FollowUp){
+            $followUp=Sendsdocument::where('trainee_id', '=', $id)->where('doc_name', '=', 'FollowUp')->value('id');
+        }
+         if($find->doc_name==fileNameEnum::Attendance){
+            $attendance=Sendsdocument::where('trainee_id', '=', $id)->where('doc_name', '=', 'Attendance')->value('id');
+        }
+        if($find->doc_name==fileNameEnum::TraineeEvaluation){
+            $traineeEvaluation=Sendsdocument::where('trainee_id', '=', $id)->where('doc_name', '=', 'TraineeEvaluation')->value('id');
+        }
+        if($find->doc_name==fileNameEnum::EmployeeFeedback){
+            $employeeFeedback=Sendsdocument::where('trainee_id', '=', $id)->where('doc_name', '=', 'EmployeeFeedback')->value('id');
+        }}
+
+        return view('Company/traineeDetailsCompany', [
+            'trainee' => $trainee ,
+            'files' => $files ,
+            'experience' => $experience ,
+            'interest' => $interest ,
+            'language' => $language ,
+            'skill' => $skill,
+            'trainingPlan' => $trainingPlan,
+            'followUp' => $followUp,
+            'attendance' => $attendance,
+            'traineeEvaluation' => $traineeEvaluation,
+            'employeeFeedback' => $employeeFeedback
+        ]);
+    }
+
+
+    public function Request($id){
         $trainee = trainee::where('trainee_id', $id)->first();
 
         $files = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
@@ -75,14 +163,115 @@ class RazanController extends Controller
         $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
         $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
 
-        return view('Company/traineeDetailsCompany', [
+        return view('Company/traineeDetailsRequest', [
             'trainee' => $trainee ,
+            'files' => $files ,
             'experience' => $experience ,
             'interest' => $interest ,
             'language' => $language ,
             'skill' => $skill
         ]);
     }
+
+    public function action (Request $request,$id){
+
+        $trainee = trainee::where('trainee_id', $id)->first();
+
+        if($request->status == 'accept'){
+            $trainee->update([
+                'status' => 'Ongoing',
+                'statusFormCompany'=> 'accept'
+            ]);
+            return redirect('/listOfTrainees')->with('msg','accept');        }
+
+        elseif($request->status == 'reject'){
+
+            $trainee->update([
+                'statusFormCompany'=> 'reject'
+            ]);
+            return redirect('/listOfTraineesRequests')->with('msg','reject');
+        }
+    }
+
+    public function companyUpload(Request $request , $id){
+        $Sendsdocument= new Sendsdocument();
+        if(request()->hasfile('EmployeeFeedback')!=null){
+            $request->validate([
+                'EmployeeFeedback' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $fileName = $request->EmployeeFeedback->getClientOriginalName();
+                $request->EmployeeFeedback->storeAs('EmployeeFeedback', $fileName,'public');
+                $Sendsdocument->doc_name= fileNameEnum::EmployeeFeedback;
+                $Sendsdocument->document =$request->EmployeeFeedback->getClientOriginalName();
+        }else if(request()->hasfile('TraineeEvaluation')!=null){
+             $request->validate([
+                'TraineeEvaluation' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $fileName = $request->TraineeEvaluation->getClientOriginalName();
+                $request->TraineeEvaluation->storeAs('TraineeEvaluation', $fileName,'public');
+                $Sendsdocument->doc_name= fileNameEnum::TraineeEvaluation;
+                $Sendsdocument->document= $request->TraineeEvaluation->getClientOriginalName();
+        }else if(request()->hasfile('Attendance')!=null){
+            $request->validate([
+                'Attendance' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $Sendsdocument->doc_name= fileNameEnum::Attendance;
+                $fileName = $request->Attendance->getClientOriginalName();
+                $request->Attendance->storeAs('Attendance', $fileName,'public');
+                $Sendsdocument->document= $request->Attendance->getClientOriginalName();
+        }else if(request()->hasfile('FollowUp')!=null){
+            $request->validate([
+                'FollowUp' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $fileName = $request->FollowUp->getClientOriginalName();
+                $request->FollowUp->storeAs('FollowUp', $fileName,'public');
+                $Sendsdocument->document= $request->FollowUp->getClientOriginalName();
+                $Sendsdocument->doc_name= fileNameEnum::FollowUp;
+        }else if(request()->hasfile('TrainingPlan')!=null){
+            $request->validate([
+                'TrainingPlan' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+            ]);
+                $fileName = $request->TrainingPlan->getClientOriginalName();
+                $request->TrainingPlan->storeAs('TrainingPlan', $fileName,'public');
+                $Sendsdocument->document= $request->TrainingPlan->getClientOriginalName();
+                $Sendsdocument->doc_name= fileNameEnum::TrainingPlan;
+        }
+
+                $Sendsdocument->opportunity_id=trainee::where('trainee_id','=', $id)->first()->opportunity_id;
+                $Sendsdocument->committee_id= trainee::where('trainee_id','=',$id)->first()->committee_id;
+                $Sendsdocument->trainee_id= trainee::where('trainee_id','=',$id)->first()->trainee_id;
+                $Sendsdocument->save();
+                return redirect('traineeDetailsCompany/'.$id)->with('success','Successfully uploaded!');
+
+    }
+
+
+    public function download ($id){
+        $doc_name = Sendsdocument::where('id', $id)->value('doc_name');
+        $path = Sendsdocument::where('id', $id)->value('document');
+
+        if($doc_name == fileNameEnum::EffectiveDateNotice){
+            $filepath = storage_path("app/public/EffectiveDateNoticeFiles/{$path}");
+            return \Response::download($filepath);
+        }
+
+        elseif($doc_name == fileNameEnum::TrainingSurvey){
+            $filepath = storage_path("app/public/TrainingSurveyFiles/{$path}");
+            return \Response::download($filepath);
+        }
+
+        elseif($doc_name == fileNameEnum::report){
+            $filepath = storage_path("app/public/reportFiles/{$path}");
+            return \Response::download($filepath);
+        }
+
+        elseif($doc_name == fileNameEnum::Presentation){
+            $filepath = storage_path("app/public/PresentationFiles/{$path}");
+            return \Response::download($filepath);
+        }
+
+    }
+
 
     public function detailsForUnit($id){
         $trainee = trainee::where('trainee_id', $id)->first();

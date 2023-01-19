@@ -38,7 +38,7 @@
         @include('sweetalert::alert')
 
 
-    <!-- Confirmation modal-->
+    <!-- Delete Review Confirmation modal-->
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -53,7 +53,7 @@
     @csrf
     @method('DELETE')
     <button  data-bs-dismiss="modal" class="del-msg">Delete</button>
-    <button type="button" class="can-but" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="can-but" data-bs-dismiss="modal">Cancel</button>
 </form>
 
 

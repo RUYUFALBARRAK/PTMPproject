@@ -10,6 +10,13 @@
 </form>
 </div>
 <hr>
+
+<!-- Razan Section -->
+@if(session('msg') == 'accept')
+<div class="alert alert-success">Trainee was Accepted successfully!</div>
+@endif
+<!-- End Of Razan Section -->
+
 @if(count($trainee) == 0)
       <div class="not-found">
       <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
@@ -28,11 +35,11 @@
     <td style="font-size: 14px;"> {{$student->jobTitle}} </td>
     <td>
     <a href="{{ route('detailsForCompany',[$student->trainee_id]) }}"><span class="	fa fa-chevron-right"></span></a>
-   
+
     </td>
   </tr>
 @endforeach
-</table> 
-@endif     
+</table>
+@endif
 </div>
 @endsection

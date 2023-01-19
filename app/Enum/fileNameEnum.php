@@ -7,4 +7,9 @@ enum fileNameEnum:string
     case report='report';
     case TrainingSurvey='TrainingSurvey';
     case Presentation='Presentation';
+    case TrainingPlan='TrainingPlan';
+    case FollowUp='FollowUp';
+    case Attendance='Attendance';
+    case TraineeEvaluation='TraineeEvaluation';
+    case EmployeeFeedback='EmployeeFeedback';
 }

@@ -11,6 +11,13 @@
 
 
 <hr>
+
+<!-- Razan Section -->
+@if(session('msg') == 'reject')
+<div class="alert alert-success">Trainee was Rejected successfully!</div>
+@endif
+<!-- End Of Razan Section -->
+
 @if( count($trainee) == 0)  <!-- in case for no review -->
 <div class="not-found">
       <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
@@ -30,14 +37,14 @@
     <td>{{$trainee->name}}</td>
     <td style="font-size: 16px;"> {{$trainee->jobTitle}} </td>
     <td>
-    
+
     <a href="{{ route('detailsForCompany',[$trainee->trainee_id]) }}"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
 @endforeach
-  
-</table> 
-@endif  
+
+</table>
+@endif
 
 </div>
 @endsection

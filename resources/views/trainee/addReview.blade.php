@@ -37,7 +37,6 @@
 
     @error('review') <p style="color:#e72828; margin-top: -2%;"> {{$message}} </p> @enderror
 
-    <!-- data-bs-toggle="modal" data-bs-target="#error" -->
     <div>
     <input type="submit" value="Add" class="add-but" >  </input> <!-- data-bs-toggle="modal" data-bs-target="#error" -->
     <a href="{{ url()->previous() }}"><button type="button" class="can-but1" class="fas fa-edit"> Cancel </button> </a>
