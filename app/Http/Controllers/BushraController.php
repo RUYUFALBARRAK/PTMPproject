@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\trainee;
 use App\Models\company;
 use Illuminate\Support\Facades\Validator;
-use Alert;
 use App\Models\oppourtunity;
 use App\Models\requestedopportunity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Alert;
+use Response;
+
 
 class BushraController extends Controller
 {
@@ -74,7 +76,7 @@ class BushraController extends Controller
                 'status' => 'reject',
             ]);
 
-            Alert::error('', 'Opportunity Has Been Rejected');
+            Alert::success('', 'Opportunity Has Been Rejected');
             return redirect()->back();
 
         }elseif($request->status == 'need_modification'){
@@ -88,7 +90,7 @@ class BushraController extends Controller
                 'note'  => $request->note,
             ]);
 
-            Alert::warning('', 'Opportunity Has Been Sent To Modification');
+            Alert::success('', 'Opportunity Has Been Sent To Modification');
             return redirect()->back();
 
         }
@@ -130,5 +132,17 @@ class BushraController extends Controller
 
     }
     
+        //download files
+    public function download($id){
+        $data = oppourtunity::where('id', $id)->first();
+        $filepath = storage_path("public/{$$data}");
+        //$subset = $filepath->map->only(['PtPlan']);
+        return \Response::download($filepath);
+    }
 
 }
+
+    
+
+
+

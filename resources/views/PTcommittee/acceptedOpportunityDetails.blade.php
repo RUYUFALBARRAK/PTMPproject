@@ -77,9 +77,10 @@
         </div><br>
 
         <div class="input-group" style="width: 100%;">
-        <label for="validationTooltip01" class="oppT-form-label">PT Plan:</label>&nbsp;&nbsp;
-        &nbsp;&nbsp;<p><a class="linkB" href="#" style="color: blue;">{{ $opportunity->PtPlan }}</a>&nbsp;
-        <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
+        <label for="validationTooltip01" class="oppT-form-label">PT Plan:</label>&nbsp;
+        <p class="linkB">{{$download->PtPlan}}</p>
+        <label class="linkB"><a href="{{ $download->getPlanURL()}}"></label>
+        
         </div><br>
 
    

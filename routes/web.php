@@ -51,7 +51,7 @@ Route::post('Authopportunity',[companyController::class,'Authopportunity'])-> na
 Route::get('/addOppourtunityForCompany', [companyController::class,'addOpportunityview'])->name('addOppourtunityForCompany');
 
 Route::get('/DocumentPageCompany', function () {
-    return view('Company/DocumentPageCompany', ['docs' => \App\Models\document::where('uploaded_for', '=', 'company')->orWhere('uploaded_for', '=', 'both')->get()]);
+    return view('Company/DocumentPageCompany', ['download' => \App\Models\document::where('uploaded_for', '=', 'company')->orWhere('uploaded_for', '=', 'both')->get()]);
 });
 
 Route::get('/traineeMainPage', [PTMPController::class,'ViewMainpage'])-> name('traineeMainPage');
@@ -220,7 +220,12 @@ Route::get('/deleteExperience/{id}', [PTMPController::class,'deleteExperience'])
 Route::post('/addfile', [PTMPController::class,'addfile'])-> name('addfile');
 });
 
+//download PT Plan from the details page:
+Route::get('download/{id}', [BushraController::class, 'download']);
 
+/*Route::get('/acceptedOpportunityDetails', function () {
+   return view('PTcommittee/acceptedOpportunityDetails', ['download'=>\App\Models\oppourtunity::get()]);
+});*/
 
 
 

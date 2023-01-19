@@ -38,4 +38,12 @@ class oppourtunity extends Model
     public function company(){
         return $this->belongsTo('App\Models\company');
     }
+
+   /* public function PtPlanPath() {
+        return 'download/'.$this->PtPlan;
+    }
+
+    public function getPlanURL() {
+        return url($this->PtPlanPath());
+    }*/
 }
