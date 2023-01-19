@@ -73,13 +73,12 @@
     
         <div>
         <label for="validationTooltip01" class="oppT-form-label">Application deadline:</label>
-        <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->AppDeadline }}</label>
+        <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->AppDeadline}}</label>
         </div><br>
 
         <div class="input-group" style="width: 100%;">
-        <label for="validationTooltip01" class="oppT-form-label">PT Plan:</label>&nbsp;
-        <p class="linkB">{{$download->PtPlan}}</p>
-        <label class="linkB"><a href="{{ $download->getPlanURL()}}"></label>
+        <label for="validationTooltip01" class="oppT-form-label">PT Plan:</label>
+        <label class="linkB" style="margin-top: 50%;"><a href="{{ url('/downloade/'.$opportunity->id}}">{{$opportunity->PtPlan}}</a></label>
         
         </div><br>
 

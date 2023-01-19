@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Repositories\UserRepository;
 
 use App\Models\trainee;
 use App\Models\company;
 use Illuminate\Support\Facades\Validator;
 use App\Models\oppourtunity;
 use App\Models\requestedopportunity;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Alert;
+
+use Hash;
+use Session;
+use \App\Enum\fileNameEnum;
+use File;
 use Response;
+use Carbon\Carbon;
 
 
 class BushraController extends Controller
@@ -133,10 +143,9 @@ class BushraController extends Controller
     }
     
         //download files
-    public function download($id){
-        $data = oppourtunity::where('id', $id)->first();
-        $filepath = storage_path("public/{$$data}");
-        //$subset = $filepath->map->only(['PtPlan']);
+    public function downloade($id){
+        $data = oppourtunity::where('id', $id)->value('PtPlan');
+        $filepath = storage_path("app/public/files/{$data}");
         return \Response::download($filepath);
     }
 
