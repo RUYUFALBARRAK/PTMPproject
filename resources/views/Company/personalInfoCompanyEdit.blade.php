@@ -4,7 +4,7 @@
 
 <div class='content'>
 
-    <img src="{{ asset( $company->logoImage ? 'storage/images/' . $company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
+    <img src="{{ asset( $company->logoImage ? $company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
     <h3 class="spashlistB">{{ $company->orgnizationName }}</h3>
     <br><br>
     

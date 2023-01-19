@@ -1,24 +1,12 @@
-@extends('trainee.mainPage')
+@extends('company.mainPage')
 
 @section('content-training')
-
 
 <div class='content'>
     <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
     <h3 class="spashlistB">{{ $opportunity->company->orgnizationName }}</h3>
-    <br>
+    <br><br>
 
-    <span class="rate2" style="margin-left: 84%; margin-top: -3%;">
-    <span class="fa fa-star fa-lg checked"></span>
-    <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-    </span>
-    <br>
-    <div class="view-reveiws2" style="margin-left: 84%; ">
-        <a href="#">View Reviews</a>
-    </div>
     <br><br><br>
 
 
@@ -83,9 +71,9 @@
         </div><br>
     
         <div>
-            <label for="validationTooltip01" class="oppT-form-label">Application deadline:</label>
-            <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->AppDeadline }}</label>
-        </div><br><br>
+        <label for="validationTooltip01" class="oppT-form-label">Application deadline:</label>
+        <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->AppDeadline }}</label>
+        </div><br>
 
         <div class="input-group" style="width: 100%;">
         <label for="validationTooltip01" class="oppT-form-label">PT Plan:</label>&nbsp;&nbsp;
@@ -93,44 +81,9 @@
         <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
         </div><br>
 
-        
-        @php 
-            $req_opportunity = \App\Models\requestedopportunity::where('opportunity_id' , $opportunity->id)->where('trainee_id' , session()->get('loginId'))->first();
-        @endphp
-
-        @if ($req_opportunity->statusbycompany == 'reject')
-            <div>
-                <label for="validationTooltip01" class="oppT-form-label">Status:</label>
-                <label for="validationTooltip01" class="oppD-form-label text-danger">Rejected</label>
-            </div><br><br>
-        @endif
-
-        @if ($req_opportunity->statusbytrainee == 'accept')
-
-            <div>
-                <label for="validationTooltip01" class="oppT-form-label">Status:</label>
-                <label for="validationTooltip01" class="oppD-form-label text-success" style="font-weight: bold"> Confirmed</label>
-            </div><br><br>
-
-        @else
-            <form action="{{ route('opportunity.confirm.submit',$opportunity->id) }}" method="post">
-                @csrf
-                @if ($req_opportunity->statusbycompany == 'accept')
-                    @if(count($has_opportunity) >= 1)
-                        <button disabled type="button" class="btn-conf" style="background: gray;">Confirm</button>
-                    @else
-                        <button type="submit" class="btn-conf">Confirm</button>
-                    @endif
-                @elseif($req_opportunity->statusbycompany == 'pending')
-                    <button disabled type="button" class="btn btn-secondary d-block mx-auto">Waitting for Approval..</button>                
-                @endif
-            </form>
-        @endif
-
-
-            
-        <div>
+   
 
 </div>
+
 
 @endsection

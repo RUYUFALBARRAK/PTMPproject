@@ -3,14 +3,15 @@
 @section('content-training')
 <div class="content">
 
-    <div class="input-group">
+  <div class="input-group">
 
-      <div style="width:20%" class="input-group">
-      <h1>Opportunities</h1>
-      </div>
+    <div style="width:20%" class="input-group">
+    <h1>Opportunities</h1>
     </div>
+  </div>
+
    
-    <div class="form-group col-md-2 state-menu" style="margin-left:30%">
+    <div class="form-group col-md-2 state-menu" style="margin-left:40%">
       <select id="inputLocationCompany" class="form-select">
         <option selected>Status..</option>
         <option>Accepted</option>
@@ -20,39 +21,47 @@
         <option>All</option>
       </select>
     </div>
-    <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:70%; font-size:18px; position:relative; bottom:33px;  background-color: #388087;">Add training opportunity</a>
+
+
+    
+    <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:75%; font-size:20px; position:relative; bottom:50px; background-color: #388087;">Add training opportunity</a>
+  
+
+
 
     <br><br>
 <!-- New-->
     @if(count($opportunities) > 0) 
-
       <table class="table-Bushra">
         @foreach ($opportunities as $opportunity)
-          <tr class="tr-Bushra">
-              <td class="fisrt-col-Bushra">
-                  <img src="{{ asset( $opportunity->company->logoImage ? 'storage/images/' . $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
-                  <br><br>
-              </td>
-
-              <td class="second-col-Bushra">
-                  <h5>{{ $opportunity->jobTitle }}</h5>
-                  <p class="opportunityStateB2 text-secondary"> {{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}  </p>
-              </td>
-
-            <td>
-              @if($opportunity->status == 'pending')
-                <h5 class="opportunityStateB2 text-warning">Pending</h5>
-              @elseif ($opportunity->status == 'accept')
-                <h5 class="opportunityStateB2 text-success">Accepted</h5>
-              @elseif ($opportunity->status == 'need_modification')
-              <h5 class="opportunityStateB2" style="color:#dadd28;">Need Modification</h5>
-              @elseif ($opportunity->status == 'reject')
-              <h5 class="opportunityStateB2 text-danger">Rejected</h5>
-              @endif
+        <tr class="tr-Bushra">
+            <td class="fisrt-col-Bushra">
+                <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
+                <br><br>
             </td>
-          
-          </tr> 
-          
+
+            <td class="second-col-Bushra">
+                <h5>{{ $opportunity->jobTitle }}</h5>
+                <p class="opportunityStateB2 text-secondary"> {{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}  </p>
+            </td>
+
+          <td>
+            @if($opportunity->status == 'pending')
+              <h5 class="opportunityStateB2 text-warning">Pending</h5>
+            @elseif ($opportunity->status == 'accept')
+              <h5 class="opportunityStateB2 text-success">Accepted</h5>
+            @elseif ($opportunity->status == 'need_modification')
+            <h5 class="opportunityStateB2" style="color:#dadd28;">Need Modification</h5>
+            @elseif ($opportunity->status == 'reject')
+            <h5 class="opportunityStateB2 text-danger">Rejected</h5>
+            @endif
+          </td>
+
+          <td class="oppoArrow">
+            <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right"></span></a>
+          </td>
+        
+        </tr> 
         @endforeach
     </table>
   @else

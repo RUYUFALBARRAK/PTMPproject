@@ -1,4 +1,4 @@
-@extends('PTcommittee.mainPage')
+@extends('trainee.mainPage')
 
 @section('content-training')
 
@@ -7,16 +7,17 @@
 <hr>
 <br>
     <div class="trainee-info" >
-    <p> <b> Student Name:&nbsp; </b> {{$trainee->name}} </p> <br>
-    <p> <b> Phone Number:&nbsp;</b> {{$trainee->phone}} </p><br>
-    <p> <b> GPA :&nbsp; </b> {{$trainee->GPA}} <br></p>
+    <p> <b> Student Name:&nbsp; </b>Razan Alsaif </p> <br>
+    <p> <b> Phone Number:&nbsp;</b> 050999999 </p><br>
+    <p> <b> GPA :&nbsp; </b> 4.05 <br></p>
     </div>
 
     <div class="info-sec" style="margin-left:25%;" >
-    <p> <b> Email:&nbsp; </b> {{$trainee->email}} </p> <br>
-    <p> <b> Major:&nbsp; </b> {{$trainee->major}} </p> <br>
-    <p> <b> Number of completed hours :&nbsp; </b> {{$trainee->CompletedHours}} <br></p>
+    <p> <b> Email:&nbsp; </b> 439200624@ksu.edu.sa</p> <br>
+    <p> <b> Major:&nbsp; </b> Software Engineering </p> <br>
+    <p> <b> Number of completed hours :&nbsp; </b> 94 <br></p>
     </div>
+
 </div>
 
 <div class="content" style="margin-bottom:-10%;">

@@ -42,7 +42,7 @@ Route::group(['middleware'=>'isloggedin'], function(){
     Route::delete('/traineeMainPage', [RazanController::class,'destroy'])-> name('destroy');
     Route::get('/addReview', [RazanController::class,'addReview'])-> name('addReview');
     Route::post('/traineeMainPage', [RazanController::class,'add'])-> name('add');
-    Route::get('/reviews/{id}', [RazanController::class,'showReviews'])-> name('showReviews');
+    Route::get('/reviews', [RazanController::class,'showReviews']);
     Route::get('/DocumentPage', function () {
     return view('trainee/DocumentPage', ['docs' => \App\Models\document::where('uploaded_for', '=', 'trainee')->orWhere('uploaded_for', '=', 'both')->get()]);
 });
@@ -154,10 +154,28 @@ Route::get('/opportunityDetailsApply/{id}', function ($id) {
 
 Route::post('/opportunityDetailsApply/{id}', [BushraController::class , 'opportunityApplySubmit'])->name('opportunity.apply.submit');
 
+
+
+//Company see its opportunities Details:
+Route::get('/opportunityDetails/{id}', function ($id) {
+    $opportunity = oppourtunity::findOrFail($id);
+    return view('Company/opportunityDetails' , compact('opportunity'));
+})->name('opportunityDetails.show');
+
+
+
+
 Route::get('/opportunityPageCommittee', function () {
     $opportunities = oppourtunity::where('status' , 'accept')->get();
     return view('PTcommittee/opportunityPageCommittee' , compact('opportunities'));
 });
+
+
+//Opportunities details from committee side
+Route::get('/acceptedOpportunityDetails/{id}', function ($id) {
+    $opportunity = oppourtunity::findOrFail($id);
+    return view('PTcommittee/acceptedOpportunityDetails' , compact('opportunity'));
+})->name('accOpportunity.details');
 
 Route::get('/opportunityDetailsPage/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
