@@ -57,14 +57,14 @@
   <div class="row opportunity-form">
         <div class="col">
             <label for="validationTooltip01" class="form-label"> Commercial register number :* </label>
-            <input type="text" class="form-control @error('Registration') is-invalid @enderror" placeholder="Enter organization number here" maxlength = "50" value="{{ old('Registration') }}" name="Registration">
+            <input type="text" class="form-control @error('Registration') is-invalid @enderror" placeholder="Enter organization number here" maxlength = "10" value="{{ old('Registration') }}" name="Registration">
             @if ($errors->has('Registration'))
             <span class="text-danger">{{ $errors->first('Registration') }}</span>
             @endif
          </div>
          <div class="col">
             <label for="validationTooltip01" class="form-label"> Organization phone number :* </label>
-            <input type="tel" class="form-control @error('OrganizationPhone') is-invalid @enderror"  maxlength = "10"placeholder="Example: 96650*******" value="{{ old('OrganizationPhone') }}" maxlength = "30" name="OrganizationPhone">
+            <input type="tel" class="form-control @error('OrganizationPhone') is-invalid @enderror"  maxlength = "12"placeholder="Example: 96650*******" value="{{ old('OrganizationPhone') }}" maxlength = "30" name="OrganizationPhone">
             @if ($errors->has('OrganizationPhone'))
             <span class="text-danger">{{ $errors->first('OrganizationPhone') }}</span>
             @endif
@@ -100,7 +100,7 @@
   <div class="row opportunity-form">
         <div class="col">
             <label for="validationTooltip01" class="form-label"> Supervisor phone number :*  </label>
-            <input type="tel" class="form-control @error('SupervisorPhone') is-invalid @enderror" maxlength = "10" placeholder="Example: 96650*******" value="{{ old('SupervisorPhone') }}" name="SupervisorPhone">
+            <input type="tel" class="form-control @error('SupervisorPhone') is-invalid @enderror" maxlength = "12" placeholder="Example: 96650*******" value="{{ old('SupervisorPhone') }}" name="SupervisorPhone">
             @if ($errors->has('SupervisorPhone'))
             <span class="text-danger">{{ $errors->first('SupervisorPhone') }}</span>
             @endif

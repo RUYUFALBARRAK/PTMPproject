@@ -58,7 +58,7 @@ class companyController extends Controller
             'SupervisorPhone' => 'required|regex:/(966)[0-9]{9}/|numeric|digits:12|numeric',
             'SupervisorEmail' => 'required|confirmed',
             'SupervisorEmail_confirmation' => 'required|email',
-            'password' => 'required|confirmed|min:8|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+            'password' => 'required|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/',
             'SupervisorFax' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
             'Address' => 'required',
             'password_confirmation' => 'required|min:8',
