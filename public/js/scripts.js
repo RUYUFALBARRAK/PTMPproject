@@ -31,7 +31,7 @@ function thisFileUploadReport(myFile) {
     {
     document.getElementById("report").click();
     }else{
-        var file = myFile.files[0]; 
+        var file = myFile.files[0];
         var filename = file.name;
         document.getElementById("reportName").innerHTML=filename;
         document.getElementsByClassName("Report")[0].innerHTML=" Submit ";
@@ -46,7 +46,7 @@ function thisFileUploadTrainingSurvey(myFile) {
     }else{
         document.getElementsByClassName("TrainingSurvey")[0].innerHTML=" Submit ";
         document.getElementsByClassName("TrainingSurvey")[0].type="submit";
-        var file = myFile.files[0]; 
+        var file = myFile.files[0];
         var filename = file.name;
         document.getElementById("TrainingSurveyName").innerHTML=filename;
     }
@@ -59,7 +59,7 @@ function thisFileUploadPresentation(myFile) {
     }else{
         document.getElementsByClassName("Presentation")[0].innerHTML=" Submit ";
         document.getElementsByClassName("Presentation")[0].type="submit";
-        var file = myFile.files[0];  
+        var file = myFile.files[0];
         var filename = file.name;
         document.getElementById("PresentationName").innerHTML=filename;
     }
@@ -69,7 +69,7 @@ function thisFileUploadEffectiveDateNotice(myFile) {
     {
     document.getElementById("EffectiveDateNotice").click();
     }else{
-        var file = myFile.files[0]; 
+        var file = myFile.files[0];
         var filename = file.name;
         document.getElementById("EffectiveDateNoticeName").innerHTML=filename;
         document.getElementsByClassName("EffectiveDateNotice")[0].innerHTML=" Submit ";
@@ -88,9 +88,9 @@ if(form) {
 //hover on nav
 window.onload = () => {
     document.querySelectorAll('nav a').forEach(link => {
-       
+
   if(link.href === window.location.href){
-    link.setAttribute('class', 'active'); 
+    link.setAttribute('class', 'active');
   }
 });
 }
@@ -120,6 +120,76 @@ let filename = '';
         });
 
 //ends
+
+
+// START OF RAZAN SECTION
+
+function thisFileUploadTrainingPlan(myFile) {
+    if(document.getElementById("trainingPlan").value == "")
+    {
+    document.getElementById("trainingPlan").click();
+    }else{
+        var file = myFile.files[0];
+        var filename = file.name;
+        document.getElementById("trainingPlanName").innerHTML=filename;
+        document.getElementsByClassName("TrainingPlan")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("TrainingPlan")[0].type="submit";
+    }
+
+}
+function thisFileUploadFollowUp(myFile) {
+    if(document.getElementById("followUp").value == "")
+    {
+    document.getElementById("followUp").click();
+    }else{
+        document.getElementsByClassName("followUp")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("followUp")[0].type="submit";
+        var file = myFile.files[0];
+        var filename = file.name;
+        document.getElementById("followUpName").innerHTML=filename;
+    }
+
+}
+function thisFileUploadAttendance(myFile) {
+    if(document.getElementById("attendance").value == "")
+    {
+    document.getElementById("attendance").click();
+    }else{
+        document.getElementsByClassName("attendance")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("attendance")[0].type="submit";
+        var file = myFile.files[0];
+        var filename = file.name;
+        document.getElementById("attendanceName").innerHTML=filename;
+    }
+}
+function thisFileUploadTraineeEvaluation(myFile) {
+    if(document.getElementById("traineeEvaluation").value == "")
+    {
+    document.getElementById("traineeEvaluation").click();
+    }else{
+        var file = myFile.files[0];
+        var filename = file.name;
+        document.getElementById("traineeEvaluationName").innerHTML=filename;
+        document.getElementsByClassName("traineeEvaluation")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("traineeEvaluation")[0].type="submit";
+    }
+}
+
+function thisFileUploadEmployeeFeedback(myFile) {
+    if(document.getElementById("employeeFeedback").value == "")
+    {
+    document.getElementById("employeeFeedback").click();
+    }else{
+        var file = myFile.files[0];
+        var filename = file.name;
+        document.getElementById("employeeFeedbackName").innerHTML=filename;
+        document.getElementsByClassName("employeeFeedback")[0].innerHTML=" Submit ";
+        document.getElementsByClassName("employeeFeedback")[0].type="submit";
+    }
+}
+
+// END OF RAZAN SECTION
+
 
 document.querySelector('#announcement-title-length').textContent = document.querySelector('#validationTooltip01').value.length;
 document.querySelector('#announcement-content-length').textContent = document.querySelector('#validationTooltip02').value.length;

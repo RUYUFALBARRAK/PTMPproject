@@ -32,6 +32,14 @@
     <p> <b> Interests :&nbsp; </b> {{$interest}} </p> <br>
     <p> <b> Experience:&nbsp; </b> {{$experience}} </p> <br>
     <p> <b> Uploaded Files:&nbsp; </b> </p>
+
+    @foreach($files as $file)
+    <div class="uploaded-files" style="margin-right:-32%; margin-top:2%; margin-bottom:2%;"> <a href="{{ url('/download/'.$file->id) }}">
+    <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
+    <p style="width:24%; text-align: center; ">{{$file-> document}}</p> </a>
+    </div>
+    @endforeach
+
     </div>
 
 </div>
@@ -42,7 +50,7 @@
 <div class="content">
 
 <div style="margin-left:4%;">
-    <img src="{{asset($companyInfo->logoImage)}}" alt="Company logo" width="20%" hight="20%" style=" margin-left:-3%;">
+    <img src="{{asset('/img/'.$companyInfo->logoImage)}}" alt="Company logo" width="20%" hight="20%" style=" margin-left:-3%;">
     <h3 style=" margin-top:-5%;" class="spashlist">{{$oppourtunity-> jobTitle}}</h3> <h4 style=" margin-top:-2%;" class="date">{{$oppourtunity-> Start_at}} - {{$oppourtunity-> end_at}}  </h4>
 </div>
 
@@ -53,23 +61,36 @@
 
     <h4 style="font-size:145%;"> Trainee's Progress report</h4><br>
 
-<table style="width:130%" class="Progress-report">
+<table style="width:130%" class="ProgressReport">
   <tr>
     <td>Effective date notice</td>
-    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
+    @if($effective != 0)
+    <th class="subm"> <a href="{{ url('/download/'.$effective) }}">VIEW SUBMITTED </a> </th>
+    @else
+    <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    @endif
   </tr>
   <tr>
     <td>Report</td>
-    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
-  </tr>
+    @if($report != 0)
+    <th class="subm"> <a href="{{ url('/download/'.$report) }}">VIEW SUBMITTED </a> </th>
+    @else
+    <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    @endif
   <tr>
     <td>Training Survey</td>
-    <th class="submited" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
-  </tr>
+    @if($survey != 0)
+    <th class="subm"> <a href="{{ url('/download/'.$survey) }}">VIEW SUBMITTED </a> </th>
+    @else
+    <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    @endif
   <tr>
     <td>Presentation</td>
-    <th class="submited" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
-  </tr>
+    @if($presentation != 0)
+    <th class="subm"> <a href="{{ url('/download/'.$presentation) }}">VIEW SUBMITTED </a> </th>
+    @else
+    <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
+    @endif
 </table>
 
 </div>
@@ -79,24 +100,24 @@
 
 <h3 style="font-size:145%;"> Company's Progress report</h3><br>
 
-<table style="width:135%" class="Progress-report">
+<table style="width:135%" class="ProgressReport">
   <tr>
     <td>Training Plan</td>
-    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
   </tr>
   <tr>
     <td>Follow Up</td>
-    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
   <tr>
     <td>Attendance</td>
-    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
   <tr>
     <td>Trainee Evaluation</td>
-    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
+    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
   </tr>
   <tr>
-    <td>Employee feedback</td>
-    <th class="submited"> <a href="#">VIEW SUBMITTED <a> </th>
+    <td>Employee Feedback</td>
+    <th class="subm"> <a href="#">VIEW SUBMITTED </a> </th>
 </table>
 </div>
 

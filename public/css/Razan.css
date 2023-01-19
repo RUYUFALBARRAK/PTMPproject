@@ -33,14 +33,34 @@
     vertical-align:top;
 }
 
-.company-report a , .Progress-report a{
+.company-report a , .ProgressReport a{
     color:black;
   }
 
-  .company-report th , .Progress-report th{
-font-size: 80%;
+  .company-report th , .ProgressReport th{
+font-size: 85%;
 padding-right: 2%;
   }
+
+  .company-report td , .ProgressReport td{
+    padding-right: 2%;
+      }
+
+.subm{
+    border-top: 1px solid #a7aeae;
+  text-decoration: underline;
+  text-align: right;
+}
+
+.ProgressReport{
+    border: 1px solid #a7aeae;
+    border-radius: 15px;
+  }
+
+   .ProgressReport td{
+    border-top: 1px solid #a7aeae;
+    padding: 2%;
+   }
 
 
 /* VIEW REVIEW page */
@@ -369,3 +389,41 @@ background-color: #af1e1e;
     font-size: 130%;
     color: rgb(64, 60, 74);
 }
+
+.uploaded-files {
+    display: inline-block;
+    vertical-align:top;
+}
+
+
+/* TRAINEE REQUEST BUTTONS */
+
+.reject-but{
+    background-color: #e72828;
+    border-radius: 7px;
+    color: white;
+    font-size: 135%;
+    padding: 4px 20px 4px 20px;
+    border-style: none;
+    margin-left: 12%;
+    margin-top: 5%;
+}
+
+.reject-but:hover{
+    background-color: #af1e1e;
+    }
+
+.acc-but{
+    background-color: #00b618;
+    border-radius: 7px;
+    color: white;
+    font-size: 136%;
+    padding: 4px 18px 4px 18px;
+    border-style: none;
+    margin-left: 32%;
+    margin-top: 5%;
+}
+
+.acc-but:hover{
+    background-color: #029015;
+    }

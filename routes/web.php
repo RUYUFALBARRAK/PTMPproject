@@ -46,7 +46,13 @@ Route::group(['middleware'=>'isloggedin'], function(){
     Route::get('/DocumentPage', function () {
     return view('trainee/DocumentPage', ['docs' => \App\Models\document::where('uploaded_for', '=', 'trainee')->orWhere('uploaded_for', '=', 'both')->get()]);
 });
-Route::get('/traineeDetails', [RazanController::class,'details']);
+Route::get('/traineeDetailsUnit/{id}', [RazanController::class,'detailsForUnit'])-> name('detailsForUnit');
+Route::get('/traineeDetailsCommittee/{id}', [RazanController::class,'detailsForCommittee'])-> name('detailsForCommittee');
+Route::get('/traineeDetailsCompany/{id}', [RazanController::class,'detailsForCompany'])-> name('detailsForCompany');
+Route::get('/traineeDetailsRequest/{id}', [RazanController::class,'Request'])-> name('Request');
+Route::post('/action/{id}', [RazanController::class,'action'])-> name('action');
+Route::get('/download/{id}', [RazanController::class,'download'])-> name('download');
+Route::post('/companyUpload/{id}', [RazanController::class,'companyUpload'])-> name('companyUpload');
 Route::post('Authopportunity',[companyController::class,'Authopportunity'])-> name('Authopportunity');
 Route::get('/addOppourtunityForCompany', [companyController::class,'addOpportunityview'])->name('addOppourtunityForCompany');
 
@@ -175,7 +181,7 @@ Route::get('/opportunityDetailsPage/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
     return view('PTcommittee/opportunityDetailsPage' , compact('opportunity'));
 })->name('opportunity.details');
- 
+
 Route::post('/opportunityUpdateStatus/{id}' , [BushraController::class , 'updateOpportunityStatus'])->name('opportunity.update_status');
 
 
