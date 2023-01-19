@@ -3,9 +3,9 @@
 @section('content-training')
 
 <div class='content'>
-    <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
+    <img src="{{ asset( $opportunity->company->logoImage ? 'storage/images/' . $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
     <h3 class="spashlistB">{{ $opportunity->company->orgnizationName }}</h3>
-    <br>
+    <br><br>
 
     
     <br><br><br>
@@ -51,7 +51,8 @@
     <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->workHours }}</label>
     </div><br>
 
-    <div>
+    
+        <div>
         <label for="validationTooltip01" class="oppT-form-label">Supervisor:</label>
         <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->supervisorName }}</label>
         </div><br>
@@ -79,12 +80,11 @@
         <div class="input-group" style="width: 100%;">
         <label for="validationTooltip01" class="oppT-form-label">PT Plan:</label>
         <label class="linkB" style="margin-top: 50%;"><a href="{{ url('/downloade/'.$opportunity->id}}">{{$opportunity->PtPlan}}</a></label>
-        
         </div><br>
 
-   
+    
 
-</div>
+  </div>
 
 
 @endsection
