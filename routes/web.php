@@ -42,7 +42,7 @@ Route::group(['middleware'=>'isloggedin'], function(){
     Route::delete('/traineeMainPage', [RazanController::class,'destroy'])-> name('destroy');
     Route::get('/addReview', [RazanController::class,'addReview'])-> name('addReview');
     Route::post('/traineeMainPage', [RazanController::class,'add'])-> name('add');
-    Route::get('/reviews', [RazanController::class,'showReviews']);
+    Route::get('/reviews/{id}', [RazanController::class,'showReviews'])-> name('reeviews');
     Route::get('/DocumentPage', function () {
     return view('trainee/DocumentPage', ['docs' => \App\Models\document::where('uploaded_for', '=', 'trainee')->orWhere('uploaded_for', '=', 'both')->get()]);
 });

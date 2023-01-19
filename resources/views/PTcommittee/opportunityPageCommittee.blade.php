@@ -4,6 +4,7 @@
 <div class="content">
 
 <form method="GET" action="{{url('/opportunityPageCommittee')}}">
+
   <div style="width:50%" class="input-group">
   <input type="search" class="form-control rounded" name="query" placeholder="Search for opportunity name..." aria-label="Search" aria-describedby="search-addon" />
   <button type="submit" class="btn btn-outline-dark">Search</button>
@@ -148,16 +149,21 @@
           <td class="td-Bushra" >
 
               <span class="rate2-Bushra">
-              <span class="fa fa-star fa-lg checked"></span>
-              <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+              <span class="fa fa-star fa-lg checked"
+              value="1" name="product_rating1" id="rating_1"></span>
+              <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"
+              value="2" name="product_rating1" id="rating_2"></span>
+              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"
+              value="3" name="product_rating1" id="rating_3"></span>
+              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"
+              value="4" name="product_rating1" id="rating_4"></span>
+              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"
+              value="5" name="product_rating1" id="rating_5"></span>
               </span>
               <br>
       
-              <a class="view-reveiws2" href="#">View Reviews</a>
-
+              <a class="view-reveiws2" href="{{route('reeviews', $opportunity->company_id)}}">View Reviews</a>
+              
           </td>
 
       
