@@ -11,6 +11,7 @@ use App\Repositories\UserRepository;
 
 use App\Models\trainee;
 use App\Models\company;
+use App\Models\Review;
 use Illuminate\Support\Facades\Validator;
 use App\Models\oppourtunity;
 use App\Models\requestedopportunity;
@@ -142,7 +143,7 @@ class BushraController extends Controller
         return redirect()->back();
 
     }
-    
+
         //download files
     public function downloade($id){
         $data = oppourtunity::where('id', $id)->value('PtPlan');
@@ -150,9 +151,13 @@ class BushraController extends Controller
         return \Response::download($filepath);
     }
 
+    public function opportunityTrainee(){
+        $opportunities = oppourtunity::where('status' , 'accept')->get();
+        $id = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', session('loginId'))->value('opportunity.company_id');
+        $reviews = Review::get();
+        return view('trainee/opportunityPageTrainee' , [
+            'opportunities' => $opportunities ,
+            'reviews' => $reviews
+        ]);
+    }
 }
-
-    
-
-
-

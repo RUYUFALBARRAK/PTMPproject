@@ -188,6 +188,12 @@ function thisFileUploadEmployeeFeedback(myFile) {
     }
 }
 
+document.querySelector('#review-length').textContent = document.querySelector('#review').value.length;
+document.querySelector('#review').oninput = (e) => {
+    $('#review-length').text($('#review').val().length);
+};
+
+
 // END OF RAZAN SECTION
 
 

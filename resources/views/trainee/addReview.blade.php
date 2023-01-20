@@ -31,11 +31,14 @@
 
 
     <div style="margin-top: -1%;">
-    <p> <label> <textarea id="review" name="review"  rows="5" cols="50" placeholder="How is your experience?" style="border-radius:4px; font-size:130%; font-family:'Actor';
+    <p> <label> <textarea id="review" name="review" maxlength="400"  rows="5" cols="50" placeholder="How is your experience?" style="border-radius:4px; font-size:130%; font-family:'Actor';
     font-weight:200; padding:1%; @error('review') border-color:#e72828; border-width:1.5px; @enderror "></textarea></label> </p>
     </div>
 
-    @error('review') <p style="color:#e72828; margin-top: -2%;"> {{$message}} </p> @enderror
+    <div style="margin-left:1%; margin-top: 1%;" class="d-inline-block">Remaining Characters: <span id="review-length">0</span>/400</div>
+
+
+    @error('review') <p style="color:#e72828; margin-left: 1%; margin-top: -5.5%;"> {{$message}} </p> @enderror
 
     <div>
     <input type="submit" value="Add" class="add-but" >  </input> <!-- data-bs-toggle="modal" data-bs-target="#error" -->
@@ -45,5 +48,12 @@
 </form>
 
 </div>
+
+<script>
+        document.querySelector('#review-length').textContent = document.querySelector('#review').value.length;
+        document.querySelector('#review').oninput = (e) => {
+        $('#review-length').text($('#review').val().length);
+        };
+    </script>
 
 @endsection

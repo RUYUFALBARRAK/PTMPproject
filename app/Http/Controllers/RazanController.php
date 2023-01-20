@@ -363,10 +363,14 @@ class RazanController extends Controller
 
         $companyInfo = company::where( 'id' , $id)->first();
 
+        $logo = company::where( 'id' , $id)->value('logoImage');
+        $imgPath = storage_path("app/public/images/{$logo}");
+
          $reviews = review::join('users', 'users.trainee_id', '=', '_review.trainee_id')->where('company_id', $id)->orderBy('Create_at' , 'desc')->get();
 
         return view('trainee/reviews',[
             'reviews' => $reviews ,
+            'imgPath' => $imgPath ,
             'companyInfo' => $companyInfo
         ]);
     }

@@ -3,7 +3,7 @@
 @section('content-training')
 <div class="content">
 
-  
+
 
     <form method="GET" action="{{url('/opportunityPageTrainee')}}">
       <div style="width:50%" class="input-group">
@@ -165,23 +165,57 @@
 
           <td class="td-Bushra">
               <span class="rate2-Bushra">
-              <span class="fa fa-star fa-lg checked"></span>
-              <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
-              </span>
-              <br>
 
-              <a class="view-reveiws2" href="{{route('reeviews', $opportunitiy->company_id)}}">View Reviews</a>
-          
+            @php
+            $count = 0;
+            $num = 0;
+            @endphp
+
+            @foreach($reviews as $review)
+            @if($review->company_id == $opportunitiy->company_id)
+
+            @php
+            $count = $count + $review-> star_rating;
+            $num++;
+            @endphp
+
+            @endif
+            @endforeach
+
+            @if($num != 0)
+
+            @php
+            $result = number_format($count/$num)
+            @endphp
+
+                @for($i = 1; $i <= $result; $i++)
+            <span class="fa fa-star fa-lg checked"></span>
+                @endfor
+
+                @for($j = $result+1; $j <= 5; $j++)
+                <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+                @endfor
+
+            @else
+
+            @for($q = 0; $q <= 4; $q++)
+                <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"></span>
+                @endfor
+
+            @endif
+
+            </span>
+            <br>
+
+              <a class="view-reveiws2" href="{{route('reviews', $opportunitiy->company_id)}}">View Reviews</a>
+
             </td>
 
           {{-- <td>
             <h4 class="opportunityStateB2 text-success">{{ $opportunitiy->status }}</h4>
           </td> --}}
 
-          @php 
+          @php
             $is_apply = \App\Models\requestedopportunity::where('opportunity_id' , $opportunitiy->id)->where('trainee_id' , session()->get('loginId'))->first();
 
             // dd($is_apply)
@@ -194,9 +228,9 @@
               <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}"><span class="fa fa-chevron-right"></span></a>
             @endif
           </td>
-        
+
         </tr>
-      @endforeach 
+      @endforeach
 
   </table>
 

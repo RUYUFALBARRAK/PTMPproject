@@ -42,7 +42,7 @@ Route::group(['middleware'=>'isloggedin'], function(){
     Route::delete('/traineeMainPage', [RazanController::class,'destroy'])-> name('destroy');
     Route::get('/addReview', [RazanController::class,'addReview'])-> name('addReview');
     Route::post('/traineeMainPage', [RazanController::class,'add'])-> name('add');
-    Route::get('/reviews/{id}', [RazanController::class,'showReviews'])-> name('reeviews');
+    Route::get('/reviews/{id}', [RazanController::class,'showReviews'])-> name('reviews');
     Route::get('/DocumentPage', function () {
     return view('trainee/DocumentPage', ['docs' => \App\Models\document::where('uploaded_for', '=', 'trainee')->orWhere('uploaded_for', '=', 'both')->get()]);
 });
@@ -133,10 +133,7 @@ Route::get('/personalInfoCompany', function () {
     return view('Company/personalInfoCompany' , compact('company'));
 })->name('company.show');
 
-Route::get('/opportunityPageTrainee', function () {
-    $opportunities = oppourtunity::where('status' , 'accept')->get();
-    return view('trainee/opportunityPageTrainee' , compact('opportunities'));
-});
+Route::get('/opportunityPageTrainee', [BushraController::class , 'opportunityTrainee'])->name('opportunityTrainee');
 Route::get('/opportunityDetailsPageT/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
     $has_opportunity = requestedopportunity::where('trainee_id' , session()->get('loginId'))->where('statusbytrainee','accept')->get();
