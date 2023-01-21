@@ -17,6 +17,7 @@ use App\Models\traineeLanguages;
 use App\Models\traineeSkills;
 use App\Models\Sendsdocument;
 use App\Models\oppourtunity;
+use App\Models\traineeRequest;
 use App\Models\cv;
 
 use Hash;
@@ -269,18 +270,19 @@ class RazanController extends Controller
 
     public function action (Request $request,$id){
 
-        $trainee = trainee::where('trainee_id', $id)->first();
+        $req = traineeRequest::where('trainee_id', $id)->first();
 
         if($request->status == 'accept'){
-            $trainee->update([
-                'status' => 'Ongoing',
+            $req->update([
                 'statusFormCompany'=> 'accept'
             ]);
-            return redirect('/listOfTrainees')->with('msg','accept');        }
+
+            return redirect('/listOfTrainees')->with('msg','accept');
+        }
 
         elseif($request->status == 'reject'){
 
-            $trainee->update([
+            $req->update([
                 'statusFormCompany'=> 'reject'
             ]);
             return redirect('/listOfTraineesRequests')->with('msg','reject');
