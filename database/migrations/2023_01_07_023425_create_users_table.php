@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('committee_id')->nullable();
             $table->foreign('committee_id')->references('committee_id')->on('committee')->onDelete('cascade');
             $table->enum('status', ['Available', 'Completed', 'Ongoing'])->default('Available');
+            $table->enum('statusFormCompany', ['accept', 'reject', 'Pending'])->default('Pending');
             $table->unsignedInteger('opportunity_id')->nullable();
             $table->foreign('opportunity_id')->references('id')->on('opportunity')->onDelete('cascade');
             $table->timestamps();
