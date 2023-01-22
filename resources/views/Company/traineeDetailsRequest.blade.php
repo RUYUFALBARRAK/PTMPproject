@@ -39,10 +39,8 @@
 
 <form action="{{ route('action',[$trainee->trainee_id]) }}" method="POST">
         @csrf
-    <button type="submit" name="status" value="accept" class="btn btn-outline-success" style="font-size: 136%;
-    padding: 4px 18px 4px 18px; margin-left: 34%; margin-top: 5%;"> Accept </button>
-    <button type="submit" name="status" value="reject" class="btn btn-outline-danger" style="font-size: 135%;
-    padding: 4px 20px 4px 20px; margin-left: 12%; margin-top: 5%;"> Reject  </button>
+    <button type="submit" name="status" value="accept" class="acc-but"> Accept </button>
+    <button type="submit" name="status" value="reject" class="reject-but"> Reject  </button>
     </div>
 </form>
 

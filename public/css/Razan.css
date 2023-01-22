@@ -409,10 +409,9 @@ background-color: #af1e1e;
     margin-top: 5%;
 }
 
-/*
 .reject-but:hover{
     background-color: #af1e1e;
-    }*/
+    }
 
 .acc-but{
     background-color: #00b618;
@@ -421,10 +420,10 @@ background-color: #af1e1e;
     font-size: 136%;
     padding: 4px 18px 4px 18px;
     border-style: none;
-    margin-left: 34%;
+    margin-left: 32%;
     margin-top: 5%;
 }
-/*
+
 .acc-but:hover{
-    background-color: #029015s;
-    }*/
+    background-color: #029015;
+    }
