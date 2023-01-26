@@ -34,6 +34,9 @@ Route::get('/loginCompany', function () {return view('Company/LoginForCompany');
 Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
 });
+Route::get('/changePassword', function () {
+    return view('Company/changePassword');
+});
 
 Route::group(['middleware'=>'isloggedin'], function(){
 
