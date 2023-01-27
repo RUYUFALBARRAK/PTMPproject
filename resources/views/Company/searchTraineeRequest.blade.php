@@ -31,7 +31,7 @@
     <td>
     
 
-    <a href="{{ route('detailsForCompany',[$trainee->trainee_id]) }}"><span class="	fa fa-chevron-right"></span></a>
+    <a href="{{ route('Request',[$trainee->trainee_id]) }}"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
 @endforeach

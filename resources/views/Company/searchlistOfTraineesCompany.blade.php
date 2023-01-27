@@ -31,7 +31,7 @@
     <a href="{{ route('Request',[$student->trainee_id]) }}"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
-@endforeach
+@endforeachz
 </table> 
 @endif     
 </div>
