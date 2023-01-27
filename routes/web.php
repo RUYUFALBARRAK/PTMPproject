@@ -214,6 +214,9 @@ Route::get('/listOfStudentsReqLetter', function () {
 Route::get('/listOfStudentsPTunit', [khawlahController::class,'studentListPT']);
 Route::get('/searchlistOfStudentsPTunit', [khawlahController::class,'searchstudentListPT']);
 
+Route::post('/ReuqstIdentfaction', [\App\Http\Controllers\khawlahController::class, 'uploadRegulation'])->name('upload_regulation');
+
+
 
 Route::post('/addSkill', [PTMPController::class,'addSkill'])-> name('addSkill');
 Route::get('/deleteSkills/{id}', [PTMPController::class,'deleteSkills'])-> name('deleteskills');
