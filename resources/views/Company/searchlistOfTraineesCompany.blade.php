@@ -28,11 +28,11 @@
     <td style="font-size: 14px;"> {{$student->jobTitle}} </td>
     <td>
     
-    <a href="{{ route('Request',[$student->trainee_id]) }}"><span class="	fa fa-chevron-right"></span></a>
+    <a href="{{ route('detailsForCompany',[$student->trainee_id]) }}"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
-@endforeachz
+@endforeach
 </table> 
-@endif     
+@endif
 </div>
 @endsection
