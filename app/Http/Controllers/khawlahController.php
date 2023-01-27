@@ -19,7 +19,7 @@ class khawlahController extends Controller
 
         if (Session::has('logincompId')) {
 
-            $trainee = DB::table('users')->join('requestedopportunity', 'users.opportunity_id', '=', 'requestedopportunity.id')->join('opportunity', 'requestedopportunity.requestedopportunity', '=', 'opportunity.id')->Where('company_id', '=', session('logincompId'))->Where('statusbycompany', 'Pending')->Where('users.status', 'Available')->get();
+            $trainee = DB::table('users')->join('opportunity', 'users.opportunity_id', '=', 'opportunity.id')->join('requestedopportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('requestedopportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'Pending')->Where('users.status', 'Available')->get();
 
             return view('Company/listOfTraineesRequests', compact('trainee'));
         }
@@ -41,7 +41,7 @@ class khawlahController extends Controller
         if (Session::has('logincompId')) {
 
             $search_trainee = $_GET['query'];
-            $traineesResult = DB::table('users')->join('opportunity', 'users.opportunity_id', '=', 'opportunity.id')->Where('company_id','=',session('logincompId'))->Where('statusFormCompany', 'accept')->Where('users.status', 'Ongoing')->where('name', 'LIKE', '%' . $search_trainee . '%')->orWhere('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get();
+            $traineesResult = DB::table('users')->join('opportunity', 'users.opportunity_id', '=', 'opportunity.id')->Where('users.company_id','=',session('logincompId'))->Where('statusFormCompany', 'accept')->Where('users.status', 'Ongoing')->where('name', 'LIKE', '%' . $search_trainee . '%')->orWhere('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get();
             return view('Company/searchlistOfTraineesCompany', compact('traineesResult'));
         }
     }
@@ -74,7 +74,7 @@ class khawlahController extends Controller
         if (Session::has('logincompId')) {
 
             $search_trainee = $_GET['query'];
-            $traineesResult =DB::table('users')->join('requestedopportunity', 'users.opportunity_id', '=', 'requestedopportunity.id')->join('opportunity', 'requestedopportunity.requestedopportunity', '=', 'opportunity.id')->Where('company_id', '=', session('logincompId'))->Where('statusbycompany', 'Pending')->Where('users.status', 'Available')->where('name', 'LIKE', '%' . $search_trainee . '%')->orWhere('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get();
+            $traineesResult =DB::table('users')->join('opportunity', 'users.opportunity_id', '=', 'opportunity.id')->join('requestedopportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('requestedopportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'Pending')->Where('users.status', 'Available')->where('name', 'LIKE', '%' . $search_trainee . '%')->orWhere('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get();
             return view('Company/searchTraineeRequest', compact('traineesResult'));
 
         }
