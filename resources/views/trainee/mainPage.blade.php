@@ -8,7 +8,7 @@
 window.onload = () => {
     document.querySelectorAll('nav a').forEach(link => {
   if(link.href === window.location.href){
-    link.setAttribute('class', 'active'); 
+    link.setAttribute('class', 'active');
   }
 });
 }
@@ -35,10 +35,10 @@ window.onload = () => {
 {{--          </tbody>--}}
 {{--      </table>--}}
 {{--  </marquee>--}}
-  <li>  <a  onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon glyphicon glyphicon-chevron-down" id="submenu2" data-toggle="collapse" href="#submenu-2"> CONTACT US</a>
+  <li>  <a  onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon glyphicon glyphicon-chevron-down" id="submenu2" data-toggle="collapse" href="#submenu-2" style=" font-family: 'Nunito', sans-serif !important; font-size:100%;"> CONTACT US</a>
     <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-       <li> <a  href="mailto:someone@example.com" class="abc">Email</a></li>
-       <li> <a href="tel:+4733378901" class="abc">Phone:</a> </li>
+       <li> <a  href="mailto:ccis_female_pt_committee@ksu.edu.sa" class="abc">Email</a></li>
+       <li> <a href="tel:+4733378901" class="abc">Phone</a> </li>
     </ul></li>
   </ul>
 </nav>
