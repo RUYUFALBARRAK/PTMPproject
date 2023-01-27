@@ -359,6 +359,29 @@ class RazanController extends Controller
         ]);
     }
 
+
+    public function LetterRequest($id){
+        $trainee = trainee::where('trainee_id', $id)->first();
+
+        $regulation = trainee::join('cv', 'cv.trainee_id', '=', 'users.trainee_id')->where( 'users.trainee_id', $id)->get();
+
+        $experience = traineeExperience::where( 'trainee_id' , '=', $id)->value('Experience');
+        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
+        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
+        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+
+        return view('PTunit/traineeDetailsLetter', [
+            'trainee' => $trainee ,
+            'regulation' => $regulation ,
+            'experience' => $experience ,
+            'interest' => $interest ,
+            'language' => $language ,
+            'skill' => $skill
+        ]);
+    }
+
+
+
     public function showReviews($id){
 
         $companyInfo = company::where( 'id' , $id)->first();

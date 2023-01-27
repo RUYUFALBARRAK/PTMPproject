@@ -50,6 +50,7 @@ Route::group(['middleware'=>'isloggedin'], function(){
     return view('trainee/DocumentPage', ['docs' => \App\Models\document::where('uploaded_for', '=', 'trainee')->orWhere('uploaded_for', '=', 'both')->get()]);
 });
 Route::get('/traineeDetailsUnit/{id}', [RazanController::class,'detailsForUnit'])-> name('detailsForUnit');
+Route::get('/traineeDetailsLetter/{id}', [RazanController::class,'LetterRequest'])-> name('LetterRequest');
 Route::get('/traineeDetailsCommittee/{id}', [RazanController::class,'detailsForCommittee'])-> name('detailsForCommittee');
 Route::get('/traineeDetailsCompany/{id}', [RazanController::class,'detailsForCompany'])-> name('detailsForCompany');
 Route::get('/traineeDetailsRequest/{id}', [RazanController::class,'Request'])-> name('Request');

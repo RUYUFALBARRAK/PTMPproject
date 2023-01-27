@@ -427,3 +427,20 @@ background-color: #af1e1e;
 .acc-but:hover{
     background-color: #029015;
     }
+
+
+/* LETTER REQUEST TRAINEE DETAILS PAGE*/
+
+.letter-btn{
+    border-radius: 7px;
+    color: white;
+    font-size: 120%;
+    padding: 4px 18px 4px 18px;
+    border-style: none;
+    background-color: #028314;
+
+}
+
+.letter-btn:hover{
+    background-color: #016e10;
+}
