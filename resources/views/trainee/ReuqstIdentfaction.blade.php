@@ -36,7 +36,7 @@
 
 
 </table>
-<form action="{{ route('upload_regulation') }}" enctype="multipart/form-data" method="POST" id="upload-doc-form">>
+<form action="{{ route('upload_regulation') }}" enctype="multipart/form-data" method="POST" id="upload-doc-form">
 
 <h3 style="margin-top:5%;">Uploud regulation</h3>
         <hr>
