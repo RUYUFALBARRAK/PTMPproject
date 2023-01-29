@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('cv', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('certifactionFile');
-            $table->string('acdamicFile');
-            $table->string('identificationLetter');
+            $table->string('documentName');
+            $table->string('document');
             $table->string('trainee_id');
             $table->foreign('trainee_id')->references('trainee_id')->on('users')->onDelete('cascade');
             $table->timestamps();

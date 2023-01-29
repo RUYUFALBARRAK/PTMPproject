@@ -9,6 +9,13 @@ class requestedopportunity extends Model
 {
     use HasFactory;
     protected $table='requestedopportunity';
+            protected $casts = [
+    'statusbytrainee' => companyStatus::class,
+    'statusbycommittee' => companyStatus::class,
+    'statusbycompany' => companyStatus::class,
+
+];
+
     protected $fillable = [
         'oppourtunity_id',
         'statusbytrainee',
@@ -24,7 +31,7 @@ class requestedopportunity extends Model
     }
        public function trainee()
     {
-        return $this->hasOne('App\Models\trainee');
+        return $this->belongsTo('App\Models\trainee','trainee_id');
     }
        public function committee()
     {
