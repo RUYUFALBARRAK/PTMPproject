@@ -11,8 +11,6 @@
   </style>
   <h3>Hi {{$loginIdUser['name']}}</h3><hr>
 
-  <h3>Hi {{$loginIdUser['name']}}</h3>
-
 @if(session('msg') == 'review')
 <div class="alert alert-success">Feedback was Added successfully!</div>
 @endif
@@ -21,14 +19,13 @@
 <div class="alert alert-success">Feedback was Deleted successfully!</div>
 @endif
 
-<hr>
 
-  @if($loginIdUser['opportunity_id']!=null)
+  @if($opportumityinfo!=null&&$opportumityinfo->statusbycommittee=='accept'&&$opportumityinfo->statusbytrainee=='accept'&&$opportumityinfo->statusbycompany=='accept')
   @if($loginIdUser['status']=='Completed')
   <a href="{{route('addReview')}}"><button type="button" style="margin-left:50vw; font-size: 1.6vw; position: absolute; " class="add-but">Add Review</button></a>
   @endif
-    <img src="{{asset('storage/images/'. $loginIdUser['oppourtunity']['company']['logoImage'])}}" alt="Company logo" width="15%" hight="15%">
-    <h3 class="spashlist">{{$loginIdUser['oppourtunity']['jobTitle']}}</h3> <h4 class="date">{{$loginIdUser['oppourtunity']['Start_at']}} - {{$loginIdUser['oppourtunity']['end_at']}}</h4><h4 class="opportunityState">.</h4> <h4 class="opportunityState">CONFIRMED</h4>
+    <img src="{{asset('storage/images/'. $opportumityinfo->logoImage)}}" alt="Company logo" width="15%" hight="15%">
+    <h3 class="spashlist">{{$opportumityinfo->jobTitle}}</h3> <h4 class="date">{{$opportumityinfo->Start_at}} - {{$opportumityinfo->end_at}}</h4><h4 class="opportunityState">.</h4> <h4 class="opportunityState">CONFIRMED</h4>
     <br><br><br><hr>
 
        @if ($errors->has('uploudedfile'))
@@ -49,7 +46,7 @@
      <td>
 
   @if($EffectiveDateNotice)
-      <a href="">view submitted</a>
+      <a style="color: #000; font-size: 1.3vw;" href="{{$docEffectiveDateNotice->document}}">view submitted</a>
 
    @else
      <form action="{{ route('uploadfile') }}" enctype="multipart/form-data" method="post">
@@ -66,7 +63,7 @@
     <td>
 
     @if($report)
-      <a href="">view submitted</a>
+      <a style="color: #000; font-size: 1.3vw;" href="{{$docreport->document}}">view submitted</a>
     @else
   <form action="{{ route('uploadfile') }}" enctype="multipart/form-data" method="post">
     @csrf
@@ -83,7 +80,7 @@
     <td>
 
     @if($TrainingSurvey)
-      <a href="">view submitted</a>
+      <a style="color: #000; font-size: 1.3vw;" href="{{$docTrainingSurvey->document}}">view submitted</a>
     @else
       <form action="{{ route('uploadfile') }}"  enctype="multipart/form-data" method="post">
         @csrf
@@ -98,7 +95,7 @@
     <td>Presentation<div style="color: #808080" id="PresentationName"></div></td>
     <td>
    @if($Presentation)
-      <a href="">view submitted</a>
+      <a style="color: #000; font-size: 1.3vw;" href="{{$docPresentation->document}}">view submitted</a>
      @else
     <form action="{{ route('uploadfile') }}" enctype="multipart/form-data" method="post">
       @csrf

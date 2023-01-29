@@ -12,4 +12,8 @@ enum fileNameEnum:string
     case Attendance='Attendance';
     case TraineeEvaluation='TraineeEvaluation';
     case EmployeeFeedback='EmployeeFeedback';
+    case TrainingSpecifications="TrainingSpecifications";
+    case certifactionFile="certifactionFile";
+    case acdamicFile="acdamicFile";
+    case identificationLetter="identificationLetter";
 }

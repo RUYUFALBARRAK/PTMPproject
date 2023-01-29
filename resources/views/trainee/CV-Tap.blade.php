@@ -84,8 +84,57 @@
 <!--Upload Certification-->
 <div class="content-CV">
 <strong style="font-size: 110%;">Upload Certification and academic transcript and identification letter</strong><hr>
-<strong style="font-size: 100%;">File uploaded:</strong><p id="file-uploded"></p>
-<button style="font-size:15px" name="uploadfile" class="btn btn-outline-secondary" ><i class="fa fa-download"></i> upload file</button>
+<strong style="font-size: 100%;">Upload file: </strong><p id="file-uploded"></p>
+
+<table style="width:100%" class="Progress-report">
+  <tr>
+    <td>certifaction File<div style="color: #808080" id="EffectiveDateNoticeName"></div></td>
+     <td>
+  @if($certifactionFile)
+      <a style="color: #000; font-size: 1.3vw;" href="{{ $doccertifactionFile->document }}">view submitted</a>
+   @else
+     <form action="{{ route('uploadfileOfCv') }}" enctype="multipart/form-data" method="post">
+      @csrf
+      <input type="file" id="EffectiveDateNotice" name="certifactionFile" onchange="thisFileUploadEffectiveDateNotice(this);" style="display:none;"/>
+     <button type="button" onclick="thisFileUploadEffectiveDateNotice();" class="btn btn-outline-secondary EffectiveDateNotice"><i class="fa fa-upload"></i> </button>
+     </form>
+    @endif
+    </td>
+  </tr>
+  <tr>
+    <td>Acdamic File<div style="color: #808080" id="reportName"></div></td>
+    <td>
+
+    @if($acdamicFile)
+      <a style="color: #000;font-size: 1.3vw;" href="{{  $docacdamicFile->document  }}">view submitted</a>
+    @else
+  <form action="{{ route('uploadfileOfCv') }}" enctype="multipart/form-data" method="post">
+    @csrf
+        <input type="file" id="report" style="display:none;" name="acdamicFile" onchange="thisFileUploadReport(this);" />
+  <button type="button" onclick="thisFileUploadReport();" class="btn btn-outline-secondary Report"><i class="fa fa-upload"></i> </button>
+
+</form>
+@endif
+
+</td>
+  </tr>
+  <tr>
+    <td>Identification Letter<div style="color: #808080" id="Training-SurveyName"></div></td>
+    <td>
+
+    @if($identificationLetter)
+      <a style="color: #000; font-size: 1.3vw;" href="{{$docidentificationLetter->getDocumentURL()}}">view submitted</a>
+    @else
+      <form action="{{ route('uploadfileOfCv') }}"  enctype="multipart/form-data" method="post">
+        @csrf
+        <input type="file" id="Training-Survey" style="display:none;"  name="identificationLetter" onchange="thisFileUploadTrainingSurvey(this);"/>
+      <button type="button" onclick="thisFileUploadTrainingSurvey();" class="btn btn-outline-secondary TrainingSurvey"><i class="fa fa-upload"></i> </button>
+    </form>
+    @endif
+    </td>
+  </tr>
+</table>
+
     
 </div>
 <button type="button" class="btn-save">Save</button>

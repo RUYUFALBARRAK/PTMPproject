@@ -17,8 +17,11 @@ use App\Models\traineeInterests;
 use App\Models\traineeExperience;
 use App\Models\unit;
 use App\Models\oppourtunity;
+use App\Models\requestedopportunity;
 use App\Models\cv;
 use \App\Enum\fileNameEnum;
+use \App\Enum\companyStatus;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 use DB;
 use File;
@@ -100,16 +103,32 @@ function ViewMainpage(){
     if($find->doc_name==fileNameEnum::EffectiveDateNotice){
         $EffectiveDateNotice=true;
     }}
+  
     $data=['loginIdUser'=>  trainee::where('trainee_id','=',session('loginId'))->first(),// trainee::with('oppourtunity')->get()->first(),
    // 'file'=> trainee::with('Sendsdocument')->get()->first()
+   'opportumityinfo'=>DB::table('users')->where('users.trainee_id','=',session('loginId'))->
+   join('requestedopportunity', 'users.trainee_id', '=', 'requestedopportunity.trainee_id')->
+   join('opportunity', 'opportunity.id', '=', 'requestedopportunity.opportunity_id')->
+   join('company', 'company.id', '=', 'requestedopportunity.company_id')->
+   where('statusbycommittee', '=', companyStatus::accept)->
+   where('statusbytrainee', '=', companyStatus::accept)->
+   where('statusbycompany', '=', companyStatus::accept)->first(),
    'TrainingSurvey'=> $TrainingSurvey,
    'Presentation'=> $Presentation,
    'report'=> $report,
    'EffectiveDateNotice'=> $EffectiveDateNotice,
+        'docTrainingSurvey'=>Sendsdocument::whereHas('trainee',function($q){
+        $q->where('trainee_id', '=', session('loginId'))->where('doc_name', '=', 'TrainingSurvey');})->first(),
+        'docPresentation'=>Sendsdocument::whereHas('trainee',function($q){
+        $q->where('trainee_id', '=', session('loginId'))->where('doc_name', '=', 'Presentation');})->first(),
+         'docreport'=>Sendsdocument::whereHas('trainee',function($q){
+        $q->where('trainee_id', '=', session('loginId'))->where('doc_name', '=', 'report');})->first(),
+         'docEffectiveDateNotice'=>Sendsdocument::whereHas('trainee',function($q){
+        $q->where('trainee_id', '=', session('loginId'))->where('doc_name', '=', 'EffectiveDateNotice');})->first(),
 ];
-}
+}//view('trainee/triningTap',$data)
    //$data['file'][1]['doc_name'];
-    return  view('trainee/triningTap',$data);
+    return view('trainee/triningTap',$data) ;
 }
 
 
@@ -127,7 +146,7 @@ function uploadfile(Request $request){
             $fileName = $request->Presentation->getClientOriginalName();
             $request->Presentation->storeAs('PresentationFiles', $fileName,'public');
             $Sendsdocument->doc_name= fileNameEnum::Presentation;
-            $Sendsdocument->document =$request->Presentation->getClientOriginalName();
+            $Sendsdocument->document = Storage::url('PresentationFiles/'. $request->Presentation->getClientOriginalName());
     }else if(request()->hasfile('TrainingSurvey')!=null){
          $request->validate([
             'TrainingSurvey' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
@@ -135,7 +154,7 @@ function uploadfile(Request $request){
             $fileName = $request->TrainingSurvey->getClientOriginalName();
             $request->TrainingSurvey->storeAs('TrainingSurveyFiles', $fileName,'public');
             $Sendsdocument->doc_name= fileNameEnum::TrainingSurvey;
-            $Sendsdocument->document= $request->TrainingSurvey->getClientOriginalName();
+            $Sendsdocument->document= Storage::url('TrainingSurveyFiles/'. $request->TrainingSurvey->getClientOriginalName());
     }else if(request()->hasfile('report')!=null){
         $request->validate([
             'report' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
@@ -143,14 +162,14 @@ function uploadfile(Request $request){
             $Sendsdocument->doc_name= fileNameEnum::report;
             $fileName = $request->report->getClientOriginalName();
             $request->report->storeAs('reportFiles', $fileName,'public');
-            $Sendsdocument->document= $request->report->getClientOriginalName();
+            $Sendsdocument->document=  Storage::url('reportFiles/'. $request->report->getClientOriginalName());
     }else if(request()->hasfile('EffectiveDateNotice')!=null){
         $request->validate([
             'EffectiveDateNotice' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
         ]);
             $fileName = $request->EffectiveDateNotice->getClientOriginalName();
             $request->EffectiveDateNotice->storeAs('EffectiveDateNoticeFiles', $fileName,'public');
-            $Sendsdocument->document= $request->EffectiveDateNotice->getClientOriginalName();
+            $Sendsdocument->document=Storage::url('EffectiveDateNoticeFiles/'. $request->EffectiveDateNotice->getClientOriginalName());
             $Sendsdocument->doc_name= fileNameEnum::EffectiveDateNotice;
     }
 
@@ -162,16 +181,79 @@ function uploadfile(Request $request){
             return redirect('traineeMainPage')->with('success','Successfully uploaded!');
 
 }
+function uploadfileOfCv(Request $request){
+    $cv= new cv();
+    if(request()->hasfile('certifactionFile')!=null){
+        $request->validate([
+            'certifactionFile' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+        ]);
+            $fileName = $request->certifactionFile->getClientOriginalName();
+            $request->certifactionFile->storeAs('certifactionFile', $fileName,'public');
+            $cv->documentName= fileNameEnum::certifactionFile;
+            $cv->document = Storage::url('certifactionFile/'. $request->certifactionFile->getClientOriginalName());
+    }else if(request()->hasfile('acdamicFile')!=null){
+         $request->validate([
+            'acdamicFile' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+        ]);
+            $fileName = $request->acdamicFile->getClientOriginalName();
+            $request->acdamicFile->storeAs('acdamicFile', $fileName,'public');
+            $cv->documentName= fileNameEnum::acdamicFile;
+            $cv->document= Storage::url('acdamicFile/'. $request->acdamicFile->getClientOriginalName());
+    }else if(request()->hasfile('identificationLetter')!=null){
+        $request->validate([
+            'identificationLetter' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt',
+        ]);
+            $cv->documentName= fileNameEnum::identificationLetter;
+            $file = $request->file('identificationLetter');
+            $filename = Str::random(32).'.'.$file->guessClientExtension();
+            $dirpath = 'docs';
+            $filepath = public_path($dirpath);
+            $file->move($filepath, $filename);
+            $cv->document = $filename;
+    }
+
+            $cv->trainee_id= trainee::where('trainee_id','=',session('loginId'))->first()->trainee_id;
+
+            $cv->save();
+           
+            return redirect('CVPage')->with('success','Successfully uploaded!');
+
+}
 function CVshow(){
+        $certifactionFile= false;
+        $acdamicFile=false;
+        $identificationLetter=false;
+    $find =cv::whereHas('trainee',function($q){
+    $q->where('trainee_id', '=', session('loginId'));})->get();
+    foreach($find as $find){
+    if($find->documentName==fileNameEnum::certifactionFile){
+        $certifactionFile=true;
+    }
+     if($find->documentName==fileNameEnum::acdamicFile){
+        $acdamicFile=true;
+    }
+     if($find->documentName==fileNameEnum::identificationLetter){
+        $identificationLetter=true;
+    }
+   }
      if(Session::has('loginId')){
          $data=['loginIdUser'=>  trainee::where('trainee_id','=',session('loginId'))->first(),
         'skills'=> traineeSkills::where('trainee_id','=',session('loginId'))->get(),
         'Languages'=> traineeLanguages::where('trainee_id','=',session('loginId'))->get(),
         'Interests'=> traineeInterests::where('trainee_id','=',session('loginId'))->get(),
         'Experience'=> traineeExperience::where('trainee_id','=',session('loginId'))->get(),
+        'certifactionFile'=> $certifactionFile,
+        'acdamicFile'=> $acdamicFile,
+        'identificationLetter'=> $identificationLetter,
+        'docidentificationLetter'=>cv::whereHas('trainee',function($q){
+        $q->where('trainee_id', '=', session('loginId'))->where('documentName', '=', 'identificationLetter');})->first(),
+        'docacdamicFile'=>cv::whereHas('trainee',function($q){
+        $q->where('trainee_id', '=', session('loginId'))->where('documentName', '=', 'acdamicFile');})->first(),
+         'doccertifactionFile'=>cv::whereHas('trainee',function($q){
+        $q->where('trainee_id', '=', session('loginId'))->where('documentName', '=', 'certifactionFile');})->first(),
         
     ];
-     
+         
   return view('trainee/CV-Tap',$data);}
   return redirect('welcome');
 }

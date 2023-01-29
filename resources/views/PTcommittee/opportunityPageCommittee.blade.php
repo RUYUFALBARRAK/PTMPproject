@@ -162,7 +162,7 @@
               </span>
               <br>
       
-              <a class="view-reveiws2" href="{{route('reeviews', $opportunity->company_id)}}">View Reviews</a>
+              <a class="view-reveiws2" href="{{route('reviews', $opportunity->company_id)}}">View Reviews</a>
               
           </td>
 

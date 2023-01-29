@@ -5,7 +5,20 @@
 
 <img src="img/background_ksu2.png" alt="ksu" class="back">
 <div class="container-big">
-
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h3></h3>
+      </div>
+      <div class="modal-body">
+        <div class="external-file">
+          <iframe src="#" width="500" height="300"frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <form class="form-balqees" method="POST" enctype="multipart/form-data" action=" {{ route('Authreg')}}" novalidate>
 @csrf
 
@@ -15,8 +28,9 @@
   @if(Session::has('fail'))
   <div class="alert alert-danger">{{Session::get('fail')}}</div>
   @endif
-
-    <p><a class="link" href="#"> training specifications and regulations</a> <a href=<><span class="glyphicon glyphicon-download-alt "></span></a></p>
+  @if($doc!=null)
+    <p><a class="link" href="{{ $doc->getDocumentURL() }}"> training specifications and regulations</a> <a href="{{ $doc->getDocumentURL() }}"><span class="fa fa-download"></span></a></p>
+    @endif
     <div class="row opportunity-form">   
     <div class="col">
     <label for="validationTooltip01" class="form-label"> Choose Logo: *</label>

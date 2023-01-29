@@ -41,7 +41,8 @@ class companyController extends Controller
 
     }
         function viewreg(){
-       return view('company/registerCompany');
+            $doc= document::where('documentName','=','TrainingSpecifications.pdf')->first();
+       return view('company/registerCompany',compact('doc'));
     }
 
 
