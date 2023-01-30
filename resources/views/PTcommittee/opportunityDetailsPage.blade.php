@@ -4,7 +4,7 @@
 
 <div class='content'>
     <img src="{{ asset( $opportunity->company->logoImage ? 'storage/images/' . $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
-    <h3 class="spashlistB">{{ $opportunity->company->orgnizationName }}</h3>
+    <h3 class="spashlistB" style="margin-top: -4%;">{{ $opportunity->company->orgnizationName }}</h3>
     <br><br>
     
     <br><br><br>
@@ -88,15 +88,15 @@
     <form action="{{ route('opportunity.update_status',$opportunity->id) }}" method="POST">
         @csrf
         <div class="input-group" style="margin-bottom:3%;">
-            <button type="submit" name="status" value="accept" class="btn-status" style="background-color:green; border:green; border-radius: 7px;">Accept</button>&nbsp;&nbsp;
-            <button type="submit" name="status" value="reject" class="btn-status" style="background-color:red; border:red; border-radius: 7px;">Decline</button>&nbsp;&nbsp;
+            <button type="submit" name="status" value="accept" class="btn btn-outline-success" style="font-size: 136%; margin-left: 42%;">Accept</button>&nbsp;&nbsp;
+            <button type="submit" name="status" value="reject" class="btn btn-outline-danger" style="font-size: 136%;">Decline</button>&nbsp;&nbsp;
         </div>
 
-        <h6 class="text-secondary">This opportunity need modification ?</h6>
+        <h6 class="text-secondary" style="font-size: 120%;">This opportunity need modification ?</h6>
         <hr style="color: rgb(212, 212, 212)">
         
         <div style="margin-bottom:0.5%;">
-            <input type="text" class="form-control" name="note" style="width:50%" placeholder="hours not accepted (need more hours)" >
+            <input type="text" class="form-control" name="note" style="width:50%" placeholder="Enter here the needed modifications.." >
             
             @if ($errors->has('note'))
                 <label for="validationTooltip01" class="oppT-form-label" style="color: red; font-size:12px">{{ $errors->first('note') }}</label>
@@ -105,7 +105,7 @@
         </div>
 
         <div>
-            <button type="submit" name="status" value="need_modification" class="btn btn-warning text-white float-left">Require Modification</button>
+            <button type="submit" name="status" value="need_modification" class="btn btn-outline-warning" style="font-size: 120%;">Require Modification</button>
         </div>
 
     </form>

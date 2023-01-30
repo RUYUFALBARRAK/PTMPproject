@@ -36,29 +36,29 @@
         @foreach ($opportunities as $opportunity)
         <tr class="tr-Bushra">
             <td class="fisrt-col-Bushra">
-                <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
+                <img src="{{ asset( $opportunity->company->logoImage ? 'storage/images/' . $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany" width="100px" hight="100px">
                 <br><br>
             </td>
 
             <td class="second-col-Bushra">
                 <h5>{{ $opportunity->jobTitle }}</h5>
-                <p class="opportunityStateB2 text-secondary"> {{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}  </p>
+                <h6>{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</h6>
             </td>
 
           <td>
             @if($opportunity->status == 'pending')
-              <h5 class="opportunityStateB2 text-warning">Pending</h5>
+              <h5 class="opportunityStateB2 text-warning" style="margin-top:-0.8%;">Pending</h5>
             @elseif ($opportunity->status == 'accept')
-              <h5 class="opportunityStateB2 text-success">Accepted</h5>
+              <h5 class="opportunityStateB2 text-success" style="margin-top:-0.8%;">Accepted</h5>
             @elseif ($opportunity->status == 'need_modification')
-            <h5 class="opportunityStateB2" style="color:#dadd28;">Need Modification</h5>
+            <h5 class="opportunityStateB2" style="color:#dadd28; margin-top:-0.8%;">Need Modification</h5>
             @elseif ($opportunity->status == 'reject')
-            <h5 class="opportunityStateB2 text-danger">Rejected</h5>
+            <h5 class="opportunityStateB2 text-danger" style="margin-top:-0.8%;">Rejected</h5>
             @endif
           </td>
 
           <td class="oppoArrow">
-            <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right"></span></a>
+            <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right" ></span></a>
           </td>
         
         </tr> 

@@ -3,8 +3,8 @@
 @section('content-training')
 
 <div class='content'>
-    <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
-    <h3 class="spashlistB">{{ $opportunity->company->orgnizationName }}</h3>
+    <img src="{{ asset( $opportunity->company->logoImage ? 'storage/images/' . $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
+    <h3 class="spashlistB" style="margin-top: -4%;">{{ $opportunity->company->orgnizationName }}</h3>
     <br>
 <!--
     <span class="rate2" style="margin-left: 84%; margin-top: -3%;">
@@ -92,21 +92,22 @@
         &nbsp;
         <p><a class="linkB" href="{{url('/downloade/' .$opportunity->id)}}" style="color: blue;">{{ $opportunity->PtPlan }}</a>&nbsp;
         <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
-        </div><br>
+        </div><br><br>
 
 
         <div style="margin: 20px auto !important;">
             @if(count($has_opportunity) >= 1)
-                <button disabled type="button" class="btn btn-secondary">Apply</button>
+                <button disabled type="button" class="btn btn-secondary" style="font-size: 120%; margin-left: 42%;">Apply</button>
             @else
                 <form class="d-inline" action="{{ route('opportunity.apply.submit' ,  $opportunity->id) }}" method="post">
                     @csrf
-                    <button type="submit" class="btn text-white" style="background: #388087;">Apply</button>
+                    <button type="submit" class="btn text-white" style="background: #388087; margin-left: 42%; font-size: 120%;">Apply</button>
                 </form>
             @endif
-            <a href="{{ url('/opportunityPageTrainee') }}" class="btn btn-light border">Cancel</a>
+            <a href="{{ url('/opportunityPageTrainee') }}" class="btn btn-light border" style="font-size: 120%;">Cancel</a>
         </div>
    
+        <br>
 
 </div>
 

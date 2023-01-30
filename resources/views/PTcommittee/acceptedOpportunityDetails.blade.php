@@ -82,9 +82,9 @@
         &nbsp;
         <p><a class="linkB" href="{{url('/downloade/' .$opportunity->id)}}" style="color: blue;">{{ $opportunity->PtPlan }}</a>&nbsp;
         <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
-        </div><br>
+        </div><br><br>
 
-    
+        <a href="{{ url('/opportunityPageCommittee') }}" class="btn btn-light">Back</a>
 
   </div>
 

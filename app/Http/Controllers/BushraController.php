@@ -124,6 +124,7 @@ class BushraController extends Controller
             'company_id' => $opportunity->company->id,
         ]);
 
+
         Alert::success('', 'Opportunity has been applied for');
         return redirect()->route('opportunity.confirm' , $opportunity->id);
 
@@ -138,6 +139,12 @@ class BushraController extends Controller
             'statusbytrainee' => 'accept',
             'statusbycompany' => 'accept',
         ]);
+
+        $userstats = trainee::findOrFail($id);
+        $userstats->update([
+            'status' => 'Ongoing',
+        ]);
+
 
         Alert::success('', 'Opportunity has been Confirmed');
         return redirect()->back();
@@ -159,5 +166,9 @@ class BushraController extends Controller
             'opportunities' => $opportunities ,
             'reviews' => $reviews
         ]);
+    }
+
+    public function deleteOpportunity(){
+        //
     }
 }

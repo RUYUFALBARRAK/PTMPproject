@@ -3,8 +3,8 @@
 @section('content-training')
 
 <div class='content'>
-    <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
-    <h3 class="spashlistB">{{ $opportunity->company->orgnizationName }}</h3>
+    <img src="{{ asset( $opportunity->company->logoImage ? 'storage/images/' . $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
+    <h3 class="spashlistB" style="margin-top: -4%;">{{ $opportunity->company->orgnizationName }}</h3>
     <br><br>
 
     <br><br><br>
@@ -80,7 +80,9 @@
         &nbsp;
         <p><a class="linkB" href="{{url('/downloade/' .$opportunity->id)}}" style="color: blue;">{{ $opportunity->PtPlan }}</a>&nbsp;
         <a href=<span class="glyphicon glyphicon-download-alt "></span></a></p>
-        </div><br>
+        </div><br><br>
+
+        <a href="{{ url('/opportunityPageCompany') }}" class="btn btn-light">Back</a>
 
    
 

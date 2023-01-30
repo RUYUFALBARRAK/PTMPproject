@@ -137,7 +137,7 @@
         @foreach ($opportunities as $opportunity)
         <tr class="tr-Bushra">
           <td class="fisrt-col-Bushra">
-              <img src="{{ asset( $opportunity->company->logoImage ? $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" width="100px" hight="100px">
+          <img src="{{ asset( $opportunity->company->logoImage ? 'storage/images/' . $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany" width="100px" hight="100px">
               <br><br>
           </td>
 
@@ -146,31 +146,11 @@
               <h6>{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</h6>
           </td>
 
-          <td class="td-Bushra" >
-
-              <span class="rate2-Bushra">
-              <span class="fa fa-star fa-lg checked"
-              value="1" name="product_rating1" id="rating_1"></span>
-              <span class="fa fa-star fa-lg" style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"
-              value="2" name="product_rating1" id="rating_2"></span>
-              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"
-              value="3" name="product_rating1" id="rating_3"></span>
-              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"
-              value="4" name="product_rating1" id="rating_4"></span>
-              <span class="fa fa-star fa-lg " style="color:#ccc; text-shadow: 0.5px 0.5px 0 #8f8420;"
-              value="5" name="product_rating1" id="rating_5"></span>
-              </span>
-              <br>
-      
-              <a class="view-reveiws2" href="{{route('reviews', $opportunity->company_id)}}">View Reviews</a>
-              
-          </td>
-
       
           <td class="td-Bushra"><button class="btn-delete" type="submit">Delete </button></td>
 
           <td>
-            <a href="{{ route('accOpportunity.details', $opportunity->id) }}"><span class="	fa fa-chevron-right"></span></a>
+            <a href="{{ route('accOpportunity.details', $opportunity->id) }}"><span class="	fa fa-chevron-right" style="margin-top:1%;"></span></a>
           </td>
       
       </tr>
