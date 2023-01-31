@@ -21,7 +21,6 @@
       <select id="inputState" class="form-select ">
         <option selected>Status..</option>
         <option>accepted</option>
-        <option>need modification</option>
         <option>rejected</option>
       </select>
   </div>

@@ -6,7 +6,7 @@
 
 
 
-<img src="{{ asset( $company->logoImage ? $company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
+<img src="{{ asset( 'storage/images/'.$company->logoImage ) }}" alt="Company logo" class="logoCompany">
     <h3 class="spashlistB">{{ $company->orgnizationName }}</h3>
     <br><br>
     
@@ -42,7 +42,7 @@
     <br><br>
 
     <p>
-     <label><b>brief description about the company:</b></label><br>
+     <label><b>Brief description about the company:</b></label><br>
      <label>{{ $company->description }}</label>
     </p>
 

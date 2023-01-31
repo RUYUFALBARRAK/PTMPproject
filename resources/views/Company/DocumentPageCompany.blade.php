@@ -3,15 +3,15 @@
 
 @section('content-training')
     <div class="content">
-        @if(count($docs) > 0)
+        @if(count($download) > 0)
         <table class="table-balqees">
             <tr>
                 <th colspan="2" class="th-balqees">Documents Template</th>
             </tr>
-            @foreach($docs as $doc)
+            @foreach($download as $download)
                 <tr>
-                    <td class="fist-col td-balqees">{{ $doc->documentName }}</td>
-                    <td class="td-balqees"><a href="{{ $doc->getDocumentURL() }}"><span class="fa fa-download"></span></a></td>
+                    <td class="fist-col td-balqees">{{ $download->documentName }}</td>
+                    <td class="td-balqees"><a href="{{ $download->getDocumentURL() }}"><span class="fa fa-download"></span></a></td>
                 </tr>
             @endforeach
         </table>

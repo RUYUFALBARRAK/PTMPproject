@@ -22,11 +22,13 @@ use App\Models\cv;
 use \App\Enum\fileNameEnum;
 use \App\Enum\companyStatus;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 use DB;
 use File;
 use Response;
 use Illuminate\Support\Str;
+use App\Mail\SendMail;
 
 class PTMPController extends Controller
 {
@@ -334,5 +336,14 @@ function deleteExperience($id){
 }
 function addfile(Request $request){
 
+}
+
+function SendMail(){
+
+    $details=[
+        'titel'=>'hi',
+        'body'=>'hi',
+    ];
+    Mail::to($request->emailtosend)->send(new SendMail($details));
 }
 }

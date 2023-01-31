@@ -3,15 +3,18 @@
 @section('content-training')
 <div class="content">
 
-  <div class="input-group">
+  
 
-    <div style="width:20%" class="input-group">
-    <h1>Opportunities</h1>
-    </div>
-  </div>
+  
+    <h2>Opportunities</h2>
+    
+   @if($comp->status=='accept')
+    <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:40%; font-size:20px; margin-top:-3.6%; position:absolute; background-color: #388087;">Add training opportunity</a>
+   @endif
+ 
 
    
-    <div class="form-group col-md-2 state-menu" style="margin-left:40%">
+    <div class="form-group col-md-2 state-menu" style="margin-left:65%;  position:absolute; ">
       <select id="inputLocationCompany" class="form-select">
         <option selected>Status..</option>
         <option>Accepted</option>
@@ -23,13 +26,10 @@
     </div>
 
 
-    
-    <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:75%; font-size:20px; position:relative; bottom:50px; background-color: #388087;">Add training opportunity</a>
-  
 
 
 
-    <br><br>
+<hr>
 <!-- New-->
     @if(count($opportunities) > 0) 
       <table class="table-Bushra">

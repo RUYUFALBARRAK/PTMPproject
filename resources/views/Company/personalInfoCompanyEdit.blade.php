@@ -4,7 +4,7 @@
 
 <div class='content'>
 
-    <img src="{{ asset( $company->logoImage ? $company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany">
+    <img src="{{ asset('storage/images/'. $company->logoImage ) }}" alt="Company logo" class="logoCompany">
     <h3 class="spashlistB">{{ $company->orgnizationName }}</h3>
     <br><br>
     
@@ -47,7 +47,7 @@
             <br><br>
       
           <p>
-            <label> <b> brief description about the company:</b> </label>
+            <label> <b> Brief description about the company:</b> </label>
             <textarea type="text" class="form-control" id="comDes" name="description" placeholder="description" rows="5" cols="35">{{ $company->description }}</textarea>
             @if ($errors->has('description'))
             <span class="text-danger">{{ $errors->first('description') }}</span>

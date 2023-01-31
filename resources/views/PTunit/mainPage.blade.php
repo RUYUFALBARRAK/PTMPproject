@@ -7,7 +7,7 @@
  <a href="javascript:void(0)" style="cursor:pointer; right: 2%; color: black; text-decoration: none; font-size: 150%;" class="closebtn" onclick="closeNav()">&times;</a>
   <ul class="vertical-menu">
     <li><a href="{{ url('/listOfStudentsPTunit') }}">STUDENTS (TRAINEES)</a></li>
-    <li><a href="{{ url('/TrainingDocument') }}">TTAINING DOCUMENT</a></li>
+    <li><a href="{{ url('/TrainingDocument') }}">TRAINING DOCUMENT</a></li>
     <li><a href="{{ url('/listOfStudentsReqLetter') }}">IDENTIFICATION LETTER REQUESTS</a></li>
     <li><a href="{{ url('/listOfCompany') }}">COMPANIS</a></li>
     <li><a href="{{ url('/listOfCompanyRequest') }}">COMPANY REGISTERATION REQUEST</a></li>

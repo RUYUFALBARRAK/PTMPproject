@@ -33,7 +33,7 @@
     @endif
     <div class="row opportunity-form">   
     <div class="col">
-    <label for="validationTooltip01" class="form-label"> Choose Logo: *</label>
+    <label for="validationTooltip01" class="form-label"> Choose Logo: <span class ="red"> * </span></label>
     <input type="file" class="form-control @error('logoImage') is-invalid @enderror" value="{{ old('logoImage') }}" name="logoImage">
     @if ($errors->has('logoImage'))
         <span class="text-danger">{{ $errors->first('logoImage') }}</span>
@@ -41,7 +41,7 @@
     <!-- <button class="btn-upload" type="submit">choose file</button>  -->
     </div>
      <div class="col">
-    <label for="validationTooltip01" class="form-label">Organization website: *  </label>
+    <label for="validationTooltip01" class="form-label">Organization website:<span class ="red"> * </span>  </label>
       <input type="text" class="form-control @error('website') is-invalid @enderror" placeholder="Example: www.organization.com" value="{{ old('website') }}" name="website">
       @if ($errors->has('website'))
         <span class="text-danger">{{ $errors->first('website') }}</span>
@@ -53,14 +53,14 @@
 
   <div class="row opportunity-form">
     <div class="col">
-    <label for="validationTooltip01" class="form-label">Organization full name in English :*</label>
+    <label for="validationTooltip01" class="form-label">Organization full name in English :<span class ="red"> * </span></label>
       <input type="text" class="form-control @error('orgnizationName') is-invalid @enderror" placeholder="Enter organization name here" maxlength = "50" value="{{ old('orgnizationName') }}" name="orgnizationName">
       @if ($errors->has('orgnizationName'))
         <span class="text-danger">{{ $errors->first('orgnizationName') }}</span>
         @endif
     </div>
     <div class="col">
-    <label for="validationTooltip01" class="form-label">Organization email : *</label>
+    <label for="validationTooltip01" class="form-label">Organization email :<span class ="red"> * </span></label>
       <input type="email" class="form-control @error('orgnizationEmail') is-invalid @enderror" placeholder="Example: Organiztion@orgnization.com" maxlength = "80" value="{{ old('orgnizationEmail') }}" name="orgnizationEmail">
       @if ($errors->has('orgnizationEmail'))
         <span class="text-danger">{{ $errors->first('orgnizationEmail') }}</span>
@@ -70,14 +70,14 @@
 
   <div class="row opportunity-form">
         <div class="col">
-            <label for="validationTooltip01" class="form-label"> Commercial register number :* </label>
-            <input type="text" class="form-control @error('Registration') is-invalid @enderror" placeholder="Enter organization number here" maxlength = "10" value="{{ old('Registration') }}" name="Registration">
+            <label for="validationTooltip01" class="form-label"> Commercial register number :<span class ="red"><span class ="red"> * </span></span></label>
+            <input type="text" class="form-control @error('Registration') is-invalid @enderror" placeholder="Enter organization number here only 10 numbers" maxlength = "10" value="{{ old('Registration') }}" name="Registration">
             @if ($errors->has('Registration'))
             <span class="text-danger">{{ $errors->first('Registration') }}</span>
             @endif
          </div>
          <div class="col">
-            <label for="validationTooltip01" class="form-label"> Organization phone number :* </label>
+            <label for="validationTooltip01" class="form-label"> Organization phone number :<span class ="red"> * </span></label>
             <input type="tel" class="form-control @error('OrganizationPhone') is-invalid @enderror"  maxlength = "12"placeholder="Example: 96650*******" value="{{ old('OrganizationPhone') }}" maxlength = "30" name="OrganizationPhone">
             @if ($errors->has('OrganizationPhone'))
             <span class="text-danger">{{ $errors->first('OrganizationPhone') }}</span>
@@ -87,7 +87,7 @@
   </div>
   <div class="row opportunity-form">
     <div class="col">
-    <label for="validationTooltip02" class="form-label"> About the organization: * </label>
+    <label for="validationTooltip02" class="form-label"> About the organization:<span class ="red"> * </span></label>
       <textarea rows="5" id="validationTooltip02" maxlength="250" class="form-control @error('description') is-invalid @enderror" placeholder="Describe your organization business here." value="{{ old('description') }}" name="description"></textarea>
       @if ($errors->has('description'))
         <div><span class="text-danger">{{ $errors->first('description') }}</span></div>
@@ -104,7 +104,7 @@
     </script>
 <div class="row opportunity-form">
         <div class="col">
-            <label for="validationTooltip01" class="form-label"> Supervisor full name in English :* </label>
+            <label for="validationTooltip01" class="form-label"> Supervisor full name in English :<span class ="red"> * </span></label>
             <input type="text" class="form-control @error('SupervisorName') is-invalid @enderror" maxlength = "30" placeholder="Example: Ahmed Abduallah Alhassan" value="{{ old('SupervisorName') }}" name="SupervisorName">
             @if ($errors->has('SupervisorName'))
             <span class="text-danger">{{ $errors->first('SupervisorName') }}</span>
@@ -113,14 +113,14 @@
   </div>
   <div class="row opportunity-form">
         <div class="col">
-            <label for="validationTooltip01" class="form-label"> Supervisor phone number :*  </label>
+            <label for="validationTooltip01" class="form-label"> Supervisor phone number :<span class ="red"> * </span></label>
             <input type="tel" class="form-control @error('SupervisorPhone') is-invalid @enderror" maxlength = "12" placeholder="Example: 96650*******" value="{{ old('SupervisorPhone') }}" name="SupervisorPhone">
             @if ($errors->has('SupervisorPhone'))
             <span class="text-danger">{{ $errors->first('SupervisorPhone') }}</span>
             @endif
          </div>
        <div class="col">
-      <label for="validationTooltip01" class="form-label"> City :* </label>
+      <label for="validationTooltip01" class="form-label"> City :<span class ="red"> * </span></label>
       <select id="city" value="{{ old('city') }}" name="city" class="form-select form-select-lg">
         @if ($errors->has('city'))
         <span class="text-danger">{{ $errors->first('city') }}</span>
@@ -238,14 +238,14 @@
   </div>
   <div class="row opportunity-form">
         <div class="col">
-            <label for="validationTooltip01" class="form-label"> Supervisor email :* </label>
+            <label for="validationTooltip01" class="form-label"> Supervisor email :<span class ="red"> * </span></label>
             <input type="email" class="form-control @error('SupervisorEmail') is-invalid @enderror" maxlength = "80" placeholder="Example: supervisor@orgnization.com" value="{{ old('SupervisorEmail') }}" name="SupervisorEmail">
             @if ($errors->has('SupervisorEmail'))
             <span class="text-danger">{{ $errors->first('SupervisorEmail') }}</span>
             @endif
          </div>
          <div class="col">
-            <label for="validationTooltip01" class="form-label"> Supervisor email confirmation :* </label>
+            <label for="validationTooltip01" class="form-label"> Supervisor email confirmation :<span class ="red"> * </span></label>
             <div class="col input-group mb-3">
             <input type="email" class="form-control @error('SupervisorEmailConfirm') is-invalid @enderror" maxlength = "80" placeholder="Example: supervisor@orgnization.com" value="{{ old('SupervisorEmailConfirm') }}" name="SupervisorEmail_confirmation">
             @if ($errors->has('SupervisorEmailConfirm'))
@@ -256,7 +256,7 @@
 
   <div class="row opportunity-form">
         <div class="col">
-            <label for="validationTooltip01" class="form-label"> Passowrd:* </label>
+            <label for="validationTooltip01" class="form-label"> Passowrd:<span class ="red"> * </span></label>
             <div class="col input-group mb-3">
             <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" maxlength = "30" placeholder="it should contain at leaste 8 character, small &capital litter and number" name="password">
              <span class="input-group-text"><i class="far fa-eye-slash" id="togglePassword"></i></span>
@@ -266,8 +266,8 @@
             @endif
          </div>
          <div class="col">
-            <label for="validationTooltip01" class="form-label"> Supervisor fax   :* </label>
-            <input type="tel" class="form-control @error('SupervisorFax') is-invalid @enderror" maxlength = "12" placeholder="Example: 966*********" value="{{ old('SupervisorFax') }}" name="SupervisorFax">
+            <label for="validationTooltip01" class="form-label"> Supervisor fax   :<span class ="red"> * </span> </label>
+            <input type="tel" class="form-control @error('SupervisorFax') is-invalid @enderror" maxlength = "12" placeholder="Example: +966*********" value="{{ old('SupervisorFax') }}" name="SupervisorFax">
             @if ($errors->has('SupervisorFax'))
             <span class="text-danger">{{ $errors->first('SupervisorFax') }}</span>
             @endif
@@ -285,7 +285,7 @@ this.classList.toggle('fa-eye');
 
   <div class="row opportunity-form">
   <div class="col">
-    <label for="validationTooltip01" class="form-label">Password confirmation *</label>
+    <label for="validationTooltip01" class="form-label">Password confirmation: <span class ="red"> * </span></label>
     <div class="col input-group mb-3">
       <input type="password" id="password2" class="form-control @error('password_confirmation') is-invalid @enderror" maxlength = "30" placeholder="must be simailar to password field" name="password_confirmation">
         <span class="input-group-text"><i class="far fa-eye-slash" id="togglePassword2"></i></span>

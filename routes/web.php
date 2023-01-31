@@ -8,6 +8,7 @@ use App\Models\Review;
 use App\Http\Controllers\companyController;
 use App\Http\Controllers\khawlahController;
 use App\Models\oppourtunity;
+use App\Models\company;
 use App\Models\requestedopportunity;
 
 /*
@@ -116,8 +117,11 @@ Route::get('/AnnouncementsTrainee', function () {
 
 Route::get('/opportunityPageCompany', function () {
     $company_id = session()->get('logincompId');
-    $opportunities = oppourtunity::where('company_id' , $company_id)->get();
-    return view('Company/opportunityPageCompany' , compact('opportunities'));
+    $opportunities = ['opportunities'=> oppourtunity::where('company_id' , $company_id)->get(),
+    'comp'=> company::where('id' , $company_id)->first()
+];
+  
+    return view('Company/opportunityPageCompany' , $opportunities);
 });
 
 // Route::get('/personalInfoCompanyEdit', function () {

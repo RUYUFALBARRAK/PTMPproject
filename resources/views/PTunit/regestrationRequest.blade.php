@@ -4,7 +4,7 @@
 <div class="content">
 @foreach($company as $company)
 <img src="{{  asset('storage/images/'.$company->logoImage)  }}" alt="Company logo" width="15%" hight="15%">
-    <div class="btn-group requset-details">
+    <div class=" requset-details">
     <a class="btn btn-outline-success" href="{{ route('accept',[$company->id]) }}">Accept</a>
     <a class="btn btn-outline-danger" href="{{ route('reject',[$company->id]) }}">Decline</a>
     </div>
