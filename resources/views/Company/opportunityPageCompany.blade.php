@@ -8,9 +8,9 @@
   
     <h2>Opportunities</h2>
     
-   @if($comp->status=='accept')
+   
     <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:40%; font-size:20px; margin-top:-3.6%; position:absolute; background-color: #388087;">Add training opportunity</a>
-   @endif
+   
  
 
    

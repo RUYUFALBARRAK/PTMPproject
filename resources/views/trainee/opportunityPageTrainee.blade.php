@@ -163,6 +163,24 @@
               <h6 class="text-secondary">{{ Carbon\Carbon::parse($opportunitiy->Start_at)->toFormattedDateString() }} - {{ Carbon\Carbon::parse($opportunitiy->end_at)->toFormattedDateString() }} </h6>
           </td>
 
+          <td>
+            @php $status = App\Models\requestedopportunity::where('opportunity_id',$opportunitiy->id)->where('trainee_id' , session()->get('loginId'))->first(); @endphp
+
+            @if(is_null($status))
+             
+            @else
+              @if ($status->statusbycompany == 'pending' || ($status->statusbycompany == 'accept' && $status->statusbytrainee == 'pending'))
+                <h4 class="opportunityStateB2 text-warning">Pending</h4>
+              @elseif($status->statusbycompany == 'accept' && $status->statusbytrainee == 'accept')
+                <h4 class="opportunityStateB2 text-success">Accept</h4>
+              @elseif ($status->statusbycompany == 'reject')
+                <h4 class="opportunityStateB2 text-danger">Reject</h4>
+              @else
+                <h4 class="opportunityStateB2 text-success">Available</h4>
+              @endif
+            @endif
+          </td>
+
           <td class="td-Bushra">
               <span class="rate2-Bushra">
 
@@ -211,11 +229,10 @@
 
             </td>
 
-          {{-- <td>
-            <h4 class="opportunityStateB2 text-success">{{ $opportunitiy->status }}</h4>
-          </td> --}}
 
-          @php
+
+
+          @php 
             $is_apply = \App\Models\requestedopportunity::where('opportunity_id' , $opportunitiy->id)->where('trainee_id' , session()->get('loginId'))->first();
 
             // dd($is_apply)
@@ -223,14 +240,14 @@
 
           <td>
             @if($is_apply)
-              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}"><span class="fa fa-chevron-right"></span></a>
+              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}" ><span class="	fa fa-chevron-right"></span></a>
             @else
-              <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}"><span class="fa fa-chevron-right"></span></a>
+              <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}" ><span class="	fa fa-chevron-right"></span></a>
             @endif
           </td>
-
+        
         </tr>
-      @endforeach
+      @endforeach 
 
   </table>
 

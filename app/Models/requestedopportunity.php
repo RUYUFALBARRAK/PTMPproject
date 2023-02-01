@@ -17,7 +17,6 @@ class requestedopportunity extends Model
 ];
 
     protected $fillable = [
-        'oppourtunity_id',
         'statusbytrainee',
         'statusbycommittee',
         'statusbycompany',
