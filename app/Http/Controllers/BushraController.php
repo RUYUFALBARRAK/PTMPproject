@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,18 +13,18 @@ use App\Models\trainee;
 use App\Models\company;
 use App\Models\Review;
 use Illuminate\Support\Facades\Validator;
+use Alert;
 use App\Models\oppourtunity;
 use App\Models\requestedopportunity;
 use Illuminate\Validation\Rule;
-
 
 use Hash;
 use Session;
 use \App\Enum\fileNameEnum;
 use File;
-use Alert;
 use Response;
 use Carbon\Carbon;
+
 
 
 class BushraController extends Controller
@@ -131,7 +131,6 @@ class BushraController extends Controller
             'company_id' => $opportunity->company->id,
         ]);
 
-
         Alert::success('', 'Opportunity has been applied for');
         return redirect()->route('opportunity.confirm' , $opportunity->id);
 
@@ -140,23 +139,18 @@ class BushraController extends Controller
     // Excute When student Confirm opportunity
     public function confirmOpportunity(Request $request,$id){
 
-        $req_opportunity = requestedopportunity::findOrFail($id);
+        $req_opportunity = requestedopportunity::where('opportunity_id' , $id)->where('trainee_id' , session()->get('loginId'))->first();
 
         $req_opportunity->update([
             'statusbytrainee' => 'accept',
             'statusbycompany' => 'accept',
         ]);
 
-        $userstats = trainee::findOrFail($id);
-        $userstats->update([
-            'status' => 'Ongoing',
-        ]);
-
-
         Alert::success('', 'Opportunity has been Confirmed');
         return redirect()->back();
 
     }
+
 
         //download files
     public function downloade($id){
