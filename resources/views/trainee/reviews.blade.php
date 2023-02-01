@@ -5,7 +5,7 @@
 <div class="content">
 
 <div>
-    <img src="{{asset('/img/'.$companyInfo->logoImage)}}" alt="Company logo" width="23%" hight="23%" style=" margin-left:38% ;">
+    <img src="{{ asset( 'storage/images/'.$companyInfo->logoImage ) }}" alt="Company logo" width="23%" hight="23%" style=" margin-left:38% ;">
 </div>
 
 

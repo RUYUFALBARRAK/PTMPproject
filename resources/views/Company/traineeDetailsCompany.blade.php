@@ -32,10 +32,27 @@
     <p> <b> Interests :&nbsp; </b> {{$interest}} </p> <br>
     <p> <b> Experience:&nbsp; </b> {{$experience}} </p> <br>
     <p> <b> Uploaded Files:&nbsp; </b> </p>
-    <!--
-    @foreach($files as $file)
-    <div class="uploaded-files" style="margin-right:-32%; margin-top:2%; margin-bottom:2%;"> <a href="{{ url('/download/'.$file->id) }}"> <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;"> <p style="width:24%; text-align: center; ">{{$file-> document}}</p> </a> </div>
-    @endforeach -->
+
+    @if($let)
+    <div class="uploaded-files" style="margin-right:-40%; margin-top:2%; margin-bottom:2%;"> <a href="{{ $letter->getDocumentURL() }}">
+    <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
+    <p style="width:24%; text-align: center; ">Identification Letter</p> </a>
+    </div>
+    @endif
+
+    @if($aca)
+    <div class="uploaded-files" style="margin-right:-40%; margin-top:2%; margin-bottom:2%;"> <a href="{{ $academic }}">
+    <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
+    <p style="width:24%; text-align: center; ">Transcript</p> </a>
+    </div>
+    @endif
+
+    @if($cert)
+    <div class="uploaded-files" style=" margin-right:-40%; margin-top:2%; margin-bottom:2%;"> <a href="{{ $certificate }}">
+    <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
+    <p style="width:24%; text-align: center; ">Certificate</p> </a>
+    </div>
+    @endif
 
     </div>
 
@@ -67,7 +84,7 @@
      <td>
 
   @if($trainingPlan != 0)
-      <a href="{{ url('/download/'.$trainingPlan) }}">view submitted</a>
+      <a style="color: #000; font-size: 1.3vw;" href="{{ $trainingPlan }}">view submitted</a>
 
    @else
    <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
@@ -86,7 +103,7 @@
     <td>
 
     @if($followUp !=0)
-    <a href="{{ url('/download/'.$followUp) }}">view submitted</a>
+    <a style="color: #000; font-size: 1.3vw;" href="{{ $followUp }}">view submitted</a>
     @else
     <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
     @csrf
@@ -105,7 +122,7 @@
     <td>
 
     @if($attendance !=0)
-    <a href="{{ url('/download/'.$attendance) }}">view submitted</a>
+    <a style="color: #000; font-size: 1.3vw;" href="{{ $attendance }}">view submitted</a>
     @else
     <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
         @csrf
@@ -120,7 +137,7 @@
     <td>Trainee Evaluation<div style="color: #808080" id="traineeEvaluationName"></div></td>
     <td>
    @if($traineeEvaluation !=0)
-   <a href="{{ url('/download/'.$traineeEvaluation) }}">view submitted</a>
+   <a style="color: #000; font-size: 1.3vw;" href="{{ $traineeEvaluation }}">view submitted</a>
      @else
      <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
       @csrf
@@ -137,7 +154,7 @@
     <td>
 
     @if($employeeFeedback !=0)
-    <a href="{{ url('/download/'.$employeeFeedback) }}">view submitted</a>
+    <a style="color: #000; font-size: 1.3vw;" href="{{ $employeeFeedback }}">view submitted</a>
     @else
     <form action="{{ url('companyUpload/'.$trainee->trainee_id) }}" enctype="multipart/form-data" method="post">
         @csrf
