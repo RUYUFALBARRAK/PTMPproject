@@ -79,6 +79,13 @@ class BushraController extends Controller
             $opportunity->update([
                 'status' => 'accept',
             ]);
+
+            $req_opportunity = requestedopportunity::findOrFail($id);
+
+            $req_opportunity->update([
+                'statusbytrainee' => 'available',
+            ]);
+            
             Alert::success('', 'Opportunity Has Been Accepted');
             return redirect()->back();
 
