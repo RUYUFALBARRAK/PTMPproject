@@ -222,14 +222,14 @@
             @elseif ($status->statusbycompany == 'reject')
               <h4 class="opportunityStateB2 text-danger">Reject</h4>
             @else
-              <h4 class="opportunityStateB2 text-success">Available</h4>
+              <h4 class="opportunityStateB2 text-success" style="color:white;">Available</h4>
             @endif
           </td>
 
 
 
 
-          @php
+          @php 
             $is_apply = \App\Models\requestedopportunity::where('opportunity_id' , $opportunitiy->id)->where('trainee_id' , session()->get('loginId'))->first();
 
             // dd($is_apply)
@@ -237,14 +237,14 @@
 
           <td>
             @if($is_apply)
-              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}"><span class="fa fa-chevron-right"></span></a>
+              <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}" ><span class="	fa fa-chevron-right"></span></a>
             @else
-              <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}"><span class="fa fa-chevron-right"></span></a>
+              <a href="{{ route('opportunity.apply' , $opportunitiy->id) }}" ><span class="	fa fa-chevron-right"></span></a>
             @endif
           </td>
-
+        
         </tr>
-      @endforeach
+      @endforeach 
 
   </table>
 
