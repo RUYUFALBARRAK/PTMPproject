@@ -211,9 +211,23 @@
 
             </td>
 
-          {{-- <td>
-            <h4 class="opportunityStateB2 text-success">{{ $opportunitiy->status }}</h4>
-          </td> --}}
+
+
+            <td>
+            @php $status = App\Models\requestedopportunity::where('opportunity_id',$opportunitiy->id)->where('trainee_id' , session()->get('loginId'))->first(); @endphp
+            @if ($status->statusbycompany == 'pending' || ($status->statusbycompany == 'accept' && $status->statusbytrainee == 'pending'))
+              <h4 class="opportunityStateB2 text-warning">Pending</h4>
+            @elseif($status->statusbycompany == 'accept' && $status->statusbytrainee == 'accept')
+              <h4 class="opportunityStateB2 text-success">Accept</h4>
+            @elseif ($status->statusbycompany == 'reject')
+              <h4 class="opportunityStateB2 text-danger">Reject</h4>
+            @else
+              <h4 class="opportunityStateB2 text-success">Available</h4>
+            @endif
+          </td>
+
+
+
 
           @php
             $is_apply = \App\Models\requestedopportunity::where('opportunity_id' , $opportunitiy->id)->where('trainee_id' , session()->get('loginId'))->first();
