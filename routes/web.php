@@ -66,6 +66,7 @@ Route::get('/DocumentPageCompany', function () {
 });
 
 Route::get('/traineeMainPage', [PTMPController::class,'ViewMainpage'])-> name('traineeMainPage');
+Route::post('/invationcompany', [PTMPController::class,'SendMail'])-> name('invationcompany');
 Route::post('/uploadfile', [PTMPController::class,'uploadfile'])-> name('uploadfile');
 Route::post('/uploadfileOfCv', [PTMPController::class,'uploadfileOfCv'])-> name('uploadfileOfCv');
 Route::get('/logout', [PTMPController::class,'logout']);

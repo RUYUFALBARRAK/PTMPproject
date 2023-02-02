@@ -6,7 +6,7 @@
             <div class="alert alert-{{ session('theme') }}">{{ session('status') }}</div>
         @endif
 
-        <h1>Current Announcements</h1>
+        <h2>Current Announcements</h2>
             @if(count($announcements) > 0)
                 <table class="table-balqees">
                     <tr>

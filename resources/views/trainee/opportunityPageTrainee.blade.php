@@ -10,7 +10,6 @@
       <input type="search" class="form-control rounded" name="query" placeholder="Search for opportunity name..." aria-label="Search" aria-describedby="search-addon" />
       <button type="submit" class="btn btn-outline-dark">Search</button>
       </div>
-      <span style=" font-size: 14px; margin-top:1.5%;">&nbsp;Didn't see your opportunity? <a class="linkB" style="color:blue;" href="#"> Invite a Company</a> </span>
     </form>
 
     <div class="form-group col-md-2 state-menu" style=" margin-left:47%; margin-top:-3.8%;">
@@ -141,9 +140,17 @@
         <option>All</option>
       </select>
     </div>
+    @if(Session::has('success'))
+  <div class="alert alert-success">{{Session::get('success')}}</div>
+  @endif
+  @if(Session::has('fail'))
+  <div class="alert alert-danger">{{Session::get('fail')}}</div>
+  @endif
+    <hr>
 
+     <span style=" font-size: 14px; margin-top:1.5%;">&nbsp;Didn't see your opportunity? <a class="linkB" style="color: #388087;cursor: pointer;" onclick="$('#view_invait_modal').modal('show');"> Invite a Company</a> </span>
 
-    <br><br>
+    <br><hr>
 
 
 

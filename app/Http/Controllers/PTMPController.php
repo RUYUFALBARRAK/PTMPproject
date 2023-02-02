@@ -15,6 +15,7 @@ use App\Models\traineeSkills ;
 use App\Models\traineeLanguages;
 use App\Models\traineeInterests;
 use App\Models\traineeExperience;
+use App\Models\Review;
 use App\Models\unit;
 use App\Models\oppourtunity;
 use App\Models\requestedopportunity;
@@ -22,10 +23,11 @@ use App\Models\cv;
 use \App\Enum\fileNameEnum;
 use \App\Enum\companyStatus;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Mail;
+
 use Validator;
 use DB;
 use File;
+use Mail;
 use Response;
 use Illuminate\Support\Str;
 use App\Mail\SendMail;
@@ -338,12 +340,34 @@ function addfile(Request $request){
 
 }
 
-function SendMail(){
+function SendMail(Request $request){
+ $opportunities = oppourtunity::where('status' , 'accept')->get();
+ $reviews = Review::get();
 
-    $details=[
-        'titel'=>'hi',
-        'body'=>'hi',
-    ];
-    Mail::to($request->emailtosend)->send(new SendMail($details));
+            $request->validate([
+            'InvaitEmail' => 'required|email',
+        ]);
+
+   $data = [
+      "subject"=>"PTMP Mail",
+      "body"=>"Hello, Welcome to PTMP Mail we want to invait you to our training portal Check this link for registertion : http://127.0.0.1:8000/registerCompany",
+
+      ];
+    // MailNotify class that is extend from Mailable class.
+    try
+    {
+      Mail::to($request->InvaitEmail)->send(new SendMail($data));
+      return view('trainee/opportunityPageTrainee' , [
+            'opportunities' => $opportunities ,
+            'reviews' => $reviews
+        ])->with('success','Successfully send invation');
+    }
+    catch(Exception $e)
+    {
+      return view('trainee/opportunityPageTrainee' , [
+            'opportunities' => $opportunities ,
+            'reviews' => $reviews
+        ])->with('fail','Please try again ');
+    }
 }
 }

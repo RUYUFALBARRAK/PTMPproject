@@ -111,6 +111,7 @@
                         $('#upload_file_clickable').removeClass('is-invalid');
                     }
                 });
+                //start
                 $('#upload-doc-form').ajaxForm({
                     beforeSend: function () {
                         var percentage = '0';

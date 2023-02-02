@@ -78,6 +78,28 @@
         </div>
     </div>
 
+<!-- send invatiton modal -->
+    <div class="modal fade" id="view_invait_modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-title">
+                    <h2 style="padding:10px; text-align: center;" id="invation">Invite a company</h2><hr></div>
+                    <div class="modal-body">
+                    <form action=" {{ route('invationcompany')}}" method="post">
+                    @csrf
+                    <div><input type="email" placeholder="Enter company email" class="form-control  @error('InvaitEmail') is-invalid @enderror" name="InvaitEmail" id="InvaitEmail"></div>
+                        @if ($errors->has('InvaitEmail'))
+                        <span class="text-danger">{{ $errors->first('InvaitEmail') }}</span>
+                        @endif
+                        <br><hr>
+                    <button type="submit" class="ok-but">submit</button>
+                 </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- File deleted success message -->
     <div class="modal fade" id="file_uploaded_success" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
         <div class="modal-dialog">
