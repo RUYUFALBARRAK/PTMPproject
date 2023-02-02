@@ -4,15 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+ use App\Enum\companyStatus;
 
 class requestedopportunity extends Model
 {
     use HasFactory;
     protected $table='requestedopportunity';
             protected $casts = [
-    'statusbytrainee' => companyStatus::class,
     'statusbycommittee' => companyStatus::class,
     'statusbycompany' => companyStatus::class,
+    'statusbytrainee' => companyStatus::class,
 
 ];
 

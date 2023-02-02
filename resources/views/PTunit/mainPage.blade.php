@@ -11,11 +11,6 @@
     <li><a href="{{ url('/listOfStudentsReqLetter') }}">IDENTIFICATION LETTER REQUESTS</a></li>
     <li><a href="{{ url('/listOfCompany') }}">COMPANIS</a></li>
     <li><a href="{{ url('/listOfCompanyRequest') }}">COMPANY REGISTERATION REQUEST</a></li>
-    <li>  <a  onclick="displaymenu()" class="accordion-toggle collapsed toggle-switch toggle-icon glyphicon glyphicon-chevron-down" id="submenu2" data-toggle="collapse" href="#submenu-2" style=" font-family: 'Nunito', sans-serif !important; font-size:100%;"> CONTACT US</a>
-    <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-       <li> <a  href="mailto:ccis_female_pt_committee@ksu.edu.sa" class="abc">Email</a></li>
-       <li> <a href="tel:+4733378901" class="abc">Phone</a> </li>
-    </ul></li>
 
   </ul>
 </nav>
