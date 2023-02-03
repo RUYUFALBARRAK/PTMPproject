@@ -32,12 +32,14 @@ Route::post('Authreg',[companyController::class,'Authreg'])-> name('Authreg');
 Route::post('Authlogincompany',[companyController::class,'Authlogincompany'])-> name('Authlogincompany');
 Route::get('/loginCompany', function () {return view('Company/LoginForCompany');})-> name('logincompany');
 
+// Forget password
 Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
-});
-Route::get('/changePassword', function () {
+})->name('forget_password');
+Route::post('/forgetPassword', [\App\Http\Controllers\BalqeesController::class, 'forgetPassword'])->name('do_forget_password');
+Route::get('/changePassword/{token}', function () {
     return view('Company/changePassword');
-});
+})->name('change_password');
 
 Route::group(['middleware'=>'isloggedin'], function(){
 
@@ -121,7 +123,7 @@ Route::get('/opportunityPageCompany', function () {
     $opportunities = ['opportunities'=> oppourtunity::where('company_id' , $company_id)->get(),
     'comp'=> company::where('id' , $company_id)->first()
 ];
-  
+
     return view('Company/opportunityPageCompany' , $opportunities);
 });
 
