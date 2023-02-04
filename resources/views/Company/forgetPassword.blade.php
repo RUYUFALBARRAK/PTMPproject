@@ -23,7 +23,7 @@
             <div class="textField has-validation">
                 <label for="validationTooltip02" class="form-label">Confirm email</label>
                 <input type="email" class="form-control @error('confirm_email') is-invalid @enderror" id="validationTooltip02" name="confirm_email" placeholder="Enter your email agin " value="{{ old('confirm_email') }}" required>
-                <div class="valid-tooltip">
+                <div class="invalid-feedback">
                     @error('confirm_email') {{ $message }} @enderror
                 </div>
             </div>

@@ -37,9 +37,15 @@ Route::get('/forgetPassword', function () {
     return view('Company/forgetPassword');
 })->name('forget_password');
 Route::post('/forgetPassword', [\App\Http\Controllers\BalqeesController::class, 'forgetPassword'])->name('do_forget_password');
-Route::get('/changePassword/{token}', function () {
-    return view('Company/changePassword');
+Route::get('/changePassword/{token}', function (string $token) {
+    $data = \Illuminate\Support\Facades\DB::table('password_resets')->where('token', '=', $token)->first();
+    if($data) {
+        return view('Company/changePassword', ['data' => $data]);
+    } else {
+        return response(null, 403);
+    }
 })->name('change_password');
+Route::post('/changePassword/{token}', [\App\Http\Controllers\BalqeesController::class, 'changePassword'])->name('do_change_password');
 
 Route::group(['middleware'=>'isloggedin'], function(){
 

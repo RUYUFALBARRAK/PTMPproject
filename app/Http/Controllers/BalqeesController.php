@@ -142,12 +142,6 @@ class BalqeesController extends Controller
     }
 
     public function forgetPassword(Request $request) {
-        //get inputs
-        //validate inputs
-        //check email exist
-        //create token and save it in password_resets table
-        //send link with token to email
-
         $inputs = Validator::make($request->only(['email', 'confirm_email']), [
             'email' => ['required', 'email'],
             'confirm_email' => ['required', 'same:email'],
@@ -176,6 +170,26 @@ class BalqeesController extends Controller
             }
         } else {
             return redirect(route('forget_password'))->with('status', 'Email does not exist.')->with('theme', 'danger')->withInput();
+        }
+    }
+
+    function changePassword(Request $request) {
+        $inputs = Validator::make($request->only(['password', 'confirm_password']), [
+            'password' => ['required', 'string', 'min:6'],
+            'confirm_password' => ['required', 'same:password'],
+            'email' => ['required', 'email'],
+        ]);
+        if ($inputs->fails()) {
+            return redirect(route('change_password'))->with('status', 'Please solve the errors.')->with('theme', 'danger')->withErrors($inputs)->withInput();
+        }
+        $inputs = $inputs->getData();
+        $account = DB::table('company')->where('orgnizationEmail', '=', $inputs['email'])->first();
+        if($account) {
+            //TODO: update password
+            //TODO: remove token from password_resets
+            // redirect
+        } else {
+            return redirect(route('change_password'))->with('status', 'Email does not exist.')->with('theme', 'danger')->withInput();
         }
     }
 
