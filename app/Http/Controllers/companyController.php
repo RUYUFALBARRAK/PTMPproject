@@ -223,13 +223,13 @@ function rejectCompany($id){
         $companyRequest = company::FindorFail($id);
         $companyRequest->status=companyStatus::reject;
         $companyRequest->update();
-return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was deleted successfully');  
+return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was rejected successfully');  
 }
 function AcceptCompany($id){
         $companyRequest = company::FindorFail($id);
         $companyRequest->status=companyStatus::accept;
         $companyRequest->update();
-    return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was deleted successfully');  
+    return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was accepted successfully');  
 }
 
 }
