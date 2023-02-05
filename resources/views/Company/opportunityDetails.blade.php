@@ -14,6 +14,10 @@
     <label for="validationTooltip01" class="oppT-form-label">job title:</label>
     <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->jobTitle }}</label>
     </div><br>
+    <div>
+    <label for="validationTooltip01" class="oppT-form-label">number Of Trainees Assigned:</label>
+    <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->numberOfTraineeAssigned }}</label>
+    </div><br>
 
     <div>
     <label for="validationTooltip01" class="oppT-form-label">Start Date:</label>

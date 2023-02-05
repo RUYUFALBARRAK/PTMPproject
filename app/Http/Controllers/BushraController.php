@@ -19,6 +19,7 @@ use App\Models\requestedopportunity;
 use Illuminate\Validation\Rule;
 
 use Hash;
+use PhpParser\Node\Stmt\Expression;
 use Session;
 use \App\Enum\fileNameEnum;
 use File;
@@ -137,6 +138,7 @@ class BushraController extends Controller
         $req_opportunity->update([
             'statusbytrainee' => 'accept',
             'statusbycompany' => 'accept',
+            'numberOfTraineeAssigned'=>new Expression('numberOfTraineeAssigned + 1')
         ]);
 
         Alert::success('', 'Opportunity has been Confirmed');
@@ -153,7 +155,7 @@ class BushraController extends Controller
     }
 
     public function opportunityTrainee(){
-        $opportunities = oppourtunity::where('status' , 'accept')->get();
+        $opportunities = oppourtunity::where('status' , 'accept')->where('numberOfTraineeAssigned','>=', 'numberOfTrainee')->get();
         $id = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', session('loginId'))->value('opportunity.company_id');
         $reviews = Review::get();
         return view('trainee/opportunityPageTrainee' , [
