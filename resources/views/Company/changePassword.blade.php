@@ -15,6 +15,10 @@
 
         <form class="row g-3 needs-validation" action="{{ route('do_change_password', $data->token) }}" method="post" novalidate>
             @csrf
+            @if($errors->any())
+                <div class="alert alert-warning">Password should be more than 6 characters.</div>
+            @endif
+
             <div class="textField has-validation">
                 <label for="validationTooltip01" class="form-label">Password</label>
                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="validationTooltip01" name="password" placeholder="Enter your password agin " value="{{ old('password') }}" required>
@@ -32,6 +36,7 @@
             </div>
 
             <input type="hidden" name="email" value="{{ $data->email }}">
+            <input type="hidden" name="token" value="{{ $data->token }}">
 
             <div class="col-12">
                 <button class="add-but-login" type="submit">Submit</button>

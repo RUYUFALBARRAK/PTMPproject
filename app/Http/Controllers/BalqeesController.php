@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -174,22 +175,28 @@ class BalqeesController extends Controller
     }
 
     function changePassword(Request $request) {
-        $inputs = Validator::make($request->only(['password', 'confirm_password']), [
+        $inputs = Validator::make($request->only(['password', 'confirm_password', 'email', 'token']), [
             'password' => ['required', 'string', 'min:6'],
             'confirm_password' => ['required', 'same:password'],
             'email' => ['required', 'email'],
+            'token' => ['required', 'string']
         ]);
         if ($inputs->fails()) {
-            return redirect(route('change_password'))->with('status', 'Please solve the errors.')->with('theme', 'danger')->withErrors($inputs)->withInput();
+            $inputs = $inputs->getData();
+            return redirect(route('change_password', ['token' => $inputs['token']]))->with('status', 'Please solve the errors.')->with('theme', 'danger')->withErrors($inputs)->withInput();
         }
         $inputs = $inputs->getData();
-        $account = DB::table('company')->where('orgnizationEmail', '=', $inputs['email'])->first();
+        $account = DB::table('company')->where(['orgnizationEmail' => $inputs['email']])->first();
         if($account) {
-            //TODO: update password
-            //TODO: remove token from password_resets
-            // redirect
+            $new_password = Hash::make($inputs['password']);
+            if(DB::table('company')->where(['orgnizationEmail' => $inputs['email']])->update(['password' => $new_password])) {
+                if(DB::table('password_resets')->where('email', '=', $inputs['email'])->delete()) {
+                    return redirect('/welcome');
+                }
+            }
+            return redirect(route('change_password', ['token' => $inputs['token']]))->with('status', 'An error occurred while changing your password.')->with('theme', 'danger')->withErrors($inputs)->withInput();
         } else {
-            return redirect(route('change_password'))->with('status', 'Email does not exist.')->with('theme', 'danger')->withInput();
+            return redirect(route('change_password', ['token' => $inputs['token']]))->with('status', 'Email does not exist.')->with('theme', 'danger')->withInput();
         }
     }
 
