@@ -155,7 +155,7 @@ class BushraController extends Controller
     }
 
     public function opportunityTrainee(){
-        $opportunities = oppourtunity::where('status' , 'accept')->where('numberOfTraineeAssigned','>=', 'numberOfTrainee')->get();
+        $opportunities = oppourtunity::where('status' , 'accept')->where('numberOfTrainee','>=', 'numberOfTraineeAssigned')->get();
         $id = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', session('loginId'))->value('opportunity.company_id');
         $reviews = Review::get();
         return view('trainee/opportunityPageTrainee' , [
