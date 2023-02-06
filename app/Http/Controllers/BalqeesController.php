@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\announcement;
 use App\Models\document;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -134,6 +139,64 @@ class BalqeesController extends Controller
             return redirect(route('announcements'))->with('status', 'The Announcement is Updated Successfully.')->with('theme', 'success');
         } else {
             return redirect(route('edit_announcement', ['announcement' => $announcement]))->with('status', 'Error: cannot update the announcement.')->with('theme', 'danger')->withInput();
+        }
+    }
+
+    public function forgetPassword(Request $request) {
+        $inputs = Validator::make($request->only(['email', 'confirm_email']), [
+            'email' => ['required', 'email'],
+            'confirm_email' => ['required', 'same:email'],
+        ]);
+        if ($inputs->fails()) {
+            return redirect(route('forget_password'))->with('status', 'Please solve the errors.')->with('theme', 'danger')->withErrors($inputs)->withInput();
+        }
+        $inputs = $inputs->getData();
+        $email = $inputs['email'];
+        $account = DB::table('company')->where('orgnizationEmail', '=', $email)->first();
+        if($account) {
+            $token = Str::random(64);
+            DB::table('password_resets')->insert([
+                'email' => $email,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
+            try {
+                Mail::send('email.change_password', ['token' => $token], function($message) use($email) {
+                    $message->to($email);
+                    $message->subject('Change your Password');
+                });
+                return redirect(route('forget_password'))->with('status', 'Instructions to change your password has been sent to your email.')->with('theme', 'success');
+            } catch (\Throwable $th) {
+                return redirect(route('forget_password'))->with('status', 'An error occurred while sending your email. Please contact the site admin to configure the mail.')->with('theme', 'danger')->withInput();
+            }
+        } else {
+            return redirect(route('forget_password'))->with('status', 'Email does not exist.')->with('theme', 'danger')->withInput();
+        }
+    }
+
+    function changePassword(Request $request) {
+        $inputs = Validator::make($request->only(['password', 'confirm_password', 'email', 'token']), [
+            'password' => ['required', 'string', 'min:6'],
+            'confirm_password' => ['required', 'same:password'],
+            'email' => ['required', 'email'],
+            'token' => ['required', 'string']
+        ]);
+        if ($inputs->fails()) {
+            $inputs = $inputs->getData();
+            return redirect(route('change_password', ['token' => $inputs['token']]))->with('status', 'Please solve the errors.')->with('theme', 'danger')->withErrors($inputs)->withInput();
+        }
+        $inputs = $inputs->getData();
+        $account = DB::table('company')->where(['orgnizationEmail' => $inputs['email']])->first();
+        if($account) {
+            $new_password = Hash::make($inputs['password']);
+            if(DB::table('company')->where(['orgnizationEmail' => $inputs['email']])->update(['password' => $new_password])) {
+                if(DB::table('password_resets')->where('email', '=', $inputs['email'])->delete()) {
+                    return redirect('/welcome');
+                }
+            }
+            return redirect(route('change_password', ['token' => $inputs['token']]))->with('status', 'An error occurred while changing your password.')->with('theme', 'danger')->withErrors($inputs)->withInput();
+        } else {
+            return redirect(route('change_password', ['token' => $inputs['token']]))->with('status', 'Email does not exist.')->with('theme', 'danger')->withInput();
         }
     }
 

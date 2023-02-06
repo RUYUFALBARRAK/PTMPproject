@@ -1,4 +1,4 @@
-@extends('trainee.mainPage')
+@extends('PTcommittee.mainPage')
 
 @section('content-training')
 
@@ -7,17 +7,16 @@
 <hr>
 <br>
     <div class="trainee-info" >
-    <p> <b> Student Name:&nbsp; </b>Razan Alsaif </p> <br>
-    <p> <b> Phone Number:&nbsp;</b> 050999999 </p><br>
-    <p> <b> GPA :&nbsp; </b> 4.05 <br></p>
+    <p> <b> Student Name:&nbsp; </b> {{$trainee->name}} </p> <br>
+    <p> <b> Phone Number:&nbsp;</b> {{$trainee->phone}} </p><br>
+    <p> <b> GPA :&nbsp; </b> {{$trainee->GPA}} <br></p>
     </div>
 
     <div class="info-sec" style="margin-left:25%;" >
-    <p> <b> Email:&nbsp; </b> 439200624@ksu.edu.sa</p> <br>
-    <p> <b> Major:&nbsp; </b> Software Engineering </p> <br>
-    <p> <b> Number of completed hours :&nbsp; </b> 94 <br></p>
+    <p> <b> Email:&nbsp; </b> {{$trainee->email}} </p> <br>
+    <p> <b> Major:&nbsp; </b> {{$trainee->major}} </p> <br>
+    <p> <b> Number of completed hours :&nbsp; </b> {{$trainee->CompletedHours}} <br></p>
     </div>
-
 </div>
 
 <div class="content" style="margin-bottom:-10%;">
@@ -33,24 +32,38 @@
     <p> <b> Experience:&nbsp; </b> {{$experience}} </p> <br>
     <p> <b> Uploaded Files:&nbsp; </b> </p>
 
-    @foreach($files as $file)
-    <div class="uploaded-files" style="margin-right:-32%; margin-top:2%; margin-bottom:2%;"> <a href="{{ url('/download/'.$file->id) }}">
+    @if($let)
+    <div class="uploaded-files" style="margin-right:-40%; margin-top:2%; margin-bottom:2%;"> <a href="{{ $letter->getDocumentURL() }}">
     <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
-    <p style="width:24%; text-align: center; ">{{$file-> document}}</p> </a>
+    <p style="width:24%; text-align: center; ">Identification Letter</p> </a>
     </div>
-    @endforeach
+    @endif
+
+    @if($aca)
+    <div class="uploaded-files" style="margin-right:-40%; margin-top:2%; margin-bottom:2%;"> <a href="{{ $academic }}">
+    <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
+    <p style="width:24%; text-align: center; ">Transcript</p> </a>
+    </div>
+    @endif
+
+    @if($cert)
+    <div class="uploaded-files" style=" margin-right:-40%; margin-top:2%; margin-bottom:2%;"> <a href="{{ $certificate }}">
+    <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
+    <p style="width:24%; text-align: center; ">Certificate</p> </a>
+    </div>
+    @endif
 
     </div>
 
 </div>
 
 
-@if($status == "accept")
+@if($status != "Available")
 
 <div class="content">
 
 <div style="margin-left:4%;">
-    <img src="{{asset('/img/'.$companyInfo->logoImage)}}" alt="Company logo" width="20%" hight="20%" style=" margin-left:-3%;">
+    <img src="{{ asset( 'storage/images/'.$companyInfo->logoImage ) }}" alt="Company logo" width="20%" hight="20%" style=" margin-left:-3%;">
     <h3 style=" margin-top:-5%;" class="spashlist">{{$oppourtunity-> jobTitle}}</h3> <h4 style=" margin-top:-2%;" class="date">{{$oppourtunity-> Start_at}} - {{$oppourtunity-> end_at}}  </h4>
 </div>
 
@@ -65,7 +78,7 @@
   <tr>
     <td>Effective date notice</td>
     @if($effective != 0)
-    <th class="subm"> <a href="{{ url('/download/'.$effective) }}">VIEW SUBMITTED </a> </th>
+    <th class="subm"> <a href="{{ $effective }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
@@ -74,7 +87,7 @@
   <tr>
     <td>Report</td>
     @if($report != 0)
-    <th class="subm"> <a href="{{ url('/download/'.$report) }}">VIEW SUBMITTED </a> </th>
+    <th class="subm"> <a href="{{ $report }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
@@ -83,7 +96,7 @@
   <tr>
     <td>Training Survey</td>
     @if($survey != 0)
-    <th class="subm"> <a href="{{ url('/download/'.$survey) }}">VIEW SUBMITTED </a> </th>
+    <th class="subm"> <a href="{{ $survey }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
@@ -92,7 +105,7 @@
 <tr>
     <td>Presentation</td>
     @if($presentation != 0)
-    <th class="subm"> <a href="{{ url('/download/'.$presentation) }}">VIEW SUBMITTED </a> </th>
+    <th class="subm"> <a href="{{ $presentation }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
@@ -112,7 +125,7 @@
   <tr>
     <td>Training Plan</td>
     @if($TrainingPlan != 0)
-    <th class="subm"> <a href="{{ url('/download/'.$TrainingPlan) }}">VIEW SUBMITTED </a> </th>
+    <th class="subm"> <a href="{{ $TrainingPlan }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
@@ -121,7 +134,7 @@
   <tr>
     <td>Follow Up</td>
     @if($FollowUp != 0)
-    <th class="subm"> <a href="{{ url('/download/'.$FollowUp) }}">VIEW SUBMITTED </a> </th>
+    <th class="subm"> <a href="{{ $FollowUp }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
@@ -130,7 +143,7 @@
     <tr>
     <td>Attendance</td>
     @if($Attendance != 0)
-    <th class="subm"> <a href="{{ url('/download/'.$Attendance) }}">VIEW SUBMITTED </a> </th>
+    <th class="subm"> <a href="{{ $Attendance }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
@@ -139,7 +152,7 @@
     <tr>
     <td>Trainee Evaluation</td>
     @if($TraineeEvaluation != 0)
-    <th class="subm"> <a href="{{ url('/download/'.$TraineeEvaluation) }}">VIEW SUBMITTED </a> </th>
+    <th class="subm"> <a href="{{ $TraineeEvaluation }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
@@ -148,7 +161,7 @@
   <tr>
     <td>Employee Feedback</td>
     @if($EmployeeFeedback != 0)
-    <th class="subm"> <a href="{{ url('/download/'.$EmployeeFeedback) }}">VIEW SUBMITTED </a> </th>
+    <th class="subm"> <a href="{{ $EmployeeFeedback }}">VIEW SUBMITTED </a> </th>
     @else
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif

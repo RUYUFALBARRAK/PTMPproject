@@ -31,6 +31,28 @@
     <p> <b> Interests :&nbsp; </b> {{$interest}} </p> <br>
     <p> <b> Experience:&nbsp; </b> {{$experience}} </p> <br>
     <p> <b> Uploaded Files:&nbsp; </b> </p>
+
+    @if($let)
+    <div class="uploaded-files" style="margin-right:-40%; margin-top:2%; margin-bottom:2%;"> <a href="{{ $letter->getDocumentURL() }}">
+    <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
+    <p style="width:24%; text-align: center; ">Identification Letter</p> </a>
+    </div>
+    @endif
+
+    @if($aca)
+    <div class="uploaded-files" style="margin-right:-40%; margin-top:2%; margin-bottom:2%;"> <a href="{{ $academic }}">
+    <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
+    <p style="width:24%; text-align: center; ">Transcript</p> </a>
+    </div>
+    @endif
+
+    @if($cert)
+    <div class="uploaded-files" style=" margin-right:-40%; margin-top:2%; margin-bottom:2%;"> <a href="{{ $certificate }}">
+    <img src="{{asset('img/file-download.png')}}" alt="File Icon" width="17%" height="17%" style="margin-bottom:1%; margin-left:5%;">
+    <p style="width:24%; text-align: center; ">Certificate</p> </a>
+    </div>
+    @endif
+
     </div>
 
 </div>

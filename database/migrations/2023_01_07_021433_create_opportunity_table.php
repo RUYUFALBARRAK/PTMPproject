@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('requirement');
             $table->string('majors');
             $table->integer('numberOfTrainee');
+            $table->integer('numberOfTraineeAssigned')->default('0');
             $table->string('address');
             $table->date('AppDeadline');
             $table->string('PtPlan');

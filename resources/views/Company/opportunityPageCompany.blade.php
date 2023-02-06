@@ -8,9 +8,9 @@
   
     <h2>Opportunities</h2>
     
-   @if($comp->status=='accept')
+   
     <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:40%; font-size:20px; margin-top:-3.6%; position:absolute; background-color: #388087;">Add training opportunity</a>
-   @endif
+   
  
 
    
@@ -44,6 +44,7 @@
                 <h5>{{ $opportunity->jobTitle }}</h5>
                 <h6>{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</h6>
             </td>
+            
 
           <td>
             @if($opportunity->status == 'pending')
@@ -56,10 +57,15 @@
             <h5 class="opportunityStateB2 text-danger" style="margin-top:-0.8%;">Rejected</h5>
             @endif
           </td>
+          <td style="padding-left:20%; color:green; "class="second-col-Bushra">
+                <h5>{{ $opportunity->numberOfTraineeAssigned.'/'.$opportunity->numberOfTrainee .' ' .'Trainees Assigned'}}</h5>
+               
+            </td>
 
           <td class="oppoArrow">
             <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right" ></span></a>
           </td>
+
         
         </tr> 
         @endforeach

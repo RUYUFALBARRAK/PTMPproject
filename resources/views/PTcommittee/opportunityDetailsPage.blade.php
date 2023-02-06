@@ -89,7 +89,7 @@
         @csrf
         <div class="input-group" style="margin-bottom:3%;">
             <button type="submit" name="status" value="accept" class="btn btn-outline-success" style="font-size: 136%; margin-left: 42%;">Accept</button>&nbsp;&nbsp;
-            <button type="submit" name="status" value="reject" class="btn btn-outline-danger" style="font-size: 136%;">Decline</button>&nbsp;&nbsp;
+            <button type="submit" name="status" value="reject" class="btn btn-outline-danger" style="font-size: 136%;">Reject</button>&nbsp;&nbsp;
         </div>
 
         <h6 class="text-secondary" style="font-size: 120%;">This opportunity need modification ?</h6>
