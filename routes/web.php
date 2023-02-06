@@ -219,13 +219,73 @@ Route::get('/listOfStudents', [khawlahController::class,'studentList']);
 
 Route::get('/searchStudent', [khawlahController::class,'searchStudent']);
 
-Route::get('/ReuqstIdentfaction', function () {
-    return view('trainee/ReuqstIdentfaction');
-});
+    Route::get('/ReuqstIdentfaction', function () {
+   
+        $regulation= \App\Models\Sendsdocument::where('trainee_id',session('loginId'))
+            ->where('doc_name', \App\Enum\fileNameEnum::identificationLetter)
+            ->orderByDesc('created_at')
+            ->first();
+        $regulation= $regulation? $regulation->document : null;
+    
+        $regulationToTrainee = \App\Models\Sendsdocument::where('trainee_id',session('loginId'))
+            ->where('doc_name', \App\Enum\fileNameEnum::identificationLetterToTrainee)
+            ->orderByDesc('created_at')
+            ->first();
+        $regulationToTrainee= $regulationToTrainee? $regulationToTrainee->document : null;
+    
+        return view('trainee/ReuqstIdentfaction' ,compact('regulation','regulationToTrainee'));
+    });
 Route::get('/listOfStudentsReqLetter', function () {
     return view('PTunit/listOfStudentsReqLetter');
 });
+Route::get('/listOfStudentsReqLetter', function () {
+    $users= \App\Models\trainee::where('is_request',1)->get();
+    return view('PTunit/listOfStudentsReqLetter',compact('users'));
+});
 
+Route::post('uploadRequestIdFile',function (\Illuminate\Http\Request $request){
+    $request->validate([
+        'uploadedFileInput' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
+    ]);
+    $user= App\Models\trainee::where('trainee_id',session('loginId'))->first();
+    if ($user && $request->file('uploadedFileInput')){
+        $document = new \App\Models\Sendsdocument();
+        $name= $request->uploadedFileInput->getClientOriginalName();
+        $fileName = time().'_'.$name;
+        $filePath = $request->file('uploadedFileInput')->storeAs('uploads', $fileName, 'public');
+        $document->doc_name = \App\Enum\fileNameEnum::identificationLetter;
+        $document->document = 'storage/' . $filePath;
+        $document->trainee_id = $user->trainee_id;
+        $document->opportunity_id = $user->opportunity_id;
+        $document->committee_id = $user->committee_id;
+        $document->save();
+        $user->is_request= 1;
+        $user->update();
+
+        return back()->with('success','File has been uploaded.');
+    }
+})->name('uploadRequestIdFile');
+Route::post('uploadRegulationToTrainee',function (\Illuminate\Http\Request $request){
+        $request->validate([
+            'uploadedFileInput' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
+        ]);
+        $user= App\Models\trainee::where('trainee_id',session('loginId'))->first();
+        if ($user && $request->file('uploadedFileInput')){
+            $document = new \App\Models\Sendsdocument();
+            $name= $request->uploadedFileInput->getClientOriginalName();
+            $fileName = time().'_'.$name;
+            $filePath = $request->file('uploadedFileInput')->storeAs('uploads', $fileName, 'public');
+            $document->doc_name = \App\Enum\fileNameEnum::identificationLetterToTrainee;
+            $document->document = 'storage/' . $filePath;
+            $document->trainee_id = $user->trainee_id;
+            $document->opportunity_id = $user->opportunity_id;
+            $document->committee_id = $user->committee_id;
+            $document->save();
+
+            return back()->with('success','File has been uploaded.');
+        }
+    })
+    ->name('uploadRegulationToTrainee');
 Route::get('/listOfStudentsPTunit', [khawlahController::class,'studentListPT']);
 Route::get('/searchlistOfStudentsPTunit', [khawlahController::class,'searchstudentListPT']);
 

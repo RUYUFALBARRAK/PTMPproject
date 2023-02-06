@@ -16,4 +16,6 @@ enum fileNameEnum:string
     case certifactionFile="certifactionFile";
     case acdamicFile="acdamicFile";
     case identificationLetter="identificationLetter";
+    case identificationLetterToTrainee="identificationLetterToTrainee";
+
 }
