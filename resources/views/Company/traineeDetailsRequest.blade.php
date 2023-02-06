@@ -27,10 +27,50 @@
     <br>
 
     <div class="trainee-info" style="width:90%;" >
-    <p> <b> Skills:&nbsp; </b> {{$skill}} </p><br>
-    <p> <b> Languages:&nbsp; </b> {{$language}} </p><br>
-    <p> <b> Interests :&nbsp; </b> {{$interest}} </p> <br>
-    <p> <b> Experience:&nbsp; </b> {{$experience}} </p> <br>
+    <p> <b> Skills:&nbsp; </b>  @foreach($skill as $skills)
+    @if(!($loop->last))
+    {{ $skills ->skills }},
+
+    @else
+        {{ $skills ->skills }}
+
+        @endif
+        @endforeach
+     </p><br>
+
+    <p> <b> Languages:&nbsp; </b> @foreach($language as $lang)
+    @if(!($loop->last))
+    {{$lang-> languages}},
+
+    @else
+    {{$lang-> languages}}
+
+    @endif
+    @endforeach
+    </p><br>
+
+    <p> <b> Interests :&nbsp; </b> @foreach($interest as $intr)
+    @if(!($loop->last))
+    {{ $intr -> interests}},
+
+    @else
+    {{ $intr -> interests}}
+
+    @endif
+    @endforeach
+    </p> <br>
+
+    <p> <b> Experience:&nbsp; </b> @foreach($experience as $exp)
+    @if(!($loop->last))
+    {{ $exp -> Experience}},<br>
+
+    @else
+    {{ $exp -> Experience}} <br>
+
+    @endif
+    @endforeach
+    </p> <br>
+
     <p> <b> Uploaded Files:&nbsp; </b> </p>
 
     @if($let)

@@ -135,10 +135,10 @@ class RazanController extends Controller
         }
 
 
-        $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
-        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
-        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
-        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+        $experience = traineeExperience::where( 'trainee_id' , $id)->get();
+        $interest = traineeInterests::where( 'trainee_id' , $id)->get();
+        $language = traineeLanguages::where( 'trainee_id' , $id)->get();
+        $skill = traineeSkills::where( 'trainee_id' , $id)->get();
 
         $int = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', $id)->value('opportunity.company_id');
         $companyInfo = company::where('id', $int)->first();
@@ -213,10 +213,10 @@ class RazanController extends Controller
         }
 
 
-        $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
-        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
-        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
-        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+        $experience = traineeExperience::where( 'trainee_id' , $id)->get();
+        $interest = traineeInterests::where( 'trainee_id' , $id)->get();
+        $language = traineeLanguages::where( 'trainee_id' , $id)->get();
+        $skill = traineeSkills::where( 'trainee_id' , $id)->get();
 
             $trainingPlan= 0;
             $followUp=0;
@@ -355,10 +355,10 @@ class RazanController extends Controller
         }
 
 
-        $experience = traineeExperience::where( 'trainee_id' , $id)->value('Experience');
-        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
-        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
-        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+        $experience = traineeExperience::where( 'trainee_id' , $id)->get();
+        $interest = traineeInterests::where( 'trainee_id' , $id)->get();
+        $language = traineeLanguages::where( 'trainee_id' , $id)->get();
+        $skill = traineeSkills::where( 'trainee_id' , $id)->get();
 
         return view('Company/traineeDetailsRequest', [
             'trainee' => $trainee ,
@@ -381,7 +381,7 @@ class RazanController extends Controller
     public function action (Request $request,$id){
 
         $trainee = trainee::where('trainee_id', $id)->first();
-        $docReq = requestedopportunity::where('trainee_id', $id)->first();
+        $docReq = requestedopportunity::where('trainee_id', $id)->Where('company_id', '=', session('logincompId'))->first();
 
         if($request->status == 'accept'){
 
@@ -392,7 +392,7 @@ class RazanController extends Controller
             $trainee->update([
                 'statusFormCompany'=> 'accept'
             ]);
-            return redirect('/listOfTrainees')->with('msg','accept');
+            return redirect('/listOfTraineesRequests')->with('msg','accept');
         }
 
         elseif($request->status == 'reject'){
@@ -441,10 +441,10 @@ class RazanController extends Controller
         }
 
 
-        $experience = traineeExperience::where( 'trainee_id' , '=', $id)->value('Experience');
-        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
-        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
-        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+        $experience = traineeExperience::where( 'trainee_id' , $id)->get();
+        $interest = traineeInterests::where( 'trainee_id' , $id)->get();
+        $language = traineeLanguages::where( 'trainee_id' , $id)->get();
+        $skill = traineeSkills::where( 'trainee_id' , $id)->get();
 
         return view('PTunit/traineeDetailsUnit', [
             'trainee' => $trainee ,
@@ -497,10 +497,10 @@ class RazanController extends Controller
         }
 
 
-        $experience = traineeExperience::where( 'trainee_id' , '=', $id)->value('Experience');
-        $interest = traineeInterests::where( 'trainee_id' , $id)->value('interests');
-        $language = traineeLanguages::where( 'trainee_id' , $id)->value('languages');
-        $skill = traineeSkills::where( 'trainee_id' , $id)->value('skills');
+        $experience = traineeExperience::where( 'trainee_id' , $id)->get();
+        $interest = traineeInterests::where( 'trainee_id' , $id)->get();
+        $language = traineeLanguages::where( 'trainee_id' , $id)->get();
+        $skill = traineeSkills::where( 'trainee_id' , $id)->get();
 
 
         return view('PTunit/traineeDetailsLetter', [

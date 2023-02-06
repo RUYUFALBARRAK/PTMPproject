@@ -16,6 +16,10 @@
 @if(session('msg') == 'reject')
 <div class="alert alert-success">Trainee was Rejected successfully!</div>
 @endif
+
+@if(session('msg') == 'accept')
+<div class="alert alert-success">Trainee was Accepted successfully!</div>
+@endif
 <!-- End Of Razan Section -->
 
 @if( count($trainee) == 0)  <!-- in case for no review -->
