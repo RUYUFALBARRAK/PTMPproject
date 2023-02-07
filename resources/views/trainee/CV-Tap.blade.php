@@ -119,7 +119,7 @@
 </td>
   </tr>
   <tr>
-    <td>Identification Letter<div style="color: #808080" id="Training-SurveyName"></div></td>
+    <td>CV File<div style="color: #808080" id="Training-SurveyName"></div></td>
     <td>
 
     @if($identificationLetter)

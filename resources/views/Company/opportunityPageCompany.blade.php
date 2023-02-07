@@ -8,10 +8,13 @@
   
     <h2>Opportunities</h2>
     
-   
+   @if($comp->status=='accept')
     <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:40%; font-size:20px; margin-top:-3.6%; position:absolute; background-color: #388087;">Add training opportunity</a>
-   
- 
+   @elseif($comp->status=='reject')
+   <a class="btn text-white" style="margin-left:26%; font-size:16px; margin-top:-3.6%; position:absolute; background-color: red;">Sorry your company rejected by practical training unit ..</a>
+   @else
+   <a class="btn text-white" style="margin-left:29%; font-size:16px; margin-top:-3.6%; position:absolute; background-color: gray;">Waiting for acceptance from practical training unit ..</a>
+   @endif
 
    
     <div class="form-group col-md-2 state-menu" style="margin-left:65%;  position:absolute; ">
@@ -48,17 +51,17 @@
 
           <td>
             @if($opportunity->status == 'pending')
-              <h5 class="opportunityStateB2 text-warning" style="margin-top:-0.8%;">Pending</h5>
+              <h5 class="opportunityStateB2 text-warning" >Pending</h5>
             @elseif ($opportunity->status == 'accept')
-              <h5 class="opportunityStateB2 text-success" style="margin-top:-0.8%;">Accepted</h5>
+              <h5 class="opportunityStateB2 text-success" >Accepted</h5>
             @elseif ($opportunity->status == 'need_modification')
-            <h5 class="opportunityStateB2" style="color:#dadd28; margin-top:-0.8%;">Need Modification</h5>
+            <h5 class="opportunityStateB2" style="color:#dadd28; ">Need Modification</h5>
             @elseif ($opportunity->status == 'reject')
-            <h5 class="opportunityStateB2 text-danger" style="margin-top:-0.8%;">Rejected</h5>
+            <h5 class="opportunityStateB2 text-danger" >Rejected</h5>
             @endif
           </td>
-          <td style="padding-left:20%; color:green; "class="second-col-Bushra">
-                <h5>{{ $opportunity->numberOfTraineeAssigned.'/'.$opportunity->numberOfTrainee .' ' .'Trainees Assigned'}}</h5>
+          <td style="padding-left:10%; padding-top:5% color:black; font-size: 1px;"class="second-col-Bushra">
+                <h6>{{ $opportunity->numberOfTraineeAssigned.'/'.$opportunity->numberOfTrainee .' ' .'Trainees Assigned'}}</h6>
                
             </td>
 

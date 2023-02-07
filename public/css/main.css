@@ -452,3 +452,8 @@ width: 70%;
 .red{
   color: red;
 }
+.myClass{
+              width: 600px;
+                height: auto;
+                font-size: 1px;
+}

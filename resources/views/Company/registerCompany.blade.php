@@ -313,7 +313,7 @@ this.classList.toggle('fa-eye');
   <br><br>
 
   <div class="col-12">
-    <button class="add-but-center" type="submit">Create account </button>
+    <button class="add-but-center" value="submit" type="submit">Create account </button>
   </div>
 
 </form>
