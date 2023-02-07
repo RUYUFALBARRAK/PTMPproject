@@ -18,7 +18,7 @@
         </table>
         @else
             <div class="not-found">
-                <img src="{{asset('img/paper.png')}}" alt="" class="logoCompany">
+                <img src="{{asset('img/paper.png')}}" alt="" class="logoCompany"><br><hr>
                 <p>There are no documents available now.</p>
             </div>
         @endif

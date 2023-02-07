@@ -40,24 +40,19 @@
 
     <!-- Delete Review Confirmation modal-->
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
         <h1 style=" text-indent:30%;" class="modal-title fs-5" id="exampleModalLabel"> <b style="font-size:130%;"> Are you sure? </b> </h1>
-
       <div class="modal-body" style="text-align: center; font-size:120%;">
       Do you really want to delete your feedback? This proccess cannot be undone
       </div>
-
     <form action="/traineeMainPage" method="POST">
     @csrf
     @method('DELETE')
     <button  data-bs-dismiss="modal" class="del-msg">Delete</button>
     <button type="button" class="can-but" data-bs-dismiss="modal">Cancel</button>
-</form>
-
-
-
+    </form>
     </div>
   </div>
 </div>
@@ -120,7 +115,23 @@
             </div>
         </div>
     </div>
-
+    <!--delete company-->
+ <div class="modal fade" id="Delete_company_Modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <h1 style=" text-indent:30%;" class="modal-title fs-5" id="deleteComp"> <b style="font-size:130%;"> Are you sure? </b> </h1>
+      <div class="modal-body" style="text-align: center; font-size:120%;">
+      This Company have Opportinity Are you Sure you Want to Delete it ? This proccess cannot be undo
+      </div>
+    <form action="/traineeMainPage" method="POST">
+    @csrf
+    @method('DELETE')
+    <button  data-bs-dismiss="modal" class="del-msg">Delete</button>
+    <button type="button" class="can-but" data-bs-dismiss="modal">Cancel</button>
+    </form>
+    </div>
+  </div>
+</div>
     <!-- File Deletion Confirmation modal-->
     <div class="modal fade" id="confirm_delete_file" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
         <div class="modal-dialog">
@@ -188,7 +199,7 @@
       <img src="{{ asset('img/ksu_logo.png') }}" alt="Ksu logo" width="5%" height="90%" class="ksuLogo">
           <p>KSU <br> Practical Training Management Portal </p>
      </div>
-    @if(Session::has('loginId')||Session::has('logincompId'))
+    @if(Session::has('loginId')||Session::has('logincompId')||Session::has('logincommiteeId')||Session::has('loginunitId'))
          <a href="/logout"> <span class="fa fa-sign-out"> Log out</span>  </a>
     @endif
     @yield('content')

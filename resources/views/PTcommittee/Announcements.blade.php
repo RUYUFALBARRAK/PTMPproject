@@ -6,7 +6,7 @@
             <div class="alert alert-{{ session('theme') }}">{{ session('status') }}</div>
         @endif
 
-        <h2>Current Announcements</h2>
+        <h2>Current Announcements</h2><hr>
             @if(count($announcements) > 0)
                 <table class="table-balqees">
                     <tr>
@@ -28,11 +28,12 @@
                 </table>
             @else
                 <div class="not-found">
-                    <img src="{{asset('img/paper.png')}}" alt="" class="logoCompany">
+                    <br>
+                    <img src="{{asset('img/paper.png')}}" alt="" class="logoCompany"><br> <hr>
                     <p>There are no announcements available now.</p>
                 </div>
             @endif
         <br><br><br>
-        <a href="{{ route('add_announcement') }}" class="add-but" type="submit">Add Announcement</a>
+        <a href="{{ route('add_announcement') }}" class="add-but" style="margin-left:38%; text-decoration: none;" type="submit">Add Announcement</a>
     </div>
 @endsection

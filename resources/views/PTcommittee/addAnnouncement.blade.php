@@ -21,7 +21,7 @@
                 <div class="d-inline-block"><span id="announcement-content-length">0</span>/500</div>
             </div>
             <div>
-                <button class="add-but" type="submit">{{ $action === 'edit' ? 'Modify' : 'Add' }}</button>
+                <button class="add-but" style="margin-top:2%; text-decoration: none;" type="submit">{{ $action === 'edit' ? 'Modify' : 'Add' }}</button>
                 <a href="{{ route('announcements') }}"><button class="can-but" type="button">Cancel</button></a>
             </div>
         </form>

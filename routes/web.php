@@ -82,7 +82,7 @@ Route::get('/CVPage',[PTMPController::class,'CVshow']);
 Route::get('/listOfCompany',[companyController::class,'listOfcompany']);
 Route::get('/searchlistOfCompany',[companyController::class,'searchCompanyList']);
 Route::get('/searchlistOfCompanyRequest',[companyController::class,'searchCompanyRequestList']);
-Route::get('/company-delete/{id}',[companyController::class,'deleteCompany'])->name('deleteCompanyPTunit');
+Route::delete('/company-delete/{id}',[companyController::class,'deleteCompany'])->name('deleteCompanyPTunit');
 Route::get('/Company.{id}',[companyController::class,'CompanyDetails'])->name('CompanyDetails');
 Route::get('/CompanyRegestration/{id}', [companyController::class,'CompanyRegestrationDetails'])->name('regestrationRequest');
 Route::get('/company-accept/{id}', [companyController::class,'AcceptCompany'])->name('accept');

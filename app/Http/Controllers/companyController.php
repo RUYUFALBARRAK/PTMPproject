@@ -196,7 +196,6 @@ class companyController extends Controller
     }
 function listOfcompany(){
     $company= DB::table('company')->where('status', 'accept')->get(); //DB::table('company')->whereIn('status', ['reject','accept'])->get();
-
     return view('PTunit/listOfCompany',compact('company'));
 }
 function listOfCompanyRequest(){
@@ -210,9 +209,23 @@ function CompanyDetails($id){
 }
 
 function deleteCompany($id){
-        $company = company::FindorFail($id);
-        $company->delete();
-        return redirect('/listOfCompany')->with('msgcompanyDelete','company was deleted successfully'); 
+        $companyD = company::FindorFail($id);
+        $Has_opportunity= oppourtunity::where('company_id','=',$id)->exists();
+        $opportunity_has_trainee=oppourtunity::where('company_id','=',$id)->where('numberOfTraineeAssigned','>',0)->count();
+         $company =['company'=> DB::table('company')->where('id', $id)->get()];
+        if($Has_opportunity>0){
+            if($opportunity_has_trainee>0){
+              return  back()->with('popupNO','company Can not be deleted There are trainee applay in try again next time');
+            }else{
+                $companyD->delete();
+                return  back()->with('popupSure','company has opportunity Are you Sure you want to delete it? ');
+            }
+          
+        }else{
+            $companyD->delete();
+             return  back()->with('popupSure','company has opportunity Are you Sure you want to delete it? ');
+        }
+        return back(); 
 }
 
 function CompanyRegestrationDetails($id){
@@ -223,13 +236,13 @@ function rejectCompany($id){
         $companyRequest = company::FindorFail($id);
         $companyRequest->status=companyStatus::reject;
         $companyRequest->update();
-return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was rejected successfully');  
+return redirect('/listOfCompanyRequest')->with('msgcompanyRejected','company was rejected successfully');  
 }
 function AcceptCompany($id){
         $companyRequest = company::FindorFail($id);
         $companyRequest->status=companyStatus::accept;
         $companyRequest->update();
-    return redirect('/listOfCompanyRequest')->with('msgcompanyDelete','company was accepted successfully');  
+    return redirect('/listOfCompanyRequest')->with('msgcompanyAccepted','company was accepted successfully');  
 }
 
 }
