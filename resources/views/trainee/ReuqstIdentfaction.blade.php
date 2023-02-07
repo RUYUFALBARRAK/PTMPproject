@@ -15,7 +15,7 @@
 
         <td class="fist-col-khawlah td-khawlah">
             <a href="{{url('downloadFile/'.$regulationToTrainee)}}">
-                <button type="button" class="Identification-req-but" > Requst identification letter
+                <button type="button" class="Identification-req-but" > Download identification letter
                     <span class="fa fa-download" aria-hidden="true"></span>
             </button>
             </a>
