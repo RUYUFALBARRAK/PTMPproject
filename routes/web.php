@@ -210,7 +210,11 @@ Route::get('/opportunityRequestCommittee', function () {
     $opportunities = oppourtunity::where('status' , 'pending')->get();
     return view('PTcommittee/opportunityRequestCommittee' , compact('opportunities'));
 });
-
+Route::get('/searchopportunityRequestCommittee', function () {
+    $search_opp = $_GET['query'];
+    $opportunities = oppourtunity::where('status' , 'pending')->where('jobTitle', 'LIKE', '%' . $search_opp . '%' )->get();
+    return view('PTcommittee/searchopportunityRequestCommittee' , compact('opportunities'));
+});
 Route::get('/viewDetails', function () {
     return view('PTcommittee/viewDetails');
 });
