@@ -187,7 +187,11 @@ Route::get('/opportunityPageCommittee', function () {
     return view('PTcommittee/opportunityPageCommittee' , compact('opportunities'));
 });
 
-
+Route::get('/searchopportunityPageCommittee', function () {
+    $search_opp = $_GET['query'];
+    $opportunities = oppourtunity::where('status' , 'accept')->where('jobTitle', 'LIKE', '%' . $search_opp . '%' )->get();
+    return view('PTcommittee/searchopportunityPageCommittee' , compact('opportunities'));
+});
 //Opportunities details from committee side
 Route::get('/acceptedOpportunityDetails/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
