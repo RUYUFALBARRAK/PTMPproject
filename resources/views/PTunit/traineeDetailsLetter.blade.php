@@ -101,16 +101,28 @@
 
     <p class="hed-de">Identfaction letter Request</p>
     <hr> <br>
-
-    <div style="margin-left:5%;"> <b> Regulation: </b> </div>
+    <div style="margin-left:5%;"> <b> Regulation:
+            @if($regulation)
+                <a href="{{url($regulation)}}" target="_blank">Link</a>
+                <a href="{{url('downloadFile/'.$regulation)}}"><span class="fa fa-download" aria-hidden="true"></span></a>
+            @endif</b> </div>
     <br>
-    <div style="margin-left:5%;"> <b> Uploaded File: </b> </div>
-
+    <div style="margin-left:5%;"> <b> Uploaded File:
+            @if($regulationToTrainee)
+                <a href="{{url($regulationToTrainee)}}" target="_blank">Link</a>
+                <a href="{{url('downloadFile/'.$regulationToTrainee)}}"><span class="fa fa-download" aria-hidden="true"></span></a>
+            @endif</b> </div>
     <br><br>
-
     <div style="margin-left:45%;">
-    <button type="button" style="display:none;" class="letter-btn"> Submit </button>
-      <button type="button" class="letter-btn"><i class="fa fa-upload"></i> Upload </button>
+    <form method="post" action="{{route('uploadRegulationToTrainee')}}" enctype="multipart/form-data">
+            @csrf
+            <input type="file" id="uploadedFileInput" name="uploadedFileInput" style="display: none">
+            <button type="submit" style="display:none;" class="letter-btn" id="submit_button"> Submit </button>
+            <p type="submit" id="p-filename"></p>
+        </form>
+
+      <label class="btn btn-success letter-btn" id="upload_button" for="uploadedFileInput">
+          <i class="fa fa-upload"></i> Upload </label>
 </div>
 
 
@@ -120,5 +132,12 @@
 
 </div>
 
-
+<script>
+    $('#uploadedFileInput').change(function() {
+        var file = $('#uploadedFileInput')[0].files[0].name;
+        $('#p-filename').text("uploaded file: "+file);
+        $('#upload_button').css('display','none')
+        $('#submit_button').css('display','block')
+    });
+</script>
 @endsection

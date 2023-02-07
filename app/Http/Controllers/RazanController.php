@@ -465,63 +465,73 @@ class RazanController extends Controller
     }
 
 
-    public function LetterRequest($id){
+    public function LetterRequest($id)
+    {
         $trainee = trainee::where('trainee_id', $id)->first();
 
         $academic = null;
         $certificate = null;
         $letter = null;
 
-        if (cv::where( 'trainee_id' , $id)->where( 'documentName' , 'acdamicFile')->exists()) {
-            $academic = cv::where( 'trainee_id' , $id)->where( 'documentName' , 'acdamicFile')->value('document');
+        if (cv::where('trainee_id', $id)->where('documentName', 'acdamicFile')->exists()) {
+            $academic = cv::where('trainee_id', $id)->where('documentName', 'acdamicFile')->value('document');
             $aca = true;
-        }
-        else{
-            $aca =false;
-        }
-
-        if (cv::where( 'trainee_id' , $id)->where( 'documentName' , 'certifactionFile')->exists()) {
-            $certificate = cv::where( 'trainee_id' , $id)->where( 'documentName' , 'certifactionFile')->value('document');
-            $cert =true;
-        }
-        else{
-            $cert =false;
+        } else {
+            $aca = false;
         }
 
-        if (cv::where( 'trainee_id' , $id)->where( 'documentName' , 'identificationLetter')->exists()) {
-            $letter = cv::where( 'trainee_id' , $id)->where( 'documentName' , 'identificationLetter')->first();
-            $let =true;
+        if (cv::where('trainee_id', $id)->where('documentName', 'certifactionFile')->exists()) {
+            $certificate = cv::where('trainee_id', $id)->where('documentName', 'certifactionFile')->value('document');
+            $cert = true;
+        } else {
+            $cert = false;
         }
-        else{
-            $let =false;
+
+        if (cv::where('trainee_id', $id)->where('documentName', 'identificationLetter')->exists()) {
+            $letter = cv::where('trainee_id', $id)->where('documentName', 'identificationLetter')->first();
+            $let = true;
+        } else {
+            $let = false;
         }
 
 
-        $experience = traineeExperience::where( 'trainee_id' , $id)->get();
-        $interest = traineeInterests::where( 'trainee_id' , $id)->get();
-        $language = traineeLanguages::where( 'trainee_id' , $id)->get();
-        $skill = traineeSkills::where( 'trainee_id' , $id)->get();
+        $experience = traineeExperience::where('trainee_id', $id)->get();
+        $interest = traineeInterests::where('trainee_id', $id)->get();
+        $language = traineeLanguages::where('trainee_id', $id)->get();
+        $skill = traineeSkills::where('trainee_id', $id)->get();
 
+        $regulation = \App\Models\Sendsdocument::where('trainee_id', $id)
+            ->where('doc_name', \App\Enum\fileNameEnum::identificationLetter)
+            ->orderByDesc('created_at')
+            ->first();
+        $regulation = $regulation ? $regulation->document : null;
+
+        $regulationToTrainee = \App\Models\Sendsdocument::where('trainee_id', $id)
+            ->where('doc_name', \App\Enum\fileNameEnum::identificationLetterToTrainee)
+            ->orderByDesc('created_at')
+            ->first();
+        $regulationToTrainee = $regulationToTrainee ? $regulationToTrainee->document : null;
 
         return view('PTunit/traineeDetailsLetter', [
-            'trainee' => $trainee ,
+            'trainee' => $trainee,
 
-            'aca' => $aca ,
-            'cert' => $cert ,
-            'let' => $let ,
+            'aca' => $aca,
+            'cert' => $cert,
+            'let' => $let,
 
-            'certificate' => $certificate ,
-            'letter' => $letter ,
-            'academic' => $academic ,
+            'certificate' => $certificate,
+            'letter' => $letter,
+            'academic' => $academic,
 
-            'experience' => $experience ,
-            'interest' => $interest ,
-            'language' => $language ,
-            'skill' => $skill
+            'experience' => $experience,
+            'interest' => $interest,
+            'language' => $language,
+            'skill' => $skill,
+
+            'regulation' => $regulation,
+            'regulationToTrainee' => $regulationToTrainee,
         ]);
     }
-
-
 
     public function showReviews($id){
 

@@ -7,7 +7,7 @@
   <input type="search"  class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
   <button type="button" class="btn btn-outline-dark" >search</button>
 
-  
+
 
 
 </div>
@@ -21,26 +21,30 @@
 <hr>
 <table class="list-of-company">
     <tr>
-       
+
         <th style="padding-left:4%; text-align: left;">Name </th>
         <th>ID</th>
 
         <th style= "text-align: right; padding-right:4%;" >status</th>
-   
+
         <th></th>
 
      </tr>
+
+    @foreach($users as $user)
   <tr>
 
-    <td>sarah mohamad</td>
-    <td style="font-size: 14px;"> 437200273 </td>
-    <td style="font-size: 14px;"> Ongoing </td>
-   
+    <td>{{$user->name}}</td>
+    <td style="font-size: 14px;"> {{$user->trainee_id}} </td>
+    <td style="font-size: 14px;"> {{$user->status}} </td>
     <td>
-    
-    <span class="	fa fa-chevron-right"></span>
+        <a href="{{route('LetterRequest',['id'=> $user->trainee_id])}}">
+            <span class="	fa fa-chevron-right"></span>
+        </a>
     </td>
   </tr>
-</table>    
+    @endforeach
+
+</table>
 </div>
 @endsection
