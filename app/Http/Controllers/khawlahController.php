@@ -72,6 +72,14 @@ class khawlahController extends Controller
         return view('PTunit/searchlistOfStudentsPTunit',compact('students'));
         
     }
+    public function searchlistOfStudentsReqLetter(){
+        $search_trainee = $_GET['query'];
+
+        $students =trainee::select("*")->where('name', 'LIKE', '%' . $search_trainee . '%' )-> orWhere ('trainee_id', 'LIKE', '%' . $search_trainee . '%')->get();
+
+        return view('PTunit/searchlistOfStudentsReqLetter',compact('students'));
+        
+    }
     //company request
     public function search(){
         if (Session::has('logincompId')) {

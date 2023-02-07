@@ -32,7 +32,7 @@
     <td style="font-size: 14px;padding-right:3.5%; "> {{$student->status}} </td>
     <td style="padding-left:7%;">
     
-    <a href="traineeDetails"><span class="	fa fa-chevron-right"></span></a>
+    <a href="{{route('detailsForUnit',[$student->trainee_id])}}"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
   @endforeach

@@ -297,6 +297,8 @@ Route::post('uploadRegulationToTrainee',function (\Illuminate\Http\Request $requ
 
 Route::get('/listOfStudentsPTunit', [khawlahController::class,'studentListPT']);
 Route::get('/searchlistOfStudentsPTunit', [khawlahController::class,'searchstudentListPT']);
+Route::get('/searchlistOfStudentsReqLetter', [khawlahController::class,'searchlistOfStudentsReqLetter']);
+
 
 
 Route::post('/addSkill', [PTMPController::class,'addSkill'])-> name('addSkill');

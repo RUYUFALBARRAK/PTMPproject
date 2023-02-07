@@ -2,15 +2,18 @@
 
 @section('content-training')
 <div class="content">
+  <form method="GET" action="{{url('/searchlistOfStudentsReqLetter')}}">
+
 <div style="width:100%" class="input-group">
 
-  <input type="search"  class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-  <button type="button" class="btn btn-outline-dark" >search</button>
+  <input type="search" name="query"  class="form-control rounded" placeholder="Search for trainee by name or ID..." aria-label="Search" aria-describedby="search-addon" />
+  <button type="submit" class="btn btn-outline-dark" >search</button>
 
 
 
 
 </div>
+</form>
 <!--
 <div class="form-group col-md-2 state-menu" style="margin-right:40px;">
 <span class="glyphicon glyphicon-record" style="color:red; padding-top:25px;"></span>
@@ -19,6 +22,12 @@
 </div>-->
 
 <hr>
+@if(count($users) == 0)
+      <div class="not-found">
+      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
+      <p>No Trainee Found</p>
+    </div>
+    @else
 <table class="list-of-company">
     <tr>
 
@@ -46,5 +55,6 @@
     @endforeach
 
 </table>
+@endif
 </div>
 @endsection

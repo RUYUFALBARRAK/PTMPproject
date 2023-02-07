@@ -2,7 +2,7 @@
 
 @section('content-training')
 <div class="content">
-<form method="GET" action="{{url('/searchlistOfStudentsPTunit')}}">
+<form method="GET" action="{{url('/searchlistOfStudentsReqLetter')}}">
 
 <div class="input-group">
   <input type="search" class="form-control rounded" name="query" placeholder="Search for trainee by name or ID..." aria-label="Search" aria-describedby="search-addon" />
@@ -31,7 +31,7 @@
     <td style="font-size: 14px;"> {{$student->trainee_id}} </td>
     <td style="font-size: 14px;padding-right:3.5%; "> {{$student->status}} </td>
     <td style="padding-left:7%;">
-    <a href="{{ route('detailsForUnit',[$student->trainee_id]) }}"><span class="	fa fa-chevron-right"></span></a>
+    <a href="{{ route('LetterRequest',[$student->trainee_id]) }}"><span class="fa fa-chevron-right"></span></a>
 
     </td>
   </tr>
