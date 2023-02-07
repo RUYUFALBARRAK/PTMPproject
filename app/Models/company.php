@@ -23,6 +23,7 @@ class company extends Model
         'SupervisorEmail',
         'SupervisorName',
         'password',
+        'status',
         'SupervisorFax',
         'Address',
         'logoImage'

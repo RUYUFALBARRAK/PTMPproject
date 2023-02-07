@@ -1,5 +1,4 @@
-<!-- @extends('trainee.mainPage') -->
-@extends('Company.mainPage')
+@extends('company.mainPage')
 
 @section('content-training')
     <div class="content">
@@ -17,7 +16,7 @@
         </table>
         @else
             <div class="not-found">
-                <img src="{{asset('img/paper.png')}}" alt="" class="logoCompany">
+                <img src="{{asset('img/paper.png')}}" alt="no doc" class="logoCompany"><br><hr>
                 <p>There are no documents available now.</p>
             </div>
         @endif

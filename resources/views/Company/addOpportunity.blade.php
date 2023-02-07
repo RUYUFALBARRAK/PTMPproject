@@ -69,8 +69,119 @@
 
   <div class="row opportunity-form">
     <div class="col">
-    <label for="validationTooltip01" class="form-label"> Address: </label>
-      <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Enter Address" value="{{ old('address') }}" name="address">
+      <label for="validationTooltip01" class="form-label"> City :<span class ="red"> * </span></label>
+      <select id="city" value="{{ old('address') }}" name="address" class="form-select form-select-lg">
+        @if ($errors->has('address'))
+        <span class="text-danger">{{ $errors->first('address') }}</span>
+        @endif
+        <option> select a city </option>
+        <option>Abha</option>
+        <option>Al-Abwa</option>
+        <option>Al Artaweeiyah</option>
+        <option>Al Bukayriyah</option>
+        <option>Badr</option>
+        <option>Baljurashi</option>
+        <option>Bisha</option>
+        <option>Bareq</option>
+        <option>Buraydah</option>
+        <option>Al Bahah</option>
+        <option>Buqaa</option>
+        <option>Dammam</option>
+        <option>Dhahran</option>
+        <option>Dhurma</option>
+        <option>Dahaban</option>
+        <option>Diriyah</option>
+        <option>Duba</option>
+        <option>Dumat Al-Jandal</option>
+        <option>Dawadmi</option>
+        <option>Farasan</option>
+        <option>Gatgat</option>
+        <option>Gerrha</option>
+        <option>Ghawiyah</option>
+        <option>Al-Gwei'iyyah</option>
+        <option>Harmah</option>
+        <option>Ha'il</option>
+        <option>Hotat Bani Tamim</option>
+        <option>Hofuf</option>
+        <option>Huraymila</option>
+        <option>Hafr Al-Batin</option>
+        <option>Jabal Umm al Ru'us</option>
+        <option>Jalajil</option>
+        <option>Jeddah</option>
+        <option>Jizan</option>
+        <option>Jizan Economic City</option>
+        <option>Jubail</option>
+        <option>Al Jafr</option>
+        <option>Khafji</option>
+        <option>Khaybar</option>
+        <option>King Abdullah Economic City</option>
+        <option>King Abdullah Economic City</option>
+        <option>Khamis Mushait</option>
+        <option>Al-Saih</option>
+        <option>Knowledge Economic City, Medina</option>
+        <option>Khobar</option>
+        <option>Al-Khutt</option>
+        <option>Layla</option>
+        <option>Lihyan</option>
+        <option>Al Lith</option>
+        <option>Al Majma'ah</option>
+        <option>Mastoorah</option>
+        <option>Al Mikhwah</option>
+        <option>Al-Mubarraz</option>
+        <option>Al Mawain</option>
+        <option>Medina</option>
+        <option>Mecca</option>
+        <option>Muzahmiyya</option>
+        <option>Najran</option>
+        <option>Al-Namas</option>
+        <option>Umluj</option>
+        <option>Al-Omran</option>
+        <option>Al-Oyoon</option>
+        <option>Qadeimah</option>
+        <option>Qatif</option>
+        <option>Qaisumah</option>
+        <option>Al Qunfudhah</option>
+        <option>Qurayyat</option>
+        <option>Rabigh</option>
+        <option>Rafha</option>
+        <option>Ar Rass</option>
+        <option>Ras Tanura</option>
+        <option>Ranyah</option>
+        <option>Riyadh</option>
+        <option>Riyadh Al-Khabra</option>
+        <option>Rumailah</option>
+        <option>Sabt Al Alaya</option>
+        <option>Sarat Abidah</option>
+        <option>Saihat</option>
+        <option>Safwa city</option>
+        <option>Sakakah</option>
+        <option>Sharurah</option>
+        <option>Shaqraa</option>
+        <option>Shaybah</option>
+        <option>As Sulayyil</option>
+        <option>Taif</option>
+        <option>Tabuk</option>
+        <option>Tanomah</option>
+        <option>Tarout</option>
+        <option>Tayma</option>
+        <option>Thadiq</option>
+        <option>Thuwal</option>
+        <option>Thuqbah</option>
+        <option>Turaif</option>
+        <option>Tabarjal</option>
+        <option>Udhailiyah</option>
+        <option>Al-'Ula</option>
+        <option>Um Al-Sahek</option>
+        <option>Unaizah</option>
+        <option>Uqair</option>
+        <option>'Uyayna</option>
+        <option>Uyun AlJiwa</option>
+        <option>Wadi Al-Dawasir</option>
+        <option>Al Wajh</option>
+        <option>Yanbu</option>
+        <option>Az Zaimah</option>
+        <option>Zulfi</option>
+      </select>
        @if ($errors->has('address'))
         <span class="text-danger">{{ $errors->first('address') }}</span>
         @endif
