@@ -163,6 +163,17 @@ class BushraController extends Controller
             'reviews' => $reviews
         ]);
     }
+    public function searchopportunityPageTrainee(){
+        $search_opp = $_GET['query'];
+        $opportunities = oppourtunity::where('jobTitle', 'LIKE', '%' . $search_opp . '%' )->where('status' , 'accept')->where('numberOfTrainee','>=', 'numberOfTraineeAssigned')->get();
+        $id = trainee::join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->where('trainee_id', '=', session('loginId'))->value('opportunity.company_id');
+        $reviews = Review::get();
+        return view('trainee/opportunityPageTrainee' , [
+            'opportunities' => $opportunities ,
+            'reviews' => $reviews
+        ]);
+    }
+
 
     public function deleteOpportunity(){
         //

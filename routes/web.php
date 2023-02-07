@@ -152,6 +152,8 @@ Route::get('/personalInfoCompany', function () {
 })->name('company.show');
 
 Route::get('/opportunityPageTrainee', [BushraController::class , 'opportunityTrainee'])->name('opportunityTrainee');
+Route::get('/searchopportunityPageTrainee', [BushraController::class,'searchopportunityPageTrainee']);
+
 Route::get('/opportunityDetailsPageT/{id}', function ($id) {
     $opportunity = oppourtunity::findOrFail($id);
     $has_opportunity = requestedopportunity::where('trainee_id' , session()->get('loginId'))->where('statusbytrainee','accept')->get();
