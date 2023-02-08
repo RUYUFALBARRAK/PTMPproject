@@ -158,6 +158,7 @@
 
     <table class="table-Bushra">
       @foreach($opportunities as $opportunitiy)
+      @if(($opportunitiy->numberOfTraineeAssigned) < ($opportunitiy->numberOfTrainee))
         <tr class="tr-Bushra">
 
           <td class="fisrt-col-Bushra">
@@ -174,18 +175,17 @@
             @php $status = App\Models\requestedopportunity::where('opportunity_id',$opportunitiy->id)->where('trainee_id' , session()->get('loginId'))->first(); @endphp
 
             @if(is_null($status))
-             
             @else
-              @if ($status->statusbycompany == 'pending' || ($status->statusbycompany == 'accept' && $status->statusbytrainee == 'pending'))
+              @if(($status->statusbycompany ==  \App\Enum\companyStatus::pending || $status->statusbycompany == \App\Enum\companyStatus::accept) && $status->statusbytrainee ==  \App\Enum\companyStatus::pending )
                 <h4 class="opportunityStateB2 text-warning">Pending</h4>
-              @elseif($status->statusbycompany == 'accept' && $status->statusbytrainee == 'accept')
+              @elseif($status->statusbycompany == \App\Enum\companyStatus::accept && $status->statusbytrainee == \App\Enum\companyStatus::accept)
                 <h4 class="opportunityStateB2 text-success">Accept</h4>
-              @elseif ($status->statusbycompany == 'reject')
+              @elseif($status->statusbycompany == \App\Enum\companyStatus::reject)
                 <h4 class="opportunityStateB2 text-danger">Reject</h4>
               @else
                 <h4 class="opportunityStateB2 text-success">Available</h4>
               @endif
-            @endif
+           @endif
           </td>
 
           <td class="td-Bushra">
@@ -254,6 +254,7 @@
           </td>
         
         </tr>
+        @endif
       @endforeach 
 
   </table>

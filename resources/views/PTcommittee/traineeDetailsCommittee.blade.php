@@ -98,7 +98,7 @@
 </div>
 
 
-@if($status != "Available")
+@if($status == "Ongoing")
 
 <div class="content">
 
@@ -141,7 +141,7 @@
     <th class="subm" style="color:rgb(161, 161, 161);"> VIEW SUBMITTED </th>
     @endif
 </tr>
-
+h
 <tr>
     <td>Presentation</td>
     @if($presentation != 0)
