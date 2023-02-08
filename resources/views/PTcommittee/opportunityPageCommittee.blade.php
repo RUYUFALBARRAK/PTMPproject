@@ -13,119 +13,118 @@
 
 
     <div class="form-group col-md-2 state-menu" style="margin-top: -2.5%;">
-      <select id="filterLocationCommittee" class="form-select ">
+      <select name="filterAddressCommittee" id="filterAddressCommittee" class="form-select ">
         <option value="">Location..</option>
-        <option>Abha</option>
-        <option>Al-Abwa</option>
-        <option>Al Artaweeiyah</option>
-        <option>Al Bukayriyah</option>
-        <option>Badr</option>
-        <option>Baljurashi</option>
-        <option>Bisha</option>
-        <option>Bareq</option>
-        <option>Buraydah</option>
-        <option>Al Bahah</option>
-        <option>Buqaa</option>
-        <option>Dammam</option>
-        <option>Dhahran</option>
-        <option>Dhurma</option>
-        <option>Dahaban</option>
-        <option>Diriyah</option>
-        <option>Duba</option>
-        <option>Dumat Al-Jandal</option>
-        <option>Dawadmi</option>
-        <option>Farasan</option>
-        <option>Gatgat</option>
-        <option>Gerrha</option>
-        <option>Ghawiyah</option>
-        <option>Al-Gwei'iyyah</option>
-        <option>Harmah</option>
-        <option>Ha'il</option>
-        <option>Hotat Bani Tamim</option>
-        <option>Hofuf</option>
-        <option>Huraymila</option>
-        <option>Hafr Al-Batin</option>
-        <option>Jabal Umm al Ru'us</option>
-        <option>Jalajil</option>
-        <option>Jeddah</option>
-        <option>Jizan</option>
-        <option>Jizan Economic City</option>
-        <option>Jubail</option>
-        <option>Al Jafr</option>
-        <option>Khafji</option>
-        <option>Khaybar</option>
-        <option>King Abdullah Economic City</option>
-        <option>King Abdullah Economic City</option>
-        <option>Khamis Mushait</option>
-        <option>Al-Saih</option>
-        <option>Knowledge Economic City, Medina</option>
-        <option>Khobar</option>
-        <option>Al-Khutt</option>
-        <option>Layla</option>
-        <option>Lihyan</option>
-        <option>Al Lith</option>
-        <option>Al Majma'ah</option>
-        <option>Mastoorah</option>
-        <option>Al Mikhwah</option>
-        <option>Al-Mubarraz</option>
-        <option>Al Mawain</option>
-        <option>Medina</option>
-        <option>Mecca</option>
-        <option>Muzahmiyya</option>
-        <option>Najran</option>
-        <option>Al-Namas</option>
-        <option>Umluj</option>
-        <option>Al-Omran</option>
-        <option>Al-Oyoon</option>
-        <option>Qadeimah</option>
-        <option>Qatif</option>
-        <option>Qaisumah</option>
-        <option>Al Qunfudhah</option>
-        <option>Qurayyat</option>
-        <option>Rabigh</option>
-        <option>Rafha</option>
-        <option>Ar Rass</option>
-        <option>Ras Tanura</option>
-        <option>Ranyah</option>
-        <option>Riyadh</option>
-        <option>Riyadh Al-Khabra</option>
-        <option>Rumailah</option>
-        <option>Sabt Al Alaya</option>
-        <option>Sarat Abidah</option>
-        <option>Saihat</option>
-        <option>Safwa city</option>
-        <option>Sakakah</option>
-        <option>Sharurah</option>
-        <option>Shaqraa</option>
-        <option>Shaybah</option>
-        <option>As Sulayyil</option>
-        <option>Taif</option>
-        <option>Tabuk</option>
-        <option>Tanomah</option>
-        <option>Tarout</option>
-        <option>Tayma</option>
-        <option>Thadiq</option>
-        <option>Thuwal</option>
-        <option>Thuqbah</option>
-        <option>Turaif</option>
-        <option>Tabarjal</option>
-        <option>Udhailiyah</option>
-        <option>Al-'Ula</option>
-        <option>Um Al-Sahek</option>
-        <option>Unaizah</option>
-        <option>Uqair</option>
-        <option>Uyayna</option>
-        <option>Uyun AlJiwa</option>
-        <option>Wadi Al-Dawasir</option>
-        <option>Al Wajh</option>
-        <option>Yanbu</option>
-        <option>Az Zaimah</option>
-        <option>Zulfi</option>
+        <option value="Abha">Abha</option>
+        <option value="Al-Abwa">Al-Abwa</option>
+        <option value="Al Artaweeiyah">Al Artaweeiyah</option>
+        <option value="Al Bukayriyah">Al Bukayriyah</option>
+        <option value="Badr">Badr</option>
+        <option value="Baljurashi">Baljurashi</option>
+        <option value="Bisha">Bisha</option>
+        <option value="Bareq">Bareq</option>
+        <option value="Buraydah">Buraydah</option>
+        <option value="Al Bahah">Al Bahah</option>
+        <option value="Buqaa">Buqaa</option>
+        <option value="Dammam<">Dammam</option>
+        <option value="Dhahran">Dhahran</option>
+        <option value="Dhurma">Dhurma</option>
+        <option value="Dahaban">Dahaban</option>
+        <option value="Diriyah">Diriyah</option>
+        <option value="Duba">Duba</option>
+        <option value="Dumat Al-Jandal">Dumat Al-Jandal</option>
+        <option value="Dawadmi">Dawadmi</option>
+        <option value="Farasan">Farasan</option>
+        <option value="Gatgat">Gatgat</option>
+        <option value="Gerrha">Gerrha</option>
+        <option value="Ghawiyah">Ghawiyah</option>
+        <option value="Al-Gwei'iyyah">Al-Gwei'iyyah</option>
+        <option value="Harmah">Harmah</option>
+        <option value="Ha'il">Ha'il</option>
+        <option value="Hotat Bani Tamim">Hotat Bani Tamim</option>
+        <option value="Hofuf">Hofuf</option>
+        <option value="Huraymila">Huraymila</option>
+        <option value="Hafr Al-Batin">Hafr Al-Batin</option>
+        <option value="Jabal Umm al Ru'us">Jabal Umm al Ru'us</option>
+        <option value="Jalajil">Jalajil</option>
+        <option value="Jeddah">Jeddah</option>
+        <option value="Jizan">Jizan</option>
+        <option value="Jizan Economic City">Jizan Economic City</option>
+        <option value="Jubail">Jubail</option>
+        <option value="Al Jafr">Al Jafr</option>
+        <option value="Khafji">Khafji</option>
+        <option value="Khaybar">Khaybar</option>
+        <option value="King Abdullah Economic City">King Abdullah Economic City</option>
+        <option value="Khamis Mushait">Khamis Mushait</option>
+        <option value="Al-Saih">Al-Saih</option>
+        <option value="Knowledge Economic City, Medina">Knowledge Economic City, Medina</option>
+        <option value="Khobar">Khobar</option>
+        <option value="Al-Khutt">Al-Khutt</option>
+        <option value="Layla">Layla</option>
+        <option value="Lihyan">Lihyan</option>
+        <option value="Al Lith">Al Lith</option>
+        <option value="Al Majma'ah">Al Majma'ah</option>
+        <option value="Mastoorah">Mastoorah</option>
+        <option value="Al Mikhwah">Al Mikhwah</option>
+        <option value="Al-Mubarraz">Al-Mubarraz</option>
+        <option value="Al Mawain">Al Mawain</option>
+        <option value="Medina">Medina</option>
+        <option value="Mecca">Mecca</option>
+        <option value="Muzahmiyya">Muzahmiyya</option>
+        <option value="Najran">Najran</option>
+        <option value="Al-Namas">Al-Namas</option>
+        <option value="Umluj">Umluj</option>
+        <option value="Al-Omran">Al-Omran</option>
+        <option value="Al-Oyoon">Al-Oyoon</option>
+        <option value="Qadeimah">Qadeimah</option>
+        <option value="Qatif">Qatif</option>
+        <option value="Qaisumah">Qaisumah</option>
+        <option value="Al Qunfudhah">Al Qunfudhah</option>
+        <option value="Qurayyat">Qurayyat</option>
+        <option value="Rabigh">Rabigh</option>
+        <option value="Rafha">Rafha</option>
+        <option value="Ar Rass">Ar Rass</option>
+        <option value="Ras Tanura">Ras Tanura</option>
+        <option value="Ranyah">Ranyah</option>
+        <option value="Riyadh">Riyadh</option>
+        <option value="Riyadh Al-Khabra">Riyadh Al-Khabra</option>
+        <option value="Rumailah">Rumailah</option>
+        <option value="Sabt Al Alaya">Sabt Al Alaya</option>
+        <option value="Sarat Abidah">Sarat Abidah</option>
+        <option value="Saihat">Saihat</option>
+        <option value="Safwa city">Safwa city</option>
+        <option value="Sakakah">Sakakah</option>
+        <option value="Sharurah">Sharurah</option>
+        <option value="Shaqraa">Shaqraa</option>
+        <option value="Shaybah">Shaybah</option>
+        <option value="As Sulayyil">As Sulayyil</option>
+        <option value="Taif">Taif</option>
+        <option value="Tabuk">Tabuk</option>
+        <option value="Tanomah">Tanomah</option>
+        <option value="Tarout">Tarout</option>
+        <option value="Tayma">Tayma</option>
+        <option value="Thadiq">Thadiq</option>
+        <option value="Thuwal">Thuwal</option>
+        <option value="Thuqbah">Thuqbah</option>
+        <option value="Turaif">Turaif</option>
+        <option value="Tabarjal">Tabarjal</option>
+        <option value="Udhailiyah">Udhailiyah</option>
+        <option value="Al-'Ula">Al-'Ula</option>
+        <option value="Um Al-Sahek">Um Al-Sahek</option>
+        <option value="Unaizah">Unaizah</option>
+        <option value="Uqair">Uqair</option>
+        <option value="Uyayna">Uyayna</option>
+        <option value="Uyun AlJiwa">Uyun AlJiwa</option>
+        <option value="Wadi Al-Dawasir">Wadi Al-Dawasir</option>
+        <option value="Al Wajh">Al Wajh</option>
+        <option value="Yanbu">Yanbu</option>
+        <option value="Az Zaimah">Az Zaimah</option>
+        <option value="Zulfi">Zulfi</option>
       </select>
     </div>
 
     <script>
-      $("#filterLocationCommittee").append($("#filterLocationCommittee option:gt(0)").sort(function (a, b) {
+      $("#filterAddressCommittee").append($("#filterAddressCommittee option:gt(0)").sort(function (a, b) {
         return a.text == b.text ? 0 : a.text < b.text ? -1 : 1;
       }));
     </script>

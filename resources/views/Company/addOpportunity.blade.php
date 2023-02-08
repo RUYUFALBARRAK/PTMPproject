@@ -74,7 +74,7 @@
         @if ($errors->has('address'))
         <span class="text-danger">{{ $errors->first('address') }}</span>
         @endif
-        <option> select a city </option>
+        <option value=""> select a city </option>
         <option>Abha</option>
         <option>Al-Abwa</option>
         <option>Al Artaweeiyah</option>
@@ -114,7 +114,6 @@
         <option>Al Jafr</option>
         <option>Khafji</option>
         <option>Khaybar</option>
-        <option>King Abdullah Economic City</option>
         <option>King Abdullah Economic City</option>
         <option>Khamis Mushait</option>
         <option>Al-Saih</option>
@@ -186,6 +185,13 @@
         <span class="text-danger">{{ $errors->first('address') }}</span>
         @endif
     </div>
+    
+    <script>
+      $("#address").append($("#address option:gt(0)").sort(function (a, b) {
+        return a.text == b.text ? 0 : a.text < b.text ? -1 : 1;
+      }));
+    </script>
+
     <div class="col">
     <label for="validationTooltip01" class="form-label">Application Deadline:<span class ="red"> * </span></label>
       <input type="date" class="form-control @error('AppDeadline') is-invalid @enderror" placeholder="Enter Application deadline" value="{{ old('AppDeadline') }}" name="AppDeadline">
@@ -193,6 +199,7 @@
         <span class="text-danger">{{ $errors->first('AppDeadline') }}</span>
         @endif
     </div>
+
   </div>
 
   <div class="row opportunity-form">

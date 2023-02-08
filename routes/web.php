@@ -10,6 +10,8 @@ use App\Http\Controllers\khawlahController;
 use App\Models\oppourtunity;
 use App\Models\company;
 use App\Models\requestedopportunity;
+use App\Http\Controllers\FilteringController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -325,7 +327,8 @@ Route::post('/addfile', [PTMPController::class,'addfile'])-> name('addfile');
 //download PT Plan from the details page:
 Route::get('/downloade/{id}', [BushraController::class,'downloade'])->name('downloade');
 
-
+//Filteing:
+//Route::get('filter', [FilteringController::class, 'filterOpportunity'])->name('filter');
 
 
 
