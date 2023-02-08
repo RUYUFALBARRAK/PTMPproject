@@ -113,11 +113,11 @@ class BushraController extends Controller
 
     // Excute When student apply on opportunity
     public function opportunityApplySubmit(Request $request,$id){
-
+if(session()->get('loginId')!=null){
         $opportunity = oppourtunity::findOrFail($id);
 
         requestedopportunity::create([
-            'statusbycommittee' => 'pending',
+            'statusbycommittee' => 'accept',
             'statusbycompany' => 'pending',
             'statusbytrainee'  => 'pending',
             'trainee_id' => session()->get('loginId'),
@@ -127,22 +127,37 @@ class BushraController extends Controller
 
         Alert::success('', 'Opportunity has been applied for');
         return redirect()->route('opportunity.confirm' , $opportunity->id);
-
+    }
+    return redirect('welcome');
     }
 
     // Excute When student Confirm opportunity
     public function confirmOpportunity(Request $request,$id){
-
+if(session()->get('loginId')!=null){
         $req_opportunity = requestedopportunity::where('opportunity_id' , $id)->where('trainee_id' , session()->get('loginId'))->first();
-
+        $opportunity=oppourtunity::where('id' , $id)->first();
+        if($opportunity->numberOfTraineeAssigned< $opportunity->numberOfTrainee){
+        $opportunity=oppourtunity::where('id' , $id)->increment('numberOfTraineeAssigned');
+        $trainee=trainee::where('trainee_id' , session()->get('loginId'));
+        
         $req_opportunity->update([
             'statusbytrainee' => 'accept',
             'statusbycompany' => 'accept',
-            'numberOfTraineeAssigned'=>new Expression('numberOfTraineeAssigned + 1')
+            
+        ]);
+
+        $trainee->update([
+            'opportunity_id'=>$id,
+            'status'=>'Ongoing'
         ]);
 
         Alert::success('', 'Opportunity has been Confirmed');
         return redirect()->back();
+    }else{
+        return back()->with('sorryfull','sorry this opportunity is full already');;
+    }
+         }
+    return redirect('welcome');
 
     }
 
@@ -175,7 +190,14 @@ class BushraController extends Controller
     }
 
 
-    public function deleteOpportunity(){
-        //
+    public function deleteOpportunity($id){
+        $oppourtunity = oppourtunity::FindorFail($id);
+        if($oppourtunity->numberOfTraineeAssigned == 0){
+            $oppourtunity->delete();
+            return  back();
+        }elseif($oppourtunity->numberOfTraineeAssigned  >0){
+            return  back()->with('cannotdelete','opportunity has student apply in Are you Sure you want to delete it? ');
+        }
+        return  back();
     }
 }

@@ -87,6 +87,7 @@ Route::get('/listOfCompany',[companyController::class,'listOfcompany']);
 Route::get('/searchlistOfCompany',[companyController::class,'searchCompanyList']);
 Route::get('/searchlistOfCompanyRequest',[companyController::class,'searchCompanyRequestList']);
 Route::delete('/company-delete/{id}',[companyController::class,'deleteCompany'])->name('deleteCompanyPTunit');
+Route::delete('/oppo-delete/{id}',[BushraController::class , 'deleteOpportunity'])->name('deleteoppourtunityPTcommitte');
 Route::get('/Company.{id}',[companyController::class,'CompanyDetails'])->name('CompanyDetails');
 Route::get('/CompanyRegestration/{id}', [companyController::class,'CompanyRegestrationDetails'])->name('regestrationRequest');
 Route::get('/company-accept/{id}', [companyController::class,'AcceptCompany'])->name('accept');
@@ -129,12 +130,15 @@ Route::get('/AnnouncementsTrainee', function () {
 
 
 Route::get('/opportunityPageCompany', function () {
+    if(session()->get('logincompId')!=null){
     $company_id = session()->get('logincompId');
     $opportunities = ['opportunities'=> oppourtunity::where('company_id' , $company_id)->get(),
     'comp'=> company::where('id' , $company_id)->first()
 ];
 
     return view('Company/opportunityPageCompany' , $opportunities);
+}
+return redirect('loginCompany');
 });
 
 // Route::get('/personalInfoCompanyEdit', function () {

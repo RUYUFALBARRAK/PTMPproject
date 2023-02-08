@@ -147,7 +147,21 @@
           </td>
 
       
-          <td class="td-Bushra"><button class="btn-delete" type="submit">Delete </button></td>
+        <td >   
+          @if(($opportunity->numberOfTraineeAssigned)== 0)
+     <form method="POST" action="{{ route('deleteoppourtunityPTcommitte',[$opportunity->id]) }}">
+           @csrf
+           <input name="_method" type="hidden" value="DELETE">
+          <button type="submit" id="delete" data-toggle="tooltip" title='Delete' style="margin-left:50%;" class="btn btn-outline-danger  show_confirm">Delete</button>
+        </form>
+        @else
+          <form method="" action="">
+           @csrf
+           <input name="_method" type="hidden" value="DELETE">
+        <button type="submit"  id="delete" data-toggle="tooltip" title='can not be deleted' style="margin-left:50%;" class="btn btn-outline-danger show_noconfirm">Delete</button>
+        </form>
+        @endif
+      </td>
 
           <td>
             <a href="{{ route('accOpportunity.details', $opportunity->id) }}"><span class="	fa fa-chevron-right" style="margin-top:1%;"></span></a>
@@ -155,7 +169,49 @@
       
       </tr>
         @endforeach
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+ 
+     $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `This opportunity may have assigned to trainee do you want to delete it?`,
+              text: "If you delete this, it will be gone forever.",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+              className: "myClass"
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+  $('.show_noconfirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Opportunity delete!`,
+              text: "This opportunity can not be deleted it is assigned to trainee",
+              icon: "warning",
+              button: true,
+              dangerMode: true,
+              className: "myClass"
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+ });
+  
+</script>
       </table>
+
     @else
      <div class="not-found">
        <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
