@@ -191,7 +191,7 @@ class BalqeesController extends Controller
             $new_password = Hash::make($inputs['password']);
             if(DB::table('company')->where(['orgnizationEmail' => $inputs['email']])->update(['password' => $new_password])) {
                 if(DB::table('password_resets')->where('email', '=', $inputs['email'])->delete()) {
-                    return redirect('/welcome');
+                    return redirect(route('change_password', ['token' => $inputs['token']]))->with('status', 'Your password has been changed successfully.')->with('theme', 'success');
                 }
             }
             return redirect(route('change_password', ['token' => $inputs['token']]))->with('status', 'An error occurred while changing your password.')->with('theme', 'danger')->withErrors($inputs)->withInput();

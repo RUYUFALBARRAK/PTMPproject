@@ -2,9 +2,9 @@
 
 @section('content')
 
-<img src="img/background_ksu2.png" alt="ksu" class="back">
+<img src="{{asset('img/background_ksu2.png')}}" alt="ksu" class="back">
 <div class="container-sm">
-<img src="img/learning.png" alt="ksu" class="learning" width="30%" hight="30%">
+<img src="{{asset('img/learning.png')}}" alt="ksu" class="learning" width="30%" hight="30%">
 <h3 class="display-3">Log in</h3>
 <hr>
 @if(Session::has('success'))
@@ -43,7 +43,7 @@ password2.setAttribute("type", type2);
 this.classList.toggle('fa-eye');
 });
 </script>
-  
+
   <div class="col-12">
     <button class="add-but-login" type="submit">Log in</button>
   </div>

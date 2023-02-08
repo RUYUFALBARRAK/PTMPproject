@@ -3,7 +3,7 @@
 
 @section('content')
 
-<img src="img/background_ksu2.png" alt="ksu" class="back">
+<img src="{{asset('img/background_ksu2.png')}}" alt="ksu" class="back">
 <div class="container-big">
 <div class="modal fade">
   <div class="modal-dialog">
@@ -31,7 +31,7 @@
   @if($doc!=null)
     <p><a class="link" href="{{ $doc->getDocumentURL() }}"> training specifications and regulations</a> <a href="{{ $doc->getDocumentURL() }}"><span class="fa fa-download"></span></a></p>
     @endif
-    <div class="row opportunity-form">   
+    <div class="row opportunity-form">
     <div class="col">
     <label for="validationTooltip01" class="form-label"> Choose Logo: <span class ="red"> * </span></label>
     <input type="file" class="form-control @error('logoImage') is-invalid @enderror" value="{{ old('logoImage') }}" name="logoImage">
@@ -47,7 +47,7 @@
         <span class="text-danger">{{ $errors->first('website') }}</span>
         @endif
     </div>
- 
+
 
   </div>
 
@@ -233,7 +233,7 @@
         <option>Az Zaimah</option>
         <option>Zulfi</option>
       </select>
-     
+
          </div>
   </div>
   <div class="row opportunity-form">

@@ -42,7 +42,11 @@ Route::get('/changePassword/{token}', function (string $token) {
     if($data) {
         return view('Company/changePassword', ['data' => $data]);
     } else {
-        return response(null, 403);
+        if(session('status')) {
+            return view('Company/changePasswordMessage');
+        } else {
+            return response(null, 403);
+        }
     }
 })->name('change_password');
 Route::post('/changePassword/{token}', [\App\Http\Controllers\BalqeesController::class, 'changePassword'])->name('do_change_password');
