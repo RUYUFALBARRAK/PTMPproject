@@ -323,7 +323,10 @@ class RazanController extends Controller
     }
 
 
-    public function Request($id){
+    public function Request($ido){
+
+        $id = requestedopportunity::where('id', $ido)->value('trainee_id');
+        $oppoId = $ido;
         $trainee = trainee::where('trainee_id', $id)->first();
 
         $academic = null;
@@ -363,6 +366,8 @@ class RazanController extends Controller
         return view('Company/traineeDetailsRequest', [
             'trainee' => $trainee ,
 
+            'oppoId' => $oppoId ,
+
             'aca' => $aca ,
             'cert' => $cert ,
             'let' => $let ,
@@ -380,28 +385,20 @@ class RazanController extends Controller
 
     public function action (Request $request,$id){
 
-        $trainee = trainee::where('trainee_id', $id)->first();
-        $docReq = requestedopportunity::where('trainee_id', $id)->Where('company_id', '=', session('logincompId'))->first();
+        $req = requestedopportunity::where('id', $id)->first();
 
         if($request->status == 'accept'){
 
-            $docReq->update([
+            $req->update([
                 'statusbycompany'=> 'accept'
             ]);
 
-            $trainee->update([
-                'statusFormCompany'=> 'accept'
-            ]);
             return redirect('/listOfTraineesRequests')->with('msg','accept');
         }
 
         elseif($request->status == 'reject'){
 
-            $trainee->update([
-                'statusFormCompany'=> 'reject'
-            ]);
-
-            $docReq->update([
+            $req->update([
                 'statusbycompany'=> 'reject'
             ]);
             return redirect('/listOfTraineesRequests')->with('msg','reject');

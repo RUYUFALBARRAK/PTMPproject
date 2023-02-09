@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Session;
 use Illuminate\Http\Request;
 use App\Models\trainee;
+use App\Models\requestedopportunity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -13,7 +14,7 @@ class khawlahController extends Controller
         return view('Company/listOfTraineesRequests');
     }
 
- 
+
 //comppany
     public function viewtraineeList(){
 
@@ -22,10 +23,14 @@ class khawlahController extends Controller
            $trainee = DB::table('users')->join('requestedopportunity', 'requestedopportunity.trainee_id', '=', 'users.trainee_id')->join('opportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('opportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'pending')->Where('users.status', 'Available')->get();
             // $trainee = DB::table('users')->join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->Where('statusFormCompany', 'accept')->Where('users.status', 'Ongoing')->get();
 
+            $oppo = requestedopportunity::get();
 
-            return view('Company/listOfTraineesRequests', compact('trainee'));
+            return view('Company/listOfTraineesRequests',[
+                'trainee' => $trainee,
+                'oppo' => $oppo
+            ]);
         }
-        
+
     }
     function listOfTraineesCompany()
 
@@ -54,7 +59,7 @@ class khawlahController extends Controller
         $students =trainee::select("*")->where('status', 'Available')-> orWhere ('status', 'Ongoing')->get();
 
         return view('PTcommittee/listOfStudents',compact('students'));
-        
+
     }
     //PT unit
     public function studentListPT(){
@@ -62,7 +67,7 @@ class khawlahController extends Controller
         $students =trainee::select("*")->where('status', 'Available')-> orWhere ('status', 'Ongoing')->get();
 
         return view('PTunit/listOfStudentsPTunit',compact('students'));
-        
+
     }
     public function searchstudentListPT(){
         $search_trainee = $_GET['query'];
@@ -70,7 +75,7 @@ class khawlahController extends Controller
         $students =trainee::select("*")->where('name', 'LIKE', '%' . $search_trainee . '%' )-> orWhere ('trainee_id', 'LIKE', '%' . $search_trainee . '%')->get();
 
         return view('PTunit/searchlistOfStudentsPTunit',compact('students'));
-        
+
     }
     public function searchlistOfStudentsReqLetter(){
         $search_trainee = $_GET['query'];
@@ -78,7 +83,7 @@ class khawlahController extends Controller
         $students =trainee::select("*")->where('name', 'LIKE', '%' . $search_trainee . '%' )-> orWhere ('trainee_id', 'LIKE', '%' . $search_trainee . '%')->get();
 
         return view('PTunit/searchlistOfStudentsReqLetter',compact('students'));
-        
+
     }
     //company request
     public function search(){
@@ -89,14 +94,14 @@ class khawlahController extends Controller
             return view('Company/searchTraineeRequest', compact('traineesResult'));
 
         }
-        
+
     } //
     public function searchStudent(){
 
         $search_Student = $_GET['query'];
         $studentResult = trainee::select("*")->where('name', 'LIKE', '%' . $search_Student . '%' )-> orWhere ('trainee_id', 'LIKE', '%' . $search_Student . '%')->get();
         return view('PTcommittee/searchStudent', compact('studentResult'));
-       
-        
+
+
     } //
 }

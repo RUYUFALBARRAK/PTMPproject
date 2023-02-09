@@ -20,10 +20,16 @@
 @endif
 
 
-  @if($opportumityinfo!=null&&$opportumityinfo->statusbycommittee=='accept'&&$opportumityinfo->statusbytrainee=='accept'&&$opportumityinfo->statusbycompany=='accept')
-  @if($loginIdUser['status']=='Completed')
-  <a href="{{route('addReview')}}"><button type="button" style="margin-left:65%; margin-top:-0.5%; font-size: 1.2vw; position: absolute; " class="add-but">Add Review</button></a>
-  @endif
+@if($opportumityinfo!=null&&$opportumityinfo->statusbycommittee=='accept'&&$opportumityinfo->statusbytrainee=='accept'&&$opportumityinfo->statusbycompany=='accept')
+@if($loginIdUser['status']=='Completed')
+
+@if($review != 'empty')
+<a href="{{route('viewReview')}}"><button type="button" style="margin-left:65%; margin-top:-0.5%; font-size: 1.2vw; position: absolute; " class="add-but">View Review</button></a>
+@else
+<a href="{{route('addReview')}}"><button type="button" style="margin-left:65%; margin-top:-0.5%; font-size: 1.2vw; position: absolute; " class="add-but">Add Review</button></a>
+@endif
+
+@endif
     <img src="{{asset('storage/images/'. $opportumityinfo->logoImage)}}" alt="Company logo" width="15%" hight="15%">
     <h3 class="spashlist">{{$opportumityinfo->jobTitle}}</h3> <h4 class="date">{{Carbon\Carbon::parse($opportumityinfo->Start_at)->toFormattedDateString()}} - {{Carbon\Carbon::parse($opportumityinfo->end_at)->toFormattedDateString()}}</h4><h4 class="opportunityState">.</h4> <h4 class="opportunityState">{{$loginIdUser['status']}}</h4>
     <br><br><hr>
@@ -40,7 +46,7 @@
       @if ($errors->has('Presentation'))
                 <div class="alert alert-danger">{{ $errors->first('Presentation') }}</div>
       @endif
-      
+
 
     <h3>Progress report</h3><div style="color: #808080" >upload your files down below </div><br>
  @if(Session::has('success'))

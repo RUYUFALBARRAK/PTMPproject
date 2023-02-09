@@ -97,7 +97,7 @@
     </div>
 
 
-<form action="{{ route('action',[$trainee->trainee_id]) }}" method="POST">
+<form action="{{ route('action',[$oppoId]) }}" method="POST">
         @csrf
         <button type="submit" name="status" value="accept" class="btn btn-outline-success" style="font-size: 136%;
         padding: 4px 18px 4px 18px; margin-left: 34%; margin-top: 5%;"> Accept </button>
