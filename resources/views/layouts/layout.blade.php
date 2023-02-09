@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>practical training management portal </title>
+    <title>practical training management portal </title>
 
-        <!-- Fonts -->
+    <!-- Fonts -->
 
     <!-- Bootstrap old version
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
         <link rel="icon" type="image/png" href="{{ asset('img/learning.png') }}">
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
@@ -37,8 +38,9 @@
     <body class="antialiased">
         @include('sweetalert::alert')
 
+    </style>
 
-    <!-- Delete Review Confirmation modal-->
+
 
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -54,8 +56,6 @@
     <button type="button" class="can-but" data-bs-dismiss="modal">Cancel</button>
     </form>
     </div>
-  </div>
-</div>
 
     <!-- view announcement modal -->
     <div class="modal fade" id="view_announcement_modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
@@ -73,19 +73,22 @@
         </div>
     </div>
 
-<!-- send invatiton modal -->
+    <!-- send invatiton modal -->
     <div class="modal fade" id="view_invait_modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-title">
-                    <h2 style="padding:10px; text-align: center;" id="invation">Invite a company</h2><hr></div>
-                    <div class="modal-body">
+                    <h2 style="padding:10px; text-align: center;" id="invation">Invite a company</h2>
+                    <hr>
+                </div>
+                <div class="modal-body">
                     <form action=" {{ route('invationcompany')}}" method="post">
-                    @csrf
-                    <div><input type="email" placeholder="Enter company email" class="form-control  @error('InvaitEmail') is-invalid @enderror" name="InvaitEmail" id="InvaitEmail"></div>
+                        @csrf
+                        <div><input type="email" placeholder="Enter company email" class="form-control  @error('InvaitEmail') is-invalid @enderror" name="InvaitEmail" id="InvaitEmail"></div>
                         @if ($errors->has('InvaitEmail'))
                         <span class="text-danger">{{ $errors->first('InvaitEmail') }}</span>
                         @endif
+
                         <br><hr>
                     <button type="submit" class="ok-but">submit</button>
                  </form>
@@ -116,6 +119,7 @@
         </div>
     </div>
     <!--delete company-->
+
  <div class="modal fade" id="Delete_company_Modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -136,7 +140,7 @@
     <div class="modal fade" id="confirm_delete_file" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-{{--                <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="img/check.png" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"></h1>--}}
+                {{-- <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="img/check.png" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"></h1>--}}
                 <div class="modal-body" style="text-align: center; font-size:120%;">
                     Are you sure you want to delete this file?
                 </div>
@@ -176,19 +180,30 @@
 
     <!-- Error modal-->
 
-<div class="modal fade" id="error" tabindex="-1" aria-labelledby="error" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"> <img src="{{ asset('img/Xicon.png') }}" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"> </h1>
+    <div class="modal fade" id="error" tabindex="-1" aria-labelledby="error" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> <img src="{{ asset('img/Xicon.png') }}" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"> </h1>
 
-      <div class="modal-body" style="text-align:center; font-size:120%;">
-        Your feedback can't be submitted <br>
-        <span style="color:rgb(139, 137, 137); font-size:90%; margin-top: -10%;"> Make sure all required fields are filled</span>
-      </div>
+                <div class="modal-body" style="text-align:center; font-size:120%;">
+                    Your feedback can't be submitted <br>
+                    <span style="color:rgb(139, 137, 137); font-size:90%; margin-top: -10%;"> Make sure all required fields are filled</span>
+                </div>
 
-        <button type="button" class="del-msg" data-bs-dismiss="modal">OK</button>
+                <button type="button" class="del-msg" data-bs-dismiss="modal">OK</button>
 
+            </div>
+        </div>
     </div>
+
+    <!-- Core theme JS-->
+    <script src="{{ asset('js/scripts.js') }}"></script>
+
+    <div class=heder>
+        <img src="{{ asset('img/ksu_logo.png') }}" alt="Ksu logo" width="5%" height="90%" class="ksuLogo">
+        <p>KSU <br> Practical Training Management Portal </p>
+    </div>
+
   </div>
 </div>
 
@@ -204,13 +219,15 @@
     @endif
     @yield('content')
 
-    </body>
+</body>
 
-    <script>
-        function openAnnouncement(title, content) {
-            $('#view_announcement_modal__title').text(title);
-            $('#view_announcement_modal__content').text(content);
-            $('#view_announcement_modal').modal('show');
-        }
-    </script>
+<script>
+    function openAnnouncement(title, content) {
+        $('#view_announcement_modal__title').text(title);
+        $('#view_announcement_modal__content').text(content);
+        $('#view_announcement_modal').modal('show');
+    }
+
+</script>
+@yield("js")
 </html>

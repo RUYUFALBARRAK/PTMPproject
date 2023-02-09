@@ -3,10 +3,8 @@
 @section('content-training')
 <div class="content">
 
-  
-
-  
     <h2>Opportunities</h2>
+
     
    @if($comp->status=='accept')
     <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:40%; font-size:20px; margin-top:-3.6%; position:absolute; background-color: #388087;">Add training opportunity</a>
@@ -16,26 +14,48 @@
    <a class="btn text-white" style="margin-left:29%; font-size:16px; margin-top:-3.6%; position:absolute; background-color: gray;">Waiting for acceptance from practical training unit ..</a>
    @endif
 
-   
     <div class="form-group col-md-2 state-menu" style="margin-left:65%;  position:absolute; ">
-      <select id="inputLocationCompany" class="form-select">
-        <option selected>Status..</option>
-        <option>Accepted</option>
-        <option>Rejected</option>
-        <option>Pending</option>
-        <option>Needs Modification</option>
-        <option>All</option>
-      </select>
+        <select id="inputLocationCompany" class="form-select">
+            @php
+            $arr = [
+            "accept" =>"Accepted",
+            "reject" => "Rejected",
+            "pending" => "Pending",
+            "need_modification" => "Need Modification",
+            "all" => "All",]
+            @endphp
+
+            <option selected>Status..</option>
+
+            @foreach($arr as $ar => $name)
+            {{-- if old value --}}
+            @if($ar == request()->status ??null)
+            <option value="{{$ar}}" selected>{{$name}}</option>
+            @else
+            <option value="{{$ar}}">{{$name}}</option>
+            @endif
+
+            @endforeach
+        </select>
     </div>
+    @section("js")
+    <script>
+        $("#inputLocationCompany").change(function() {
+            var location = $(this).val();
+            window.location.href = "{{url('/filter/opportunityPageCompany')}}" + "?status=" + location;
+        });
+
+    </script>
+
+    @endsection
 
 
 
 
-
-<hr>
-<!-- New-->
-    @if(count($opportunities) > 0) 
-      <table class="table-Bushra">
+    <hr>
+    <!-- New-->
+    @if(count($opportunities) > 0)
+    <table class="table-Bushra">
         @foreach ($opportunities as $opportunity)
         <tr class="tr-Bushra">
             <td class="fisrt-col-Bushra">
@@ -45,7 +65,7 @@
 
             <td class="second-col-Bushra">
                 <h5>{{ $opportunity->jobTitle }}</h5>
-                <h6>{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</h6>
+                <h6>{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }} - {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</h6>
             </td>
             
 
@@ -65,24 +85,19 @@
                
             </td>
 
-          <td class="oppoArrow">
-            <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right" ></span></a>
-          </td>
 
-        
-        </tr> 
+        </tr>
         @endforeach
     </table>
-  @else
+    @else
     <div class="not-found">
-      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
-      <p>Company has No Opportunities yet</p>
+        <img src="{{asset('img/paper.png')}}" alt="Company logo" class="logoCompany"> <br><br><br>
+        <hr>
+        <p>Company has No Opportunities yet</p>
     </div>
-  @endif
-    
-   
+    @endif
+
+
 </div>
 
 @endsection
-
-

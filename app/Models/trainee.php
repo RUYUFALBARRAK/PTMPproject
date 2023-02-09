@@ -9,17 +9,17 @@ use App\Models\Sendsdocument;
 class trainee extends Model
 {
     use HasFactory;
-   
+
     protected $table='users';
     protected $primaryKey='trainee_id';
     protected $fillable = [
-        'trainee_id', 
-        'name', 
-        'email', 
-        'Major', 
+        'trainee_id',
+        'name',
+        'email',
+        'Major',
         'phone',
         'role',
-        'CompletedHours', 
+        'CompletedHours',
         'GPA',
         'statusFormCompany',
         'is_request',
