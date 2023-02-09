@@ -11,7 +11,7 @@
     </div>
   </div>
 
-   
+
 <div style=" width:80%; margin-left: 82%; margin-top:-2.5%; " class="input-group">
     <div style="font-size: 14px; margin-top:0.6%;">
     Location&nbsp;
@@ -33,7 +33,7 @@
     <table class="table-Bushra">
         <tr class="tr-Bushra">
             <td class="fisrt-col-Bushra">
-                <img src="img/SDAIA.png" alt="Company logo" width="180%" hight="180%">
+                <img src="{{asset('img/SDAIA.png')}}" alt="Company logo" width="180%" hight="180%">
                 <br><br>
             </td>
 
@@ -41,7 +41,7 @@
                 <h5>Software Engineer</h5>
                 <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
             </td>
-        
+
             <td class="td-Bushra">
                 <a class="view-reveiws2" href="#">View Details</a>
             </td>
@@ -49,9 +49,9 @@
         </tr>
 
         <tr class="tr-Bushra">
-           
+
             <td class="fisrt-col-Bushra">
-             <img src="img/ministryOfComm.png" alt="Company logo" width="220%" hight="220%">
+             <img src="{{asset('img/ministryOfComm.png')}}" alt="Company logo" width="220%" hight="220%">
              <br><br>
             </td>
 
@@ -59,14 +59,14 @@
                 <h5>Product Manager</h5>
                 <h5>Jan. 16, 2022 - Aug. 11/2022 </h5>
             </td>
-            
+
             <td class="td-Bushra">
                 <a class="view-reveiws2" href="#">View Details</a>
             </td>
 
         </tr>
     </table>
-   
+
 </div>
 
 @endsection

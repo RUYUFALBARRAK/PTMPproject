@@ -4,7 +4,7 @@
 <div class="content">
     @if(count($companyRequestResult) == 0)
     <div class="not-found">
-      <img src="img/paper.png" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
+      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
       <p>No Company Request Found</p>
     </div>
     <form method="GET" action="{{url('/searchlistOfCompanyRequest')}}">
@@ -16,7 +16,7 @@
 </form>
 <hr>
 <table class="list-of-company">
-  
+
     <tr>
         <th style="padding-left:4%; text-align: left;">Company name </th>
         <th>logo</th>
@@ -36,6 +36,6 @@
   </tr>
 @endforeach
 </table>
- @endif   
+ @endif
 </div>
 @endsection

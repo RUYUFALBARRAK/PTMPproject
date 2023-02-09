@@ -33,7 +33,7 @@ $greyStar = 5 - $stars;
 @if(!($loop->last))
 
 <div style="margin-bottom: 8%;">
-<img src="/img/ava1.png" alt="Avatar" width="50px" hight="50px">
+<img src="{{asset('img/ava1.png')}}" alt="Avatar" width="50px" hight="50px">
 <span style="margin-left: 1%; font-size: 135%; color: rgb(64, 60, 74);;"> {{ $review-> name }} </span> <span class="rev-date"> {{$date}} </span> <br>
 
 <!-- begining of star rating -->
@@ -62,7 +62,7 @@ $greyStar = 5 - $stars;
 @else <!-- last review -->
 <div>
 
-<img src="/img/ava1.png" alt="avatar" width="60px" hight="60px">
+<img src="{{asset('img/ava1.png')}}" alt="avatar" width="60px" hight="60px">
 <span style="margin-left: 1%; font-size: 135%; color: rgb(64, 60, 74);;"> {{ $review-> name }} </span> <span class="rev-date"> {{$date}} </span> <br>
 
 
