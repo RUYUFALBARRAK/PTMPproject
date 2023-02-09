@@ -322,11 +322,11 @@ Route::group(["prefix" => "filter"], function () {
                 if (request()->status && request()->status != "all") {
                     if (request()->status == "available") {
                         // isn't have relation trainee
-                        $q->whereDoesntHave("trainee");
+                        $q->whereDoesntHave("company");
                     } else {
-                        $q->whereHas("trainee", function ($q) {
-                            $q->where("statusFormCompany", request()->status);
-                        });
+                        //$q->whereHas("company", function ($q) {
+                            $q->where("status", request()->status);
+                        //});
                     }
                 }
 
