@@ -166,32 +166,63 @@ class companyController extends Controller
     $oppourtunity->save();
             return redirect('addOppourtunityForCompany')->with('success','Successfully added opportunity!');
     }
-   /* function createopportunity(array $data){
-        
-        return oppourtunity::create([
-        'jobTitle' => $data['jobTitle'],
-        'workHours' => $data['workHours'],
-        'supervisorPhone'=>$data['supervisorPhone'],
-        'supervisorName' => $data['supervisorName'],
-        'Start_at' => $data['Start_at'],
-        'end_at' => $data['end_at'],
-        'address' => $data['address'],
-        'AppDeadline' => $data['AppDeadline'],
-        'requirement' => $data['requirement'],
-        'numberOfTrainee' => $data['numberOfTrainee'],
-        'RoleDescription' => $data['RoleDescription'],
-        'majors' => $data['majors'],
-        'incentive' => $data['incentive'],
-        'PtPlan' => $data['uploudedfile'],
-      ]);
+  function EditAuthopportunity(Request $request,$oppo){
 
-    }*/
+        if(request()->has('Start_at'))
+            $request->validate([
+            'jobTitle' => 'required|regex:/^[A-Za-z\-\s]+$/',
+            'workHours' => 'required|numeric',
+            'supervisorPhone' => 'required|regex:/(966)[0-9]{9}/|numeric|digits:12',
+            'supervisorName' => 'required|regex:/^[A-Za-z\-\s]+$/',
+            'Start_at' => 'required|date',
+            'end_at' => 'required|date|after:Start_at',
+            'address' => 'required',
+            'AppDeadline' => 'required|date|before_or_equal:Start_at',
+            'requirement' => 'required',
+            'numberOfTrainee' => 'required|numeric',
+            'RoleDescription' => 'required|regex:/^[A-Za-z\-\s]+$/',   
+            'majors' => 'required', 
+            'incentive' => 'required', 
+            'uploudedfile' => 'required|mimes:pdf,xlxs,xlx,docx,doc,csv,txt', 
+        ]);
+             if(request()->hasfile('uploudedfile')){
+                $fileName =$request->uploudedfile->getClientOriginalName();
+                $request->uploudedfile->storeAs('files', $fileName,'public');
+            }      
+            $oppo=oppourtunity::where('id','=',$oppo)->first();
+             $oppo->update([
+            'jobTitle' => $request->has('jobTitle')?$request['jobTitle']: $oppo->jobTitle,
+            'workHours' => $request->has('workHours')? $request['workHours']: $oppo->workHours,
+            'supervisorPhone' => $request->has('supervisorPhone')? $request['supervisorPhone']: $oppo->supervisorPhone,
+            'supervisorName' => $request->has('supervisorName')? $request['supervisorName']: $oppo->supervisorName,
+            'Start_at' => $request->has('Start_at')? $request['Start_at']: $oppo->Start_at,
+            'end_at' => $request->has('end_at')? $request['end_at']: $oppo->end_at,
+            'address' => $request->has('address')? $request['address']: $oppo->address,
+            'AppDeadline' => $request->has('AppDeadline')? $request['AppDeadline']: $oppo->AppDeadline,
+            'requirement' => $request->has('requirement')?$request['requirement']: $oppo->requirement,
+            'numberOfTrainee' => $request->has('numberOfTrainee')? $request['numberOfTrainee']: $oppo->numberOfTrainee,
+            'RoleDescription' => $request->has('RoleDescription')? $request['RoleDescription']: $oppo->RoleDescription,   
+            'majors' => $request->has('majors')?$request['majors']: $oppo->majors, 
+            'incentive' => $request->has('incentive')? $request['incentive']: $oppo->incentive, 
+            'uploudedfile' => $request->has('uploudedfile')? $request->uploudedfile->getClientOriginalName(): $oppo->PtPlan, 
+        ]);
+
+            return back()->with('success','Successfully added opportunity!');
+    }
 
     function addOpportunityview(){
         
         if(Session::has('logincompId')){
         $data=['loginIdcompUser'=> company::where('id','=',session('logincompId'))->first()];
-        return view('Company/addOpportunity',$data);}
+        return view('Company/addOpportunity', ['action' => 'add', 'data'=>$data]);}
+        return redirect('loginCompany');
+    }
+        function EditOpportunityview($oppo){
+        
+        if(Session::has('logincompId')){
+        $data= company::where('id','=',session('logincompId'))->first();
+        $oppo=oppourtunity::where('id','=',$oppo)->first();
+        return view('Company/addOpportunity', ['action' => 'edit', 'oppo'=>$oppo,'loginIdcompUser'=>$data]);}
         return redirect('loginCompany');
     }
 function listOfcompany(){
@@ -221,11 +252,17 @@ function deleteCompany($id){
                 "subject"=>"PTMP Mail",
                 "body"=>"Sorry, your company was deleted for some reasons please contact with PTMP service if you are interested",
                 ];
+                 Mail::to($companyD->orgnizationEmail)->send(new SendMail($data));
                 $companyD->delete();
                 return  back()->with('popupSure','company has opportunity Are you Sure you want to delete it? ');
             }
           
         }else{
+             $data = [
+                "subject"=>"PTMP Mail",
+                "body"=>"Sorry, your company was deleted for some reasons please contact with PTMP service if you are interested",
+                ];
+                 Mail::to($companyD->orgnizationEmail)->send(new SendMail($data));
             $companyD->delete();
              return  back()->with('popupSure','company has opportunity Are you Sure you want to delete it? ');
         }
@@ -238,8 +275,12 @@ function CompanyRegestrationDetails($id){
 }
 function rejectCompany($id){
         $companyRequest = company::FindorFail($id);
-        $companyRequest->status=companyStatus::reject;
-        $companyRequest->update();
+             $data = [
+                "subject"=>"PTMP Mail",
+                "body"=>"Sorry, your company was rejected for some reasons please contact with PTMP service if you are interested",
+                ];
+                 Mail::to($companyD->orgnizationEmail)->send(new SendMail($data));
+        $companyRequest->delete();
 return redirect('/listOfCompanyRequest')->with('msgcompanyRejected','company was rejected successfully');  
 }
 function AcceptCompany($id){

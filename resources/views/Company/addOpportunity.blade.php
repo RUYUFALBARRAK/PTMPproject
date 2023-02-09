@@ -5,7 +5,7 @@
 <img src="{{asset( 'storage/images/'. $loginIdcompUser['logoImage'])}}" alt="Company logo" class="logoCompany">
 <h3 class="spashlist">{{$loginIdcompUser['orgnizationName']}} Company</h3>
 <br><br><hr>
-<form action="{{ route('Authopportunity') }}" enctype="multipart/form-data" method="POST">
+<form action="{{ $action === 'edit' ? route('EditAuthopportunity', ['oppo' => $oppo]) : route('Authopportunity') }}" enctype="multipart/form-data" method="POST">
   @csrf
     @if(Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>
@@ -19,14 +19,14 @@
 <div class="row opportunity-form">
     <div class="col">
     <label for="validationTooltip01" class="form-label">Job Title :<span class ="red"> * </span></label>
-      <input type="text" class="form-control @error('jobTitle') is-invalid @enderror" maxlength = "50" placeholder="Enter job title " value="{{ old('jobTitle') }}" name="jobTitle">
+      <input type="text" class="form-control @error('jobTitle') is-invalid @enderror" maxlength = "50" placeholder="Enter job title " value="{{ $action === 'edit' ? $oppo->jobTitle : old('jobTitle') }}" name="jobTitle">
       @if ($errors->has('jobTitle'))
         <span class="text-danger">{{ $errors->first('jobTitle') }}</span>
       @endif
     </div>
     <div class="col">
     <label for="validationTooltip01" class="form-label">  Work Hours :<span class ="red"> * </span></label>
-      <input type="number" class="form-control @error('workHours') is-invalid @enderror" maxlength = "3" placeholder="Enter work hours" value="{{ old('workHours') }}" name="workHours">
+      <input type="number" class="form-control @error('workHours') is-invalid @enderror" maxlength = "3" placeholder="Enter work hours" value="{{ $action === 'edit' ? $oppo->workHours : old('workHours') }}" name="workHours">
       @if ($errors->has('workHours'))
         <span class="text-danger">{{ $errors->first('workHours') }}</span>
       @endif
@@ -36,14 +36,14 @@
   <div class="row opportunity-form">
     <div class="col">
     <label for="validationTooltip01" class="form-label">Supervisor Full Name:<span class ="red"> * </span></label>
-      <input type="text" class="form-control @error('supervisorName') is-invalid @enderror" maxlength = "50" placeholder="Enter Supervisor full name" value="{{ old('supervisorName') }}" name="supervisorName">
+      <input type="text" class="form-control @error('supervisorName') is-invalid @enderror" maxlength = "50" placeholder="Enter Supervisor full name" value="{{ $action === 'edit' ? $oppo->supervisorName : old('supervisorName') }}" name="supervisorName">
        @if ($errors->has('supervisorName'))
         <span class="text-danger">{{ $errors->first('supervisorName') }}</span>
         @endif
     </div>
     <div class="col">
     <label for="validationTooltip01" class="form-label">Supervisor Mobile Number:<span class ="red"> * </span></label>
-      <input type="tel" class="form-control @error('supervisorPhone') is-invalid @enderror" maxlength = "12" placeholder="Enter Supervisor mobile number 96650xxxxx" value="{{ old('supervisorPhone') }}" name="supervisorPhone">
+      <input type="tel" class="form-control @error('supervisorPhone') is-invalid @enderror" maxlength = "12" placeholder="Enter Supervisor mobile number 96650xxxxx" value="{{ $action === 'edit' ? $oppo->supervisorPhone : old('supervisorPhone') }}" name="supervisorPhone">
        @if ($errors->has('supervisorPhone'))
         <span class="text-danger">{{ $errors->first('supervisorPhone') }}</span>
         @endif
@@ -53,14 +53,14 @@
   <div class="row opportunity-form">
          <div class="col">
           <label for="validationTooltip01" class="form-label"> Start Date:<span class ="red"> * </span></label>
-              <input type="date" class="form-control @error('Start_at') is-invalid @enderror" placeholder="Enter start date" value="{{ old('Start_at') }}" name="Start_at">
+              <input type="date" class="form-control @error('Start_at') is-invalid @enderror" placeholder="Enter start date" value="{{ $action === 'edit' ? $oppo->Start_at : old('Start_at') }}" name="Start_at">
                @if ($errors->has('Start_at'))
               <span class="text-danger">{{ $errors->first('Start_at') }}</span>
               @endif
            </div>
                     <div class="col">
                       <label for="validationTooltip01" class="form-label"> End Date:<span class ="red"> * </span></label>
-                        <input type="date" class="form-control @error('end_at') is-invalid @enderror" placeholder="Enter start date" value="{{ old('end_at') }}" name="end_at">
+                        <input type="date" class="form-control @error('end_at') is-invalid @enderror" placeholder="Enter start date" value="{{ $action === 'edit' ? $oppo->end_at : old('end_at') }}" name="end_at">
                          @if ($errors->has('end_at'))
                         <span class="text-danger">{{ $errors->first('end_at') }}</span>
                         @endif
@@ -70,7 +70,7 @@
   <div class="row opportunity-form">
     <div class="col">
       <label for="validationTooltip01" class="form-label"> City :<span class ="red"> * </span></label>
-      <select id="city" value="{{ old('address') }}" name="address" class="form-select form-select-lg">
+      <select id="city" value="{{ $action === 'edit' ? $oppo->address : old('address') }}" name="address" class="form-select form-select-lg">
         @if ($errors->has('address'))
         <span class="text-danger">{{ $errors->first('address') }}</span>
         @endif
@@ -197,7 +197,7 @@
 
     <div class="col">
     <label for="validationTooltip01" class="form-label">Application Deadline:<span class ="red"> * </span></label>
-      <input type="date" class="form-control @error('AppDeadline') is-invalid @enderror" placeholder="Enter Application deadline" value="{{ old('AppDeadline') }}" name="AppDeadline">
+      <input type="date" class="form-control @error('AppDeadline') is-invalid @enderror" placeholder="Enter Application deadline" value="{{ $action === 'edit' ? $oppo->AppDeadline : old('AppDeadline') }}" name="AppDeadline">
        @if ($errors->has('AppDeadline'))
         <span class="text-danger">{{ $errors->first('AppDeadline') }}</span>
         @endif
@@ -208,12 +208,12 @@
   <div class="row opportunity-form">
     <div class="col">
     <label for="validationTooltip01" class="form-label"> Training Requirements : <span class ="red"> * </span></label>
-      <textarea rows="2"id="validationTooltip01" maxlength="250" class="form-control @error('requirement') is-invalid @enderror" placeholder="Enter Training Requirements" value="{{ old('requirement') }}" name="requirement"></textarea>
+      <textarea rows="2"id="validationTooltip01" maxlength="250" class="form-control @error('requirement') is-invalid @enderror" placeholder="Enter Training Requirements" value="{{ $action === 'edit' ? $oppo->requirement : old('requirement') }}" name="requirement">{{ $action === 'edit' ? $oppo->requirement : old('requirement') }}</textarea>
       <div class="d-inline-block"><span id="announcement-content-lengt">0</span>/250</div>
     </div>
     <div class="col">
     <label for="validationTooltip01" class="form-label">Number Of Trainees:<span class ="red"> * </span></label>
-      <input type="number" class="form-control @error('numberOfTrainee') is-invalid @enderror"  placeholder="Enter Number of trainees" value="{{ old('numberOfTrainee') }}" name="numberOfTrainee">
+      <input type="number" class="form-control @error('numberOfTrainee') is-invalid @enderror"  placeholder="Enter Number of trainees" value="{{ $action === 'edit' ? $oppo->numberOfTrainee : old('numberOfTrainee') }}" name="numberOfTrainee">
        @if ($errors->has('numberOfTrainee'))
         <span class="text-danger">{{ $errors->first('numberOfTrainee') }}</span>
         @endif
@@ -221,7 +221,7 @@
   </div>
   <div class="row opportunity-form">
   <label for="validationTooltip02">Brief Description Of The Role:<span class ="red"> * </span></label>
-    <textarea class="form-control @error('RoleDescription') is-invalid @enderror" maxlength="250" rows="5" id="validationTooltip02" value="{{ old('RoleDescription') }}" name="RoleDescription"></textarea>
+    <textarea class="form-control @error('RoleDescription') is-invalid @enderror" maxlength="250" rows="5" id="validationTooltip02" value="{{ $action === 'edit' ? $oppo->RoleDescription : old('RoleDescription') }}" name="RoleDescription">{{ $action === 'edit' ? $oppo->RoleDescription : old('RoleDescription') }}</textarea>
      @if ($errors->has('RoleDescription'))
         <span class="text-danger">{{ $errors->first('RoleDescription') }}</span>
         @endif
@@ -272,7 +272,7 @@
             
 
                 <div class="form1" onclick="document.querySelector('[name=uploudedfile]').click()">
-                    <input type="file" name="uploudedfile" value="{{ old('uploudedfile') }}" class="PTuploadedfile " hidden>
+                    <input type="file" name="uploudedfile" value="{{ $action === 'edit' ? $oppo->uploudedfile : old('uploudedfile') }}" class="PTuploadedfile " hidden>
                     <i class="fas fa-cloud-upload-alt"></i>
                     <p>Browse file to upload</p>
                 </div>
@@ -290,7 +290,7 @@
                     </div>
                 </section>
             <!-- <a href="#" class="link2">Upload new file:<span class="glyphicon glyphicon-upload"></span></a> -->
-                <button class="add-but-center" type="submit">Add opportunity</button>
+                <button class="add-but-center" type="submit">{{ $action === 'edit' ? 'Edit opportunity' : 'Add opportunity' }}</button>
         </div>
 </form>
 </div>

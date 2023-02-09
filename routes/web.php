@@ -72,8 +72,9 @@ Route::post('/action/{id}', [RazanController::class,'action'])-> name('action');
 Route::get('/download/{id}', [RazanController::class,'download'])-> name('download');
 Route::post('/companyUpload/{id}', [RazanController::class,'companyUpload'])-> name('companyUpload');
 Route::post('Authopportunity',[companyController::class,'Authopportunity'])-> name('Authopportunity');
+Route::post('EditAuthopportunity/{oppo}',[companyController::class,'EditAuthopportunity'])-> name('EditAuthopportunity');
 Route::get('/addOppourtunityForCompany', [companyController::class,'addOpportunityview'])->name('addOppourtunityForCompany');
-
+Route::get('/EditOppourtunityForCompany/{oppo}', [companyController::class,'EditOpportunityview'])->name('EditOppourtunityForCompany');
 Route::get('/DocumentPageCompany', function () {
     return view('Company/DocumentPageCompany', ['download' => \App\Models\document::where('uploaded_for', '=', 'company')->orWhere('uploaded_for', '=', 'both')->get()]);
 });
