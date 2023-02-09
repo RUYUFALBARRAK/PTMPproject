@@ -28,9 +28,19 @@
     <h3 class="spashlist">{{$opportumityinfo->jobTitle}}</h3> <h4 class="date">{{Carbon\Carbon::parse($opportumityinfo->Start_at)->toFormattedDateString()}} - {{Carbon\Carbon::parse($opportumityinfo->end_at)->toFormattedDateString()}}</h4><h4 class="opportunityState">.</h4> <h4 class="opportunityState">{{$loginIdUser['status']}}</h4>
     <br><br><hr>
 
-       @if ($errors->has('uploudedfile'))
-                <div class="alert alert-danger">{{ $errors->first('uploudedfile') }}</div>
+       @if ($errors->has('EffectiveDateNotice'))
+                <div class="alert alert-danger">{{ $errors->first('EffectiveDateNotice') }}</div>
       @endif
+      @if ($errors->has('report'))
+                <div class="alert alert-danger">{{ $errors->first('report') }}</div>
+      @endif
+      @if ($errors->has('TrainingSurvey'))
+                <div class="alert alert-danger">{{ $errors->first('TrainingSurvey') }}</div>
+      @endif
+      @if ($errors->has('Presentation'))
+                <div class="alert alert-danger">{{ $errors->first('Presentation') }}</div>
+      @endif
+      
 
     <h3>Progress report</h3><div style="color: #808080" >upload your files down below </div><br>
  @if(Session::has('success'))

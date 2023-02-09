@@ -217,6 +217,10 @@ function deleteCompany($id){
             if($opportunity_has_trainee>0){
               return  back()->with('popupNO','company Can not be deleted There are trainee applay in try again next time');
             }else{
+                   $data = [
+                "subject"=>"PTMP Mail",
+                "body"=>"Sorry, your company was deleted for some reasons please contact with PTMP service if you are interested",
+                ];
                 $companyD->delete();
                 return  back()->with('popupSure','company has opportunity Are you Sure you want to delete it? ');
             }
