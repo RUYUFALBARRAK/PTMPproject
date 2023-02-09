@@ -92,6 +92,15 @@ function ViewMainpage(){
         $Presentation=false;
         $report=false;
         $EffectiveDateNotice=false;
+        $trainee=trainee::where('trainee_id','=',session('loginId'))->first();
+        $opportunityTime=DB::table('users')->where('users.trainee_id','=',session('loginId'))->
+   join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->first();
+   if($opportunityTime!=null&&$opportunityTime->end_at <= now()->format('Y-m-d')){
+    $trainee->update([
+            'status'=>'Completed'
+        ]);
+
+   }
     $find =Sendsdocument::whereHas('trainee',function($q){
     $q->where('trainee_id', '=', session('loginId'));})->get();
     foreach($find as $find){
@@ -108,7 +117,7 @@ function ViewMainpage(){
         $EffectiveDateNotice=true;
     }}
   
-    $data=['loginIdUser'=>  trainee::where('trainee_id','=',session('loginId'))->first(),// trainee::with('oppourtunity')->get()->first(),
+    $data=['loginIdUser'=>  $trainee,// trainee::with('oppourtunity')->get()->first(),
    // 'file'=> trainee::with('Sendsdocument')->get()->first()
    'opportumityinfo'=>DB::table('users')->where('users.trainee_id','=',session('loginId'))->
    join('requestedopportunity', 'users.trainee_id', '=', 'requestedopportunity.trainee_id')->
@@ -129,10 +138,12 @@ function ViewMainpage(){
         $q->where('trainee_id', '=', session('loginId'))->where('doc_name', '=', 'report');})->first(),
          'docEffectiveDateNotice'=>Sendsdocument::whereHas('trainee',function($q){
         $q->where('trainee_id', '=', session('loginId'))->where('doc_name', '=', 'EffectiveDateNotice');})->first(),
+        'opportunityTime'=>$opportunityTime,
 ];
-}//view('trainee/triningTap',$data)
+//view('trainee/triningTap',$data)
    //$data['file'][1]['doc_name'];
-    return view('trainee/triningTap',$data) ;
+    return view('trainee/triningTap',$data) ;}
+     return redirect('welcome');
 }
 
 
@@ -227,6 +238,7 @@ function CVshow(){
         $certifactionFile= false;
         $acdamicFile=false;
         $identificationLetter=false;
+    if(Session::has('loginId')){
     $find =cv::whereHas('trainee',function($q){
     $q->where('trainee_id', '=', session('loginId'));})->get();
     foreach($find as $find){
@@ -240,7 +252,7 @@ function CVshow(){
         $identificationLetter=true;
     }
    }
-     if(Session::has('loginId')){
+     
          $data=['loginIdUser'=>  trainee::where('trainee_id','=',session('loginId'))->first(),
         'skills'=> traineeSkills::where('trainee_id','=',session('loginId'))->get(),
         'Languages'=> traineeLanguages::where('trainee_id','=',session('loginId'))->get(),

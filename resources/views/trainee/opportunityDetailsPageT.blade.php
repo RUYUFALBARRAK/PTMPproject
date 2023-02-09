@@ -100,15 +100,14 @@
         @php 
             $req_opportunity = \App\Models\requestedopportunity::where('opportunity_id' , $opportunity->id)->where('trainee_id' , session()->get('loginId'))->first();
         @endphp
-
-        @if ($req_opportunity->statusbycompany == 'reject')
+        @if ($req_opportunity->statusbycompany == \App\Enum\companyStatus::reject)
             <div>
                 <label for="validationTooltip01" class="oppT-form-label">Status:</label>
                 <label for="validationTooltip01" class="oppD-form-label text-danger">Rejected</label>
             </div><br><br>
         @endif
 
-        @if ($req_opportunity->statusbytrainee == 'accept')
+        @if ($req_opportunity->statusbytrainee == \App\Enum\companyStatus::accept)
 
             <div>
                 <label for="validationTooltip01" class="oppT-form-label">Status:</label>
@@ -118,13 +117,13 @@
         @else
             <form action="{{ route('opportunity.confirm.submit',$opportunity->id) }}" method="post">
                 @csrf
-                @if ($req_opportunity->statusbycompany == 'accept')
-                    @if(count($has_opportunity) >= 1)
+                @if ($req_opportunity->statusbycompany == \App\Enum\companyStatus::accept)
+                    @if(count($has_opportunity) >= 1||($opportunity->numberOfTraineeAssigned >= $opportunity->numberOfTrainee))
                         <button disabled type="button" class="btn-conf" style="background: gray;">Confirm</button>
                     @else
                         <button type="submit" class="btn-conf">Confirm</button>
                     @endif
-                @elseif($req_opportunity->statusbycompany == 'pending')
+                @elseif($req_opportunity->statusbycompany == \App\Enum\companyStatus::pending)
                     <button disabled type="button" class="btn btn-secondary d-block mx-auto">Waitting for Approval..</button>                
                 @endif
             </form>

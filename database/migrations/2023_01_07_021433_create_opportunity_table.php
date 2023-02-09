@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('supervisorName');
             $table->string('supervisorPhone');
             $table->string('RoleDescription');
-            $table->boolean('incentive');
+            $table->string('incentive');
             $table->string('requirement');
             $table->string('majors');
             $table->integer('numberOfTrainee');

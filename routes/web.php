@@ -42,7 +42,11 @@ Route::get('/changePassword/{token}', function (string $token) {
     if ($data) {
         return view('Company/changePassword', ['data' => $data]);
     } else {
-        return response(null, 403);
+        if(session('status')) {
+            return view('Company/changePasswordMessage');
+        } else {
+            return response(null, 403);
+        }
     }
 })->name('change_password');
 Route::post('/changePassword/{token}', [\App\Http\Controllers\BalqeesController::class, 'changePassword'])->name('do_change_password');
@@ -56,38 +60,40 @@ Route::group(['middleware' => 'isloggedin'], function () {
     Route::post('/traineeMainPage', [RazanController::class, 'add'])->name('add');
     Route::get('/reviews/{id}', [RazanController::class, 'showReviews'])->name('reviews');
     Route::get('/DocumentPage', function () {
-        return view('trainee/DocumentPage', ['docs' => \App\Models\document::where('uploaded_for', '=', 'trainee')->orWhere('uploaded_for', '=', 'both')->get()]);
-    });
-    Route::get('/traineeDetailsUnit/{id}', [RazanController::class, 'detailsForUnit'])->name('detailsForUnit');
-    Route::get('/traineeDetailsLetter/{id}', [RazanController::class, 'LetterRequest'])->name('LetterRequest');
-    Route::get('/traineeDetailsCommittee/{id}', [RazanController::class, 'detailsForCommittee'])->name('detailsForCommittee');
-    Route::get('/traineeDetailsCompany/{id}', [RazanController::class, 'detailsForCompany'])->name('detailsForCompany');
-    Route::get('/traineeDetailsRequest/{id}', [RazanController::class, 'Request'])->name('Request');
-    Route::post('/action/{id}', [RazanController::class, 'action'])->name('action');
-    Route::get('/download/{id}', [RazanController::class, 'download'])->name('download');
-    Route::post('/companyUpload/{id}', [RazanController::class, 'companyUpload'])->name('companyUpload');
-    Route::post('Authopportunity', [companyController::class, 'Authopportunity'])->name('Authopportunity');
-    Route::get('/addOppourtunityForCompany', [companyController::class, 'addOpportunityview'])->name('addOppourtunityForCompany');
 
-    Route::get('/DocumentPageCompany', function () {
-        return view('Company/DocumentPageCompany', ['download' => \App\Models\document::where('uploaded_for', '=', 'company')->orWhere('uploaded_for', '=', 'both')->get()]);
-    });
+    return view('trainee/DocumentPage', ['docs' => \App\Models\document::where('uploaded_for', '=', 'trainee')->orWhere('uploaded_for', '=', 'both')->get()]);
+});
+Route::get('/traineeDetailsUnit/{id}', [RazanController::class,'detailsForUnit'])-> name('detailsForUnit');
+Route::get('/traineeDetailsLetter/{id}', [RazanController::class,'LetterRequest'])-> name('LetterRequest');
+Route::get('/traineeDetailsCommittee/{id}', [RazanController::class,'detailsForCommittee'])-> name('detailsForCommittee');
+Route::get('/traineeDetailsCompany/{id}', [RazanController::class,'detailsForCompany'])-> name('detailsForCompany');
+Route::get('/traineeDetailsRequest/{id}', [RazanController::class,'Request'])-> name('Request');
+Route::post('/action/{id}', [RazanController::class,'action'])-> name('action');
+Route::get('/download/{id}', [RazanController::class,'download'])-> name('download');
+Route::post('/companyUpload/{id}', [RazanController::class,'companyUpload'])-> name('companyUpload');
+Route::post('Authopportunity',[companyController::class,'Authopportunity'])-> name('Authopportunity');
+Route::get('/addOppourtunityForCompany', [companyController::class,'addOpportunityview'])->name('addOppourtunityForCompany');
 
-    Route::get('/traineeMainPage', [PTMPController::class, 'ViewMainpage'])->name('traineeMainPage');
-    Route::post('/invationcompany', [PTMPController::class, 'SendMail'])->name('invationcompany');
-    Route::post('/uploadfile', [PTMPController::class, 'uploadfile'])->name('uploadfile');
-    Route::post('/uploadfileOfCv', [PTMPController::class, 'uploadfileOfCv'])->name('uploadfileOfCv');
-    Route::get('/logout', [PTMPController::class, 'logout']);
-    Route::get('/CVPage', [PTMPController::class, 'CVshow']);
-    Route::get('/listOfCompany', [companyController::class, 'listOfcompany']);
-    Route::get('/searchlistOfCompany', [companyController::class, 'searchCompanyList']);
-    Route::get('/searchlistOfCompanyRequest', [companyController::class, 'searchCompanyRequestList']);
-    Route::delete('/company-delete/{id}', [companyController::class, 'deleteCompany'])->name('deleteCompanyPTunit');
-    Route::get('/Company.{id}', [companyController::class, 'CompanyDetails'])->name('CompanyDetails');
-    Route::get('/CompanyRegestration/{id}', [companyController::class, 'CompanyRegestrationDetails'])->name('regestrationRequest');
-    Route::get('/company-accept/{id}', [companyController::class, 'AcceptCompany'])->name('accept');
-    Route::get('/company-reject/{id}', [companyController::class, 'rejectCompany'])->name('reject');
-    Route::get('/listOfCompanyRequest', [companyController::class, 'listOfCompanyRequest']);
+Route::get('/DocumentPageCompany', function () {
+    return view('Company/DocumentPageCompany', ['download' => \App\Models\document::where('uploaded_for', '=', 'company')->orWhere('uploaded_for', '=', 'both')->get()]);
+});
+
+Route::get('/traineeMainPage', [PTMPController::class,'ViewMainpage'])-> name('traineeMainPage');
+Route::post('/invationcompany', [PTMPController::class,'SendMail'])-> name('invationcompany');
+Route::post('/uploadfile', [PTMPController::class,'uploadfile'])-> name('uploadfile');
+Route::post('/uploadfileOfCv', [PTMPController::class,'uploadfileOfCv'])-> name('uploadfileOfCv');
+Route::get('/logout', [PTMPController::class,'logout']);
+Route::get('/CVPage',[PTMPController::class,'CVshow']);
+Route::get('/listOfCompany',[companyController::class,'listOfcompany']);
+Route::get('/searchlistOfCompany',[companyController::class,'searchCompanyList']);
+Route::get('/searchlistOfCompanyRequest',[companyController::class,'searchCompanyRequestList']);
+Route::delete('/company-delete/{id}',[companyController::class,'deleteCompany'])->name('deleteCompanyPTunit');
+Route::delete('/oppo-delete/{id}',[BushraController::class , 'deleteOpportunity'])->name('deleteoppourtunityPTcommitte');
+Route::get('/Company.{id}',[companyController::class,'CompanyDetails'])->name('CompanyDetails');
+Route::get('/CompanyRegestration/{id}', [companyController::class,'CompanyRegestrationDetails'])->name('regestrationRequest');
+Route::get('/company-accept/{id}', [companyController::class,'AcceptCompany'])->name('accept');
+Route::get('/company-reject/{id}', [companyController::class,'rejectCompany'])->name('reject');
+Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequest']);
 //stoped here
     Route::post('/TrainingDocument', [\App\Http\Controllers\BalqeesController::class, 'uploadDoc'])->name('upload_doc');
     Route::post('/TrainingDocument/delete', [\App\Http\Controllers\BalqeesController::class, 'deleteDoc'])->name('delete_doc');
@@ -125,8 +131,18 @@ Route::group(['middleware' => 'isloggedin'], function () {
             'comp' => company::where('id', $company_id)->first(),
         ];
 
-        return view('Company/opportunityPageCompany', $opportunities);
-    });
+
+Route::get('/opportunityPageCompany', function () {
+    if(session()->get('logincompId')!=null){
+    $company_id = session()->get('logincompId');
+    $opportunities = ['opportunities'=> oppourtunity::where('company_id' , $company_id)->get(),
+    'comp'=> company::where('id' , $company_id)->first()
+];
+
+    return view('Company/opportunityPageCompany' , $opportunities);
+}
+return redirect('loginCompany');
+});
 
 // Route::get('/personalInfoCompanyEdit', function () {
 //     return view('Company/personalInfoCompanyEdit');

@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <img src="img/background_ksu2.png" alt="ksu" class="back">
+    <img src="{{asset('img/background_ksu2.png')}}" alt="ksu" class="back">
     <div class="container-sm">
-        <img src="img/learning.png" alt="ksu" class="learning" width="30%" hight="30%">
+        <img src="{{asset('img/learning.png')}}" alt="ksu" class="learning" width="30%" hight="30%">
         <h3>Change Password</h3>
         <p>Email: {{ $data->email }}</p>
         <hr>

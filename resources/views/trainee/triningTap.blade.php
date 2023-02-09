@@ -22,11 +22,11 @@
 
   @if($opportumityinfo!=null&&$opportumityinfo->statusbycommittee=='accept'&&$opportumityinfo->statusbytrainee=='accept'&&$opportumityinfo->statusbycompany=='accept')
   @if($loginIdUser['status']=='Completed')
-  <a href="{{route('addReview')}}"><button type="button" style="margin-left:50vw; font-size: 1.6vw; position: absolute; " class="add-but">Add Review</button></a>
+  <a href="{{route('addReview')}}"><button type="button" style="margin-left:65%; margin-top:-0.5%; font-size: 1.2vw; position: absolute; " class="add-but">Add Review</button></a>
   @endif
     <img src="{{asset('storage/images/'. $opportumityinfo->logoImage)}}" alt="Company logo" width="15%" hight="15%">
-    <h3 class="spashlist">{{$opportumityinfo->jobTitle}}</h3> <h4 class="date">{{$opportumityinfo->Start_at}} - {{$opportumityinfo->end_at}}</h4><h4 class="opportunityState">.</h4> <h4 class="opportunityState">CONFIRMED</h4>
-    <br><br><br><hr>
+    <h3 class="spashlist">{{$opportumityinfo->jobTitle}}</h3> <h4 class="date">{{Carbon\Carbon::parse($opportumityinfo->Start_at)->toFormattedDateString()}} - {{Carbon\Carbon::parse($opportumityinfo->end_at)->toFormattedDateString()}}</h4><h4 class="opportunityState">.</h4> <h4 class="opportunityState">{{$loginIdUser['status']}}</h4>
+    <br><br><hr>
 
        @if ($errors->has('uploudedfile'))
                 <div class="alert alert-danger">{{ $errors->first('uploudedfile') }}</div>

@@ -12,56 +12,54 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
-    <link rel="icon" type="image/png" href="img/learning.png">
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bushra.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/Razan.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/media.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/58f913c205.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    {{-- TODO:      <script src="assets/js/main.js"></script>--}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 
-    <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-        }
+        <link rel="icon" type="image/png" href="{{ asset('img/learning.png') }}">
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/bushra.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/Razan.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/media.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/58f913c205.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+{{--  TODO:      <script src="assets/js/main.js"></script>--}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+
+        <style>
+            body {
+                font-family: 'Nunito', sans-serif;
+            }
+        </style>
+
+    </head>
+
+    <body class="antialiased">
+        @include('sweetalert::alert')
 
     </style>
 
 
-</head>
 
-<body class="antialiased">
-    @include('sweetalert::alert')
-
-
-    <!-- Delete Review Confirmation modal-->
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <h1 style=" text-indent:30%;" class="modal-title fs-5" id="exampleModalLabel"> <b style="font-size:130%;"> Are you sure? </b> </h1>
-                <div class="modal-body" style="text-align: center; font-size:120%;">
-                    Do you really want to delete your feedback? This proccess cannot be undone
-                </div>
-                <form action="/traineeMainPage" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button data-bs-dismiss="modal" class="del-msg">Delete</button>
-                    <button type="button" class="can-but" data-bs-dismiss="modal">Cancel</button>
-                </form>
-            </div>
-        </div>
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <h1 style=" text-indent:30%;" class="modal-title fs-5" id="exampleModalLabel"> <b style="font-size:130%;"> Are you sure? </b> </h1>
+      <div class="modal-body" style="text-align: center; font-size:120%;">
+      Do you really want to delete your feedback? This proccess cannot be undone
+      </div>
+    <form action="/traineeMainPage" method="POST">
+    @csrf
+    @method('DELETE')
+    <button  data-bs-dismiss="modal" class="del-msg">Delete</button>
+    <button type="button" class="can-but" data-bs-dismiss="modal">Cancel</button>
+    </form>
     </div>
 
     <!-- view announcement modal -->
     <div class="modal fade" id="view_announcement_modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-title d-flex flex-row pt-4">
                     <div style="flex: 1 0;"></div>
@@ -90,10 +88,10 @@
                         @if ($errors->has('InvaitEmail'))
                         <span class="text-danger">{{ $errors->first('InvaitEmail') }}</span>
                         @endif
-                        <br>
-                        <hr>
-                        <button type="submit" class="ok-but">submit</button>
-                    </form>
+
+                        <br><hr>
+                    <button type="submit" class="ok-but">submit</button>
+                 </form>
                 </div>
             </div>
         </div>
@@ -121,22 +119,23 @@
         </div>
     </div>
     <!--delete company-->
-    <div class="modal fade" id="Delete_company_Modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <h1 style=" text-indent:30%;" class="modal-title fs-5" id="deleteComp"> <b style="font-size:130%;"> Are you sure? </b> </h1>
-                <div class="modal-body" style="text-align: center; font-size:120%;">
-                    This Company have Opportinity Are you Sure you Want to Delete it ? This proccess cannot be undo
-                </div>
-                <form action="/traineeMainPage" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button data-bs-dismiss="modal" class="del-msg">Delete</button>
-                    <button type="button" class="can-but" data-bs-dismiss="modal">Cancel</button>
-                </form>
-            </div>
-        </div>
+
+ <div class="modal fade" id="Delete_company_Modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <h1 style=" text-indent:30%;" class="modal-title fs-5" id="deleteComp"> <b style="font-size:130%;"> Are you sure? </b> </h1>
+      <div class="modal-body" style="text-align: center; font-size:120%;">
+      This Company have Opportinity Are you Sure you Want to Delete it ? This proccess cannot be undo
+      </div>
+    <form action="/traineeMainPage" method="POST">
+    @csrf
+    @method('DELETE')
+    <button  data-bs-dismiss="modal" class="del-msg">Delete</button>
+    <button type="button" class="can-but" data-bs-dismiss="modal">Cancel</button>
+    </form>
     </div>
+  </div>
+</div>
     <!-- File Deletion Confirmation modal-->
     <div class="modal fade" id="confirm_delete_file" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
         <div class="modal-dialog">
@@ -204,8 +203,19 @@
         <img src="{{ asset('img/ksu_logo.png') }}" alt="Ksu logo" width="5%" height="90%" class="ksuLogo">
         <p>KSU <br> Practical Training Management Portal </p>
     </div>
+
+  </div>
+</div>
+
+      <!-- Core theme JS-->
+        <script src="{{ asset('js/scripts.js') }}"></script>
+
+    <div class= heder>
+      <img src="{{ asset('img/ksu_logo.png') }}" alt="Ksu logo" width="5%" height="90%" class="ksuLogo">
+          <p>KSU <br> Practical Training Management Portal </p>
+     </div>
     @if(Session::has('loginId')||Session::has('logincompId')||Session::has('logincommiteeId')||Session::has('loginunitId'))
-    <a href="/logout"> <span class="fa fa-sign-out"> Log out</span> </a>
+         <a href="/logout"> <span class="fa fa-sign-out"> Log out</span>  </a>
     @endif
     @yield('content')
 
