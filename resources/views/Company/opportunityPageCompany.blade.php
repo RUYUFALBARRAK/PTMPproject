@@ -3,39 +3,59 @@
 @section('content-training')
 <div class="content">
 
-  
-
-  
     <h2>Opportunities</h2>
-    
-   @if($comp->status=='accept')
+
+    @if($comp->status=='accept')
     <a href="{{ url('/addOppourtunityForCompany') }}" class="btn text-white" style="margin-left:40%; font-size:20px; margin-top:-3.6%; position:absolute; background-color: #388087;">Add training opportunity</a>
-   @elseif($comp->status=='reject')
-   <a class="btn text-white" style="margin-left:26%; font-size:16px; margin-top:-3.6%; position:absolute; background-color: red;">Sorry your company rejected by practical training unit ..</a>
-   @else
-   <a class="btn text-white" style="margin-left:29%; font-size:16px; margin-top:-3.6%; position:absolute; background-color: gray;">Waiting for acceptance from practical training unit ..</a>
-   @endif
+    @elseif($comp->status=='reject')
+    <a class="btn text-white" style="margin-left:26%; font-size:16px; margin-top:-3.6%; position:absolute; background-color: red;">Sorry your company rejected by practical training unit ..</a>
+    @else
+    <a class="btn text-white" style="margin-left:29%; font-size:16px; margin-top:-3.6%; position:absolute; background-color: gray;">Waiting for acceptance from practical training unit ..</a>
+    @endif
 
-   
+
     <div class="form-group col-md-2 state-menu" style="margin-left:65%;  position:absolute; ">
-      <select id="inputLocationCompany" class="form-select">
-        <option selected>Status..</option>
-        <option>Accepted</option>
-        <option>Rejected</option>
-        <option>Pending</option>
-        <option>Needs Modification</option>
-        <option>All</option>
-      </select>
+        <select id="inputLocationCompany" class="form-select">
+            @php
+            $arr = [
+            "accepted",
+            "rejected",
+            "pending",
+            "available",
+            "all",]
+            @endphp
+
+            <option selected>Status..</option>
+
+            @foreach($arr as $ar)
+            {{-- if old value --}}
+            @if($ar == request()->status ??null)
+            <option value="{{$ar}}" selected>{{$ar}}</option>
+            @else
+            <option value="{{$ar}}">{{$ar}}</option>
+            @endif
+
+            @endforeach
+        </select>
     </div>
+    @section("js")
+    <script>
+        $("#inputLocationCompany").change(function() {
+            var location = $(this).val();
+            window.location.href = "{{url('/filter/opportunityPageCompany')}}" + "?status=" + location;
+        });
+
+    </script>
+
+    @endsection
 
 
 
 
-
-<hr>
-<!-- New-->
-    @if(count($opportunities) > 0) 
-      <table class="table-Bushra">
+    <hr>
+    <!-- New-->
+    @if(count($opportunities) > 0)
+    <table class="table-Bushra">
         @foreach ($opportunities as $opportunity)
         <tr class="tr-Bushra">
             <td class="fisrt-col-Bushra">
@@ -45,44 +65,43 @@
 
             <td class="second-col-Bushra">
                 <h5>{{ $opportunity->jobTitle }}</h5>
-                <h6>{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</h6>
+                <h6>{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }} - {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</h6>
             </td>
-            
 
-          <td>
-            @if($opportunity->status == 'pending')
-              <h5 class="opportunityStateB2 text-warning" >Pending</h5>
-            @elseif ($opportunity->status == 'accept')
-              <h5 class="opportunityStateB2 text-success" >Accepted</h5>
-            @elseif ($opportunity->status == 'need_modification')
-            <h5 class="opportunityStateB2" style="color:#dadd28; ">Need Modification</h5>
-            @elseif ($opportunity->status == 'reject')
-            <h5 class="opportunityStateB2 text-danger" >Rejected</h5>
-            @endif
-          </td>
-          <td style="padding-left:10%; padding-top:5% color:black; font-size: 1px;"class="second-col-Bushra">
+
+            <td>
+                @if($opportunity->status == 'pending')
+                <h5 class="opportunityStateB2 text-warning">Pending</h5>
+                @elseif ($opportunity->status == 'accept')
+                <h5 class="opportunityStateB2 text-success">Accepted</h5>
+                @elseif ($opportunity->status == 'need_modification')
+                <h5 class="opportunityStateB2" style="color:#dadd28; ">Need Modification</h5>
+                @elseif ($opportunity->status == 'reject')
+                <h5 class="opportunityStateB2 text-danger">Rejected</h5>
+                @endif
+            </td>
+            <td style="padding-left:10%; padding-top:5%; color:black; font-size: 1px;" class="second-col-Bushra">
                 <h6>{{ $opportunity->numberOfTraineeAssigned.'/'.$opportunity->numberOfTrainee .' ' .'Trainees Assigned'}}</h6>
-               
+
             </td>
 
-          <td class="oppoArrow">
-            <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right" ></span></a>
-          </td>
+            <td class="oppoArrow">
+                <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right"></span></a>
+            </td>
 
-        
-        </tr> 
+
+        </tr>
         @endforeach
     </table>
-  @else
+    @else
     <div class="not-found">
-      <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
-      <p>Company has No Opportunities yet</p>
+        <img src="{{asset('img/paper.png')}}" alt="Company logo" class="logoCompany"> <br><br><br>
+        <hr>
+        <p>Company has No Opportunities yet</p>
     </div>
-  @endif
-    
-   
+    @endif
+
+
 </div>
 
 @endsection
-
-
