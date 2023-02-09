@@ -25,7 +25,7 @@
             "all" => "All",]
             @endphp
 
-            <option selected>Status..</option>
+            <option disabled selected>Status..</option>
 
             @foreach($arr as $ar => $name)
             {{-- if old value --}}

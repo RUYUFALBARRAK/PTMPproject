@@ -152,21 +152,21 @@
         <select id="inputLocationCompany" name="status" class="form-select">
             @php
             $arr = [
-            "accepted",
-            "rejected",
-            "pending",
-            "available",
-            "all",]
+            "accept" =>"Accepted",
+            "reject" =>"Rejected",
+            "pending" => "Pending",
+            "available" => "Available",
+            "all" => "All",]
             @endphp
 
-            <option selected>Status..</option>
+            <option disabled selected>Status..</option>
 
-            @foreach($arr as $ar)
+            @foreach($arr as $ar => $name)
             {{-- if old value --}}
             @if($ar == request()->status ??null)
-            <option value="{{$ar}}" selected>{{$ar}}</option>
+            <option value="{{$ar}}" selected>{{$name}}</option>
             @else
-            <option value="{{$ar}}">{{$ar}}</option>
+            <option value="{{$ar}}">{{$name}}</option>
             @endif
 
             @endforeach

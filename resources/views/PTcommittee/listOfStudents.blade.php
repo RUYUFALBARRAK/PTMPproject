@@ -18,7 +18,7 @@
             "Completed"
             ];
             @endphp
-            <option selected>Status..</option>
+            <option value="" selected>Status..</option>
             @foreach($array as $item)
             @if(request()->input('status') == $item)
             <option value="{{$item}}" selected>{{$item}}</option>

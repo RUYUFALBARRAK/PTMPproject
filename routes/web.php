@@ -125,24 +125,19 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
         return view('trainee.Announcements', ['announcements' => \App\Models\announcement::all()]);
     })->name('announcements_trainee');
 
+
+
     Route::get('/opportunityPageCompany', function () {
+        if(session()->get('logincompId')!=null){
         $company_id = session()->get('logincompId');
-        $opportunities = ['opportunities' => oppourtunity::where('company_id', $company_id)->get(),
-            'comp' => company::where('id', $company_id)->first(),
-        ];
+        $opportunities = ['opportunities'=> oppourtunity::where('company_id' , $company_id)->get(),
+        'comp'=> company::where('id' , $company_id)->first()
+    ];
 
-
-Route::get('/opportunityPageCompany', function () {
-    if(session()->get('logincompId')!=null){
-    $company_id = session()->get('logincompId');
-    $opportunities = ['opportunities'=> oppourtunity::where('company_id' , $company_id)->get(),
-    'comp'=> company::where('id' , $company_id)->first()
-];
-
-    return view('Company/opportunityPageCompany' , $opportunities);
-}
-return redirect('loginCompany');
-});
+        return view('Company/opportunityPageCompany' , $opportunities);
+    }
+    return redirect('loginCompany');
+    });
 
 // Route::get('/personalInfoCompanyEdit', function () {
 //     return view('Company/personalInfoCompanyEdit');
