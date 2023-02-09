@@ -243,12 +243,12 @@
 <br> <br> <br> <br>
  <label for="comment">Include Incentive?</label>
     <div class="form-check">
-  <input type="radio"  class="form-check-input" id="radio1" name="incentive"  value="1" checked>Yes
+  <input type="radio"  class="form-check-input" id="radio1" name="incentive"  value="with incentive" checked>Yes
   <label class="form-check-label" for="radio1"></label>
     </div>
 
 <div class="form-check">
-  <input type="radio" class="form-check-input" id="radio2" value="0"  name="incentive" >No
+  <input type="radio" class="form-check-input" id="radio2" value="without incentive"  name="incentive" >No
 </div>
  @if ($errors->has('incentive'))
         <span class="text-danger">{{ $errors->first('incentive') }}</span>

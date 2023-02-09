@@ -59,7 +59,7 @@
 
     <!-- view announcement modal -->
     <div class="modal fade" id="view_announcement_modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-title d-flex flex-row pt-4">
                     <div style="flex: 1 0;"></div>

@@ -159,6 +159,7 @@
     <table class="table-Bushra">
       @foreach($opportunities as $opportunitiy)
       @if(($opportunitiy->numberOfTraineeAssigned) < ($opportunitiy->numberOfTrainee))
+      @if($opportunitiy->AppDeadline >= now()->format('Y-m-d'))
         <tr class="tr-Bushra">
 
           <td class="fisrt-col-Bushra">
@@ -177,13 +178,14 @@
             @if(is_null($status))
             @else
               @if(($status->statusbycompany ==  \App\Enum\companyStatus::pending || $status->statusbycompany == \App\Enum\companyStatus::accept) && $status->statusbytrainee ==  \App\Enum\companyStatus::pending )
-                <h4 class="opportunityStateB2 text-warning">Pending</h4>
+                <h6 class="opportunityStateB2 text-warning">Pending</h6>
               @elseif($status->statusbycompany == \App\Enum\companyStatus::accept && $status->statusbytrainee == \App\Enum\companyStatus::accept)
-                <h4 class="opportunityStateB2 text-success">Accept</h4>
+                <h6 class="opportunityStateB2 text-success">Accept</h6>
               @elseif($status->statusbycompany == \App\Enum\companyStatus::reject)
-                <h4 class="opportunityStateB2 text-danger">Reject</h4>
+                <h6 class="opportunityStateB2 text-danger">Reject</h6>
               @else
-                <h4 class="opportunityStateB2 text-success">Available</h4>
+                <h6 class="opportunityStateB2 text-success">Available</h6>
+             
               @endif
            @endif
           </td>
@@ -254,6 +256,7 @@
           </td>
         
         </tr>
+         @endif
         @endif
       @endforeach 
 

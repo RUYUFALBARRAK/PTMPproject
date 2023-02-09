@@ -306,7 +306,7 @@ font-size: 2vw;
   margin: -4% 10% 20% 15%;
 }
 .date{
-  font-size: 2vw;
+  font-size: 1.2vw;
   position: absolute;
   margin: -1% 10% 20% 15%;
 }
@@ -388,7 +388,7 @@ requset-details
 .opportunityState{
   font-size: 1.7vw;
   color: green;
-  margin: -1.3vw 40vw ;
+  margin: -1.6vw 30vw ;
 }
 
 
