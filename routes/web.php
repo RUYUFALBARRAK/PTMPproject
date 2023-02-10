@@ -54,7 +54,7 @@ Route::post('/changePassword/{token}', [\App\Http\Controllers\BalqeesController:
 Route::group(['middleware' => 'isloggedin'], function () {
 
     Route::get('/instruction', [RazanController::class, 'inst']);
-    Route::get('/viewReview', [RazanController::class, 'viewReview']);
+    Route::get('/viewReview', [RazanController::class, 'viewReview'])->name('viewReview');;
     Route::delete('/traineeMainPage', [RazanController::class, 'destroy'])->name('destroy');
     Route::get('/addReview', [RazanController::class, 'addReview'])->name('addReview');
     Route::post('/traineeMainPage', [RazanController::class, 'add'])->name('add');

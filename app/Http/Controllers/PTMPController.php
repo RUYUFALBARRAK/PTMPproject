@@ -52,7 +52,7 @@ class PTMPController extends Controller
         $user= trainee::where('trainee_id','=',$request->id)->first();
         $committee=committee::where('committee_id','=',$request->id)->first();
         $unit=unit::where('unit_id','=',$request->id)->first();
-        
+
 
         if($user||$committee||$unit){
                 if($user){
@@ -76,15 +76,15 @@ class PTMPController extends Controller
                     else{
                         return back()->with('fail','id or password worng');
                     }
-                } 
-             
+                }
+
         }else{
             return back()->with('fail','did not find the id');
         }
     }
 
-    
-   
+
+
 
 function ViewMainpage(){
     if(Session::has('loginId')){
@@ -116,7 +116,12 @@ function ViewMainpage(){
     if($find->doc_name==fileNameEnum::EffectiveDateNotice){
         $EffectiveDateNotice=true;
     }}
-  
+
+    $review = 'empty';
+    if( review::where('trainee_id','=',session('loginId'))->exists()){
+        $review = review::where('trainee_id','=',session('loginId'))->value('review');
+    }
+
     $data=['loginIdUser'=>  $trainee,// trainee::with('oppourtunity')->get()->first(),
    // 'file'=> trainee::with('Sendsdocument')->get()->first()
    'opportumityinfo'=>DB::table('users')->where('users.trainee_id','=',session('loginId'))->
@@ -139,10 +144,12 @@ function ViewMainpage(){
          'docEffectiveDateNotice'=>Sendsdocument::whereHas('trainee',function($q){
         $q->where('trainee_id', '=', session('loginId'))->where('doc_name', '=', 'EffectiveDateNotice');})->first(),
         'opportunityTime'=>$opportunityTime,
+        'review' => $review,
 ];
 //view('trainee/triningTap',$data)
    //$data['file'][1]['doc_name'];
-    return view('trainee/triningTap',$data) ;}
+    return view('trainee/triningTap',$data) ;
+}
      return redirect('welcome');
 }
 
@@ -188,7 +195,7 @@ function uploadfile(Request $request){
             $Sendsdocument->doc_name= fileNameEnum::EffectiveDateNotice;
     }
 
-    
+
             $Sendsdocument->opportunity_id=trainee::where('trainee_id','=',session('loginId'))->first()->opportunity_id;
             $Sendsdocument->committee_id= trainee::where('trainee_id','=',session('loginId'))->first()->committee_id;
             $Sendsdocument->trainee_id= trainee::where('trainee_id','=',session('loginId'))->first()->trainee_id;
@@ -230,7 +237,7 @@ function uploadfileOfCv(Request $request){
             $cv->trainee_id= trainee::where('trainee_id','=',session('loginId'))->first()->trainee_id;
 
             $cv->save();
-           
+
             return redirect('CVPage')->with('success','Successfully uploaded!');
 
 }
@@ -252,7 +259,7 @@ function CVshow(){
         $identificationLetter=true;
     }
    }
-     
+
          $data=['loginIdUser'=>  trainee::where('trainee_id','=',session('loginId'))->first(),
         'skills'=> traineeSkills::where('trainee_id','=',session('loginId'))->get(),
         'Languages'=> traineeLanguages::where('trainee_id','=',session('loginId'))->get(),
@@ -267,9 +274,9 @@ function CVshow(){
         $q->where('trainee_id', '=', session('loginId'))->where('documentName', '=', 'acdamicFile');})->first(),
          'doccertifactionFile'=>cv::whereHas('trainee',function($q){
         $q->where('trainee_id', '=', session('loginId'))->where('documentName', '=', 'certifactionFile');})->first(),
-        
+
     ];
-         
+
   return view('trainee/CV-Tap',$data);}
   return redirect('welcome');
 }
@@ -284,7 +291,7 @@ $traineeSkills= new traineeSkills();
 $traineeSkills->skills=$skills;
 $traineeSkills->trainee_id=session('loginId');
 $traineeSkills->save();
-}        
+}
 return back();//Str::contains($request->skills, ',');
 }
 function deleteSkills($id){
@@ -303,7 +310,7 @@ $traineeLanguages= new traineeLanguages();
 $traineeLanguages->Languages=$Languages;
 $traineeLanguages->trainee_id=session('loginId');
 $traineeLanguages->save();
-}        
+}
 return back();
 }
 function deleteLanguages($id){
@@ -322,7 +329,7 @@ $traineeInterests= new traineeInterests();
 $traineeInterests->Interests=$Interests;
 $traineeInterests->trainee_id=session('loginId');
 $traineeInterests->save();
-}        
+}
 return back();
 }
 function deleteInterests($id){
@@ -340,7 +347,7 @@ $traineeExperience= new traineeExperience();
 $traineeExperience->Experience=$Experience;
 $traineeExperience->trainee_id=session('loginId');
 $traineeExperience->save();
-}        
+}
 return back();
 }
 function deleteExperience($id){
