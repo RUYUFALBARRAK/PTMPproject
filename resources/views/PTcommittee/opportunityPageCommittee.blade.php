@@ -162,82 +162,77 @@
     <br><br>
 
     @if(count($opportunities) > 0)
-    <table class="table-Bushra">
+    <table class="table table-hover">
+   <thead>
+    <tr>
+      <th scope="col">Logo</th>
+      <th scope="col">Title</th>
+      <th scope="col">Location</th>
+      <th scope="col">Delete</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
         @foreach ($opportunities as $opportunity)
-        <tr class="tr-Bushra">
-
-          <td class="fisrt-col-Bushra">
+        <tr>
+          <td >
           <img src="{{ asset( $opportunity->company->logoImage ? 'storage/images/' . $opportunity->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany" width="100px" hight="100px">
               <br><br>
           </td>
 
-          <td class="second-col-Bushra">
+          <td style="padding-top:30px;">
               <h5>{{ $opportunity->jobTitle }}</h5>
               <h6>{{ Carbon\Carbon::parse($opportunity->Start_at)->toFormattedDateString() }}  -  {{ Carbon\Carbon::parse($opportunity->end_at)->toFormattedDateString() }}</h6>
           </td>
-
+          <td style="padding-top:40px;">
+            <h5>{{ $opportunity->address }}</h5>
+          </td>
       
-        <td >   
+        <td style="padding-top:30px;" >   
           @if(($opportunity->numberOfTraineeAssigned)== 0)
      <form method="POST" action="{{ route('deleteoppourtunityPTcommitte',[$opportunity->id]) }}">
            @csrf
            <input name="_method" type="hidden" value="DELETE">
-          <button type="submit" id="delete" data-toggle="tooltip" title='Delete' style="margin-left:50%;" class="btn btn-outline-danger  show_confirm">Delete</button>
+          <button type="submit" id="delete" data-toggle="tooltip" title='Delete'   class="btn btn-outline-danger  show_confirm">Delete</button>
         </form>
         @else
-          <form method="" action="">
-           @csrf
-           <input name="_method" type="hidden" value="DELETE">
-        <button type="submit"  id="delete" data-toggle="tooltip" title='can not be deleted' style="margin-left:50%;" class="btn btn-outline-danger show_noconfirm">Delete</button>
-        </form>
+  
+        <button type="submit"  id="delete" data-toggle="tooltip" title='can not be deleted' onclick="nodelete('opportunity')" class="btn btn-outline-danger show_noconfirm">Delete</button>
+       
         @endif
       </td>
 
-          <td>
-            <a href="{{ route('accOpportunity.details', $opportunity->id) }}"><span class="	fa fa-chevron-right" style="margin-top:1%;"></span></a>
+          <td style="padding-top:40px;" >
+            <a href="{{ route('accOpportunity.details', $opportunity->id) }}"><span class="	fa fa-chevron-right" ></span></a>
           </td>
       
       </tr>
         @endforeach
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-<script type="text/javascript">
- 
-     $('.show_confirm').click(function(event) {
-          var form =  $(this).closest("form");
-          var name = $(this).data("name");
-          event.preventDefault();
-          swal({
-              title: `This opportunity may have assigned to trainee do you want to delete it?`,
-              text: "If you delete this, it will be gone forever.",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-              className: "myClass"
-          })
-          .then((willDelete) => {
+ </tbody>
+<script>
+ $('.show_confirm').click(function (event) {
+    var form = $(this).closest("form");
+    var name = $(this).data("name");
+    event.preventDefault();
+    swal({
+        title: `This opportunity may have assigned to trainee do you want to delete it?`,
+        text: "If you delete this, it will be gone forever.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        className: "myClass"
+    })
+        .then((willDelete) => {
             if (willDelete) {
-              form.submit();
+                swal("This opportunity has been deleted!", {
+                    icon: "success",
+                });
+                form.submit();
+
             }
-          });
-      });
-  $('.show_noconfirm').click(function(event) {
-          var form =  $(this).closest("form");
-          var name = $(this).data("name");
-          event.preventDefault();
-          swal({
-              title: `Opportunity delete!`,
-              text: "This opportunity can not be deleted it is assigned to trainee",
-              icon: "warning",
-              button: true,
-              dangerMode: true,
-              className: "myClass"
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              form.submit();
-            }
-          });
- });
+        });
+});
+
   
 </script>
       </table>

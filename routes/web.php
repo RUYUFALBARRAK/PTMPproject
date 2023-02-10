@@ -206,7 +206,6 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
     })->name('opportunity.details');
 
     Route::post('/opportunityUpdateStatus/{id}', [BushraController::class, 'updateOpportunityStatus'])->name('opportunity.update_status');
-
     Route::get('/opportunityRequestCommittee', function () {
         $opportunities = oppourtunity::where('status', 'pending')->get();
         return view('PTcommittee/opportunityRequestCommittee', compact('opportunities'));

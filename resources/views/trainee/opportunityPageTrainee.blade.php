@@ -204,25 +204,34 @@
 
 
     @if(count($opportunities) > 0)
-
-    <table class="table-Bushra">
-
+ 
+    <table class="table table-hover">
+     <thead>
+    <tr>
+      <th scope="col">Logo</th>
+      <th scope="col">Job Title</th>
+      <th scope="col">Status</th>
+      <th scope="col">Reviews</th>
+       <th scope="col"></th>
+    </tr>
+  </thead>
+<tbody>
       @foreach($opportunities as $opportunitiy)
       @if(($opportunitiy->numberOfTraineeAssigned) < ($opportunitiy->numberOfTrainee))
       @if($opportunitiy->AppDeadline >= now()->format('Y-m-d'))
-        <tr class="tr-Bushra">
+        <tr >
 
-            <td class="fisrt-col-Bushra">
+            <td >
                 <img src="{{ asset( $opportunitiy->company->logoImage ? 'storage/images/' . $opportunitiy->company->logoImage  : 'img/default_img.jpg') }}" alt="Company logo" class="logoCompany" width="100px" hight="100px">
                 <br><br>
             </td>
 
-            <td class="second-col-Bushra">
+            <td style="padding-top:30px;" >
                 <h5>{{ $opportunitiy->jobTitle }}</h5>
                 <h6 class="text-secondary">{{ Carbon\Carbon::parse($opportunitiy->Start_at)->toFormattedDateString() }} - {{ Carbon\Carbon::parse($opportunitiy->end_at)->toFormattedDateString() }} </h6>
             </td>
 
-            <td>
+            <td style="padding-top:40px;">
                 @php $status = App\Models\requestedopportunity::where('opportunity_id',$opportunitiy->id)->where('trainee_id' , session()->get('loginId'))->first(); @endphp
 
 
@@ -241,7 +250,7 @@
            @endif
           </td>
 
-            <td class="td-Bushra">
+            <td style="padding-top:20px;" >
                 <span class="rate2-Bushra">
 
                     @php
@@ -295,7 +304,7 @@
             // dd($is_apply)
             @endphp
 
-            <td>
+            <td style="padding-top:40px;">
                 @if($is_apply)
                 <a href="{{ route('opportunity.confirm' , $opportunitiy->id) }}"><span class="	fa fa-chevron-right"></span></a>
                 @else
@@ -308,7 +317,7 @@
          @endif
         @endif
       @endforeach 
-
+</tbody>
     </table>
 
     @else

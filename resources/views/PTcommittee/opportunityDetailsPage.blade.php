@@ -87,10 +87,11 @@
     @if ($opportunity->status == 'pending')
     <form action="{{ route('opportunity.update_status',$opportunity->id) }}" method="POST">
         @csrf
-        <div class="input-group" style="margin-bottom:3%;">
+        
             <button type="submit" name="status" value="accept" class="btn btn-outline-success" style="font-size: 136%; margin-left: 42%;">Accept</button>&nbsp;&nbsp;
-            <button type="submit" name="status" value="reject" class="btn btn-outline-danger" style="font-size: 136%;">Reject</button>&nbsp;&nbsp;
-        </div>
+             <input name="status" type="hidden" value="reject">
+            <button type="submit" name="status" value="reject" class="btn btn-outline-danger show_confirm" style="font-size: 136%;">Reject</button>&nbsp;&nbsp;
+        
 
         <h6 class="text-secondary" style="font-size: 120%;">This opportunity need modification ?</h6>
         <hr style="color: rgb(212, 212, 212)">
@@ -133,6 +134,30 @@
     <br><br>
 
     <a href="{{ url('/opportunityRequestCommittee') }}" class="btn btn-light">Back</a>
+    <script>
+ $('.show_confirm').click(function (event) {
+    var form = $(this).closest("form");
+    var name = $(this).data("name");
+    event.preventDefault();
+    swal({
+        title: `The opportunity will be rejected`,
+        text: "If you reject this, you can not undo this process.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal("The opportunity has been rejected!", {
+                    icon: "success",
+                });
+                form.submit();
+            }
+        });
+});
+
+  
+</script>
 </div>
  
 

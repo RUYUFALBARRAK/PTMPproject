@@ -26,7 +26,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 {{--  TODO:      <script src="assets/js/main.js"></script>--}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
@@ -56,7 +56,8 @@
     <button type="button" class="can-but" data-bs-dismiss="modal">Cancel</button>
     </form>
     </div>
-
+        </div>
+        </div>
     <!-- view announcement modal -->
     <div class="modal fade" id="view_announcement_modal" tabindex="-1" aria-labelledby="confirm" aria-hidden="true">
         <div class="modal-dialog modal-lg">
