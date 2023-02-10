@@ -84,9 +84,6 @@
             <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right" ></span></a>
           </td>
 
-            <td class="oppoArrow">
-                <a href="{{ route('opportunityDetails.show' , $opportunity->id) }}"><span class="	fa fa-chevron-right" ></span></a>
-              </td>
         </tr>
         @endforeach
          </tbody>
