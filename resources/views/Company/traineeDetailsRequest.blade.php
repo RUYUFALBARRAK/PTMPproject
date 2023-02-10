@@ -101,7 +101,9 @@
         @csrf
         <button type="submit" name="status" value="accept" class="btn btn-outline-success" style="font-size: 136%;
         padding: 4px 18px 4px 18px; margin-left: 34%; margin-top: 5%;"> Accept </button>
-        <button type="submit" name="status" value="reject" class="btn btn-outline-danger" style="font-size: 135%;
+
+<input name="status" type="hidden" value="reject">
+        <button type="submit" name="status" value="reject" class="btn btn-outline-danger  show_confirm" style="font-size: 135%;
         padding: 4px 20px 4px 20px; margin-left: 12%; margin-top: 5%;"> Reject  </button>
         </div>
 </form>
@@ -109,6 +111,31 @@
 </div>
 
 <div>
+
+<script>
+ $('.show_confirm').click(function (event) {
+    var form = $(this).closest("form");
+    var name = $(this).data("name");
+    event.preventDefault();
+    swal({
+        title: `The opportunity will be rejected`,
+        text: "If you reject this, you can not undo this process.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal("The opportunity has been rejected!", {
+                    icon: "success",
+                });
+                form.submit();
+            }
+        });
+});
+
+
+</script>
 
 </div>
 
