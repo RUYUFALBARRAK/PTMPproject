@@ -6,7 +6,10 @@
 <img src="{{  asset('storage/images/'.$company->logoImage)  }}" alt="Company logo" width="15%" hight="15%">
     <div class=" requset-details">
     <a class="btn btn-outline-success" href="{{ route('accept',[$company->id]) }}">Accept</a>
-    <a class="btn btn-outline-danger" href="{{ route('reject',[$company->id]) }}">Decline</a>
+       <form action="{{ route('reject',[$company->id]) }}" method="POST" style="margin-top:-50%; margin-left:110%;">
+        @csrf
+    <button class="btn btn-outline-danger show_confirm" >Reject</button>
+</form>
     </div>
     <h3 class="spashlist">{{$company->orgnizationName}}</h3>
     <br><br><hr>
@@ -24,7 +27,30 @@
     <span style="color: #106a6a;" clase="comp-info" id="City"><strong style="font-size: 100%; color: #000404;" class="info">City:</strong>  &nbsp;   {{$company->Address}}</span> <br><br>
     <span style="color: #106a6a;" clase="comp-info" id="brief-description-about-the-company"><strong style="font-size: 100%; color: #000404;" class="info">Brief description bout the company:</strong> &nbsp;  {{$company->description}}</span><br> <br>
     @endforeach 
-    
+        <script>
+ $('.show_confirm').click(function (event) {
+    var form = $(this).closest("form");
+    var name = $(this).data("name");
+    event.preventDefault();
+    swal({
+        title: `The Company will be rejected`,
+        text: "If you reject this, you can not undo this process.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal("The comapny has been rejected!", {
+                    icon: "success",
+                });
+                form.submit();
+            }
+        });
+});
+
+  
+</script>
 </div>
 
 @endsection

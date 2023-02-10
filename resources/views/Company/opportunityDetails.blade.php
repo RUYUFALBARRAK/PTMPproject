@@ -8,8 +8,12 @@
     <br><br>
 
     <br><br><br>
-
-
+    @if($opportunity->status=='need_modification')
+        <div>
+        <label for="validationTooltip01" style="color:#dadd28;" class="oppT-form-label">Modification:</label>
+        <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->note }}</label>
+        </div><br>
+    @endif
     <div>
     <label for="validationTooltip01" class="oppT-form-label">job title:</label>
     <label for="validationTooltip01" class="oppD-form-label">{{ $opportunity->jobTitle }}</label>

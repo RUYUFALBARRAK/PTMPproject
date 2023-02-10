@@ -93,7 +93,7 @@ Route::delete('/oppo-delete/{id}',[BushraController::class , 'deleteOpportunity'
 Route::get('/Company.{id}',[companyController::class,'CompanyDetails'])->name('CompanyDetails');
 Route::get('/CompanyRegestration/{id}', [companyController::class,'CompanyRegestrationDetails'])->name('regestrationRequest');
 Route::get('/company-accept/{id}', [companyController::class,'AcceptCompany'])->name('accept');
-Route::get('/company-reject/{id}', [companyController::class,'rejectCompany'])->name('reject');
+Route::post('/company-reject/{id}', [companyController::class,'rejectCompany'])->name('reject');
 Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequest']);
 //stoped here
     Route::post('/TrainingDocument', [\App\Http\Controllers\BalqeesController::class, 'uploadDoc'])->name('upload_doc');

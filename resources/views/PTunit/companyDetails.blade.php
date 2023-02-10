@@ -33,7 +33,7 @@
           var name = $(this).data("name");
           event.preventDefault();
           swal({
-              title: `this company may have an opportunity do you wany to delete it?`,
+              title: `This company may have an opportunity do you wany to delete it?`,
               text: "If you delete this, it will be gone forever.",
               icon: "warning",
               buttons: true,
@@ -42,6 +42,9 @@
           })
           .then((willDelete) => {
             if (willDelete) {
+                swal("The comapny has been deleted!", {
+                    icon: "success",
+                });
               form.submit();
             }
           });

@@ -19,6 +19,11 @@ use Illuminate\Validation\Rule;
 use Alert;
 
 
+
+use Mail;
+use Illuminate\Support\Str;
+use App\Mail\SendMail;
+
 class companyController extends Controller
 {
     function Authlogincompany(Request $request){
@@ -279,7 +284,7 @@ function rejectCompany($id){
                 "subject"=>"PTMP Mail",
                 "body"=>"Sorry, your company was rejected for some reasons please contact with PTMP service if you are interested",
                 ];
-                 Mail::to($companyD->orgnizationEmail)->send(new SendMail($data));
+                 Mail::to($companyRequest->orgnizationEmail)->send(new SendMail($data));
         $companyRequest->delete();
 return redirect('/listOfCompanyRequest')->with('msgcompanyRejected','company was rejected successfully');  
 }
