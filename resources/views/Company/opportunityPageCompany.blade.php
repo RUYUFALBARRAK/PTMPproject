@@ -18,15 +18,40 @@
 
    
     <div class="form-group col-md-2 state-menu" style="margin-left:65%;  position:absolute; ">
-      <select id="inputLocationCompany" class="form-select">
-        <option selected>Status..</option>
-        <option>Accepted</option>
-        <option>Rejected</option>
-        <option>Pending</option>
-        <option>Needs Modification</option>
-        <option>All</option>
-      </select>
+        <select id="inputLocationCompany" class="form-select">
+            @php
+            $arr = [
+            "accept" =>"Accepted",
+            "reject" => "Rejected",
+            "pending" => "Pending",
+            "need_modification" => "Need Modification",
+            "all" => "All",]
+            @endphp
+
+            <option disabled selected>Status..</option>
+
+            @foreach($arr as $ar => $name)
+            {{-- if old value --}}
+            @if($ar == request()->status ??null)
+            <option value="{{$ar}}" selected>{{$name}}</option>
+            @else
+            <option value="{{$ar}}">{{$name}}</option>
+            @endif
+
+            @endforeach
+        </select>
     </div>
+
+    @section("js")
+    <script>
+        $("#inputLocationCompany").change(function() {
+            var location = $(this).val();
+            window.location.href = "{{url('/filter/opportunityPageCompany')}}" + "?status=" + location;
+        });
+
+    </script>
+
+    @endsection
 
 
 
