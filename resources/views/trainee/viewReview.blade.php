@@ -34,11 +34,41 @@ $greyStar = 5 - $stars;
 
     <div>
 
-    <button type="button" class="del-but" data-bs-toggle="modal" data-bs-target="#exampleModal"> Delete </button>
+    <form method="POST" action="{{ route('destroy',[$review->id]) }}">
+           @csrf
+           <input name="_method" type="hidden" value="DELETE">
+    <button type="submit" id="delete" data-toggle="tooltip" title='Delete' class="del-but  show_confirm" > Delete </button>
+    </form>
 
-    <a href="{{ url()->previous() }}"><button type="button" class="can-but2" class="fas fa-edit"> Cancel </button> </a>
+    <a href="{{ url()->previous() }}"><button  class="can-but2" class="fas fa-edit"> Cancel </button> </a>
+
+
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+
+
+     $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Do you really want to delete your feedback?`,
+              text: "This proccess cannot be undone",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+              className: "myClass"
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+
+      </script>
 
 </div>
 
