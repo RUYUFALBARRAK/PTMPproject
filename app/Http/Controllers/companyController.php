@@ -53,7 +53,7 @@ class companyController extends Controller
             'orgnizationEmail' => 'required|email|unique:company',
             'OrganizationPhone' => 'required|regex:/(966)[0-9]{9}/|numeric|digits:12|numeric',
             'Registration' => 'required|digits:10',
-            'description' => 'required|max:250|regex:/^[A-Za-z\-\s]+$/',
+            'description' => 'required|max:250',
             'SupervisorName' => 'required|regex:/^[A-Za-z\-\s]+$/',
             'city' => 'required',
             'SupervisorPhone' => 'required|regex:/(966)[0-9]{9}/|numeric|digits:12|numeric',
@@ -213,8 +213,8 @@ class companyController extends Controller
     function addOpportunityview(){
         
         if(Session::has('logincompId')){
-        $data=['loginIdcompUser'=> company::where('id','=',session('logincompId'))->first()];
-        return view('Company/addOpportunity', ['action' => 'add', 'data'=>$data]);}
+        $data= company::where('id','=',session('logincompId'))->first();
+        return view('Company/addOpportunity', ['action' => 'add', 'loginIdcompUser'=>$data]);}
         return redirect('loginCompany');
     }
         function EditOpportunityview($oppo){

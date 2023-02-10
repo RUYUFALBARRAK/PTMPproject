@@ -43,14 +43,14 @@ class BushraController extends Controller
 
         Validator::make($request->all() , [
 
-            'Registration' => 'required',
+            'Registration' => 'required|digits:10',
             'website' => 'required|url',
             'orgnizationEmail' => ['required' , 'email' , Rule::unique('company')->ignore($company)],
-            'OrganizationPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
-            'description' => 'required',
-            'SupervisorName' => 'required|max:20',
+            'OrganizationPhone' => 'required|regex:/(966)[0-9]{9}/|numeric|digits:12|numeric',
+            'description' => 'required|max:250',
+            'SupervisorName' => 'required|max:20|regex:/^[A-Za-z\-\s]+$/',
             'Address' => 'required',
-            'SupervisorPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'SupervisorPhone' => 'required|regex:/(966)[0-9]{9}/|numeric|digits:12|numeric',
 
         ])->validate();
 
@@ -89,7 +89,7 @@ class BushraController extends Controller
                 'status' => 'reject',
             ]);
 
-            Alert::success('', 'Opportunity Has Been Rejected');
+            
             return redirect()->back();
 
         }elseif($request->status == 'need_modification'){

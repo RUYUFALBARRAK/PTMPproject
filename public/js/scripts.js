@@ -205,3 +205,15 @@ document.querySelector('#validationTooltip01').oninput = (e) => {
 document.querySelector('#validationTooltip02').oninput = (e) => {
     $('#announcement-content-length').text($('#validationTooltip02').val().length);
 };
+//pop up windows
+
+function nodelete(opportunity) {
+    swal({
+        title: `${opportunity} delete!`,
+        text: `This ${opportunity} can not be deleted it is assigned to trainee`,
+        icon: "warning",
+        button: true,
+        dangerMode: true,
+        className: "myClass"
+    })
+}

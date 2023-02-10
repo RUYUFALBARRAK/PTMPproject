@@ -382,13 +382,13 @@ text-align: center;
     color: rgb(35, 61, 61);
     display: none;
 }
-requset-details
+
 .opportunity-form{padding-top: 25px;}
 .opportunity-form input[type=radio]{ margin-left: 6px;}
 .opportunityState{
-  font-size: 1.7vw;
+  font-size: 1.2vw;
   color: green;
-  margin: -1.6vw 30vw ;
+  margin: -1.2vw 45% ;
 }
 
 

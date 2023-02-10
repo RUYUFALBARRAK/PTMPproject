@@ -83,7 +83,7 @@
 </div>
 <!--Upload Certification-->
 <div class="content-CV">
-<strong style="font-size: 110%;">Upload Certification and academic transcript and identification letter</strong><hr>
+<strong style="font-size: 110%;">Upload Certification and academic transcript and CV files</strong><hr>
 <strong style="font-size: 100%;">Upload file: </strong><p id="file-uploded"></p>
 
 <table style="width:100%" class="Progress-report">
