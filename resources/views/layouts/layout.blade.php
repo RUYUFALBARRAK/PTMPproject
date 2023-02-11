@@ -202,7 +202,7 @@
 
     <div class=heder>
         <img src="{{ asset('img/ksu_logo.png') }}" alt="Ksu logo" width="5%" height="90%" class="ksuLogo">
-        <p>KSU <br> Practical Training Management Portal </p>
+        <p>KSU | CCIS <br> Practical Training Management Portal </p>
     </div>
 
   </div>
@@ -213,7 +213,7 @@
 
     <div class= heder>
       <img src="{{ asset('img/ksu_logo.png') }}" alt="Ksu logo" width="5%" height="90%" class="ksuLogo">
-          <p>KSU <br> Practical Training Management Portal </p>
+          <p>KSU | CCIS <br> Practical Training Management Portal </p>
      </div>
     @if(Session::has('loginId')||Session::has('logincompId')||Session::has('logincommiteeId')||Session::has('loginunitId'))
          <a href="/logout"> <span class="fa fa-sign-out"> Log out</span>  </a>
