@@ -14,7 +14,7 @@
             @csrf
             <div class="textField has-validation">
                 <label for="validationTooltip01" class="form-label">Email</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="validationTooltip01" name="email" placeholder="Enter your email agin " value="{{ old('email') }}" required>
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="validationTooltip01" name="email" placeholder="Enter your email  " value="{{ old('email') }}" required>
                 <div class="invalid-feedback">
                     @error('email') {{ $message }} @enderror
                 </div>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="col-12">
-                <button class="add-but-login" type="submit">Forget Password</button>
+                <button class="add-but-login" type="submit">Send Email</button>
             </div>
 
             <p>Are you A company and you don’t have an account? <a class="link" href="registerCompany">Sign up</a></p>
