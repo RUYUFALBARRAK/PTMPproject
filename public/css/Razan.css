@@ -179,6 +179,18 @@ padding-right: 2%;
         margin-top: 6%;
         }
 
+        .ann{
+            background-color: #2e3535;
+            border-radius: 7px;
+            color: white;
+            font-size: 120%;
+            padding: 4px 27px 6px 27px;
+            border-style: none;
+            border-radius: 7px;
+            margin-left: 35%;
+            margin-top: 6%;
+            }
+
     .add-but:hover {
         background-color: #285e63;
         border-radius: 7px;
@@ -435,4 +447,9 @@ background-color: #af1e1e;
 
 .letter-btn:hover{
     background-color: #016e10;
+}
+
+.alig{
+    display: inline-block;
+    vertical-align:top;
 }

@@ -22,7 +22,7 @@
                             <td class="td-balqees">{{ $announcement->created_at }}</td>
                             <td class="td-balqees"><button type="button" class="btn btn-outline-primary" onclick="openAnnouncement('{{ $announcement->title }}', '{{ $announcement->content }}')">View</button></td>
                             <td class="td-balqees"><a href="{{ route('edit_announcement', ['announcement' => $announcement]) }}" class="btn btn-outline-warning">Modify</a></td>
-                            <td class="td-balqees">                 
+                            <td class="td-balqees">
                         <form action="{{ route('delete_announcement') }}" method="post" >
                         @csrf
                         <input type="hidden" name="delete_ann" value="1">
@@ -56,7 +56,7 @@
                     });
             });
 
-  
+
 </script>
             @else
                 <div class="not-found">
@@ -66,6 +66,6 @@
                 </div>
             @endif
         <br><br><br>
-        <a href="{{ route('add_announcement') }}" class="add-but" style="margin-left:38%; text-decoration: none;" type="submit">Add Announcement</a>
+        <a href="{{ route('add_announcement') }}" > <button type="button" type="submit" class="add-but" class="fas fa-edit"> Add Announcement </button></a>
     </div>
 @endsection
