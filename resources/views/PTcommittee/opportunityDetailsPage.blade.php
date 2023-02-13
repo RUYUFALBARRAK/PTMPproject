@@ -85,12 +85,15 @@
     </div><br>
 
     @if ($opportunity->status == 'pending')
+        <form action="{{ route('opportunity.update_status',$opportunity->id) }}" method="POST">
+        @csrf
+                  <button type="submit" name="status" value="accept" class="btn btn-outline-success" style="font-size: 136%; margin-left: 42%;">Accept</button>&nbsp;&nbsp;
+      </form>
     <form action="{{ route('opportunity.update_status',$opportunity->id) }}" method="POST">
         @csrf
-        
-            <button type="submit" name="status" value="accept" class="btn btn-outline-success" style="font-size: 136%; margin-left: 42%;">Accept</button>&nbsp;&nbsp;
+    
              <input name="status" type="hidden" value="reject">
-            <button type="submit" name="status" value="reject" class="btn btn-outline-danger show_confirm" style="font-size: 136%;">Reject</button>&nbsp;&nbsp;
+            <button type="submit" name="status" value="reject" class="btn btn-outline-danger show_confirm" style="font-size: 136%; margin-left:55%; margin-top:-8%;">Reject</button>&nbsp;&nbsp;
         
 
         <h6 class="text-secondary" style="font-size: 120%;">This opportunity need modification ?</h6>
