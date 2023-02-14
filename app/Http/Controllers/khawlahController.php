@@ -72,7 +72,8 @@ class khawlahController extends Controller
     public function searchstudentListPT(){
         $search_trainee = $_GET['query'];
 
-        $students =trainee::select("*")->where('name', 'LIKE', '%' . $search_trainee . '%' )-> orWhere ('trainee_id', 'LIKE', '%' . $search_trainee . '%')->get();
+        $students =trainee::select("*")->where('name', 'LIKE', '%' . $search_trainee . '%' )->
+        orWhere ('trainee_id', 'LIKE', '%' . $search_trainee . '%')->get();
 
         return view('PTunit/searchlistOfStudentsPTunit',compact('students'));
 
@@ -91,8 +92,13 @@ class khawlahController extends Controller
 
             $search_trainee = $_GET['query'];
             $traineesResult =DB::table('users')->join('requestedopportunity', 'requestedopportunity.trainee_id', '=', 'users.trainee_id')->join('opportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('opportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'pending')->Where('users.status', 'Available')->where('name', 'LIKE', '%' . $search_trainee . '%')->orWhere('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get();
-            return view('Company/searchTraineeRequest', compact('traineesResult'));
 
+            $oppo = trainee::join('requestedopportunity', 'requestedopportunity.trainee_id', '=', 'users.trainee_id')->join('opportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('opportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'pending')->Where('users.status', 'Available')->where('name', 'LIKE', '%' . $search_trainee . '%')->orWhere('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get();
+
+            return view('Company/searchTraineeRequest',[
+                'traineesResult' => $traineesResult,
+                'oppo' => $oppo
+            ]);
         }
 
     } //
