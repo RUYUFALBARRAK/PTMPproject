@@ -16,14 +16,6 @@
   <input type="search" class="form-control rounded" placeholder="Search" name= "query"aria-label="Search" aria-describedby="search-addon" />
   <button type="submit" class="btn btn-outline-dark">search</button>
 </div>
-<div class="form-group col-md-2 state-menu">
-      <select id="inputState" class="form-select ">
-        <option selected>Status..</option>
-        <option>accepted</option>
-        <option>need modification</option>
-        <option>rejected</option>
-      </select>
-  </div>
 </form>
 <hr>
 <table class="list-of-company">

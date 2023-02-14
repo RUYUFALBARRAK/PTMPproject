@@ -105,6 +105,7 @@ class companyController extends Controller
         $company->Address= $request['Address'];
    
     $company->save();
+     //Alert::success('', 'Your account created Successfully');
             return redirect('loginCompany')->with('correctReg','the account is registered successfully' );;
           
     }
@@ -295,4 +296,17 @@ function AcceptCompany($id){
     return redirect('/listOfCompanyRequest')->with('msgcompanyAccepted','company was accepted successfully');  
 }
 
+
+function searchCompanyList(){
+        
+    $search_company = $_GET['query'];
+    $companyResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_company . '%' )->get();
+        return view('PTunit/searchlistOfCompany', compact('companyResult'));   
+}
+public function searchCompanyRequestList(){
+    
+    $search_companyRequest = $_GET['query'];
+    $companyRequestResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_companyRequest . '%' )->get();
+        return view('PTunit/searchlistOfCompanyRequest', compact('companyRequestResult'));   
+}
 }

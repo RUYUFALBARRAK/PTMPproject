@@ -9,7 +9,7 @@
     @endif
 <table class="table-balqees">
     <tr>
-        <th style="text-align: center;" class="th-khawlah">Identification letter</th> <th class="th-khawlah"></th>
+        <th colspan="2" style="text-align: center;" class="th-khawlah">Identification letter</th> 
     </tr>
     <tr>
 
@@ -22,7 +22,7 @@
         </td>
 
 
-        <td  style="text-align: center;" class="td-balqees-link"> <a href="{{$regulationToTrainee?? '#'}}" style="color:grey" target="_blank">View Identification letter</a> </td>
+        <td  class="td-balqees-link" style="text-align: right;"> <a href="{{$regulationToTrainee?? '#'}}" style="color:grey" target="_blank">View Identification letter</a> </td>
     </tr>
     <tr>
         <td class ="fist-col-khawlah td-balqees file_name">uploaded file:
@@ -31,21 +31,20 @@
                 <a href="{{url('downloadFile/'.$regulation)}}"><span class="fa fa-download" aria-hidden="true"></span></a>
             @endif
         </td>
-        <td style="text-align: center;" class="td-balqees-link">
+        <td  style="text-align: right;" class="td-balqees-link">
             <label style="color: #005eb9"  for="uploadedFileInput">Upload Identification letter
                 <a href="#" class="fa fa-upload" style="font-size:16px;"></a>
             </label>
         </td>
-</td>
+
 
     </tr>
     <tr>
-    <td class ="fist-col-khawlah td-balqees"></td>
-    <td class=" td-balqees">
+    <td colspan="2" style="padding-left:90%;"class=" td-balqees">
         <form method="post" action="{{route('uploadRequestIdFile')}}" enctype="multipart/form-data">
             @csrf
             <input type="file" id="uploadedFileInput" name="uploadedFileInput" style="display: none">
-            <button type="submit" class="Identification-req-but" > Submit </button>
+            <button type="submit"  style="" class="Identification-req-but" > Submit </button>
         </form>
     </td>
 </tr>
