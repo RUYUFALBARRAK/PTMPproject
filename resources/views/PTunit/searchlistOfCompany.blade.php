@@ -5,19 +5,21 @@
 @if(Session::has('msgcompanyDelete'))
   <div class="alert alert-success">{{Session::get('msgcompanyDelete')}}</div>
 @endif
+
+  <form method="GET" action="{{url('/searchlistOfCompany')}}">
+<div class="input-group">
+  <input type="search" class="form-control rounded" placeholder="Search" name= "query"aria-label="Search" aria-describedby="search-addon" />
+  <button type="submit" class="btn btn-outline-dark">search</button>
+</div>
+</form>
+
+<br>
   @if(count($companyResult) == 0)
       <div class="not-found">
       <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
       <p>No Company Found</p>
     </div>
   @else
-  <form method="GET" action="{{url('/searchlistOfCompany')}}">
-<div style="width:50%" class="input-group">
-  <input type="search" class="form-control rounded" placeholder="Search" name= "query"aria-label="Search" aria-describedby="search-addon" />
-  <button type="submit" class="btn btn-outline-dark">search</button>
-</div>
-</form>
-<hr>
 <table class="list-of-company">
     <tr>
         <th style="padding-left:4%; text-align: left;">Company name </th>

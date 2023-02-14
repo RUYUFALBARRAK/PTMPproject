@@ -300,13 +300,13 @@ function AcceptCompany($id){
 function searchCompanyList(){
         
     $search_company = $_GET['query'];
-    $companyResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_company . '%' )->get();
+    $companyResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_company . '%' )->where('status','=','accept')->get();
         return view('PTunit/searchlistOfCompany', compact('companyResult'));   
 }
 public function searchCompanyRequestList(){
     
     $search_companyRequest = $_GET['query'];
-    $companyRequestResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_companyRequest . '%' )->get();
+    $companyRequestResult = company::select("*")->where('orgnizationName', 'LIKE', '%' . $search_companyRequest . '%' )->where('status','=','pending')->get();
         return view('PTunit/searchlistOfCompanyRequest', compact('companyRequestResult'));   
 }
 }

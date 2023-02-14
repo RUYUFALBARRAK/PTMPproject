@@ -8,19 +8,19 @@
 
   <form method="GET" action="{{url('/searchlistOfCompany')}}">
 
-<div style="width:50%" class="input-group">
-  <input type="search" class="form-control rounded"  name= "query" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+<div class="input-group">
+  <input type="search" class="form-control "  name= "query" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
   <button type="submit" class="btn btn-outline-dark">search</button>
 </div>
 
-  </form><br><hr>
+  </form><br>
   @if(count($company) == 0)
       <div class="not-found">
       <img src="{{asset('img/paper.png')}}" alt="Company logo"  class= "logoCompany"> <br><br><br><hr>
       <p>No Company Found</p>
     </div>
   @else
-<hr>
+
 <table class="table table-hover">
   <thead>
     <tr>
