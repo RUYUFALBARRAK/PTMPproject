@@ -120,9 +120,13 @@
             <button type="submit" style="display:none;" class="letter-btn" id="submit_button"> Submit </button>
             <p type="submit" id="p-filename"></p>
         </form>
-
+    @if($regulationToTrainee==false)
       <label class="btn btn-success letter-btn" id="upload_button" for="uploadedFileInput">
           <i class="fa fa-upload"></i> Upload </label>
+          @else
+          <label class="btn btn-success letter-btn"style="background-color:grey;" id="upload_button">
+          <i class="fa fa-upload"></i> Upload </label>
+          @endif
 </div>
 
 

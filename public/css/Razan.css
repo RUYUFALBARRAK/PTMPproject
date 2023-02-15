@@ -222,6 +222,26 @@ padding-right: 2%;
                     border-style: none;
                     border-radius: 7px;
                     }
+                    .Identification-req-but-wait{
+                      background-color: grey;
+                      border-radius: 7px;
+                      color: white;
+                      font-size: 100%;
+      
+                      border-style: none;
+                      border-radius: 7px;
+      
+      
+                      }
+                      .Identification-req-but-wait:hover {
+                          background-color: grey;
+                          border-radius: 7px;
+                          color: white;
+                          font-size: 100%;
+      
+                          border-style: none;
+                          border-radius: 7px;
+                          }
 .del-but{
         background-color: #e72828;
         border-radius: 7px;
