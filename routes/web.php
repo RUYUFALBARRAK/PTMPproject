@@ -229,28 +229,30 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
     Route::get('/searchStudent', [khawlahController::class, 'searchStudent']);
 
     Route::get('/ReuqstIdentfaction', function () {
-        $regulation = \App\Models\Sendsdocument::where('trainee_id', session('loginId'))
+     
+        $regulation= \App\Models\Sendsdocument::where('trainee_id',session('loginId'))
             ->where('doc_name', \App\Enum\fileNameEnum::identificationLetter)
             ->orderByDesc('created_at')
             ->first();
-        $regulation = $regulation ? $regulation->document : null;
-
-        $regulationToTrainee = \App\Models\Sendsdocument::where('trainee_id', session('loginId'))
+        $regulation= $regulation? $regulation->document : null;
+    
+        $regulationToTrainee = \App\Models\Sendsdocument::where('trainee_id',session('loginId'))
             ->where('doc_name', \App\Enum\fileNameEnum::identificationLetterToTrainee)
             ->orderByDesc('created_at')
             ->first();
-        $regulationToTrainee = $regulationToTrainee ? $regulationToTrainee->document : null;
-        return view('trainee/ReuqstIdentfaction', compact('regulation', 'regulationToTrainee'));
+        $regulationToTrainee= $regulationToTrainee? $regulationToTrainee->document : null;
+       
+        return view('trainee/ReuqstIdentfaction' ,compact('regulation','regulationToTrainee'));
     });
-    Route::post('uploadRequestIdFile', function (\Illuminate\Http\Request$request) {
+    Route::post('uploadRequestIdFile',function (\Illuminate\Http\Request $request){
         $request->validate([
-            'uploadedFileInput' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048',
+            'uploadedFileInput' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
         ]);
-        $user = App\Models\trainee::where('trainee_id', session('loginId'))->first();
-        if ($user && $request->file('uploadedFileInput')) {
+        $user= App\Models\trainee::where('trainee_id',session('loginId'))->first();
+        if ($user && $request->file('uploadedFileInput')){
             $document = new \App\Models\Sendsdocument();
-            $name = $request->uploadedFileInput->getClientOriginalName();
-            $fileName = time() . '_' . $name;
+            $name= $request->uploadedFileInput->getClientOriginalName();
+            $fileName = time().'_'.$name;
             $filePath = $request->file('uploadedFileInput')->storeAs('uploads', $fileName, 'public');
             $document->doc_name = \App\Enum\fileNameEnum::identificationLetter;
             $document->document = 'storage/' . $filePath;
@@ -258,52 +260,53 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
             $document->opportunity_id = $user->opportunity_id;
             $document->committee_id = $user->committee_id;
             $document->save();
-            $user->is_request = 1;
+            $user->is_request= 1;
             $user->update();
-
-            return back()->with('success', 'File has been uploaded.');
+    
+            return back()->with('success','File has been uploaded.');
         }
     })->name('uploadRequestIdFile');
     Route::get('/listOfStudentsReqLetter', function () {
-        $users = \App\Models\trainee::where('is_request', 1)->get();
-        return view('PTunit/listOfStudentsReqLetter', compact('users'));
+        $users= \App\Models\trainee::where('is_request',1)->get();
+        return view('PTunit/listOfStudentsReqLetter',compact('users'));
     });
-
-    Route::post('uploadRegulationToTrainee', function (\Illuminate\Http\Request$request) {
-        $request->validate([
-            'uploadedFileInput' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048',
-        ]);
-        $user = App\Models\trainee::where('trainee_id', session('loginId'))->first();
-        if ($user && $request->file('uploadedFileInput')) {
-            $document = new \App\Models\Sendsdocument();
-            $name = $request->uploadedFileInput->getClientOriginalName();
-            $fileName = time() . '_' . $name;
-            $filePath = $request->file('uploadedFileInput')->storeAs('uploads', $fileName, 'public');
-            $document->doc_name = \App\Enum\fileNameEnum::identificationLetterToTrainee;
-            $document->document = 'storage/' . $filePath;
-            $document->trainee_id = $user->trainee_id;
-            $document->opportunity_id = $user->opportunity_id;
-            $document->committee_id = $user->committee_id;
-            $document->save();
-
-            return back()->with('success', 'File has been uploaded.');
-        }
-    })
+    
+    Route::post('uploadRegulationToTrainee',function (\Illuminate\Http\Request $request){
+            $request->validate([
+                'uploadedFileInput' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
+            ]);
+            $user= App\Models\trainee::where('trainee_id',session('loginId'))->first();
+            if ($user && $request->file('uploadedFileInput')){
+                $document = new \App\Models\Sendsdocument();
+                $name= $request->uploadedFileInput->getClientOriginalName();
+                $fileName = time().'_'.$name;
+                $filePath = $request->file('uploadedFileInput')->storeAs('uploads', $fileName, 'public');
+                $document->doc_name = \App\Enum\fileNameEnum::identificationLetterToTrainee;
+                $document->document = 'storage/' . $filePath;
+                $document->trainee_id = $user->trainee_id;
+                $document->opportunity_id = $user->opportunity_id;
+                $document->committee_id = $user->committee_id;
+                $document->save();
+    
+                return back()->with('success','File has been uploaded.');
+            }
+        })
         ->name('uploadRegulationToTrainee');
-    Route::get('downloadFile/storage/uploads/{name}', function ($name) {
+    
+   
+        Route::get('downloadFile/storage/uploads/{name}',function ($name){
 
-        $file = \App\Models\Sendsdocument::where('document', 'storage/uploads/' . $name)
-            ->orderByDesc('created_at')
-            ->first();
-        $file = $file ? $file->document : null;
-        $file = public_path($file);
-        $headers = array(
-            'Content-Type: application/pdf',
-        );
-
-        return \Illuminate\Support\Facades\Response::download($file, $name, $headers);
-    })->name('downloadFile');
-
+            $file= \App\Models\Sendsdocument::where('document', 'storage/uploads/'.$name)
+                ->orderByDesc('created_at')
+                ->first();
+            $file= $file? $file->document : null;
+            $file= public_path($file);
+            $headers = array(
+                'Content-Type: application/pdf',
+            );
+    
+            return \Illuminate\Support\Facades\Response::download($file, $name, $headers);
+        })->name('downloadFile');
     Route::get('/listOfStudentsPTunit', [khawlahController::class, 'studentListPT']);
     Route::get('/searchlistOfStudentsPTunit', [khawlahController::class, 'searchstudentListPT']);
     Route::get('/searchlistOfStudentsReqLetter', [khawlahController::class, 'searchlistOfStudentsReqLetter']);
