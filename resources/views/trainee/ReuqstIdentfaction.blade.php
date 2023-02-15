@@ -48,10 +48,10 @@
         </td>
         <td  style="text-align: right;" class="td-balqees-link">
         @if($regulation==false)
-            <label style="color: #005eb9"  for="uploadedFileInput">Upload Identification letter
+            <label style="color: #005eb9"  for="uploadedFileInput">Upload regulation
                 <a href="#" class="fa fa-upload" style="font-size:16px;"></a>
                 @else
-                <label style="color: grey;">Upload Identification letter
+                <label style="color: grey;">Upload regulation
                 <a href="#" class="fa fa-upload" style="font-size:16px; color: grey;"></a>
             </label>
             @endif
