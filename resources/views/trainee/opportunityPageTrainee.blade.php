@@ -14,7 +14,7 @@
 
     <div class="form-group col-md-2 state-menu" style=" margin-left:47%; margin-top:-3.8%;">
         <select id="filterLocationTrainee" class="form-select ">
-            <option value="">Location..</option>
+            <option value=" ">Location..</option>
             @php
             $array = [
             "Abha",
@@ -163,7 +163,7 @@
 
             @foreach($arr as $ar => $name)
             {{-- if old value --}}
-            @if($ar == request()->status ??null)
+            @if($ar == session()->get("status")??null || $arr == request()->status ??null)
             <option value="{{$ar}}" selected>{{$name}}</option>
             @else
             <option value="{{$ar}}">{{$name}}</option>
@@ -178,11 +178,16 @@
         // on change of option refresh page
         $("#filterLocationTrainee").change(function() {
             var location = $(this).val();
-            window.location.href = "{{url('/filter/opportunityPageTrainee')}}" + "?address=" + location + "@if(session()->get('status'))&status=" + '{{ session()->get("status")}} @endif';
+
+            window.location.href =
+             "{{url('/filter/opportunityPageTrainee')}}" + "?address=" +
+              location  + "@if(session()->get('status'))&status={{ session()->get('status') }}@endif"
         });
+        
         $("#inputLocationCompany").change(function() {
             var location = $(this).val();
-            window.location.href = "{{url('/filter/opportunityPageTrainee')}}" + "?status=" + location + "@if(session()->get('address'))&address=" + '{{ session()->get("address")}} @endif';
+            window.location.href = "{{url('/filter/opportunityPageTrainee')}}" 
+            + "?status="+ location + "@if(session()->get('address'))&address={{session()->get('address')}}@endif"; 
         });
 
     </script>
