@@ -156,6 +156,7 @@
             "reject" =>"Rejected",
             "pending" => "Pending",
             "available" => "Available",
+            "Ongoing" => "Ongoing",
             "all" => "All",]
             @endphp
 
@@ -233,12 +234,14 @@
 
             @if(is_null($status))
             @else
-              @if(($status->statusbycompany ==  \App\Enum\companyStatus::pending || $status->statusbycompany == \App\Enum\companyStatus::accept) && $status->statusbytrainee ==  \App\Enum\companyStatus::pending )
+              @if(($status->statusbycompany == \App\Enum\companyStatus::accept) && $status->statusbytrainee ==  \App\Enum\companyStatus::pending )
+                <h6 class="opportunityStateB2 text-success">Accepted</h6>
+              @elseif($status->statusbycompany == \App\Enum\companyStatus::pending)
                 <h6 class="opportunityStateB2 text-warning">Pending</h6>
               @elseif($status->statusbycompany == \App\Enum\companyStatus::accept && $status->statusbytrainee == \App\Enum\companyStatus::accept)
-                <h6 class="opportunityStateB2 text-success">Accept</h6>
+                <h6 class="opportunityStateB2 text-primary">Ongoing</h6>
               @elseif($status->statusbycompany == \App\Enum\companyStatus::reject)
-                <h6 class="opportunityStateB2 text-danger">Reject</h6>
+                <h6 class="opportunityStateB2 text-danger">Rejected</h6>
               @else
                 <h6 class="opportunityStateB2 text-success">Available</h6>
              

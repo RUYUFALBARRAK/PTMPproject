@@ -27,7 +27,7 @@ class requestedopportunity extends Model
     ];
        public function oppourtunity()
     {
-        return $this->belongsTo('App\Models\oppourtunity','oppourtunity_id');
+        return $this->belongsTo('App\Models\oppourtunity','opportunity_id');
     }
        public function trainee()
     {

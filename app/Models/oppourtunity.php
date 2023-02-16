@@ -40,6 +40,12 @@ class oppourtunity extends Model
         return $this->belongsTo('App\Models\company');
     }
 
+
+    public function requestedopportunity()
+    {
+        return $this->hasMany(requestedopportunity::class,'opportunity_id');
+    }
+
     /* public function PtPlanPath() {
 return 'download/'.$this->PtPlan;
 }
