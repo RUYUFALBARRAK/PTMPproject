@@ -40,10 +40,29 @@ class FilteringController extends Controller
                 session(['status' => $request->status]);
                 if ($request->status == "available") {
                     // isn't have relation trainee
-                    $q->whereDoesntHave("trainee");
+                    $q->whereDoesntHave("requestedopportunity");
                 } else {
-                    $q->whereHas("trainee", function ($q) use ($request) {
-                        $q->where("statusFormCompany", $request->status);
+                    $q->whereHas("requestedopportunity", function ($q) use ($request) {
+                        if ($request->status == "Ongoing") {
+                            $q->where("statusbycompany", 'accept');
+                            $q->where("statusbytrainee", 'accept');
+                        }
+
+                        if ($request->status == "accept") {
+                            $q->where("statusbycompany", 'accept');
+                            $q->where("statusbytrainee", 'pending');
+                        }
+
+                        if ($request->status == "reject") {
+                            $q->where("statusbycompany", 'reject');
+                        }
+                        
+
+                        if ($request->status == "pending") {
+
+                            $q->where("statusbycompany", 'pending');
+                        }
+
                     });
                 }
             }else{
