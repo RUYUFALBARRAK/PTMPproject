@@ -360,4 +360,15 @@ Route::group(["prefix" => "filter"], function () {
         })->get();
         return view('PTcommittee/opportunityPageCommittee', compact('opportunities'));
     });
+
+
+    Route::get('/opportunityRequestCommittee', function () {
+        $opportunities = oppourtunity::where('status', 'pending')->where(function ($q) {
+            if (request()->address) {
+                $q->where('address', 'LIKE', '%' . request()->address . '%');
+            }
+        })->get();
+        return view('PTcommittee/opportunityRequestCommittee', compact('opportunities'));
+    });
+
 });
