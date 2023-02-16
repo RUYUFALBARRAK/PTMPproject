@@ -32,7 +32,7 @@ class FilteringController extends Controller
                 session(['address' => $request->address]);
                 $q->where('address', 'LIKE', '%' . $request->address . '%');
             }else{
-                session(['address' => 'all']);
+                session(['address' => ' ']);
             }
 
             if ($request->status && $request->status != "all") {
