@@ -12,7 +12,7 @@
     <p> <b> GPA :&nbsp; </b> {{$trainee->GPA}} <br></p>
     </div>
 
-    <div class="info-sec" style="margin-left:25%;" >
+    <div class="info-sec" style="margin-left:20%;" >
     <p> <b> Email:&nbsp; </b> {{$trainee->email}} </p> <br>
     <p> <b> Major:&nbsp; </b> {{$trainee->major}} </p> <br>
     <p> <b> Number of completed hours :&nbsp; </b> {{$trainee->CompletedHours}} <br></p>
