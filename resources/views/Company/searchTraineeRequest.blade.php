@@ -25,17 +25,15 @@
         <th style="text-align: right; padding-right:9%;"></th>
      </tr>
      @foreach($traineesResult as $trainee)
-     @foreach($oppo as $opp)
      <tr>
     <td>{{$trainee->name}}</td>
     <td style="font-size: 16px;"> {{$trainee->jobTitle}} </td>
     <td>
 
 
-    <a href="{{ route('Request',[$opp->id]) }}"><span class="	fa fa-chevron-right"></span></a>
+    <a href="{{ route('Request',[$trainee->oppo]) }}"><span class="	fa fa-chevron-right"></span></a>
     </td>
   </tr>
-@endforeach
 @endforeach
 
 </table>

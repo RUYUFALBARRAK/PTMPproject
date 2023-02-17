@@ -20,15 +20,10 @@ class khawlahController extends Controller
 
         if (Session::has('logincompId')) {
 
-           $trainee = DB::table('users')->join('requestedopportunity', 'requestedopportunity.trainee_id', '=', 'users.trainee_id')->join('opportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('opportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'pending')->Where('users.status', 'Available')->get();
+           $trainee = DB::table('users')->join('requestedopportunity', 'requestedopportunity.trainee_id', '=', 'users.trainee_id')->join('opportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('opportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'pending')->Where('users.status', 'Available')->get(['jobTitle','name','requestedopportunity.id AS oppo']);
             // $trainee = DB::table('users')->join('opportunity', 'opportunity.id', '=', 'users.opportunity_id')->Where('statusFormCompany', 'accept')->Where('users.status', 'Ongoing')->get();
 
-            $oppo = requestedopportunity::Where('company_id', '=', session('logincompId'))->Where('statusbycompany', 'pending')->get();
-
-            return view('Company/listOfTraineesRequests',[
-                'trainee' => $trainee,
-                'oppo' => $oppo
-            ]);
+            return view('Company/listOfTraineesRequests',compact('trainee'));
         }
 
     }
@@ -91,14 +86,10 @@ class khawlahController extends Controller
         if (Session::has('logincompId')) {
 
             $search_trainee = $_GET['query'];
-            $traineesResult =DB::table('users')->join('requestedopportunity', 'requestedopportunity.trainee_id', '=', 'users.trainee_id')->join('opportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('opportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'pending')->Where('users.status', 'Available')->where('name', 'LIKE', '%' . $search_trainee . '%')->orWhere('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get();
+            $traineesResult =DB::table('users')->join('requestedopportunity', 'requestedopportunity.trainee_id', '=', 'users.trainee_id')->join('opportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('opportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'pending')->Where('users.status', 'Available')->where('name', 'LIKE', '%' . $search_trainee . '%')->orWhere('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get(['jobTitle','name','requestedopportunity.id AS oppo']);
 
-            $oppo = trainee::join('requestedopportunity', 'requestedopportunity.trainee_id', '=', 'users.trainee_id')->join('opportunity', 'requestedopportunity.opportunity_id', '=', 'opportunity.id')->Where('opportunity.company_id', '=', session('logincompId'))->Where('statusbycompany', 'pending')->Where('users.status', 'Available')->where('name', 'LIKE', '%' . $search_trainee . '%')->orWhere('jobTitle', 'LIKE', '%' . $search_trainee . '%')->get();
 
-            return view('Company/searchTraineeRequest',[
-                'traineesResult' => $traineesResult,
-                'oppo' => $oppo
-            ]);
+            return view('Company/searchTraineeRequest',compact('traineesResult'));
         }
 
     } //
