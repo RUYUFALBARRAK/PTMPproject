@@ -16,7 +16,7 @@
 }
 
 .trainee-info  , .info-sec p{
-    width: 18em;
+    width: 20em;
     margin-top:0%;
 }
 
@@ -227,18 +227,18 @@ padding-right: 2%;
                       border-radius: 7px;
                       color: white;
                       font-size: 100%;
-      
+
                       border-style: none;
                       border-radius: 7px;
-      
-      
+
+
                       }
                       .Identification-req-but-wait:hover {
                           background-color: grey;
                           border-radius: 7px;
                           color: white;
                           font-size: 100%;
-      
+
                           border-style: none;
                           border-radius: 7px;
                           }
