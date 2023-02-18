@@ -180,6 +180,7 @@ nav{
   font-size: 1.2vw;
   text-align: right;
   z-index: 2;
+  overflow: scroll;
   margin-top: 6.9%;
 }
 #nav{
@@ -195,12 +196,12 @@ nav{
   margin-top:6.6%;
   z-index: 3;
 }
-nav ul {width: 100%; padding-inline-start: 0;  height: calc(100% - 100px); text-align: center;}
+nav ul {width: 100%; padding-inline-start: 0;  height: calc(100% - 100px); text-align: center; overflow: scroll;}
 nav .vertical-menu-logo{padding: 20px; font-size: 1.8em; position: relative}
-nav li {  cursor: pointer;  }
-nav ul a:hover{ padding: 1.4vw 1.6vw; background-color: #6fb3b849;display: inline-block;  width: 100%; height: 100%; color: #074e4e !important; border-left:7px solid #06535d; }
+nav li {  cursor: pointer; overflow: scroll; }
+nav ul a:hover{ padding: 1.1vw 1.6vw; background-color: #6fb3b849;display: inline-block;  width: 100%; height: 100%; color: #074e4e !important; border-left:7px solid #06535d; }
 
-nav ul a{text-decoration: none;padding: 1.4vw 1.6vw; border-bottom: 0.5px solid #0810119e; display: inline-block; width: 100%; height: 100%; color: #000;}
+nav ul a{text-decoration: none;padding: 1.2vw 1.6vw; border-bottom: 0.5px solid #0810119e; display: inline-block; width: 100%; height: 100%; color: #000;}
 .active{
   background-color: #6fb3b849;
     color: #074e4e !important;
@@ -231,7 +232,6 @@ h1{
   border-radius: 10px;
   padding: 40px;
   margin: 12% 2% 0% 6%;
-  overflow-y: scroll;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 /*cv content page*/
@@ -272,6 +272,7 @@ h1{
 }
 #submenu-2{
   display: none;
+  overflow: scroll;
 }
 .delet-btn{border-radius: 20px !important; position: absolute; margin-left: 60%; font-size: 2vw;}
 .list-of-company .delet-btn{margin: -1% 0% 0% -8%; }

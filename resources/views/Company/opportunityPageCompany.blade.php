@@ -101,7 +101,7 @@
                
             </td>
           <td style="padding-top:30px;">
-          @if($opportunity->status == 'pending')
+          @if($opportunity->status == 'pending'||$opportunity->status == 'need_modification')
                <a href="{{ route('EditOppourtunityForCompany', ['oppo' => $opportunity]) }}" type="button" class="btn btn-outline-dark">Edit</a>
           @endif
             </td>

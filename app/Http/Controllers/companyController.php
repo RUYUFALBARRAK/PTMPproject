@@ -209,11 +209,12 @@ class companyController extends Controller
             'numberOfTrainee' => $request->has('numberOfTrainee')? $request['numberOfTrainee']: $oppo->numberOfTrainee,
             'RoleDescription' => $request->has('RoleDescription')? $request['RoleDescription']: $oppo->RoleDescription,   
             'majors' => $request->has('majors')?$request['majors']: $oppo->majors, 
+            'status'=>'pending',
             'incentive' => $request->has('incentive')? $request['incentive']: $oppo->incentive, 
             'uploudedfile' => $request->has('uploudedfile')? $request->uploudedfile->getClientOriginalName(): $oppo->PtPlan, 
         ]);
 
-            return back()->with('success','Successfully added opportunity!');
+            return back()->with('success','Successfully updated opportunity!');
     }
 
     function addOpportunityview(){
@@ -225,6 +226,7 @@ class companyController extends Controller
     }
         function EditOpportunityview($oppo){
         
+
         if(Session::has('logincompId')){
         $data= company::where('id','=',session('logincompId'))->first();
         $oppo=oppourtunity::where('id','=',$oppo)->first();

@@ -2,9 +2,7 @@
 
 @section('content-training')
     <div class="content">
-        @if(session('status'))
-            <div class="alert alert-{{ session('theme') }}">{{ session('status') }}</div>
-        @endif
+       
 
         <h2>Current Announcements</h2>
 
