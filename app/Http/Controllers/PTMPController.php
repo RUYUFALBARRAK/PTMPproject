@@ -283,7 +283,7 @@ function CVshow(){
 
 function addSkill(Request $request){
              $request->validate([
-            'skills' => 'required|unique:traineeskills|max:30',
+            'skills' => 'required|max:30',
         ]);
 $skills=explode(",",$request->skills);
 foreach($skills as $skills){
@@ -302,7 +302,7 @@ function deleteSkills($id){
 }
 function addLanguages(Request $request){
      $request->validate([
-        'Languages' => 'required|unique:traineelanguage|max:30',
+        'Languages' => 'required|max:30',
         ]);
 $Languages=explode(",",$request->Languages);
 foreach($Languages as $Languages){
@@ -321,7 +321,7 @@ function deleteLanguages($id){
 
 function addInterests(Request $request){
 $request->validate([
-'Interests' => 'required|unique:traineeinterests|max:30',
+'Interests' => 'required|max:30',
 ]);
 $Interests=explode(",",$request->Interests);
 foreach($Interests as $Interests){
@@ -339,7 +339,7 @@ function deleteInterests($id){
 }
 function addExperience(Request $request){
     $request->validate([
-     'Experience' => 'required|unique:traineeexperience|max:30',
+     'Experience' => 'required|max:30',
     ]);
 $Experience=explode(",",$request->Experience);
 foreach($Experience as $Experience){

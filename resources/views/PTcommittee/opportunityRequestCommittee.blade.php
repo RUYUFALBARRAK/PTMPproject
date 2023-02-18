@@ -158,7 +158,7 @@
 
     </script>
 
-    <br><br>
+    <br><hr>
 
 
     @if(count($opportunities) > 0)
