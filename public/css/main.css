@@ -180,7 +180,6 @@ nav{
   font-size: 1.2vw;
   text-align: right;
   z-index: 2;
-  overflow: scroll;
   margin-top: 6.9%;
 }
 #nav{
@@ -196,10 +195,10 @@ nav{
   margin-top:6.6%;
   z-index: 3;
 }
-nav ul {width: 100%; padding-inline-start: 0;  height: calc(100% - 100px); text-align: center; overflow: scroll;}
+nav ul {width: 100%; padding-inline-start: 0;  height: calc(100% - 100px); text-align: center; }
 nav .vertical-menu-logo{padding: 20px; font-size: 1.8em; position: relative}
-nav li {  cursor: pointer; overflow: scroll; }
-nav ul a:hover{ padding: 1.1vw 1.6vw; background-color: #6fb3b849;display: inline-block;  width: 100%; height: 100%; color: #074e4e !important; border-left:7px solid #06535d; }
+nav li {  cursor: pointer;  }
+nav ul a:hover{ padding: 1.2vw 1.6vw; background-color: #6fb3b849;display: inline-block;  width: 100%; height: 100%; color: #074e4e !important; border-left:7px solid #06535d; }
 
 nav ul a{text-decoration: none;padding: 1.2vw 1.6vw; border-bottom: 0.5px solid #0810119e; display: inline-block; width: 100%; height: 100%; color: #000;}
 .active{
