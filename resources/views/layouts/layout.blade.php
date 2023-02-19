@@ -105,7 +105,7 @@
             <div class="modal-content">
                 <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="{{ asset('img/check.png') }}" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"> </h1>
                 <div class="modal-body" style="text-align: center; font-size:120%;" id="file_uploaded_success__text"></div>
-                <button type="button" class="ok-but" data-bs-dismiss="modal">OK</button>
+                <button type="button" style="margin-left:10% !important;"class="ok-but" data-bs-dismiss="modal">OK</button>
             </div>
         </div>
     </div>
@@ -114,8 +114,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="{{ asset('img/Xicon.png') }}" alt="Confirmation" width="18%" height="18%" style="margin-left:40%; margin-top:-5%;"> </h1>
-                <div class="modal-body" style="text-align:center; font-size:120%;" id="file_uploaded_error__text"></div>
-                <button type="button" class="del-msg" data-bs-dismiss="modal">OK</button>
+                <div class="modal-body" style="text-align:center; font-size:120%;" >The Document is required and select uploaded for </div>
+                <button type="button" style="margin-left:33% !important;"class="del-msg col-4" data-bs-dismiss="modal">OK</button>
             </div>
         </div>
     </div>
@@ -205,8 +205,7 @@
         <p>KSU | CCIS <br> Practical Training Management Portal </p>
     </div>
 
-  </div>
-</div>
+ 
 
       <!-- Core theme JS-->
         <script src="{{ asset('js/scripts.js') }}"></script>
