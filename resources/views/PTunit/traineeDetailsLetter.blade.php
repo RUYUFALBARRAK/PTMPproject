@@ -114,7 +114,8 @@
             @endif</b> </div>
     <br><br>
     <div style="margin-left:45%;">
-    <form method="post" action="{{route('uploadRegulationToTrainee')}}" enctype="multipart/form-data">
+
+    <form method="post" action="{{route('uploadRegulationToTrainee',[$trainee->trainee_id])}}" enctype="multipart/form-data">
             @csrf
             <input type="file" id="uploadedFileInput" name="uploadedFileInput" style="display: none">
             <button type="submit" style="display:none;" class="letter-btn" id="submit_button"> Submit </button>

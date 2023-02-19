@@ -249,7 +249,7 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
             'uploadedFileInput' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
         ]);
         $user= App\Models\trainee::where('trainee_id',session('loginId'))->first();
-        if ($user && $request->file('uploadedFileInput')){
+        if ($request->file('uploadedFileInput')){
             $document = new \App\Models\Sendsdocument();
             $name= $request->uploadedFileInput->getClientOriginalName();
             $fileName = time().'_'.$name;
@@ -271,21 +271,21 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
         return view('PTunit/listOfStudentsReqLetter',compact('users'));
     });
     
-    Route::post('uploadRegulationToTrainee',function (\Illuminate\Http\Request $request){
+    Route::post('uploadRegulationToTrainee/{id}',function (\Illuminate\Http\Request $request,$id){
             $request->validate([
                 'uploadedFileInput' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
             ]);
-            $user= App\Models\trainee::where('trainee_id',session('loginId'))->first();
-            if ($user && $request->file('uploadedFileInput')){
+            //$user= App\Models\trainee::where('trainee_id',session('loginId'))->first();
+            if ( $request->file('uploadedFileInput')){
                 $document = new \App\Models\Sendsdocument();
                 $name= $request->uploadedFileInput->getClientOriginalName();
                 $fileName = time().'_'.$name;
                 $filePath = $request->file('uploadedFileInput')->storeAs('uploads', $fileName, 'public');
                 $document->doc_name = \App\Enum\fileNameEnum::identificationLetterToTrainee;
                 $document->document = 'storage/' . $filePath;
-                $document->trainee_id = $user->trainee_id;
-                $document->opportunity_id = $user->opportunity_id;
-                $document->committee_id = $user->committee_id;
+                $document->trainee_id = $id;
+                //$document->opportunity_id = $user->opportunity_id;
+                //$document->committee_id = $user->committee_id;
                 $document->save();
     
                 return back()->with('success','File has been uploaded.');
