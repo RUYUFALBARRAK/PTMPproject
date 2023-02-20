@@ -295,7 +295,7 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
                     'is_request'=> '0'
                 ]);
 
-                return redirect('/listOfStudentsReqLetter')->with('success','File has been uploaded.');
+                return back()->with('success','File has been uploaded.');
             }
         })
         ->name('uploadRegulationToTrainee');
