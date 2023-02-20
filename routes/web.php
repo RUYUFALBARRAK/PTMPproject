@@ -7,6 +7,7 @@ use App\Http\Controllers\khawlahController;
 use App\Http\Controllers\PTMPController;
 use App\Http\Controllers\RazanController;
 use App\Models\company;
+use App\Models\trainee;
 use App\Models\oppourtunity;
 use App\Models\requestedopportunity;
 use Illuminate\Support\Facades\Route;
@@ -229,19 +230,19 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
     Route::get('/searchStudent', [khawlahController::class, 'searchStudent']);
 
     Route::get('/ReuqstIdentfaction', function () {
-     
+
         $regulation= \App\Models\Sendsdocument::where('trainee_id',session('loginId'))
             ->where('doc_name', \App\Enum\fileNameEnum::identificationLetter)
             ->orderByDesc('created_at')
             ->first();
         $regulation= $regulation? $regulation->document : null;
-    
+
         $regulationToTrainee = \App\Models\Sendsdocument::where('trainee_id',session('loginId'))
             ->where('doc_name', \App\Enum\fileNameEnum::identificationLetterToTrainee)
             ->orderByDesc('created_at')
             ->first();
         $regulationToTrainee= $regulationToTrainee? $regulationToTrainee->document : null;
-       
+
         return view('trainee/ReuqstIdentfaction' ,compact('regulation','regulationToTrainee'));
     });
     Route::post('uploadRequestIdFile',function (\Illuminate\Http\Request $request){
@@ -262,7 +263,7 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
             $document->save();
             $user->is_request= 1;
             $user->update();
-    
+
             return back()->with('success','File has been uploaded.');
         }
     })->name('uploadRequestIdFile');
@@ -270,7 +271,7 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
         $users= \App\Models\trainee::where('is_request',1)->get();
         return view('PTunit/listOfStudentsReqLetter',compact('users'));
     });
-    
+
     Route::post('uploadRegulationToTrainee/{id}',function (\Illuminate\Http\Request $request,$id){
             $request->validate([
                 'uploadedFileInput' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
@@ -287,13 +288,19 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
                 //$document->opportunity_id = $user->opportunity_id;
                 //$document->committee_id = $user->committee_id;
                 $document->save();
-    
-                return back()->with('success','File has been uploaded.');
+
+                $req = trainee::where('trainee_id', $id)->first();
+
+                $req->update([
+                    'is_request'=> '0'
+                ]);
+
+                return redirect('/listOfStudentsReqLetter')->with('success','File has been uploaded.');
             }
         })
         ->name('uploadRegulationToTrainee');
-    
-   
+
+
         Route::get('downloadFile/storage/uploads/{name}',function ($name){
 
             $file= \App\Models\Sendsdocument::where('document', 'storage/uploads/'.$name)
@@ -304,7 +311,7 @@ Route::get('/listOfCompanyRequest', [companyController::class,'listOfCompanyRequ
             $headers = array(
                 'Content-Type: application/pdf',
             );
-    
+
             return \Illuminate\Support\Facades\Response::download($file, $name, $headers);
         })->name('downloadFile');
     Route::get('/listOfStudentsPTunit', [khawlahController::class, 'studentListPT']);
